@@ -1,258 +1,2118 @@
-<!DOCTYPE html>
-<html class="writer-html5" lang="en" >
-<head>
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-      <link rel="shortcut icon" href="../img/favicon.ico" />
-    <title>U2 Eclipse - Entornos de Desarrollo 1º CFGS DAM-DAW</title>
-    <link rel="stylesheet" href="../css/theme.css" />
-    <link rel="stylesheet" href="../css/theme_extra.css" />
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+
+<!doctype html>
+<html lang="es" class="no-js">
+  <head>
     
-      <script>
-        // Current page data
-        var mkdocs_page_name = "U2 Eclipse";
-        var mkdocs_page_input_path = "2_eclipse.md";
-        var mkdocs_page_url = null;
-      </script>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../1_intro/">
+      
+      
+        <link rel="next" href="../3_git/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.0">
     
-    <!--[if lt IE 9]>
-      <script src="../js/html5shiv.min.js"></script>
-    <![endif]-->
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
-      <script>hljs.highlightAll();</script> 
-</head>
+    
+      
+        <title>U2 Eclipse - Entornos de Desarrollo 1º CFGS DAM-DAW</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.618322db.min.css">
+      
+      
 
-<body class="wy-body-for-nav" role="document">
 
-  <div class="wy-grid-for-nav">
-    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
-    <div class="wy-side-scroll">
-      <div class="wy-side-nav-search">
-          <a href=".." class="icon icon-home"> Entornos de Desarrollo 1º CFGS DAM-DAW
-        </a><div role="search">
-  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
-      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
-  </form>
-</div>
-      </div>
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
 
-      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
-              <ul>
-                <li class="toctree-l1"><a class="reference internal" href="..">Home</a>
-                </li>
-              </ul>
-              <ul>
-                <li class="toctree-l1"><a class="" href="../3_intro.md">U1 Introducción</a>
-                </li>
-              </ul>
-              <ul class="current">
-                <li class="toctree-l1 current"><a class="reference internal current" href="#">U2 Eclipse</a>
-    <ul class="current">
-    <li class="toctree-l2"><a class="reference internal" href="#1-introduccion">1. Introducción</a>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#2-workspace">2. Workspace</a>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#3-utf-8">3. UTF-8</a>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#4-editores-vistas-y-perspectivas">4. Editores, vistas y perspectivas</a>
-        <ul>
-    <li class="toctree-l3"><a class="reference internal" href="#perspectivas-principales-en-eclipse">Perspectivas principales en Eclipse</a>
-    </li>
-        </ul>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#5-package-explorer">5. Package Explorer</a>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#6-camelcase">6. CamelCase</a>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#7-proyectos-paquetes-y-clases">7. Proyectos, paquetes y clases</a>
-        <ul>
-    <li class="toctree-l3"><a class="reference internal" href="#proyectos">Proyectos</a>
-    </li>
-    <li class="toctree-l3"><a class="reference internal" href="#paquetes">Paquetes</a>
-        <ul>
-    <li class="toctree-l4"><a class="reference internal" href="#estructura-en-eclipse">Estructura en Eclipse</a>
-    </li>
-    <li class="toctree-l4"><a class="reference internal" href="#paquete-por-defecto-default-package">Paquete por defecto (default package)</a>
-    </li>
-    <li class="toctree-l4"><a class="reference internal" href="#recomendacion-practica-para-clase">Recomendación práctica (para clase)</a>
-    </li>
-        </ul>
-    </li>
-    <li class="toctree-l3"><a class="reference internal" href="#clases">Clases</a>
-    </li>
-    <li class="toctree-l3"><a class="reference internal" href="#operaciones-en-eclipse">Operaciones en Eclipse</a>
-    </li>
-        </ul>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#8-build-path">8. Build Path</a>
-        <ul>
-    <li class="toctree-l3"><a class="reference internal" href="#81-que-es-el-jre-system-library">8.1. ¿Qué es el JRE System Library?</a>
-    </li>
-    <li class="toctree-l3"><a class="reference internal" href="#82-relacion-jdk-jre-jvm">8.2. Relación JDK – JRE – JVM</a>
-    </li>
-    <li class="toctree-l3"><a class="reference internal" href="#83-configurar-el-build-path-en-eclipse">8.3. Configurar el Build Path en Eclipse</a>
-    </li>
-        </ul>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#9-importar-en-eclipse">9. Importar en Eclipse</a>
-        <ul>
-    <li class="toctree-l3"><a class="reference internal" href="#importar-clases-sueltas">🔹 Importar clases sueltas</a>
-    </li>
-    <li class="toctree-l3"><a class="reference internal" href="#importar-paquetes-completos">🔹 Importar paquetes completos</a>
-    </li>
-    <li class="toctree-l3"><a class="reference internal" href="#importar-proyectos-completos">🔹 Importar proyectos completos</a>
-    </li>
-        </ul>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#10-mi-primer-programa-en-java">10. Mi primer programa en Java</a>
-        <ul>
-    <li class="toctree-l3"><a class="reference internal" href="#explicacion-del-codigo">Explicación del código:</a>
-    </li>
-        </ul>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#11-cambiar-el-nombre-a-los-elementos-de-java">11. Cambiar el nombre a los elementos de Java</a>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#12-escritura-de-programas-en-java">12. Escritura de programas en Java</a>
-        <ul>
-    <li class="toctree-l3"><a class="reference internal" href="#comentarios-en-java">Comentarios en Java:</a>
-    </li>
-        </ul>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#13-comentarios-en-eclipse">13. Comentarios en Eclipse</a>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#14-dar-formato-al-codigo">14. Dar formato al código</a>
-        <ul>
-    <li class="toctree-l3"><a class="reference internal" href="#como-dar-formato-al-codigo-en-eclipse">Cómo dar formato al código en Eclipse:</a>
-    </li>
-        </ul>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#15-ejecucion-de-programas-en-java">15. Ejecución de programas en Java</a>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#16-errores">16. Errores</a>
-        <ul>
-    <li class="toctree-l3"><a class="reference internal" href="#ejemplo-de-advertencia">🧩 Ejemplo de advertencia</a>
-    </li>
-    <li class="toctree-l3"><a class="reference internal" href="#ejemplo-de-error-de-compilacion">🧨 Ejemplo de error de compilación</a>
-    </li>
-    <li class="toctree-l3"><a class="reference internal" href="#errores-de-ejecucion-runtime-errors">⚙️ Errores de ejecución (Runtime errors)</a>
-    </li>
-        </ul>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#17-ayudas-al-escribir-codigo">17. Ayudas al escribir código</a>
-        <ul>
-    <li class="toctree-l3"><a class="reference internal" href="#171-esquema-flotante-quick-outline">17.1 Esquema flotante (Quick Outline)</a>
-    </li>
-    <li class="toctree-l3"><a class="reference internal" href="#172-asistente-de-contenido-content-assist">17.2 Asistente de contenido (Content Assist)</a>
-    </li>
-    <li class="toctree-l3"><a class="reference internal" href="#173-plantillas-de-codigo-code-templates">17.3 Plantillas de código (Code Templates)</a>
-    </li>
-        </ul>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#18-modificar-las-preferencias-del-editor">18. Modificar las preferencias del editor</a>
-        <ul>
-    <li class="toctree-l3"><a class="reference internal" href="#181-opciones-generales">18.1 Opciones generales</a>
-    </li>
-    <li class="toctree-l3"><a class="reference internal" href="#182-realizar-acciones-al-guardar-save-actions">18.2 Realizar acciones al guardar (Save Actions)</a>
-    </li>
-    <li class="toctree-l3"><a class="reference internal" href="#183-asistente-de-contenido-content-assist">18.3 Asistente de contenido (Content Assist)</a>
-    </li>
-    <li class="toctree-l3"><a class="reference internal" href="#184-coloreado-de-la-sintaxis-syntax-coloring">18.4 Coloreado de la sintaxis (Syntax Coloring)</a>
-    </li>
-    <li class="toctree-l3"><a class="reference internal" href="#185-marcar-apariciones-mark-occurrences">18.5 Marcar apariciones (Mark Occurrences)</a>
-        <ul>
-    <li class="toctree-l4"><a class="reference internal" href="#uso-manual-si-esta-desactivado">🔹 Uso manual si está desactivado</a>
-    </li>
-    <li class="toctree-l4"><a class="reference internal" href="#diferencias-entre-ambos-modos">🔹 Diferencias entre ambos modos</a>
-    </li>
-    <li class="toctree-l4"><a class="reference internal" href="#otros-atajos-relacionados">🔹 Otros atajos relacionados</a>
-    </li>
-        </ul>
-    </li>
-    <li class="toctree-l3"><a class="reference internal" href="#186-apartado-tecleo-typing">18.6 Apartado tecleo (Typing)</a>
-    </li>
-    <li class="toctree-l3"><a class="reference internal" href="#187-plantillas-templates">18.7 Plantillas (Templates)</a>
-    </li>
-    <li class="toctree-l3"><a class="reference internal" href="#188-estilo-del-codigo-code-style">18.8 Estilo del código (Code Style)</a>
-    </li>
-        </ul>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#19-depuracion">19. Depuración</a>
-        <ul>
-    <li class="toctree-l3"><a class="reference internal" href="#paso-1-colocar-los-breakpoints-puntos-de-interrupcion">Paso 1. Colocar los breakpoints (puntos de interrupción)</a>
-    </li>
-    <li class="toctree-l3"><a class="reference internal" href="#paso-2-abrir-la-perspectiva-debug">Paso 2. Abrir la perspectiva Debug</a>
-        <ul>
-    <li class="toctree-l4"><a class="reference internal" href="#vista-debug">🧭 Vista Debug</a>
-    </li>
-    <li class="toctree-l4"><a class="reference internal" href="#vista-variables">🔍 Vista Variables</a>
-    </li>
-    <li class="toctree-l4"><a class="reference internal" href="#vista-breakpoints">🎯 Vista Breakpoints</a>
-    </li>
-    <li class="toctree-l4"><a class="reference internal" href="#vista-expressions">🧮 Vista Expressions</a>
-    </li>
-        </ul>
-    </li>
-    <li class="toctree-l3"><a class="reference internal" href="#paso-3-empezar-a-depurar">Paso 3. Empezar a depurar</a>
-    </li>
-    <li class="toctree-l3"><a class="reference internal" href="#controles-basicos-del-depurador">Controles básicos del depurador</a>
-    </li>
-    <li class="toctree-l3"><a class="reference internal" href="#configuracion-avanzada-de-breakpoints">Configuración avanzada de Breakpoints</a>
-    </li>
-    <li class="toctree-l3"><a class="reference internal" href="#formateador-de-detalles-detail-formatter">Formateador de detalles (Detail Formatter)</a>
-    </li>
-        </ul>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#20-creacion-de-una-libreria-jar">20. Creación de una librería .jar</a>
-        <ul>
-    <li class="toctree-l3"><a class="reference internal" href="#que-contiene-un-archivo-jar">¿Qué contiene un archivo .jar?</a>
-    </li>
-    <li class="toctree-l3"><a class="reference internal" href="#ventajas">Ventajas</a>
-    </li>
-    <li class="toctree-l3"><a class="reference internal" href="#como-crear-una-libreria-jar-en-eclipse">Cómo crear una librería .jar en Eclipse</a>
-    </li>
-    <li class="toctree-l3"><a class="reference internal" href="#como-usar-una-libreria-jar-en-otro-proyecto">Cómo usar una librería .jar en otro proyecto</a>
-    </li>
-    <li class="toctree-l3"><a class="reference internal" href="#relacion-con-maven-y-gradle">Relación con Maven y Gradle</a>
-    </li>
-        </ul>
-    </li>
-    </ul>
-                </li>
-              </ul>
-              <ul>
-                <li class="toctree-l1"><a class="reference internal" href="../3_git/">U3 Git</a>
-                </li>
-              </ul>
-              <ul>
-                <li class="toctree-l1"><a class="reference internal" href="../practicas_modulo/">Prácticas</a>
-                </li>
-              </ul>
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#2-ide-eclipse" class="md-skip">
+          Saltar a contenido
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Cabecera">
+    <a href=".." title="Entornos de Desarrollo 1º CFGS DAM-DAW" class="md-header__button md-logo" aria-label="Entornos de Desarrollo 1º CFGS DAM-DAW" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Entornos de Desarrollo 1º CFGS DAM-DAW
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              U2 Eclipse
+            
+          </span>
+        </div>
       </div>
     </div>
-    </nav>
-
-    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
-      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
-          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="..">Entornos de Desarrollo 1º CFGS DAM-DAW</a>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Búsqueda" placeholder="Búsqueda" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
         
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Buscar">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Limpiar" aria-label="Limpiar" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
       </nav>
-      <div class="wy-nav-content">
-        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
-  <ul class="wy-breadcrumbs">
-    <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
-      <li class="breadcrumb-item active">U2 Eclipse</li>
-    <li class="wy-breadcrumbs-aside">
-    </li>
-  </ul>
-  <hr/>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Inicializando búsqueda
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
-          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
-            <div class="section" itemprop="articleBody">
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
               
-                <h1 id="2-ide-eclipse">2. IDE: Eclipse.</h1>
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navegación" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Entornos de Desarrollo 1º CFGS DAM-DAW" class="md-nav__button md-logo" aria-label="Entornos de Desarrollo 1º CFGS DAM-DAW" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Entornos de Desarrollo 1º CFGS DAM-DAW
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../1_intro/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    U1 Introducción
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    U2 Eclipse
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    U2 Eclipse
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tabla de contenidos
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-introduccion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Introducción
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-workspace" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Workspace
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-utf-8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. UTF-8
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-editores-vistas-y-perspectivas" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Editores, vistas y perspectivas
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. Editores, vistas y perspectivas">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#perspectivas-principales-en-eclipse" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Perspectivas principales en Eclipse
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-package-explorer" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Package Explorer
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-camelcase" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. CamelCase
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-proyectos-paquetes-y-clases" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. Proyectos, paquetes y clases
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="7. Proyectos, paquetes y clases">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#proyectos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Proyectos
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#paquetes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Paquetes
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Paquetes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#estructura-en-eclipse" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Estructura en Eclipse
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#paquete-por-defecto-default-package" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Paquete por defecto (default package)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#recomendacion-practica-para-clase" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Recomendación práctica (para clase)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#clases" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Clases
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#operaciones-en-eclipse" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Operaciones en Eclipse
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-build-path" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. Build Path
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="8. Build Path">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#81-que-es-el-jre-system-library" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.1. ¿Qué es el JRE System Library?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#82-relacion-jdk-jre-jvm" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.2. Relación JDK – JRE – JVM
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#83-configurar-el-build-path-en-eclipse" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.3. Configurar el Build Path en Eclipse
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-importar-en-eclipse" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9. Importar en Eclipse
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="9. Importar en Eclipse">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#importar-clases-sueltas" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🔹 Importar clases sueltas
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#importar-paquetes-completos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🔹 Importar paquetes completos
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#importar-proyectos-completos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🔹 Importar proyectos completos
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10-mi-primer-programa-en-java" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10. Mi primer programa en Java
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="10. Mi primer programa en Java">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#explicacion-del-codigo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Explicación del código:
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#11-cambiar-el-nombre-a-los-elementos-de-java" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11. Cambiar el nombre a los elementos de Java
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#12-escritura-de-programas-en-java" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        12. Escritura de programas en Java
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="12. Escritura de programas en Java">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#comentarios-en-java" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Comentarios en Java:
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#13-comentarios-en-eclipse" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        13. Comentarios en Eclipse
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#14-dar-formato-al-codigo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        14. Dar formato al código
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="14. Dar formato al código">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#como-dar-formato-al-codigo-en-eclipse" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Cómo dar formato al código en Eclipse:
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#15-ejecucion-de-programas-en-java" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        15. Ejecución de programas en Java
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#16-errores" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        16. Errores
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="16. Errores">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ejemplo-de-advertencia" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🧩 Ejemplo de advertencia
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ejemplo-de-error-de-compilacion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🧨 Ejemplo de error de compilación
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#errores-de-ejecucion-runtime-errors" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ⚙️ Errores de ejecución (Runtime errors)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#17-ayudas-al-escribir-codigo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        17. Ayudas al escribir código
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="17. Ayudas al escribir código">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#171-esquema-flotante-quick-outline" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        17.1 Esquema flotante (Quick Outline)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#172-asistente-de-contenido-content-assist" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        17.2 Asistente de contenido (Content Assist)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#173-plantillas-de-codigo-code-templates" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        17.3 Plantillas de código (Code Templates)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#18-modificar-las-preferencias-del-editor" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        18. Modificar las preferencias del editor
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="18. Modificar las preferencias del editor">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#181-opciones-generales" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        18.1 Opciones generales
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#182-realizar-acciones-al-guardar-save-actions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        18.2 Realizar acciones al guardar (Save Actions)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#183-asistente-de-contenido-content-assist" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        18.3 Asistente de contenido (Content Assist)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#184-coloreado-de-la-sintaxis-syntax-coloring" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        18.4 Coloreado de la sintaxis (Syntax Coloring)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#185-marcar-apariciones-mark-occurrences" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        18.5 Marcar apariciones (Mark Occurrences)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="18.5 Marcar apariciones (Mark Occurrences)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#uso-manual-si-esta-desactivado" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🔹 Uso manual si está desactivado
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#diferencias-entre-ambos-modos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🔹 Diferencias entre ambos modos
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#otros-atajos-relacionados" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🔹 Otros atajos relacionados
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#186-apartado-tecleo-typing" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        18.6 Apartado tecleo (Typing)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#187-plantillas-templates" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        18.7 Plantillas (Templates)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#188-estilo-del-codigo-code-style" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        18.8 Estilo del código (Code Style)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#19-depuracion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        19. Depuración
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="19. Depuración">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#paso-1-colocar-los-breakpoints-puntos-de-interrupcion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Paso 1. Colocar los breakpoints (puntos de interrupción)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#paso-2-abrir-la-perspectiva-debug" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Paso 2. Abrir la perspectiva Debug
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Paso 2. Abrir la perspectiva Debug">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#vista-debug" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🧭 Vista Debug
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vista-variables" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🔍 Vista Variables
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vista-breakpoints" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🎯 Vista Breakpoints
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vista-expressions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🧮 Vista Expressions
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#paso-3-empezar-a-depurar" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Paso 3. Empezar a depurar
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#controles-basicos-del-depurador" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Controles básicos del depurador
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#configuracion-avanzada-de-breakpoints" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Configuración avanzada de Breakpoints
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#formateador-de-detalles-detail-formatter" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Formateador de detalles (Detail Formatter)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#20-creacion-de-una-libreria-jar" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        20. Creación de una librería .jar
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="20. Creación de una librería .jar">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#que-contiene-un-archivo-jar" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ¿Qué contiene un archivo .jar?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ventajas" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ventajas
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#como-crear-una-libreria-jar-en-eclipse" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Cómo crear una librería .jar en Eclipse
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#como-usar-una-libreria-jar-en-otro-proyecto" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Cómo usar una librería .jar en otro proyecto
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#relacion-con-maven-y-gradle" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Relación con Maven y Gradle
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../3_git/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    U3 Git
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../practicas_modulo/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Prácticas
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tabla de contenidos
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-introduccion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Introducción
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-workspace" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Workspace
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-utf-8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. UTF-8
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-editores-vistas-y-perspectivas" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Editores, vistas y perspectivas
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. Editores, vistas y perspectivas">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#perspectivas-principales-en-eclipse" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Perspectivas principales en Eclipse
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-package-explorer" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Package Explorer
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-camelcase" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. CamelCase
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-proyectos-paquetes-y-clases" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. Proyectos, paquetes y clases
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="7. Proyectos, paquetes y clases">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#proyectos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Proyectos
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#paquetes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Paquetes
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Paquetes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#estructura-en-eclipse" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Estructura en Eclipse
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#paquete-por-defecto-default-package" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Paquete por defecto (default package)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#recomendacion-practica-para-clase" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Recomendación práctica (para clase)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#clases" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Clases
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#operaciones-en-eclipse" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Operaciones en Eclipse
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-build-path" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. Build Path
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="8. Build Path">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#81-que-es-el-jre-system-library" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.1. ¿Qué es el JRE System Library?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#82-relacion-jdk-jre-jvm" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.2. Relación JDK – JRE – JVM
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#83-configurar-el-build-path-en-eclipse" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.3. Configurar el Build Path en Eclipse
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-importar-en-eclipse" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9. Importar en Eclipse
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="9. Importar en Eclipse">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#importar-clases-sueltas" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🔹 Importar clases sueltas
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#importar-paquetes-completos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🔹 Importar paquetes completos
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#importar-proyectos-completos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🔹 Importar proyectos completos
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10-mi-primer-programa-en-java" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10. Mi primer programa en Java
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="10. Mi primer programa en Java">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#explicacion-del-codigo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Explicación del código:
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#11-cambiar-el-nombre-a-los-elementos-de-java" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11. Cambiar el nombre a los elementos de Java
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#12-escritura-de-programas-en-java" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        12. Escritura de programas en Java
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="12. Escritura de programas en Java">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#comentarios-en-java" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Comentarios en Java:
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#13-comentarios-en-eclipse" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        13. Comentarios en Eclipse
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#14-dar-formato-al-codigo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        14. Dar formato al código
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="14. Dar formato al código">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#como-dar-formato-al-codigo-en-eclipse" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Cómo dar formato al código en Eclipse:
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#15-ejecucion-de-programas-en-java" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        15. Ejecución de programas en Java
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#16-errores" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        16. Errores
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="16. Errores">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ejemplo-de-advertencia" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🧩 Ejemplo de advertencia
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ejemplo-de-error-de-compilacion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🧨 Ejemplo de error de compilación
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#errores-de-ejecucion-runtime-errors" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ⚙️ Errores de ejecución (Runtime errors)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#17-ayudas-al-escribir-codigo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        17. Ayudas al escribir código
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="17. Ayudas al escribir código">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#171-esquema-flotante-quick-outline" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        17.1 Esquema flotante (Quick Outline)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#172-asistente-de-contenido-content-assist" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        17.2 Asistente de contenido (Content Assist)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#173-plantillas-de-codigo-code-templates" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        17.3 Plantillas de código (Code Templates)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#18-modificar-las-preferencias-del-editor" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        18. Modificar las preferencias del editor
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="18. Modificar las preferencias del editor">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#181-opciones-generales" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        18.1 Opciones generales
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#182-realizar-acciones-al-guardar-save-actions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        18.2 Realizar acciones al guardar (Save Actions)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#183-asistente-de-contenido-content-assist" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        18.3 Asistente de contenido (Content Assist)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#184-coloreado-de-la-sintaxis-syntax-coloring" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        18.4 Coloreado de la sintaxis (Syntax Coloring)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#185-marcar-apariciones-mark-occurrences" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        18.5 Marcar apariciones (Mark Occurrences)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="18.5 Marcar apariciones (Mark Occurrences)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#uso-manual-si-esta-desactivado" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🔹 Uso manual si está desactivado
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#diferencias-entre-ambos-modos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🔹 Diferencias entre ambos modos
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#otros-atajos-relacionados" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🔹 Otros atajos relacionados
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#186-apartado-tecleo-typing" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        18.6 Apartado tecleo (Typing)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#187-plantillas-templates" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        18.7 Plantillas (Templates)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#188-estilo-del-codigo-code-style" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        18.8 Estilo del código (Code Style)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#19-depuracion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        19. Depuración
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="19. Depuración">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#paso-1-colocar-los-breakpoints-puntos-de-interrupcion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Paso 1. Colocar los breakpoints (puntos de interrupción)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#paso-2-abrir-la-perspectiva-debug" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Paso 2. Abrir la perspectiva Debug
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Paso 2. Abrir la perspectiva Debug">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#vista-debug" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🧭 Vista Debug
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vista-variables" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🔍 Vista Variables
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vista-breakpoints" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🎯 Vista Breakpoints
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vista-expressions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🧮 Vista Expressions
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#paso-3-empezar-a-depurar" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Paso 3. Empezar a depurar
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#controles-basicos-del-depurador" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Controles básicos del depurador
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#configuracion-avanzada-de-breakpoints" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Configuración avanzada de Breakpoints
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#formateador-de-detalles-detail-formatter" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Formateador de detalles (Detail Formatter)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#20-creacion-de-una-libreria-jar" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        20. Creación de una librería .jar
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="20. Creación de una librería .jar">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#que-contiene-un-archivo-jar" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ¿Qué contiene un archivo .jar?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ventajas" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ventajas
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#como-crear-una-libreria-jar-en-eclipse" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Cómo crear una librería .jar en Eclipse
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#como-usar-una-libreria-jar-en-otro-proyecto" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Cómo usar una librería .jar en otro proyecto
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#relacion-con-maven-y-gradle" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Relación con Maven y Gradle
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="2-ide-eclipse">2. IDE: Eclipse.</h1>
 <h2 id="1-introduccion"><strong>1. Introducción</strong></h2>
 <p>El código en Java se puede escribir en cualquier editor de texto y, para compilarlo a <strong>bytecodes</strong>, basta con instalar la versión del <strong>JDK</strong> correspondiente. Sin embargo, escribir y compilar programas de esta forma resulta incómodo, ya que obliga a gestionar manualmente la compilación y la ejecución desde la línea de comandos.</p>
 <p>Por ello surgieron los <strong>IDE (Integrated Development Environment)</strong> o entornos de desarrollo integrados, que consisten básicamente en un editor de código, un compilador y un depurador, además de otras herramientas.</p>
@@ -1414,51 +3274,60 @@ Sirve para <strong>reutilizar y distribuir código Java</strong> de manera organ
 </tbody>
 </table>
 <hr />
-              
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
             </div>
-          </div><footer>
-    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
-        <a href=".." class="btn btn-neutral float-left" title="Home"><span class="icon icon-circle-arrow-left"></span> Previous</a>
-        <a href="../3_git/" class="btn btn-neutral float-right" title="U3 Git">Next <span class="icon icon-circle-arrow-right"></span></a>
-    </div>
-
-  <hr/>
-
-  <div role="contentinfo">
-    <!-- Copyright etc -->
-  </div>
-
-  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
-</footer>
           
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
         </div>
-      </div>
-
-    </section>
-
-  </div>
-
-  <div class="rst-versions" role="note" aria-label="Versions">
-  <span class="rst-current-version" data-toggle="rst-current-version">
-    
-    
-      <span><a href=".." style="color: #fcfcfc">&laquo; Previous</a></span>
-    
-    
-      <span><a href="../3_git/" style="color: #fcfcfc">Next &raquo;</a></span>
-    
-  </span>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
 </div>
-    <script src="../js/jquery-3.6.0.min.js"></script>
-    <script>var base_url = "..";</script>
-    <script src="../js/theme_extra.js"></script>
-    <script src="../js/theme.js"></script>
-      <script src="../search/main.js"></script>
-    <script>
-        jQuery(function () {
-            SphinxRtdTheme.Navigation.enable(true);
-        });
-    </script>
-
-</body>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": [], "search": "../assets/javascripts/workers/search.7a47a382.min.js", "tags": null, "translations": {"clipboard.copied": "Copiado al portapapeles", "clipboard.copy": "Copiar al portapapeles", "search.result.more.one": "1 m\u00e1s en esta p\u00e1gina", "search.result.more.other": "# m\u00e1s en esta p\u00e1gina", "search.result.none": "No se encontraron documentos", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Teclee para comenzar b\u00fasqueda", "search.result.term.missing": "Falta", "select.version": "Seleccionar versi\u00f3n"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.e71a0d61.min.js"></script>
+      
+    
+  </body>
 </html>
