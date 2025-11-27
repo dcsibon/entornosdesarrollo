@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>Práctica 1 – Lenguajes compilados e interpretados en acción (versión macOS) - Entornos de Desarrollo 1º CFGS DAM-DAW</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Pr\u00e1ctica 1 \u2013 Lenguajes compilados e interpretados en acci\u00f3n (versi\u00f3n macOS)";
+        var mkdocs_page_input_path = "1_intro_practica1_versionMac.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> Entornos de Desarrollo 1º CFGS DAM-DAW
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="..">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="" href="../3_intro.md">U1 Introducción</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../2_eclipse/">U2 Eclipse</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../3_git/">U3 Git</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../practicas_modulo/">Prácticas</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">Entornos de Desarrollo 1º CFGS DAM-DAW</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">Práctica 1 – Lenguajes compilados e interpretados en acción (versión macOS)</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="practica-1-lenguajes-compilados-e-interpretados-en-accion-version-macos">Práctica 1 – Lenguajes compilados e interpretados en acción (versión macOS)</h1>
+<hr />
+<h2 id="preparacion-del-entorno-en-macos">🔹 Preparación del entorno en macOS</h2>
+<p>Antes de comenzar las prácticas, instala lo necesario en tu ordenador:</p>
+<h3 id="1-crear-carpeta-de-trabajo">1. Crear carpeta de trabajo</h3>
+<p>Antes de comenzar, crea una carpeta dentro de tu <strong>home</strong> (carpeta personal) para organizar todos tus proyectos.</p>
+<ul>
+<li>Abre la <strong>Terminal</strong> y ejecuta:</li>
+</ul>
+<p><code>bash
+   mkdir ~/MisProyectos
+   cd ~/MisProyectos</code></p>
+<ul>
+<li>Aquí guardarás todos los archivos de la práctica.</li>
+</ul>
+<p>📌 <strong>Nota importante:</strong>
+No es recomendable guardar ni ejecutar código en <strong>Descargas, Documentos o Escritorio</strong>, ya que desde macOS Catalina existe una capa de seguridad que puede impedir la ejecución de programas en esas carpetas.
+Además, trabajar en <code>~/MisProyectos</code> te ayuda a separar claramente tu código del resto de archivos del sistema.</p>
+<h3 id="2-instalar-homebrew">2. Instalar Homebrew</h3>
+<p>Antes de nada, instala <strong>Homebrew</strong>, que es un <strong>gestor de paquetes para macOS</strong> (similar a <code>apt</code> en Linux o <code>chocolatey</code> en Windows).</p>
+<p>📌 <strong>Ventajas de Homebrew:</strong></p>
+<ul>
+<li>Permite instalar programas fácilmente desde la terminal.</li>
+<li>Se actualiza con un simple comando, sin tener que descargar instaladores manualmente.</li>
+<li>
+<p>Garantiza configuraciones correctas para Python, compiladores, editores de texto, etc.</p>
+</li>
+<li>
+<p>Abre la aplicación <strong>Terminal</strong>.</p>
+</li>
+<li>
+<p>Ejecuta:</p>
+</li>
+</ul>
+<p><code>bash
+   /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"</code></p>
+<ol>
+<li>
+<p>Al terminar, Homebrew mostrará instrucciones para añadirlo al <strong>PATH</strong>.
+   👉 <strong>Copia y pega exactamente esas líneas</strong> en la terminal, ya que pueden variar según el modelo de Mac (Intel o Apple Silicon).</p>
+</li>
+<li>
+<p>Comprueba que funciona:</p>
+</li>
+</ol>
+<p><code>bash
+   brew --version</code></p>
+<ol>
+<li>Para actualizar Homebrew más adelante:</li>
+</ol>
+<p><code>bash
+   brew update</code></p>
+<h3 id="3-editor-simple-recomendado">3. Editor simple recomendado</h3>
+<p>Para escribir código necesitamos un editor de texto en <strong>formato plano (UTF-8)</strong>.
+En macOS se recomienda <strong>CotEditor</strong>, un editor sencillo, parecido a Notepad++, que guarda directamente en UTF-8 por defecto.</p>
+<h4 id="instalacion-con-homebrew-recomendada">🔹 Instalación con Homebrew (recomendada)</h4>
+<p>Si ya tienes <strong>Homebrew</strong> instalado, la forma más fácil es desde la terminal:</p>
+<pre><code class="language-bash">brew install --cask coteditor
+</code></pre>
+<p>Más adelante, para actualizar CotEditor:</p>
+<pre><code class="language-bash">brew upgrade --cask coteditor
+</code></pre>
+<h4 id="instalacion-desde-la-web-oficial">🔹 Instalación desde la web oficial</h4>
+<ol>
+<li>Descarga CotEditor desde 👉 <a href="https://coteditor.com/">https://coteditor.com/</a>.</li>
+<li>Dependiendo de lo que descargues, tendrás un archivo <code>.zip</code> o <code>.dmg</code>.</li>
+</ol>
+<p><strong>Si es <code>.zip</code>:</strong></p>
+<ol>
+<li>Abre <strong>Finder</strong> y ve a la carpeta <strong>Descargas</strong>.</li>
+<li>Haz <strong>doble clic</strong> sobre el archivo <code>.zip</code>.</li>
+<li>Se descomprimirá y aparecerá la aplicación <code>CotEditor.app</code>.</li>
+<li>Arrastra la aplicación a la carpeta <strong>Aplicaciones</strong> (en la barra lateral izquierda del Finder).</li>
+<li>Una vez copiada, ya podrás abrirla desde <strong>Launchpad</strong> o con <strong>Spotlight</strong> (<code>⌘ + barra espaciadora</code>).</li>
+<li>Borra el archivo <code>.zip</code> de Descargas, ya no lo necesitas.</li>
+</ol>
+<p><strong>Si es <code>.dmg</code>:</strong></p>
+<ol>
+<li>Abre <strong>Finder</strong> y ve a la carpeta <strong>Descargas</strong>.</li>
+<li>Haz <strong>doble clic</strong> sobre el archivo <code>.dmg</code>.</li>
+<li>Se abrirá una ventana que suele mostrar el icono de la aplicación y un acceso directo a la carpeta <strong>Aplicaciones</strong>.</li>
+<li>Arrastra el icono de <strong>CotEditor</strong> hacia el icono de <strong>Aplicaciones</strong>.</li>
+<li>Una vez copiada, cierra la ventana y en <strong>Finder</strong>, en la barra lateral, pulsa en el icono de expulsar (<code>⏏</code>) para “expulsar” la imagen de disco.</li>
+<li>Borra el archivo <code>.dmg</code> de la carpeta <strong>Descargas</strong>, ya no lo necesitas.</li>
+<li>Abre la aplicación desde <strong>Launchpad</strong> o con <strong>Spotlight</strong> (<code>⌘ + barra espaciadora</code>).</li>
+</ol>
+<h3 id="4-instalar-python-con-homebrew">4. Instalar Python (con Homebrew)</h3>
+<ol>
+<li>Instala Python 3 con Homebrew:</li>
+</ol>
+<p><code>bash
+   brew install python</code></p>
+<ol>
+<li>Crea alias para simplificar comandos. Edita el archivo de configuración de la shell (<code>.zshrc</code>):</li>
+</ol>
+<p><code>bash
+   nano ~/.zshrc</code></p>
+<p>Añade al final:</p>
+<p><code>bash
+   alias pip="python3 -m pip"
+   alias py="python3"
+   alias python="python3"</code></p>
+<p>Guarda (<code>CTRL + O</code>), cierra (<code>CTRL + X</code>) y recarga la configuración:</p>
+<p><code>bash
+   source ~/.zshrc</code></p>
+<ol>
+<li>Comprueba la instalación:</li>
+</ol>
+<p><code>bash
+   python --version
+   pip --version</code></p>
+<h3 id="5-instalar-compilador-c">5. Instalar compilador C</h3>
+<p>En macOS el compilador por defecto es <strong>clang</strong> (equivalente a gcc en Linux).</p>
+<ol>
+<li>Instala las herramientas de línea de comandos de Xcode:</li>
+</ol>
+<p><code>bash
+   xcode-select --install</code>
+2. Comprueba:</p>
+<p><code>bash
+   gcc --version</code></p>
+<p>👉 Nota: En macOS, el comando <code>gcc</code> no corresponde al compilador GNU GCC, sino que en realidad es un enlace al compilador oficial de Apple (<em>Clang</em>). Por eso puedes usar indistintamente <code>gcc</code> o <code>clang</code>, ya que ambos ejecutan el mismo compilador en este sistema.</p>
+<hr />
+<p>📌 <strong>Notas técnicas importantes:</strong></p>
+<ul>
+<li>Para ejecutar un programa en la carpeta actual, en macOS siempre debes poner <code>./</code> delante:</li>
+</ul>
+<p><code>bash
+  ./area</code>
+* En macOS <strong>no es necesario usar <code>chcp 65001</code></strong>, porque la terminal ya trabaja en UTF-8 por defecto. Los acentos y ñ deberían mostrarse bien.</p>
+<hr />
+<h2 id="parte-1-python-interpretado">Parte 1. Python (interpretado)</h2>
+<ol>
+<li>Abre <strong>CotEditor</strong> y copia este código en <code>area.py</code> (<strong>con error intencionado: falta una comilla</strong>):</li>
+</ol>
+<pre><code class="language-python"># Calcular el área de un círculo en Python
+radio = 5
+area = 3.14159 * radio ** 2
+print(&quot;El área del círculo es:, area)
+</code></pre>
+<ol>
+<li>Ejecuta en Terminal:</li>
+</ol>
+<p><code>bash
+   python area.py</code></p>
+<p>Observa el <strong>mensaje de error de sintaxis</strong> y anótalo.</p>
+<ol>
+<li>Corrige el error (añade la comilla que falta):</li>
+</ol>
+<pre><code class="language-python">print(&quot;El área del círculo es:&quot;, area)
+</code></pre>
+<ol>
+<li>Vuelve a ejecutar y haz una <strong>captura de pantalla</strong> con el resultado.</li>
+</ol>
+<hr />
+<h2 id="parte-2-c-compilado">Parte 2. C (compilado)</h2>
+<ol>
+<li>Copia este código en <code>area.c</code> (<strong>con error intencionado: falta punto y coma</strong>):</li>
+</ol>
+<pre><code class="language-c">#include &lt;stdio.h&gt;
+
+int main() {
+    int radio = 5        // &lt;-- error intencionado
+    float area = 3.14159 * radio * radio;
+    printf(&quot;El área del círculo es: %f\n&quot;, area);
+    return 0;
+}
+</code></pre>
+<ol>
+<li>En <strong>Terminal</strong>, compila con:</li>
+</ol>
+<p><code>bash
+   gcc area.c -o area</code></p>
+<ol>
+<li>
+<p>Anota el <strong>mensaje de error</strong>.</p>
+</li>
+<li>
+<p>Corrige el error (añade el <code>;</code> que falta), compila de nuevo y ejecuta:</p>
+</li>
+</ol>
+<p><code>bash
+   ./area</code></p>
+<ol>
+<li>Haz una <strong>captura de la ejecución correcta</strong>.</li>
+</ol>
+<hr />
+<h2 id="parte-3-comparacion-inicial">Parte 3. Comparación inicial</h2>
+<ol>
+<li>¿Cuándo se detectó el error en Python y en C?</li>
+<li>¿Qué diferencia notas entre ejecutar Python y C?</li>
+</ol>
+<hr />
+<h2 id="parte-4-comparacion-de-velocidad-con-bucle">Parte 4. Comparación de velocidad (con bucle)</h2>
+<ol>
+<li>Sustituye el programa en Python por este código:</li>
+</ol>
+<pre><code class="language-python">import time
+
+inicio = time.time()
+
+suma = 0
+for i in range(100000000):   # cien millones
+    suma += i
+
+fin = time.time()
+print(&quot;Suma final:&quot;, suma)
+print(&quot;Tiempo en segundos:&quot;, fin - inicio)
+</code></pre>
+<ol>
+<li>Haz lo mismo en C (<code>bucle.c</code>):</li>
+</ol>
+<pre><code class="language-c">#include &lt;stdio.h&gt;
+#include &lt;time.h&gt;
+
+int main() {
+    clock_t inicio, fin;
+    inicio = clock();
+
+    long long suma = 0;
+    for (long long i = 0; i &lt; 100000000; i++) {
+        suma += i;
+    }
+
+    fin = clock();
+    double tiempo = (double)(fin - inicio) / CLOCKS_PER_SEC;
+
+    printf(&quot;Suma final: %lld\n&quot;, suma);
+    printf(&quot;Tiempo en segundos: %f\n&quot;, tiempo);
+    return 0;
+}
+</code></pre>
+<p>Primero debes compilar el programa en C, como ya hemos visto anteriormente:</p>
+<pre><code class="language-bash">gcc bucle.c -o bucle
+</code></pre>
+<p>Después ejecuta ambos programas:</p>
+<pre><code class="language-bash">python bucle.py
+
+./bucle
+</code></pre>
+<ol>
+<li>Haz una captura de los tiempos medidos en Python y en C.</li>
+<li>Reflexiona: ¿qué lenguaje tardó más? ¿por qué crees que ocurre?</li>
+</ol>
+              
+            </div>
+          </div><footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+    
+  </span>
+</div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+      <script src="../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

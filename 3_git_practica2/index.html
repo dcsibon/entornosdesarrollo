@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>Práctica 2 – Generar y usar clave SSH con Git y GitHub - Entornos de Desarrollo 1º CFGS DAM-DAW</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Pr\u00e1ctica 2 \u2013 Generar y usar clave SSH con Git y GitHub";
+        var mkdocs_page_input_path = "3_git_practica2.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> Entornos de Desarrollo 1º CFGS DAM-DAW
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="..">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="" href="../3_intro.md">U1 Introducción</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../2_eclipse/">U2 Eclipse</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../3_git/">U3 Git</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../practicas_modulo/">Prácticas</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">Entornos de Desarrollo 1º CFGS DAM-DAW</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">Práctica 2 – Generar y usar clave SSH con Git y GitHub</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="practica-2-generar-y-usar-clave-ssh-con-git-y-github">Práctica 2 – Generar y usar clave <strong>SSH</strong> con Git y GitHub</h1>
+<blockquote>
+<p><strong>Contexto:</strong> En esta práctica aprenderás a configurar una conexión <strong>segura</strong> entre tu ordenador y GitHub usando <strong>SSH</strong>, para evitar introducir usuario y contraseña cada vez que subas o descargues código.</p>
+</blockquote>
+<p><strong>IMPORTANTE ACTUALIZACIÓN DE LA PRÁCTICA (11/11/2025)</strong></p>
+<p>He agregado un último apartado por si en la clase tenéis problemas al configurar el remoto o al realizar los típicos comandos de sincronización push o pull usando SSH =&gt; <a href="#problema-ssh-andared">14. Problema de conexión SSH en la red Andared (puerto 22 bloqueado)</a></p>
+<hr />
+<h2 id="1-que-es-una-clave-ssh">1) ¿Qué es una clave SSH?</h2>
+<p>SSH (Secure Shell) es un protocolo que permite conectarte de forma <strong>segura y cifrada</strong> con servidores remotos.
+GitHub permite usar claves SSH para <strong>autenticarte automáticamente</strong>, sin tener que escribir tu usuario ni contraseña.</p>
+<p>Una clave SSH se compone de dos partes:</p>
+<ul>
+<li>🔑 <strong>Clave privada</strong>: se queda en tu ordenador. <strong>No se comparte nunca.</strong></li>
+<li>🪪 <strong>Clave pública</strong>: se sube a GitHub para que reconozca tu equipo.</li>
+</ul>
+<p>Cuando haces <code>git push</code> o <code>git pull</code>, Git usa la clave privada para comprobar que eres tú.</p>
+<p><a href="../3_git_practica2_SSH_detalle/">Aquí tienes una explicación más detallada de cómo funcionan las claves SSH</a></p>
+<hr />
+<h2 id="2-verificar-si-ya-tienes-una-clave-ssh">2) Verificar si ya tienes una clave SSH</h2>
+<p>Antes de generar una nueva, comprueba si ya existe:</p>
+<pre><code class="language-bash">ls -al ~/.ssh
+</code></pre>
+<p>Si ves archivos como <code>id_ed25519.pub</code> o <code>id_rsa.pub</code>, ya tienes una clave.
+Si no aparecen, continúa con el siguiente paso.</p>
+<hr />
+<h2 id="3-generar-una-nueva-clave-ssh">3) Generar una nueva clave SSH</h2>
+<p>Ejecuta en tu terminal o <strong>Git Bash (Windows)</strong>:</p>
+<pre><code class="language-bash">ssh-keygen -t ed25519 -C &quot;tu_usuario@g.educaand.es&quot;
+</code></pre>
+<p><strong>Explicación:</strong></p>
+<ul>
+<li><code>-t ed25519</code> → tipo de clave moderna y segura (recomendada por GitHub).</li>
+<li><code>-C</code> → comentario identificador (usa tu correo de EducaAnd para saber de qué equipo es la clave).</li>
+</ul>
+<p>Cuando te pregunte la ubicación, presiona <strong>Enter</strong> para aceptar la ruta por defecto:</p>
+<pre><code>/home/tu_usuario/.ssh/id_ed25519
+</code></pre>
+<p>Puedes dejar la contraseña vacía (solo si es tu equipo personal) o añadir una para mayor seguridad.</p>
+<hr />
+<h2 id="4-iniciar-el-agente-ssh-y-anadir-la-clave">4) Iniciar el agente SSH y añadir la clave</h2>
+<p>El <strong>agente SSH</strong> mantiene tus claves activas durante la sesión. En Git Bash o terminal, escribe:</p>
+<pre><code class="language-bash">eval &quot;$(ssh-agent -s)&quot;
+ssh-add ~/.ssh/id_ed25519
+ssh-add -l   # Verifica que está cargada
+</code></pre>
+<blockquote>
+<p>💡 Si usas <strong>Windows</strong> y <code>ssh-agent</code> no se inicia, ejecuta:</p>
+<p><code>bash
+start-ssh-agent</code></p>
+<p>o reinicia Git Bash como administrador.</p>
+</blockquote>
+<hr />
+<h2 id="5-copiar-la-clave-publica-al-portapapeles">5) Copiar la clave pública al portapapeles</h2>
+<h3 id="segun-tu-sistema-operativo">Según tu sistema operativo:</h3>
+<p><strong>Windows:</strong></p>
+<pre><code class="language-bash">clip &lt; ~/.ssh/id_ed25519.pub
+</code></pre>
+<p><strong>macOS:</strong></p>
+<pre><code class="language-bash">pbcopy &lt; ~/.ssh/id_ed25519.pub
+</code></pre>
+<p><strong>Linux:</strong></p>
+<pre><code class="language-bash">xclip -sel clip &lt; ~/.ssh/id_ed25519.pub
+</code></pre>
+<p>Si no tienes utilidades de portapapeles, también puedes mostrarla y copiarla manualmente:</p>
+<pre><code class="language-bash">cat ~/.ssh/id_ed25519.pub
+</code></pre>
+<hr />
+<h2 id="6-anadir-la-clave-ssh-a-github">6) Añadir la clave SSH a GitHub</h2>
+<ol>
+<li>Entra en <a href="https://github.com/">GitHub</a> y accede con tu cuenta de EducaAnd.</li>
+<li>Haz clic en tu foto de perfil → <strong>Settings</strong>.</li>
+<li>En el menú lateral, entra en <strong>SSH and GPG keys</strong>.</li>
+<li>Haz clic en <strong>New SSH key</strong>.</li>
+<li>Escribe un título identificativo (por ejemplo, <em>Clave portátil DAM</em>).</li>
+<li>Pega la clave copiada y haz clic en <strong>Add SSH key</strong>.</li>
+</ol>
+<hr />
+<h2 id="7-probar-la-conexion-ssh-con-github">7) Probar la conexión SSH con GitHub</h2>
+<p>Para comprobar que la configuración funciona correctamente:</p>
+<pre><code class="language-bash">ssh -T git@github.com
+</code></pre>
+<p>La primera vez aparecerá una advertencia de autenticidad del host (<code>The authenticity of host 'github.com'...</code>).
+Escribe <strong>yes</strong> y presiona <strong>Enter</strong>.</p>
+<p>Deberías ver un mensaje como:</p>
+<pre><code>Hi tu_usuario! You've successfully authenticated, but GitHub does not provide shell access.
+</code></pre>
+<p>Eso significa que la conexión está configurada correctamente.</p>
+<h2 id="8-configurar-tu-repositorio-local-para-usar-ssh-no-hacer-nada-en-este-punto-solo-leer">8) Configurar tu repositorio local para usar SSH <em>(No hacer nada en este punto, solo leer)</em></h2>
+<p>Dependiendo de si <strong>ya tenías el remoto configurado por HTTPS</strong> o <strong>es la primera vez que enlazas tu proyecto con GitHub</strong>, deberás usar un comando distinto:</p>
+<h3 id="caso-a-ya-tenias-un-remoto-https-y-quieres-cambiarlo-a-ssh">🔹 <strong>CASO A: Ya tenías un remoto HTTPS y quieres cambiarlo a SSH</strong></h3>
+<pre><code class="language-bash">git remote set-url origin git@github.com:tu_usuario/nombre_repositorio.git
+</code></pre>
+<blockquote>
+<p>✅ Usa este comando solo si tu repositorio ya estaba conectado con GitHub y quieres dejar de usar HTTPS.</p>
+</blockquote>
+<p>Comprueba que la URL se ha actualizado correctamente:</p>
+<pre><code class="language-bash">git remote -v
+</code></pre>
+<hr />
+<h3 id="caso-b-todavia-no-habias-configurado-ningun-remoto">🔹 <strong>CASO B: Todavía no habías configurado ningún remoto</strong></h3>
+<p>Si tu repositorio fue creado localmente (por ejemplo, con <code>git init</code>) y aún no está enlazado con GitHub, añade el remoto por primera vez con:</p>
+<pre><code class="language-bash">git remote add origin git@github.com:tu_usuario/nombre_repositorio.git
+</code></pre>
+<p>Después verifica:</p>
+<pre><code class="language-bash">git remote -v
+</code></pre>
+<p>Deberías ver algo como:</p>
+<pre><code>origin  git@github.com:tu_usuario/nombre_repositorio.git (fetch)
+origin  git@github.com:tu_usuario/nombre_repositorio.git (push)
+</code></pre>
+<hr />
+<blockquote>
+<p>💡 <strong>En resumen:</strong></p>
+<ul>
+<li>Si ya tenías el remoto: usa <code>set-url</code>.</li>
+<li>Si es la primera vez: usa <code>add</code>.</li>
+</ul>
+</blockquote>
+<hr />
+<h2 id="9-usar-git-con-ssh-no-hacer-nada-en-este-punto-solo-leer">9) Usar Git con SSH <em>(No hacer nada en este punto, solo leer)</em></h2>
+<p>A partir de ahora, tus comandos de Git funcionarán sin pedir usuario ni contraseña:</p>
+<pre><code class="language-bash">git push origin main
+
+git pull origin main
+</code></pre>
+<p>Git autenticará automáticamente usando tu clave SSH.</p>
+<blockquote>
+<p>⚙️ Si tu rama principal se llama <code>master</code> en lugar de <code>main</code>, reemplázala en los comandos anteriores.</p>
+</blockquote>
+<hr />
+<h2 id="10-realizar-este-ejercicio-practico">10) REALIZAR ESTE EJERCICIO PRÁCTICO</h2>
+<p><a href="../3_git_practica2_ejercicio/">Sigue las siguientes instrucciones para realizar el ejercicio con tu clave SSH</a></p>
+<hr />
+<h2 id="11-seguridad-y-mantenimiento">11) Seguridad y mantenimiento</h2>
+<ul>
+<li>Nunca compartas tu <strong>clave privada</strong> (<code>id_ed25519</code>).</li>
+<li>Puedes añadir varias claves SSH si trabajas desde diferentes dispositivos.</li>
+<li>Si pierdes o cambias de equipo, elimina la clave antigua desde GitHub → <em>Settings → SSH and GPG Keys</em>.</li>
+<li>Usa <code>ssh-add -l</code> para listar las claves cargadas actualmente.</li>
+</ul>
+<hr />
+<h2 id="12-recursos-utiles">12) Recursos útiles</h2>
+<ul>
+<li><a href="https://docs.github.com/es/authentication/connecting-to-github-with-ssh">GitHub Docs – Conectar con SSH</a></li>
+<li><a href="https://git-scm.com/book/es/v2/Git-en-el-Servidor-Generaci%C3%B3n-de-Tu-Clave-P%C3%BAblica-SSH">Git – Manual SSH</a></li>
+<li><a href="https://www.eclipse.org/egit/documentation/">EGit User Guide</a></li>
+<li><a href="https://training.github.com/downloads/es_ES/github-git-cheat-sheet/">Comandos de Git más usados</a></li>
+</ul>
+<hr />
+<h2 id="13-problema-de-conexion-ssh-en-la-red-andared-puerto-22-bloqueado">13) Problema de conexión SSH en la red <strong>Andared</strong> <em>(puerto 22 bloqueado)</em> <a id="problema-ssh-andared"></a></h2>
+<h3 id="que-ocurre">Qué ocurre❓</h3>
+<p>En algunos centros educativos (como los de la red <strong>Andared</strong>), el <strong>puerto 22</strong>, usado por SSH de forma predeterminada, está <strong>bloqueado por motivos de seguridad</strong>.
+Esto impide clonar o hacer <code>git push</code>/<code>git pull</code> mediante SSH, mostrando errores como:</p>
+<pre><code>ssh: connect to host github.com port 22: Connection timed out
+fatal: Could not read from remote repository.
+</code></pre>
+<hr />
+<h3 id="solucion-forzar-ssh-a-usar-el-puerto-443-permitido">💡 Solución: forzar SSH a usar el puerto <strong>443</strong> <em>(permitido)</em></h3>
+<p>GitHub permite conectarte por SSH usando <strong>el puerto 443</strong>, el mismo que usa HTTPS.
+Solo hay que <strong>crear o editar el archivo de configuración SSH</strong> (<code>config</code>) en tu carpeta <code>.ssh</code>.</p>
+<hr />
+<h3 id="pasos-segun-tu-sistema-operativo">🔧 Pasos según tu sistema operativo</h3>
+<h4 id="macos-o-linux">🔹 macOS o Linux</h4>
+<ol>
+<li>Abre el terminal y escribe:</li>
+</ol>
+<p><code>bash
+   nano ~/.ssh/config</code></p>
+<ol>
+<li>Añade estas líneas (si no existen):</li>
+</ol>
+<p><code>bash
+   Host github.com
+     Hostname ssh.github.com
+     Port 443
+     User git</code></p>
+<ol>
+<li>
+<p>Guarda con <code>Ctrl + O</code>, luego <code>Enter</code>, y sal con <code>Ctrl + X</code>.</p>
+</li>
+<li>
+<p>Prueba la conexión:</p>
+</li>
+</ol>
+<p><code>bash
+   ssh -T -p 443 git@ssh.github.com</code></p>
+<p>Si ves el mensaje:</p>
+<p><code>Hi tu_usuario! You've successfully authenticated...</code></p>
+<p>¡Todo está correcto!
+   Ya puedes usar <code>git push</code> y <code>git pull</code> desde la red del centro.</p>
+<hr />
+<h4 id="windows-git-bash">🔹 Windows (Git Bash)</h4>
+<ol>
+<li>Abre <strong>Git Bash</strong> y ejecuta:</li>
+</ol>
+<p><code>bash
+   nano ~/.ssh/config</code></p>
+<p>Si no existe el archivo, se creará.</p>
+<ol>
+<li>Escribe dentro:</li>
+</ol>
+<p><code>bash
+   Host github.com
+     Hostname ssh.github.com
+     Port 443
+     User git</code></p>
+<ol>
+<li>
+<p>Guarda (<code>Ctrl + O</code> → <code>Enter</code> → <code>Ctrl + X</code>).</p>
+</li>
+<li>
+<p>Prueba la conexión:</p>
+</li>
+</ol>
+<p><code>bash
+   ssh -T -p 443 git@ssh.github.com</code></p>
+<ol>
+<li>Si te pregunta si confías en el host, responde <code>yes</code>.</li>
+</ol>
+<blockquote>
+<p>⚙️ En Windows, el archivo <code>config</code> se guarda en
+<code>C:\Users\&lt;tu_usuario&gt;\.ssh\config</code>.</p>
+</blockquote>
+<hr />
+<h3 id="que-hace-realmente-esta-configuracion">🧠 Qué hace realmente esta configuración</h3>
+<p>Le indica al cliente SSH de tu equipo que <strong>cada vez que se conecte a <code>github.com</code></strong>,
+use <strong>el servidor alternativo <code>ssh.github.com</code></strong> y <strong>el puerto 443</strong> (que nunca está bloqueado).</p>
+<p>A partir de ese momento, puedes seguir usando las mismas URL SSH de siempre:</p>
+<pre><code class="language-bash">git@github.com:usuario/repositorio.git
+</code></pre>
+<p>Git redirigirá internamente la conexión al puerto correcto.</p>
+<hr />
+              
+            </div>
+          </div><footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+    
+  </span>
+</div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+      <script src="../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

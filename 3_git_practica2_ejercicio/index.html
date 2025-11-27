@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>3 git practica2 ejercicio - Entornos de Desarrollo 1º CFGS DAM-DAW</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "3 git practica2 ejercicio";
+        var mkdocs_page_input_path = "3_git_practica2_ejercicio.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> Entornos de Desarrollo 1º CFGS DAM-DAW
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="..">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="" href="../3_intro.md">U1 Introducción</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../2_eclipse/">U2 Eclipse</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../3_git/">U3 Git</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../practicas_modulo/">Prácticas</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">Entornos de Desarrollo 1º CFGS DAM-DAW</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">3 git practica2 ejercicio</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h2 id="11-ejercicio-practico-eclipse-para-programar-terminal-para-git">11) Ejercicio práctico — Eclipse para programar, terminal para Git</h2>
+<p>En este ejercicio comprobarás que tu conexión <strong>SSH</strong> con GitHub funciona correctamente. Crearás el programa Java desde <strong>Eclipse</strong>, pero todos los comandos de <strong>Git</strong> los ejecutarás <strong>desde la terminal</strong>.</p>
+<hr />
+<h3 id="paso-1-verifica-la-conexion-ssh">🔹 Paso 1. Verifica la conexión SSH</h3>
+<pre><code class="language-bash">ssh -T git@github.com
+</code></pre>
+<p>Deberías ver:</p>
+<pre><code>Hi tu_usuario! You've successfully authenticated, but GitHub does not provide shell access.
+</code></pre>
+<p>Si aparece, tu conexión SSH está lista.</p>
+<hr />
+<h3 id="paso-2-crear-o-localizar-el-repositorio-en-github">🔹 Paso 2. Crear o localizar el repositorio en GitHub</h3>
+<ol>
+<li>Crea un repositorio llamado <code>RamasGitJavaDAM</code> que contenga simplemente un fichero README.</li>
+<li>Copia la <strong>URL SSH</strong> (empieza por <code>git@github.com:</code>).</li>
+</ol>
+<p>Ejemplo:</p>
+<pre><code class="language-bash">git@github.com:tu_usuario/RamasGitJavaDAM.git
+</code></pre>
+<hr />
+<h3 id="paso-3-clonar-el-repositorio-en-el-workspace-de-eclipse">🔹 Paso 3. Clonar el repositorio en el workspace de Eclipse</h3>
+<ol>
+<li>Abre <strong>Git Bash</strong> y colócate en tu workspace de Eclipse:</li>
+</ol>
+<p><code>bash
+   cd "C:\Users\alumno\eclipse-workspace"</code>
+2. Clona el repositorio por SSH:</p>
+<p><code>bash
+   git clone git@github.com:tu_usuario/RamasGitJavaDAM.git</code>
+3. Comprueba que se ha creado la carpeta:</p>
+<p><code>bash
+   ls -l
+   # Deberías ver la carpeta RamasGitJavaDAM</code></p>
+<hr />
+<h3 id="paso-4-crear-el-proyecto-java-dentro-de-la-carpeta-clonada-en-eclipse">🔹 Paso 4. Crear el proyecto Java dentro de la carpeta clonada (en Eclipse)</h3>
+<ol>
+<li>En <strong>Eclipse</strong> → <em>File → New → Java Project</em>.</li>
+<li><strong>Desmarca</strong> <em>Use default location</em>.</li>
+<li>En <em>Location</em>, selecciona la carpeta clonada:</li>
+</ol>
+<p><code>C:\Users\alumno\eclipse-workspace\RamasGitJavaDAM</code>
+4. Nombre del proyecto: <code>RamasGitJavaDAM</code> → <strong>Finish</strong>.
+5. Eclipse creará <code>src/</code>, <code>.project</code> y <code>.classpath</code> dentro de esa carpeta clonada.
+6. Crea la clase principal: <em>File → New → Class</em></p>
+<ul>
+<li>Package: <code>edu.alumno.ssh</code></li>
+<li>Name: <code>Main</code></li>
+<li>
+<p>Marca <strong>public static void main(String[] args)</strong>.</p>
+</li>
+<li>
+<p>Copia este código:</p>
+</li>
+</ul>
+<p>```java
+   package edu.alumno.ssh;</p>
+<p>import java.util.Random;</p>
+<p>public class Main {
+       public static void main(String[] args) {
+           //Investiga el uso de random y genera por pantalla los números de la lotería primitiva.
+           Random random = new Random();</p>
+<pre><code>       System.out.println("Números de la Lotería Primitiva:");
+       // Genera 5 números principales
+
+       // Número complementario
+
+   }
+</code></pre>
+<p>}
+   ```</p>
+<ol>
+<li>Ejecuta el programa en Eclipse (<em>Run As → Java Application</em>) para comprobar que funciona correctamente.</li>
+</ol>
+<hr />
+<h3 id="paso-5-control-de-versiones-con-git-solo-terminal">🔹 Paso 5. Control de versiones con Git (solo terminal)</h3>
+<p>A partir de aquí, <strong>no uses las opciones gráficas de Eclipse para Git</strong>. Trabajarás únicamente desde la terminal.</p>
+<ol>
+<li>Abre Git Bash y colócate en la carpeta del proyecto:</li>
+</ol>
+<p><code>bash
+   cd "C:\Users\alumno\eclipse-workspace\RamasGitJavaDAM"</code>
+2. Crea un <code>.gitignore</code> básico para Eclipse:</p>
+<p><code>bash
+   echo "/bin/" &gt; .gitignore</code>
+3. Añade los archivos al repositorio y haz el primer commit:</p>
+<p><code>bash
+   git add .
+   git commit -m "Proyecto Java creado desde Eclipse y gestionado por terminal (SSH listo)"</code></p>
+<ol>
+<li>Sube el proyecto a GitHub:</li>
+</ol>
+<p><code>bash
+   git branch -M main
+   git push -u origin main</code></p>
+<hr />
+<h3 id="paso-6-verifica-en-github">🔹 Paso 6. Verifica en GitHub</h3>
+<ol>
+<li>Abre tu repositorio <code>RamasGitJavaDAM</code> en GitHub.</li>
+<li>Comprueba que aparecen las carpetas <code>src/</code> y el archivo <code>Main.java</code>.</li>
+<li>Verifica que el push se ha realizado sin pedir usuario ni contraseña.</li>
+</ol>
+<hr />
+<h3 id="paso-7-modificacion-commit-local-y-sincronizacion-con-cambios-remotos">🔹 Paso 7. Modificación, commit local y sincronización con cambios remotos</h3>
+<ol>
+<li>Desde <strong>Eclipse</strong>, modifica <code>Main.java</code> y añade esta línea al final del método <code>main</code>:</li>
+</ol>
+<p><code>java
+   System.out.println("¡Buena suerte en el sorteo!");</code></p>
+<ol>
+<li>Guarda el archivo y realiza el commit y push desde la terminal:</li>
+</ol>
+<p><code>bash
+   cd "C:\Users\alumno\eclipse-workspace\RamasGitJavaDAM"
+   git add src/edu/alumno/ssh/Main.java
+   git commit -m "Añadido mensaje final de suerte"
+   git push</code></p>
+<ol>
+<li>
+<p>Ahora entra en tu repositorio de <strong>GitHub</strong> y realiza un pequeño cambio <strong>directamente desde la web</strong>:</p>
+</li>
+<li>
+<p>Abre el archivo <code>Main.java</code>.</p>
+</li>
+<li>Haz clic en el icono del lápiz (✏️ <em>Edit this file</em>).</li>
+<li>
+<p>Añade una línea más al final del programa, por ejemplo:</p>
+<p><code>java
+ System.out.println("Cambio realizado desde GitHub.");</code></p>
+</li>
+<li>
+<p>Baja hasta el final y haz clic en <strong>Commit changes</strong>.</p>
+</li>
+<li>
+<p>Vuelve a tu terminal y sincroniza los cambios remotos ejecutando:</p>
+</li>
+</ol>
+<p><code>bash
+   git pull origin main</code></p>
+<p>Esto descargará el cambio hecho desde GitHub y lo fusionará en tu copia local.</p>
+<ol>
+<li>Comprueba en Eclipse que <code>Main.java</code> incluye las tres líneas de salida y vuelve a ejecutar el programa para confirmar.</li>
+</ol>
+<hr />
+<h3 id="paso-8-entrega">🔹 Paso 8. Entrega</h3>
+<p>Sube a Classroom una <strong>captura de pantalla</strong> mostrando:</p>
+<ul>
+<li>Tu código en Eclipse con la clase <code>Main.java</code>.</li>
+<li>La salida del programa ejecutado en la consola de Eclipse.</li>
+<li>Tu terminal con los comandos <code>git status</code>, <code>git log --oneline</code> y <code>git push</code> correctamente ejecutados.</li>
+</ul>
+              
+            </div>
+          </div><footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+    
+  </span>
+</div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+      <script src="../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>Práctica 6: Depuración y corrección de errores en Java - Entornos de Desarrollo 1º CFGS DAM-DAW</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Pr\u00e1ctica 6: Depuraci\u00f3n y correcci\u00f3n de errores en Java";
+        var mkdocs_page_input_path = "2_eclipse_practica6.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> Entornos de Desarrollo 1º CFGS DAM-DAW
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="..">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="" href="../3_intro.md">U1 Introducción</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../2_eclipse/">U2 Eclipse</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../3_git/">U3 Git</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../practicas_modulo/">Prácticas</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">Entornos de Desarrollo 1º CFGS DAM-DAW</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">Práctica 6: Depuración y corrección de errores en Java</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="practica-6-depuracion-y-correccion-de-errores-en-java">Práctica 6: Depuración y corrección de errores en Java</h1>
+<h2 id="objetivo-de-la-practica">🎯 Objetivo de la práctica</h2>
+<p>En esta actividad vas a trabajar con un programa Java que contiene <strong>errores de sintaxis</strong>, <strong>errores lógicos</strong> y <strong>errores de ejecución</strong>.
+Tu tarea será localizarlos, corregirlos y utilizar el <strong>depurador de Eclipse</strong> para entender qué está ocurriendo en cada caso.</p>
+<hr />
+<h2 id="trabajo-a-realizar">Trabajo a realizar</h2>
+<h3 id="1-crear-el-proyecto"><strong>1) Crear el proyecto</strong></h3>
+<ol>
+<li>Crea un proyecto Java en Eclipse.</li>
+<li>Añade un paquete llamado:</li>
+</ol>
+<p><code>tema2_debug</code>
+3. Importa en ese paquete el archivo <code>Temperaturas.java</code> que tienes más abajo.</p>
+<hr />
+<h3 id="2-corregir-los-errores-de-sintaxis"><strong>2) Corregir los errores de sintaxis</strong></h3>
+<p>El programa incluye varios errores que impiden compilar.
+Corrige todos los que encuentres.</p>
+<p>📌 <strong>Muy importante:</strong>
+Cada vez que corrijas un error, añade <strong>un comentario al final de esa línea</strong> indicando:</p>
+<ul>
+<li>Tus iniciales</li>
+<li>La fecha</li>
+<li>Una breve explicación</li>
+</ul>
+<p>Ejemplo:</p>
+<pre><code class="language-java">double temperatura = pedirTemperatura(sc); // DCS20252210: faltaba el punto y coma
+</code></pre>
+<hr />
+<h3 id="3-depurar-y-resolver-los-errores-de-ejecucion"><strong>3) Depurar y resolver los errores de ejecución</strong></h3>
+<p>Una vez que el programa compile, usa el <strong>depurador de Eclipse</strong> para ejecutarlo paso a paso:</p>
+<ul>
+<li>Coloca puntos de ruptura (breakpoints).</li>
+<li>Observa el contenido de las variables.</li>
+<li>Comprueba cómo cambia el flujo del programa.</li>
+<li>Detecta cualquier error de ejecución o comportamiento incorrecto.</li>
+</ul>
+<p>📸 <strong>En la entrega debes incluir:</strong></p>
+<ul>
+<li>Una captura de pantalla (screenshot) donde se vea claramente <strong>un error detectado con el depurador</strong>.</li>
+<li>
+<p>Una explicación breve indicando:</p>
+</li>
+<li>
+<p>Qué estaba ocurriendo.</p>
+</li>
+<li>Qué mostraban las vistas del depurador (Variables, Console, Breakpoints…).</li>
+<li>Qué solución aplicaste y por qué funcionó.</li>
+</ul>
+<hr />
+<h3 id="4-reflexion-final"><strong>4) Reflexión final</strong></h3>
+<p>Responde a la siguiente pregunta:</p>
+<p><strong>¿Crees que la documentación de un programa es necesaria? ¿Por qué?</strong></p>
+<p>Justifica tu respuesta con argumentos propios.</p>
+<p>(Extensión orientativa: 4–6 líneas.)</p>
+<hr />
+<h2 id="codigo-proporcionado-temperaturasjava">📄 <strong>Código proporcionado (<code>Temperaturas.java</code>)</strong></h2>
+<p>Este es el programa inicial con errores:</p>
+<pre><code class="language-java">package tema2_debug;
+
+import java.util.Scanner;
+
+/**
+ * Programa con errores para practicar la depuración.
+ * El programa pide una temperatura y muestra si hace frío, calor o temperatura templada.
+ * Después, repite mientras el usuario quiera continuar.
+ */
+public class Temperaturas {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        mostrarMensajeBienvenida()
+
+        boolean continuar = true;
+
+        while (false) {
+            double temperatura = pedirTemperatura(sc)
+            mostrarResultado(temperatura)
+
+            System.out.print(&quot;¿Desea introducir otra temperatura? (s/n): &quot;);
+            String respuesta = sc.next();
+
+            if (respuesta == &quot;n&quot; || respuesta == &quot;N&quot;)
+                continuar = false;
+        }
+
+        sc.close()
+        System.out.println(&quot;Programa finalizado.&quot;)*/
+    }
+
+    public static void mostrarMensajeBienvenida() {
+        System.out.println(&quot;Bienvenido al analizador de temperaturas.&quot;)
+        System.out.println(&quot;Este programa indica si hace frío, calor o está templado.&quot;)
+    }
+
+    public static double pedirTemperatura(Scanner sc) {
+        double t;
+        do {
+            System.out.print(&quot;Introduce la temperatura en grados: &quot;);
+            t = sc.nextDouble();
+            if (t &lt; -10 &amp;&amp; t &gt; 50) {
+                System.out.println(&quot;Temperatura fuera del rango permitido (-10 a 50).&quot;)
+            }
+        } while (t &lt; -10 &amp;&amp; t &gt; 50);
+        return t;
+    }
+
+    public static void mostrarResultado(double temperatura) {
+        if (temperatura &lt; 15)
+            System.out.println(&quot;Hace frío.&quot;)
+        else if (temperatura &gt;= 15 &amp;&amp; temperatura &lt; 30)
+            System.out.println(&quot;Temperatura templada.&quot;)
+        else if (temperatura &gt;= 30)
+            System.out.println(&quot;¡Hace mucho calor!&quot;)
+        else
+            System.out.println(&quot;Valor no reconocido.&quot;)
+    }
+}
+</code></pre>
+<hr />
+<h2 id="entrega">Entrega</h2>
+<p>Puedes entregar la práctica de una de estas formas:</p>
+<ul>
+<li><strong>Subiendo el proyecto a un repositorio GitHub</strong>, o</li>
+<li><strong>Entregando únicamente la clase <code>Temperaturas.java</code></strong> ya corregida.</li>
+</ul>
+<p>Asegúrate de que tu código compila, funciona correctamente y contiene los comentarios de corrección en cada línea modificada.</p>
+<hr />
+              
+            </div>
+          </div><footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+    
+  </span>
+</div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+      <script src="../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

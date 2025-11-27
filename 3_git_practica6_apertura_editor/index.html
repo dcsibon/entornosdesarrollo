@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>3 git practica6 apertura editor - Entornos de Desarrollo 1º CFGS DAM-DAW</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "3 git practica6 apertura editor";
+        var mkdocs_page_input_path = "3_git_practica6_apertura_editor.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> Entornos de Desarrollo 1º CFGS DAM-DAW
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="..">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="" href="../3_intro.md">U1 Introducción</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../2_eclipse/">U2 Eclipse</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../3_git/">U3 Git</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../practicas_modulo/">Prácticas</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">Entornos de Desarrollo 1º CFGS DAM-DAW</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">3 git practica6 apertura editor</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h2 id="por-que-se-abre-un-editor-de-texto-al-hacer-git-revert">¿Por qué se abre un editor de texto al hacer <code>git revert</code>?</h2>
+<p>Cuando ejecutas:</p>
+<pre><code class="language-bash">git revert &lt;id_commit&gt;
+</code></pre>
+<p>Git <strong>no borra</strong> la versión anterior del proyecto.</p>
+<p>En su lugar:</p>
+<ol>
+<li>Calcula qué cambios hizo ese commit</li>
+<li>Crea automáticamente un nuevo commit con los cambios contrarios</li>
+<li>Te pide que confirmes ese nuevo commit con un mensaje</li>
+</ol>
+<p>Por ese motivo se abre una ventana del editor con un archivo llamado:</p>
+<pre><code>.git/COMMIT_EDITMSG
+</code></pre>
+<p>Esto NO es un error, es el funcionamiento normal de <code>git revert</code>.</p>
+<hr />
+<h2 id="que-estas-viendo-en-ese-archivo">¿Qué estás viendo en ese archivo?</h2>
+<p>El contenido suele ser parecido a:</p>
+<pre><code>Revert &quot;C: Añadida la línea 3&quot;
+
+This reverts commit 5916f83...
+</code></pre>
+<p>Debajo aparecen líneas con <code>#</code> que son <strong>comentarios informativos</strong> y NO se guardan en el commit.</p>
+<p>Este archivo sirve para escribir el mensaje del nuevo commit que Git va a crear.</p>
+<hr />
+<h2 id="que-debes-hacer-tu">¿Qué debes hacer tú?</h2>
+<p>👉 Escribir un mensaje corto explicando por qué estás deshaciendo ese commit.</p>
+<p>Ejemplos válidos:</p>
+<pre><code>Revert &quot;C: Añadida la línea 3&quot;
+Motivo: esa línea no debe aparecer en la versión final
+</code></pre>
+<p>o</p>
+<pre><code>Revert del commit C porque añadía información incorrecta
+</code></pre>
+<p>Después:</p>
+<p>✅ Guardas el archivo
+✅ Cierras el editor</p>
+<p>Al hacer esto, Git terminará el revert y creará el nuevo commit.</p>
+<hr />
+<h2 id="que-pasa-si">¿Qué pasa si…?</h2>
+<h3 id="borras-todo-el-contenido-y-guardas-o-dejas-solo-comentarios-es-decir-lineas-con-el-simbolo">❓ Borras todo el contenido y guardas <em>(o dejas solo comentarios, es decir, líneas con el símbolo <code>#</code>)</em></h3>
+<p>Git abortará el revert y NO creará el commit.</p>
+<h3 id="dejas-el-mensaje-por-defecto-guardar-y-cerrar-el-editor">❓ Dejas el mensaje por defecto <em>(guardar y cerrar el editor)</em></h3>
+<p>Git usará ese mensaje por defecto que te propone y continuará normalmente.</p>
+<hr />
+<h2 id="por-que-git-te-pide-esto">¿Por qué Git te pide esto?</h2>
+<p>Porque <code>git revert</code> siempre:</p>
+<ul>
+<li><strong>Crea un nuevo commit</strong></li>
+<li>Registra en la historia del proyecto que se ha deshecho algo</li>
+<li>Necesita un mensaje que describa el motivo</li>
+</ul>
+<p>Así el historial queda claro y cualquier persona <em>(o tú mismo más adelante)</em> podrá entender qué ha pasado.</p>
+<hr />
+<h2 id="idea-clave">Idea clave</h2>
+<blockquote>
+<p><code>git revert</code> NO borra la historia.
+Crea un nuevo commit que deshace los cambios anteriores, y tú debes escribir el mensaje que lo explica.</p>
+</blockquote>
+              
+            </div>
+          </div><footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+    
+  </span>
+</div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+      <script src="../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

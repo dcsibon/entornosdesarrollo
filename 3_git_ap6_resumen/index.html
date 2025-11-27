@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>6. Hojas resumen del tema (Chuletas de Git + GitHub) - Entornos de Desarrollo 1º CFGS DAM-DAW</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "6. Hojas resumen del tema (Chuletas de Git + GitHub)";
+        var mkdocs_page_input_path = "3_git_ap6_resumen.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> Entornos de Desarrollo 1º CFGS DAM-DAW
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="..">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="" href="../3_intro.md">U1 Introducción</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../2_eclipse/">U2 Eclipse</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../3_git/">U3 Git</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../practicas_modulo/">Prácticas</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">Entornos de Desarrollo 1º CFGS DAM-DAW</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">6. Hojas resumen del tema (Chuletas de Git + GitHub)</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="6-hojas-resumen-del-tema-chuletas-de-git-github">6. Hojas resumen del tema (Chuletas de Git + GitHub)</h1>
+<hr />
+<h2 id="61-estructura-general-de-trabajo-con-git">6.1 Estructura general de trabajo con Git</h2>
+<pre><code class="language-text">┌────────────────────────────────────────────┐
+│      PROYECTO LOCAL EN TU ORDENADOR        │
+│                                            │
+│   [1] Área de trabajo (Working Directory)  │
+│   [2] Área de preparación (Staging Area)   │
+│   [3] Repositorio local (Commits)          │
+│                                            │
+│        ↓ Push / ↑ Pull (sincroniza)        │
+└────────────────────────────────────────────┘
+                     │
+                     ▼
+┌────────────────────────────────────────────┐
+│          REPOSITORIO REMOTO (GitHub)       │
+│   Copia del proyecto accesible en la nube  │
+└────────────────────────────────────────────┘
+</code></pre>
+<hr />
+<h2 id="62-flujo-de-trabajo-basico">6.2 Flujo de trabajo básico</h2>
+<pre><code class="language-bash"># 1️⃣ Crear el repositorio local
+git init
+
+# 2️⃣ Ver estado de archivos
+git status
+
+# 3️⃣ Preparar cambios
+git add .
+
+# 4️⃣ Confirmar versión (commit)
+git commit -m &quot;Mensaje descriptivo&quot;
+
+# 5️⃣ Ver historial
+git log --oneline
+
+# 6️⃣ Vincular con GitHub (una sola vez)
+git remote add origin git@github.com:usuario/repositorio.git
+
+# 7️⃣ Subir cambios
+git push -u origin main
+
+# 8️⃣ Descargar actualizaciones
+git pull
+</code></pre>
+<hr />
+<h2 id="63-las-tres-areas-de-trabajo-en-resumen">6.3 Las tres áreas de trabajo en resumen</h2>
+<table>
+<thead>
+<tr>
+<th>Área</th>
+<th>Nombre técnico</th>
+<th>Qué contiene</th>
+<th>Comandos principales</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>🧑‍💻 Área de trabajo</td>
+<td><em>Working Directory</em></td>
+<td>Archivos en edición</td>
+<td><code>git status</code>, <code>git diff</code>, <code>git restore</code></td>
+</tr>
+<tr>
+<td>📦 Área de preparación</td>
+<td><em>Staging Area / Index</em></td>
+<td>Cambios listos para confirmar</td>
+<td><code>git add</code>, <code>git restore --staged</code></td>
+</tr>
+<tr>
+<td>🏛️ Repositorio local</td>
+<td><em>Local Repository</em></td>
+<td>Commits confirmados</td>
+<td><code>git commit</code>, <code>git log</code>, <code>git show</code></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="64-sincronizacion-con-repos-remotos">6.4 Sincronización con repos remotos</h2>
+<table>
+<thead>
+<tr>
+<th>Comando</th>
+<th>Descripción</th>
+<th>Cuándo se usa</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>git remote -v</code></td>
+<td>Muestra los repositorios remotos configurados.</td>
+<td>Verificar conexión.</td>
+</tr>
+<tr>
+<td><code>git remote add origin &lt;url&gt;</code></td>
+<td>Añade un remoto nuevo.</td>
+<td>Primer enlace con GitHub.</td>
+</tr>
+<tr>
+<td><code>git remote set-url origin &lt;url&gt;</code></td>
+<td>Cambia la URL del remoto existente.</td>
+<td>Al pasar de HTTPS a SSH.</td>
+</tr>
+<tr>
+<td><code>git push -u origin main</code></td>
+<td>Sube la rama principal y la vincula.</td>
+<td>Primer envío.</td>
+</tr>
+<tr>
+<td><code>git push</code></td>
+<td>Sube los commits de la rama activa.</td>
+<td>Envíos posteriores.</td>
+</tr>
+<tr>
+<td><code>git pull</code></td>
+<td>Descarga y fusiona los cambios remotos.</td>
+<td>Para actualizar el proyecto local.</td>
+</tr>
+<tr>
+<td><code>git fetch</code></td>
+<td>Descarga los cambios sin aplicarlos.</td>
+<td>Revisar antes de fusionar.</td>
+</tr>
+<tr>
+<td><code>git clone &lt;url&gt;</code></td>
+<td>Clona un repositorio remoto.</td>
+<td>Para obtener una copia inicial.</td>
+</tr>
+<tr>
+<td><code>git push origin --delete &lt;rama&gt;</code></td>
+<td>Elimina una rama remota.</td>
+<td>Limpieza tras merges.</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="65-ramas-creacion-cambio-y-fusion">6.5 Ramas: creación, cambio y fusión</h2>
+<table>
+<thead>
+<tr>
+<th>Comando</th>
+<th>Descripción</th>
+<th>Ejemplo</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>git branch</code></td>
+<td>Lista todas las ramas locales.</td>
+<td><code>git branch</code></td>
+</tr>
+<tr>
+<td><code>git switch -c &lt;nombre&gt;</code></td>
+<td>Crea y cambia a una nueva rama.</td>
+<td><code>git switch -c login</code></td>
+</tr>
+<tr>
+<td><code>git switch &lt;nombre&gt;</code></td>
+<td>Cambia de rama.</td>
+<td><code>git switch main</code></td>
+</tr>
+<tr>
+<td><code>git merge &lt;rama&gt;</code></td>
+<td>Fusiona otra rama en la actual.</td>
+<td><code>git merge login</code></td>
+</tr>
+<tr>
+<td><code>git branch -d &lt;rama&gt;</code></td>
+<td>Elimina una rama local ya fusionada.</td>
+<td><code>git branch -d login</code></td>
+</tr>
+<tr>
+<td><code>git push -u origin &lt;rama&gt;</code></td>
+<td>Sube una nueva rama al remoto.</td>
+<td><code>git push -u origin login</code></td>
+</tr>
+<tr>
+<td><code>git push origin --delete &lt;rama&gt;</code></td>
+<td>Elimina la rama del remoto.</td>
+<td><code>git push origin --delete login</code></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3 id="esquema-visual-de-ramas-y-fusiones">🧭 Esquema visual de ramas y fusiones</h3>
+<pre><code class="language-text">main
+ │
+ ├───► feature-login      (rama secundaria)
+ │         │
+ │         └─── commits de desarrollo
+ │
+ └───► git merge feature-login
+           │
+           ▼
+        main actualizado
+</code></pre>
+<hr />
+<h2 id="66-deshacer-cambios-y-gestion-del-historial">6.6 Deshacer cambios y gestión del historial</h2>
+<table>
+<thead>
+<tr>
+<th>Situación</th>
+<th>Comando</th>
+<th>Qué hace</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Deshacer cambios sin añadir</td>
+<td><code>git restore &lt;archivo&gt;</code></td>
+<td>Revierte el archivo a su versión anterior.</td>
+</tr>
+<tr>
+<td>Quitar un archivo del staging area</td>
+<td><code>git restore --staged &lt;archivo&gt;</code></td>
+<td>Lo saca del área de preparación.</td>
+</tr>
+<tr>
+<td>Ver historial resumido</td>
+<td><code>git log --oneline</code></td>
+<td>Muestra commits breves.</td>
+</tr>
+<tr>
+<td>Ver diferencias</td>
+<td><code>git diff</code></td>
+<td>Muestra líneas modificadas.</td>
+</tr>
+<tr>
+<td>Ver un commit concreto</td>
+<td><code>git show &lt;id&gt;</code></td>
+<td>Detalla los cambios de un commit.</td>
+</tr>
+<tr>
+<td>Deshacer un commit (sin borrar historia)</td>
+<td><code>git revert &lt;id&gt;</code></td>
+<td>Crea un nuevo commit que anula el anterior.</td>
+</tr>
+<tr>
+<td>Volver a una versión anterior eliminando historia</td>
+<td><code>git reset --hard &lt;id&gt;</code></td>
+<td>⚠️ Borra commits posteriores.</td>
+</tr>
+<tr>
+<td>Revisar commits borrados</td>
+<td><code>git reflog</code></td>
+<td>Permite recuperar versiones recientes.</td>
+</tr>
+<tr>
+<td>Moverse temporalmente a otro commit</td>
+<td><code>git checkout &lt;id&gt;</code></td>
+<td>Cambia al estado de ese commit (modo lectura).</td>
+</tr>
+<tr>
+<td>Reorganizar una rama (avanzado)</td>
+<td><code>git rebase main</code></td>
+<td>Reubica commits sobre otra base.</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3 id="diferencias-clave-entre-revert-reset-y-rebase">🔍 Diferencias clave entre revert, reset y rebase</h3>
+<table>
+<thead>
+<tr>
+<th>Comando</th>
+<th>Qué hace</th>
+<th>Modifica el historial</th>
+<th>Uso recomendado</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>git revert</code></td>
+<td>Crea un nuevo commit que revierte otro.</td>
+<td>❌ No</td>
+<td>Deshacer de forma segura tras un push.</td>
+</tr>
+<tr>
+<td><code>git reset</code></td>
+<td>Elimina commits posteriores al indicado.</td>
+<td>✅ Sí</td>
+<td>Deshacer commits locales antes de subir.</td>
+</tr>
+<tr>
+<td><code>git rebase</code></td>
+<td>Reorganiza commits sobre otro punto.</td>
+<td>✅ Sí</td>
+<td>Mantener historia lineal en ramas personales.</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="67-ejemplo-completo-del-flujo-de-trabajo">6.7 Ejemplo completo del flujo de trabajo</h2>
+<pre><code class="language-bash"># Crear repositorio
+git init
+
+# Configurar usuario (solo la primera vez)
+git config --global user.name &quot;Tu Nombre&quot;
+git config --global user.email &quot;tu_usuario@g.educaand.es&quot;
+
+# Añadir archivos y confirmar versión
+git add .
+git commit -m &quot;Versión inicial&quot;
+
+# Crear una rama y trabajar en ella
+git switch -c feature-login
+git add .
+git commit -m &quot;Formulario de login&quot;
+
+# Volver a main y fusionar
+git switch main
+git merge feature-login
+git branch -d feature-login
+
+# Subir los cambios a GitHub
+git remote add origin git@github.com:usuario/proyecto.git
+git push -u origin main
+</code></pre>
+<hr />
+<h2 id="68-chuleta-rapida-de-conexiones-y-autenticacion">6.8 Chuleta rápida de conexiones y autenticación</h2>
+<table>
+<thead>
+<tr>
+<th>Método</th>
+<th>Puerto</th>
+<th>Autenticación</th>
+<th>Ventajas</th>
+<th>Limitaciones</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>HTTPS + Token</strong></td>
+<td>443</td>
+<td>Usuario + Token</td>
+<td>Universal, fácil de usar</td>
+<td>Hay que renovar el token.</td>
+</tr>
+<tr>
+<td><strong>SSH (22)</strong></td>
+<td>22</td>
+<td>Claves pública/privada</td>
+<td>Segura, sin contraseñas</td>
+<td>Puede estar bloqueado en redes.</td>
+</tr>
+<tr>
+<td><strong>SSH (443)</strong></td>
+<td>443</td>
+<td>Claves pública/privada</td>
+<td>Evita bloqueos (Andared)</td>
+<td>Requiere configurar <code>~/.ssh/config</code>.</td>
+</tr>
+<tr>
+<td><strong>GitHub CLI (<code>gh</code>)</strong></td>
+<td>443</td>
+<td>Token o SSH</td>
+<td>Crea y gestiona repos desde terminal</td>
+<td>Requiere instalar <code>gh</code>.</td>
+</tr>
+<tr>
+<td><strong>EGit (Eclipse)</strong></td>
+<td>443 / 22</td>
+<td>Según configuración</td>
+<td>Interfaz visual cómoda</td>
+<td>Menos control técnico.</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="69-buenas-practicas-generales">6.9 Buenas prácticas generales</h2>
+<p>✅ <strong>Antes de cada commit:</strong></p>
+<ul>
+<li>Comprueba el estado con <code>git status</code>.</li>
+<li>Añade solo los archivos necesarios.</li>
+<li>Usa mensajes descriptivos en presente:
+  <code>git commit -m "Agrega validación de usuario"</code></li>
+</ul>
+<p>✅ <strong>Durante el trabajo diario:</strong></p>
+<ul>
+<li>Realiza commits frecuentes y funcionales.</li>
+<li>Usa <code>.gitignore</code> para excluir binarios, logs, etc.</li>
+<li>Crea ramas para nuevas funcionalidades (<code>feature-*</code>).</li>
+<li>Fusiona solo cuando el código compile y funcione.</li>
+<li>Realiza <code>git pull</code> antes de cada <code>git push</code>.</li>
+</ul>
+<p>✅ <strong>Para trabajar desde distintos equipos:</strong></p>
+<ul>
+<li>Sube los cambios antes de cerrar sesión (<code>push</code>).</li>
+<li>Descarga los últimos cambios al empezar (<code>pull</code>).</li>
+<li>Si la red bloquea el puerto 22, usa SSH por 443.</li>
+</ul>
+<p>✅ <strong>Para evitar errores comunes:</strong></p>
+<ul>
+<li>No uses <code>reset --hard</code> en ramas compartidas.</li>
+<li>Prefiere <code>revert</code> si ya has hecho push.</li>
+<li>Usa <code>switch</code> en lugar de <code>checkout</code> para moverte entre ramas.</li>
+<li>Borra ramas innecesarias tras fusionar.</li>
+</ul>
+<hr />
+<h2 id="610-esquema-general-de-todo-el-flujo-git-github">6.10 Esquema general de todo el flujo Git + GitHub</h2>
+<pre><code class="language-text">(1) Crear proyecto local
+      ↓
+  git init
+      ↓
+  git add .
+      ↓
+  git commit -m &quot;Inicial&quot;
+      ↓
+(2) Conectar con remoto
+      ↓
+  git remote add origin git@github.com:usuario/repositorio.git
+      ↓
+(3) Subir por primera vez
+      ↓
+  git push -u origin main
+      ↓
+(4) Trabajo diario
+      ↓
+  git add .
+  git commit -m &quot;Nueva función&quot;
+  git push
+      ↓
+(5) Si hay cambios remotos
+      ↓
+  git pull
+      ↓
+(6) Crear rama para nueva función
+      ↓
+  git switch -c feature-login
+      ↓
+  git add . / git commit / git push
+      ↓
+(7) Fusionar en main y eliminar rama
+      ↓
+  git switch main
+  git merge feature-login
+  git branch -d feature-login
+  git push origin --delete feature-login
+</code></pre>
+<hr />
+<h2 id="611-recomendacion-final">6.11 Recomendación final</h2>
+<blockquote>
+<p>🧩 <strong>Git no es solo un sistema de guardado, sino un registro completo de la evolución de tu proyecto.</strong></p>
+<p>Dominar sus comandos y entender su flujo te permite trabajar con libertad, colaborar con otros sin miedo a perder nada y mantener un código ordenado, profesional y trazable.</p>
+</blockquote>
+<hr />
+              
+            </div>
+          </div><footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+    
+  </span>
+</div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+      <script src="../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

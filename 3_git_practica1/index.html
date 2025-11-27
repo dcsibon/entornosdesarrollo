@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>Práctica 1 - Uso básico de Git - Entornos de Desarrollo 1º CFGS DAM-DAW</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Pr\u00e1ctica 1 - Uso b\u00e1sico de Git";
+        var mkdocs_page_input_path = "3_git_practica1.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> Entornos de Desarrollo 1º CFGS DAM-DAW
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="..">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="" href="../3_intro.md">U1 Introducción</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../2_eclipse/">U2 Eclipse</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../3_git/">U3 Git</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../practicas_modulo/">Prácticas</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">Entornos de Desarrollo 1º CFGS DAM-DAW</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">Práctica 1 - Uso básico de Git</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="practica-1-uso-basico-de-git">Práctica 1 - Uso básico de Git</h1>
+<p>En esta práctica vamos a gestionar un proyecto con el control de versiones <strong>Git</strong>.</p>
+<h2 id="introduccion-y-comandos-basicos-para-trabajar-con-el-control-de-versiones-git">Introducción y comandos básicos para trabajar con el control de versiones Git</h2>
+<p>A continuación, se ofrece una guía paso a paso para aquellos usuarios principiantes interesados en trabajar con un repositorio de Git en local.</p>
+<p>El sistema de control de versiones Git es una herramienta fundamental para muchos desarrolladores, especialmente cuando colaboran en un proyecto. Git ayuda a mantener una visión de conjunto, a preservar las versiones antiguas y a integrar los cambios de manera coherente. Para ello, Git agrupa una serie de programas de línea de comandos y crea un efectivo entorno de trabajo.</p>
+<p>Git permite trabajar con <strong>repositorios locales</strong>, lo que significa que las versiones del proyecto se guardan en tu propio ordenador.<br />
+Más adelante podrás sincronizar tu proyecto con <strong>GitHub</strong>, lo que te permitirá mantener una copia en la nube y colaborar con otros compañeros.</p>
+<hr />
+<h3 id="1-instalar-git">1. Instalar Git</h3>
+<p>La forma más oficial está disponible para ser descargada en el sitio web de Git. Solo tienes que visitar <a href="http://git-scm.com/download/">Download</a>, seleccionar tu sistema operativo y la descarga empezará automáticamente.</p>
+<p>Una vez que hayamos instalado Git en nuestro ordenador, abriremos la aplicación <strong>Git Bash</strong>, o desde Linux, podremos abrir una terminal y ejecutar el comando <code>git</code> para interactuar con Git.</p>
+<p>En Windows, Git Bash es la herramienta de línea de comandos que permite a los usuarios utilizar las funciones de Git en un entorno similar a Linux. Incluye utilidades de Unix (como <code>ls</code>, <code>cat</code>, <code>cd</code>, etc.) y te permitirá usar los mismos comandos tanto en Windows como en sistemas basados en Unix.</p>
+<hr />
+<h3 id="2-configurar-git-y-crear-nuestro-primer-proyecto">2. Configurar Git y crear nuestro primer proyecto</h3>
+<ol>
+<li>Primero tenemos que definir nuestra identidad, para ello en la línea de comandos escribiremos las siguientes instrucciones utilizando nuestro usuario iPasen y correo <code>xxxxx@g.educaand.es</code>.</li>
+</ol>
+<pre><code class="language-bash">git config --global user.name &quot;dcansib483&quot;
+git config --global user.email &quot;dcansib483@g.educaand.es&quot;
+</code></pre>
+<ol>
+<li>
+<p>Algunos comandos básicos para navegar y trabajar con ficheros y carpetas:</p>
+</li>
+<li>
+<p><code>clear</code>: limpia la pantalla de la consola.  </p>
+</li>
+<li><code>pwd</code>: muestra el directorio actual.  </li>
+<li><code>ls</code>: lista los ficheros y directorios (<code>-l</code> muestra más detalles, <code>-a</code> incluye archivos ocultos).  </li>
+<li><code>cd</code>: moverse entre directorios (<code>cd ..</code> para subir un nivel).  </li>
+<li><code>mkdir</code>: crear un directorio.  </li>
+<li><code>rmdir</code>: borrar un directorio.  </li>
+<li><code>cat</code>: mostrar el contenido de un archivo.  </li>
+<li><code>touch</code>: crear un archivo vacío.  </li>
+<li>Flechas ↑ ↓: recuperar comandos anteriores.  </li>
+<li>
+<p>Tabulador: autocompletar nombres de archivos o carpetas.  </p>
+</li>
+<li>
+<p>El fichero de configuración de Git, donde se almacena tu identidad, está en un archivo oculto en tu carpeta de usuario llamado <code>.gitconfig</code>.<br />
+Intenta encontrarlo y visualizar su contenido con el comando:</p>
+</li>
+</ol>
+<pre><code class="language-bash">cat ~/.gitconfig
+</code></pre>
+<ol>
+<li>Accedemos a la carpeta <code>Documents</code> y creamos el directorio <code>ProgPython</code>:</li>
+</ol>
+<pre><code class="language-bash">cd Documents
+mkdir ProgPython
+</code></pre>
+<ol>
+<li>En esta carpeta vamos a crear nuestro proyecto de Git. Inicializamos Git en este directorio:</li>
+</ol>
+<pre><code class="language-bash">cd ProgPython  
+git init
+</code></pre>
+<hr />
+<h3 id="como-vamos-a-trabajar-con-git">¿Cómo vamos a trabajar con Git?</h3>
+<p>De manera muy básica, en un proyecto de Git vamos a trabajar con <strong>tres áreas principales</strong>:   </p>
+<ul>
+<li><strong>Área de trabajo (Working Directory)</strong>: creamos y modificamos archivos.  </li>
+<li><strong>Área de preparación (Staging Area)</strong>: seleccionamos los cambios que queremos guardar.  </li>
+<li><strong>Repositorio local (.git)</strong>: donde se almacenan las versiones confirmadas (commits).</li>
+</ul>
+<p><img alt="Secciones principales de un proyecto de Git" src="https://git-scm.com/book/en/v2/images/areas.png" /></p>
+<hr />
+<h3 id="tabla-resumen-de-comandos-basicos">Tabla resumen de comandos básicos</h3>
+<table>
+<thead>
+<tr>
+<th>Acción</th>
+<th>Comando</th>
+<th>Descripción</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Ver cambios pendientes</td>
+<td><code>git status</code></td>
+<td>Muestra qué ha cambiado</td>
+</tr>
+<tr>
+<td>Preparar cambios</td>
+<td><code>git add archivo</code></td>
+<td>Pasa cambios al área de preparación</td>
+</tr>
+<tr>
+<td>Confirmar versión</td>
+<td><code>git commit -m "mensaje"</code></td>
+<td>Guarda una versión en el repositorio</td>
+</tr>
+<tr>
+<td>Ver historial</td>
+<td><code>git log</code></td>
+<td>Muestra los commits realizados</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3 id="3-crear-y-versionar-nuestro-primer-programa">3. Crear y versionar nuestro primer programa</h3>
+<ol>
+<li>Creamos un archivo de Python y lo ejecutamos:</li>
+</ol>
+<pre><code class="language-bash">touch holamundo.py
+</code></pre>
+<ol>
+<li>Editamos su contenido desde la consola:</li>
+</ol>
+<pre><code class="language-bash">nano holamundo.py
+</code></pre>
+<p>Dentro del archivo escribimos:</p>
+<pre><code class="language-python">print(&quot;Hola mundo DAM-DAW!&quot;)
+</code></pre>
+<p>Guardamos y salimos (Ctrl + O, Enter, Ctrl + X).</p>
+<ol>
+<li>Mostramos su contenido:</li>
+</ol>
+<pre><code class="language-bash">cat holamundo.py
+</code></pre>
+<ol>
+<li>Ejecutamos el programa:</li>
+</ol>
+<pre><code class="language-bash">python holamundo.py
+</code></pre>
+<hr />
+<h3 id="4-primer-seguimiento-con-git">4. Primer seguimiento con Git</h3>
+<ol>
+<li>Comprobamos el estado del proyecto:</li>
+</ol>
+<pre><code class="language-bash">git status
+</code></pre>
+<ol>
+<li>Añadimos el archivo al área de preparación:</li>
+</ol>
+<pre><code class="language-bash">git add holamundo.py
+</code></pre>
+<ol>
+<li>Confirmamos los cambios (commit):</li>
+</ol>
+<pre><code class="language-bash">git commit -m &quot;Primera versión de hola mundo&quot;
+</code></pre>
+<ol>
+<li>Comprobamos que no hay cambios pendientes:</li>
+</ol>
+<pre><code class="language-bash">git status
+</code></pre>
+<hr />
+<h3 id="5-segundo-programa-y-uso-de-gitignore">5. Segundo programa y uso de <code>.gitignore</code></h3>
+<ol>
+<li>Creamos un directorio <code>ejercicios1</code> y un programa <code>prueba1.py</code>:</li>
+</ol>
+<pre><code class="language-bash">mkdir ejercicios1
+touch ejercicios1/prueba1.py
+</code></pre>
+<ol>
+<li>Contenido del programa:</li>
+</ol>
+<pre><code class="language-python">edad = int(input(&quot;Introduzca su edad: &quot;))  
+if edad &gt;= 18:  
+    print(&quot;Toma una cerveza!&quot;)  
+else:  
+    print(f&quot;Toma un zumo de piña, con {edad} años eres menor.&quot;)
+</code></pre>
+<ol>
+<li>Si usamos PyCharm o Visual Studio Code, puede generarse una carpeta <code>.idea</code>.<br />
+Para que Git la ignore, creamos un archivo <code>.gitignore</code>:</li>
+</ol>
+<pre><code class="language-bash">nano .gitignore
+</code></pre>
+<p>Contenido:</p>
+<pre><code>.idea
+</code></pre>
+<ol>
+<li>Añadimos y confirmamos:</li>
+</ol>
+<pre><code class="language-bash">git add .gitignore
+git add ejercicios1
+git commit -m &quot;Primera versión de la carpeta ejercicios1&quot;
+</code></pre>
+<hr />
+<h3 id="6-ver-historial-y-deshacer-errores">6. Ver historial y deshacer errores</h3>
+<ol>
+<li>Comprobamos el historial de commits:</li>
+</ol>
+<pre><code class="language-bash">git log --oneline
+</code></pre>
+<ol>
+<li>Modificamos el programa introduciendo un error:</li>
+</ol>
+<pre><code class="language-python">edad = input(&quot;Introduzca su edad: &quot;)  
+if edad &gt;= 18:  
+    print(&quot;Toma una cerveza!&quot;)  
+else:  
+    print(f&quot;Toma un zumo de piña, con {edad} años eres menor.&quot;)
+</code></pre>
+<ol>
+<li>Añadimos y confirmamos el cambio erróneo:</li>
+</ol>
+<pre><code class="language-bash">git add ejercicios1
+git commit -m &quot;Segunda versión con un error&quot;
+</code></pre>
+<ol>
+<li>El programa falla al ejecutarse.<br />
+Para volver a la versión anterior:</li>
+</ol>
+<pre><code class="language-bash">git log --oneline
+git reset --hard &lt;commit_hash&gt;
+</code></pre>
+<blockquote>
+<p>⚠️ <strong>Atención:</strong> <code>git reset --hard</code> elimina todos los commits posteriores al indicado.<br />
+Úsalo solo si estás seguro de querer borrar esos cambios, ya que no se puede deshacer.</p>
+</blockquote>
+<ol>
+<li>Si ejecutas de nuevo el programa, verás que ha vuelto a la versión funcional.</li>
+</ol>
+<hr />
+<h3 id="7-comandos-ultiles">7. Comandos últiles</h3>
+<ul>
+<li>
+<p>Añadir todos los archivos del directorio:<br />
+<code>git add .</code></p>
+</li>
+<li>
+<p>Añadir todos los cambios pendientes:<br />
+<code>git add -A</code></p>
+</li>
+<li>
+<p>Deshacer un <code>git add</code> antes del commit:<br />
+<code>git reset nombreArchivo</code> o simplemente <code>git reset</code></p>
+</li>
+<li>
+<p>Cambiar el nombre de la rama principal a <code>main</code>:<br />
+<code>git branch -m main</code></p>
+</li>
+</ul>
+<hr />
+<h3 id="reto-final-modificar-y-versionar-un-programa">Reto final — Modificar y versionar un programa</h3>
+<p>Vamos a realizar una pequeña modificación en el programa <code>holamundo.py</code> y a guardar una nueva versión en Git.<br />
+No necesitas saber Python; simplemente sigue las instrucciones paso a paso.</p>
+<ol>
+<li>Abre el archivo <code>holamundo.py</code> con el editor de texto desde la terminal:</li>
+</ol>
+<pre><code class="language-bash">nano holamundo.py
+</code></pre>
+<ol>
+<li>Sustituye su contenido por el siguiente código:</li>
+</ol>
+<pre><code class="language-python">nombre = input(&quot;¿Cómo te llamas? &quot;)
+print(f&quot;Hola, {nombre}! Bienvenido al módulo de Programación.&quot;)
+</code></pre>
+<p><em>(Si usas un teclado sin <code>ñ</code>, puedes escribir <code>nombre = input("Como te llamas? ")</code>.)</em></p>
+<ol>
+<li>
+<p>Guarda los cambios y sal de <code>nano</code><br />
+(Ctrl + O → Enter → Ctrl + X)</p>
+</li>
+<li>
+<p>Comprueba el estado del proyecto:</p>
+</li>
+</ol>
+<pre><code class="language-bash">git status
+</code></pre>
+<ol>
+<li>Ve las diferencias respecto a la versión anterior:</li>
+</ol>
+<pre><code class="language-bash">git diff
+</code></pre>
+<ol>
+<li>Añade el archivo al área de preparación:</li>
+</ol>
+<pre><code class="language-bash">git add holamundo.py
+</code></pre>
+<ol>
+<li>Crea un nuevo commit con un mensaje descriptivo:</li>
+</ol>
+<pre><code class="language-bash">git commit -m &quot;Versión personalizada de Hola Mundo con nombre del usuario&quot;
+</code></pre>
+<ol>
+<li>Muestra el historial resumido de tus versiones:</li>
+</ol>
+<pre><code class="language-bash">git log --oneline
+</code></pre>
+<ol>
+<li>Ejecuta el programa para ver el resultado final:</li>
+</ol>
+<pre><code class="language-bash">python holamundo.py
+</code></pre>
+<p>Introduce tu nombre cuando te lo pida y comprueba que muestra un saludo personalizado.</p>
+<hr />
+<h2 id="recursos-recomendados">📚 Recursos recomendados</h2>
+<ul>
+<li><a href="https://ndpsoftware.com/git-cheatsheet.html#loc=index">Ayuda visual de Git</a></li>
+<li><a href="https://training.github.com/downloads/es_ES/github-git-cheat-sheet/">Guía rápida oficial de GitHub</a></li>
+<li><a href="https://git-scm.com/docs">Documentación de referencia de Git</a></li>
+<li><a href="https://git-scm.com/book/es/v2">Libro de Git (versión en español)</a></li>
+</ul>
+              
+            </div>
+          </div><footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+    
+  </span>
+</div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+      <script src="../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

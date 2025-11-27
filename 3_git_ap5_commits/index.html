@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>5. Gestión del historial de commits - Entornos de Desarrollo 1º CFGS DAM-DAW</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "5. Gesti\u00f3n del historial de commits";
+        var mkdocs_page_input_path = "3_git_ap5_commits.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> Entornos de Desarrollo 1º CFGS DAM-DAW
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="..">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="" href="../3_intro.md">U1 Introducción</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../2_eclipse/">U2 Eclipse</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../3_git/">U3 Git</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../practicas_modulo/">Prácticas</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">Entornos de Desarrollo 1º CFGS DAM-DAW</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">5. Gestión del historial de commits</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="5-gestion-del-historial-de-commits">5. Gestión del historial de commits</h1>
+<hr />
+<h2 id="51-introduccion">5.1 Introducción</h2>
+<p>En Git, cada vez que se ejecuta un comando <code>commit</code>, se crea una <strong>versión exacta del proyecto</strong> en ese momento: una <em>fotografía del estado del código</em>.
+Todas esas versiones quedan registradas en el <strong>historial del repositorio local</strong>, que Git almacena en la carpeta oculta <code>.git</code>.</p>
+<p>El historial de commits permite:</p>
+<ul>
+<li>Consultar quién hizo cada cambio y cuándo.</li>
+<li>Volver a una versión anterior.</li>
+<li>Deshacer errores sin perder trabajo.</li>
+<li>Comparar y fusionar ramas con precisión.</li>
+</ul>
+<blockquote>
+<p>🧠 Un buen control del historial de commits te da la capacidad de viajar en el tiempo dentro del proyecto, sin miedo a romper nada.</p>
+</blockquote>
+<hr />
+<h2 id="52-ver-el-historial-de-commits">5.2 Ver el historial de commits</h2>
+<h3 id="ver-historial-basico">🔹 Ver historial básico</h3>
+<pre><code class="language-bash">git log
+</code></pre>
+<p>Muestra la lista completa de commits con su autor, fecha y mensaje.</p>
+<h3 id="ver-historial-simplificado">🔹 Ver historial simplificado</h3>
+<pre><code class="language-bash">git log --oneline
+</code></pre>
+<p>Ejemplo:</p>
+<pre><code>e8f2a91 (HEAD -&gt; main) Añadido sistema de login
+4a9b0cc Creada interfaz gráfica básica
+a7d4b3e Estructura inicial del proyecto
+</code></pre>
+<h3 id="ver-historial-con-estructura-de-ramas">🔹 Ver historial con estructura de ramas</h3>
+<pre><code class="language-bash">git log --oneline --graph --all
+</code></pre>
+<p>Ejemplo:</p>
+<pre><code class="language-text">* e8f2a91 (HEAD -&gt; main, origin/main) Merge branch 'feature-login'
+|\  
+| * b1f3c8a (feature-login) Añadido formulario de login
+* | a7d4b3e Ajustado layout de pantalla principal
+|/  
+* 2d9a1b0 Versión inicial del proyecto
+</code></pre>
+<hr />
+<h2 id="53-ver-los-detalles-de-un-commit">5.3 Ver los detalles de un commit</h2>
+<p>Cada commit tiene un identificador único (<em>hash</em>).
+Puedes consultar los detalles de uno concreto con:</p>
+<pre><code class="language-bash">git show &lt;id_commit&gt;
+</code></pre>
+<p>Ejemplo:</p>
+<pre><code class="language-bash">git show e8f2a91
+</code></pre>
+<p>Mostrará los archivos modificados y las diferencias respecto al commit anterior.</p>
+<hr />
+<h2 id="54-moverse-entre-versiones-con-checkout">5.4 Moverse entre versiones con <code>checkout</code></h2>
+<p>Puedes moverte temporalmente a una versión anterior del proyecto:</p>
+<pre><code class="language-bash">git checkout &lt;id_commit&gt;
+</code></pre>
+<p>Esto coloca tu <code>HEAD</code> en ese commit concreto y cambia los archivos del directorio de trabajo para reflejar ese estado.</p>
+<blockquote>
+<p>⚠️ En este punto estás en un estado <strong>detached HEAD</strong>
+(sin rama activa, solo “visitando” una versión pasada).</p>
+</blockquote>
+<h3 id="usos-tipicos-de-checkout-id_commit">🔹 Usos típicos de <code>checkout &lt;id_commit&gt;</code></h3>
+<ul>
+<li>Revisar cómo era el código en una fecha anterior.</li>
+<li>Ejecutar pruebas o inspeccionar un comportamiento pasado.</li>
+<li>Comparar versiones sin modificar el historial.</li>
+</ul>
+<h3 id="volver-a-la-rama-principal">🔹 Volver a la rama principal</h3>
+<p>Cuando termines de revisar, vuelve al trabajo normal con:</p>
+<pre><code class="language-bash">git switch main
+</code></pre>
+<blockquote>
+<p>💡 Mientras estés en <code>detached HEAD</code>, evita hacer commits nuevos, ya que no estarán ligados a ninguna rama.</p>
+</blockquote>
+<hr />
+<h2 id="55-deshacer-cambios-recientes">5.5 Deshacer cambios recientes</h2>
+<p>Si cometiste un error antes de confirmar los cambios, Git ofrece distintas formas de deshacerlos según la situación.</p>
+<h3 id="deshacer-cambios-sin-haber-hecho-add">🔹 Deshacer cambios sin haber hecho <code>add</code></h3>
+<pre><code class="language-bash">git restore &lt;archivo&gt;
+</code></pre>
+<p>Revierte el archivo a su última versión confirmada (elimina los cambios en el área de trabajo).</p>
+<hr />
+<h3 id="deshacer-un-git-add">🔹 Deshacer un <code>git add</code></h3>
+<p>Si añadiste un archivo por error al <em>staging area</em>:</p>
+<pre><code class="language-bash">git restore --staged &lt;archivo&gt;
+</code></pre>
+<p>El archivo volverá al área de trabajo sin perder su contenido.</p>
+<hr />
+<h2 id="56-volver-a-un-commit-anterior-sin-borrar-la-historia-git-revert">5.6 Volver a un commit anterior sin borrar la historia (<code>git revert</code>)</h2>
+<p>El comando <code>git revert</code> <strong>crea un nuevo commit que deshace los cambios de un commit anterior</strong>, pero <strong>sin eliminarlo del historial</strong>.</p>
+<p>Es una operación <strong>segura</strong> y reversible, ideal cuando el proyecto ya está sincronizado con GitHub o cuando se trabaja en equipo.</p>
+<hr />
+<h3 id="ejemplo-visual">🔹 Ejemplo visual</h3>
+<pre><code class="language-text">Historia original:
+
+A --- B --- C --- D   (main)
+</code></pre>
+<p>Si revertimos el commit <strong>C</strong>:</p>
+<pre><code class="language-bash">git revert &lt;id_C&gt;
+</code></pre>
+<p>Git crea un nuevo commit <strong>E</strong>, que <strong>invierte los cambios</strong> de C:</p>
+<pre><code class="language-text">Resultado:
+
+A --- B --- C --- D --- E
+                     ↑
+        E deshace los cambios introducidos por C
+</code></pre>
+<blockquote>
+<p>🧠 La historia completa se conserva:
+<code>C</code> sigue existiendo, pero sus efectos se anulan con <code>E</code>.</p>
+</blockquote>
+<hr />
+<h3 id="cuando-usar-revert">🔹 Cuándo usar <code>revert</code></h3>
+<ul>
+<li>Cuando ya se ha hecho <code>push</code> al remoto.</li>
+<li>Cuando no quieres alterar la historia del proyecto.</li>
+<li>Cuando necesitas deshacer uno o varios commits manteniendo la trazabilidad.</li>
+</ul>
+<h3 id="revertir-varios-commits-a-la-vez">🔹 Revertir varios commits a la vez</h3>
+<pre><code class="language-bash">git revert &lt;id_inicial&gt;^..&lt;id_final&gt;
+</code></pre>
+<p>Esto deshará todos los commits entre esos dos puntos.</p>
+<hr />
+<h2 id="57-volver-a-una-version-anterior-eliminando-historia-git-reset">5.7 Volver a una versión anterior eliminando historia (<code>git reset</code>)</h2>
+<p><code>git reset</code> mueve el puntero <code>HEAD</code> y la rama actual a un commit anterior.
+A diferencia de <code>revert</code>, <strong>sí modifica el historial</strong>.</p>
+<blockquote>
+<p>⚠️ Por tanto, debe usarse con precaución, especialmente si el proyecto ya se ha subido al remoto.</p>
+</blockquote>
+<hr />
+<h3 id="tipos-de-reset">🔹 Tipos de <code>reset</code></h3>
+<table>
+<thead>
+<tr>
+<th>Tipo</th>
+<th>Qué hace</th>
+<th>Qué mantiene</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>--soft</code></td>
+<td>Mueve el HEAD al commit indicado, pero mantiene los cambios en el área de preparación.</td>
+<td>Cambios listos para nuevo commit.</td>
+</tr>
+<tr>
+<td><code>--mixed</code> <em>(por defecto)</em></td>
+<td>Mueve el HEAD y borra el área de preparación.</td>
+<td>Mantiene los cambios en el área de trabajo.</td>
+</tr>
+<tr>
+<td><code>--hard</code></td>
+<td>Elimina los commits posteriores y todos los cambios del área de trabajo.</td>
+<td>⚠️ No recuperable.</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3 id="ejemplo-de-reset-hard">🔹 Ejemplo de <code>reset --hard</code></h3>
+<pre><code class="language-bash">git log --oneline
+# e8f2a91 (HEAD -&gt; main) Añadido login
+# 4a9b0cc Creada interfaz
+# a7d4b3e Estructura inicial
+
+# Volver al commit inicial
+git reset --hard a7d4b3e
+</code></pre>
+<p>Resultado:</p>
+<pre><code class="language-text">A7d4b3e Estructura inicial
+</code></pre>
+<p>Los commits posteriores (interfaz y login) se eliminan del historial local.</p>
+<blockquote>
+<p>🚨 Si haces <code>push</code> después de un <code>reset --hard</code>, eliminarás también esos commits del remoto.
+En entornos colaborativos, <strong>nunca uses reset en ramas compartidas.</strong></p>
+</blockquote>
+<hr />
+<h2 id="58-recuperar-commits-eliminados-caso-avanzado">5.8 Recuperar commits eliminados (caso avanzado)</h2>
+<p>Si haces un <code>reset --hard</code> o pierdes commits recientes, puedes intentar recuperarlos con el registro de referencias:</p>
+<pre><code class="language-bash">git reflog
+</code></pre>
+<p>Git mantiene un historial temporal de todos los movimientos del <code>HEAD</code>.
+Cada línea incluye un identificador del commit anterior.
+Puedes volver a uno de ellos con:</p>
+<pre><code class="language-bash">git checkout &lt;id_reflog&gt;
+</code></pre>
+<hr />
+<h2 id="59-volver-a-una-version-anterior-para-probar-sin-borrar-historia">5.9 Volver a una versión anterior para probar (sin borrar historia)</h2>
+<p>A veces quieres “volver atrás” momentáneamente sin perder commits recientes.
+Esto se puede hacer con <code>checkout</code>:</p>
+<pre><code class="language-bash">git checkout &lt;id_antiguo&gt;
+</code></pre>
+<p>o, si solo quieres restaurar un archivo concreto:</p>
+<pre><code class="language-bash">git restore --source=&lt;id_commit&gt; &lt;archivo&gt;
+</code></pre>
+<blockquote>
+<p>💡 Este comando restaura el archivo tal como estaba en ese commit, sin afectar al resto del proyecto.</p>
+</blockquote>
+<hr />
+<h2 id="510-reorganizar-commits-con-rebase-concepto-basico">5.10 Reorganizar commits con <code>rebase</code> (concepto básico)</h2>
+<p>El comando <code>rebase</code> permite <strong>recolocar los commits de una rama sobre otra base</strong>.
+Se usa, por ejemplo, cuando una rama secundaria se ha quedado desactualizada respecto a <code>main</code>.</p>
+<h3 id="ejemplo">🔹 Ejemplo</h3>
+<pre><code class="language-text">Antes del rebase:
+
+main:    A --- B --- C
+feature:       \--- D --- E
+</code></pre>
+<p>Si hacemos:</p>
+<pre><code class="language-bash">git switch feature
+git rebase main
+</code></pre>
+<p>La historia se reescribe así:</p>
+<pre><code class="language-text">Después del rebase:
+
+main:    A --- B --- C
+feature:               \--- D' --- E'
+</code></pre>
+<p>Los commits D y E se vuelven a aplicar sobre el último commit de <code>main</code>.</p>
+<blockquote>
+<p>⚠️ <code>rebase</code> cambia los identificadores de commit.
+Por eso <strong>solo debe usarse en ramas locales personales</strong>, no en ramas compartidas o ya subidas a GitHub.</p>
+</blockquote>
+<hr />
+<h2 id="511-comparativa-entre-revert-reset-y-rebase">5.11 Comparativa entre <code>revert</code>, <code>reset</code> y <code>rebase</code></h2>
+<table>
+<thead>
+<tr>
+<th>Comando</th>
+<th>Qué hace</th>
+<th>Efecto en la historia</th>
+<th>Cuándo usarlo</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>git revert</code></td>
+<td>Crea un nuevo commit que deshace otro.</td>
+<td>No borra commits anteriores.</td>
+<td>Para deshacer cambios de forma segura (tras un push).</td>
+</tr>
+<tr>
+<td><code>git reset</code></td>
+<td>Mueve el puntero HEAD y borra commits posteriores.</td>
+<td>⚠️ Borra historia local.</td>
+<td>Para deshacer commits locales aún no compartidos.</td>
+</tr>
+<tr>
+<td><code>git rebase</code></td>
+<td>Reubica commits de una rama sobre otra.</td>
+<td>Reescribe la historia (nuevos IDs).</td>
+<td>Para mantener una historia lineal en ramas locales.</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="512-ejemplo-comparativo-visual">5.12 Ejemplo comparativo visual</h2>
+<h3 id="situacion-inicial">🔹 Situación inicial</h3>
+<pre><code class="language-text">A --- B --- C --- D  (main)
+</code></pre>
+<h3 id="git-revert-c">🔹 <code>git revert C</code></h3>
+<pre><code class="language-text">A --- B --- C --- D --- E
+                  ↑
+        E revierte los cambios de C
+</code></pre>
+<p>La historia completa se conserva.</p>
+<hr />
+<h3 id="git-reset-hard-b">🔹 <code>git reset --hard B</code></h3>
+<pre><code class="language-text">A --- B
+</code></pre>
+<p>Los commits C y D desaparecen de la historia local.
+(⚠️ Irreversible si no se han subido al remoto.)</p>
+<hr />
+<h3 id="git-rebase-main-desde-otra-rama">🔹 <code>git rebase main</code> (desde otra rama)</h3>
+<pre><code class="language-text">main:    A --- B --- C
+feature:       \--- D --- E
+↓
+main:    A --- B --- C
+                     \
+feature:               D' --- E'
+</code></pre>
+<p>Reubica los commits D y E después de C para mantener una línea continua.</p>
+<hr />
+<h2 id="513-buenas-practicas-con-el-historial">5.13 Buenas prácticas con el historial</h2>
+<ul>
+<li>Usa <code>git log --oneline</code> con frecuencia para revisar el estado del proyecto.</li>
+<li>Prefiere <code>git revert</code> en lugar de <code>reset</code> en proyectos compartidos.</li>
+<li>No uses <code>reset --hard</code> si el código ya se ha subido al remoto.</li>
+<li>
+<p>Crea mensajes de commit claros: resumen en presente, sin puntos finales.</p>
+</li>
+<li>
+<p>✅ <code>Añade validación de usuario</code></p>
+</li>
+<li>
+<p>❌ <code>He añadido la validación del usuario.</code></p>
+</li>
+<li>
+<p>Evita hacer demasiados commits triviales (“prueba”, “update”); agrupa los cambios significativos.</p>
+</li>
+<li>Usa <code>rebase</code> solo en ramas personales antes de fusionarlas con <code>main</code>.</li>
+</ul>
+<hr />
+<h2 id="514-ejemplo-practico-completo">5.14 Ejemplo práctico completo</h2>
+<p>Supongamos que el historial actual es:</p>
+<pre><code class="language-text">A --- B --- C --- D  (HEAD -&gt; main)
+</code></pre>
+<p>Y queremos volver atrás un paso, revisarlo y luego corregirlo.</p>
+<h3 id="paso-1-ver-el-historial">🔹 Paso 1: ver el historial</h3>
+<pre><code class="language-bash">git log --oneline
+</code></pre>
+<h3 id="paso-2-moverse-temporalmente-al-commit-b">🔹 Paso 2: moverse temporalmente al commit B</h3>
+<pre><code class="language-bash">git checkout B
+# Revisas los archivos o pruebas el código
+</code></pre>
+<h3 id="paso-3-volver-a-main">🔹 Paso 3: volver a main</h3>
+<pre><code class="language-bash">git switch main
+</code></pre>
+<h3 id="paso-4-deshacer-los-cambios-de-c-sin-borrar-la-historia">🔹 Paso 4: deshacer los cambios de C sin borrar la historia</h3>
+<pre><code class="language-bash">git revert C
+</code></pre>
+<p>Git crea un nuevo commit E que revierte C.</p>
+<h3 id="paso-5-subir-al-remoto">🔹 Paso 5: subir al remoto</h3>
+<pre><code class="language-bash">git push
+</code></pre>
+<hr />
+<p>✅ <strong>Conclusión</strong></p>
+<p>Dominar el historial de commits es esencial para trabajar con seguridad y confianza en Git.
+Conocer la diferencia entre <strong>revertir, resetear y reescribir</strong> te permite corregir errores sin miedo y mantener una historia clara y coherente en el proyecto.</p>
+<hr />
+              
+            </div>
+          </div><footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+    
+  </span>
+</div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+      <script src="../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

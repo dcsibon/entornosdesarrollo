@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>Actividad de clase – Análisis de mi programa - Entornos de Desarrollo 1º CFGS DAM-DAW</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Actividad de clase \u2013 An\u00e1lisis de mi programa";
+        var mkdocs_page_input_path = "2_eclipse_actividad_clase1.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> Entornos de Desarrollo 1º CFGS DAM-DAW
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="..">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="" href="../3_intro.md">U1 Introducción</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../2_eclipse/">U2 Eclipse</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../3_git/">U3 Git</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../practicas_modulo/">Prácticas</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">Entornos de Desarrollo 1º CFGS DAM-DAW</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">Actividad de clase – Análisis de mi programa</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="actividad-de-clase-analisis-de-mi-programa">Actividad de clase – Análisis de mi programa</h1>
+<h2 id="objetivo-de-la-practica">🎯 <strong>Objetivo de la práctica</strong></h2>
+<p>Comprender el funcionamiento de un programa Java existente <strong>sin ejecutarlo directamente</strong>, utilizando las <strong>herramientas de depuración de Eclipse</strong>.
+El alumno deberá <strong>analizar, comentar y documentar</strong> el código a partir de su comportamiento observado durante la depuración.</p>
+<hr />
+<h2 id="pasos-a-seguir"><strong>Pasos a seguir</strong></h2>
+<h3 id="1-crear-un-nuevo-proyecto">1️⃣ Crear un nuevo proyecto</h3>
+<ol>
+<li>Abre Eclipse y selecciona el <strong>workspace</strong> habitual.</li>
+<li>
+<p>Crea un nuevo proyecto:</p>
+</li>
+<li>
+<p>Menú <code>File → New → Java Project</code></p>
+</li>
+<li>Nombre del proyecto: <strong>Practica5</strong></li>
+<li>Desactiva la opción <em>Create module-info.java file</em></li>
+<li>Pulsa <strong>Finish</strong></li>
+</ol>
+<hr />
+<h3 id="2-crear-el-paquete">2️⃣ Crear el paquete</h3>
+<ol>
+<li>En el panel <strong>Package Explorer</strong>, haz clic derecho sobre <code>src</code> → <code>New → Package</code></li>
+<li>Escribe como nombre del paquete:</li>
+</ol>
+<p><code>tema2_debug</code>
+3. Pulsa <strong>Finish</strong></p>
+<hr />
+<h3 id="3-importar-el-archivo-miprogramajava">3️⃣ Importar el archivo <code>MiPrograma.java</code></h3>
+<ol>
+<li>Crea un fichero <code>MiPrograma.java</code>con el siguiente contenido:</li>
+</ol>
+<pre><code class="language-java">package tema2_debug;
+
+import java.util.Scanner;
+
+public class MiPrograma {
+
+    public static void main(String[] args) {
+
+        Scanner sc = new Scanner(System.in);
+        int numero;
+        boolean numeroCorrecto = false;
+
+        do {
+            System.out.print(&quot;Introduzca un número: &quot;);
+            numero = sc.nextInt();
+
+            if (numero &lt; 1 || numero &gt; 20) {
+                System.out.println(&quot;ERR - Solo es posible el rango del 1 al 20&quot;);
+            } else {
+                numeroCorrecto = true;
+            }
+
+        } while (!numeroCorrecto);
+
+        for (int i = 0; i &lt;= 10; i++) {
+            System.out.println(i + &quot; x &quot; + numero + &quot; = &quot; + (i * numero));
+        }
+
+        sc.close();
+    }
+}
+</code></pre>
+<ol>
+<li>Clic derecho sobre el paquete <code>tema2_debug</code> → <code>Import...</code></li>
+<li>En la ventana de importación, selecciona:</li>
+</ol>
+<p><code>General → File System → Next</code>
+4. En <strong>From directory</strong>, selecciona la carpeta:</p>
+<p><code>Descargas</code></p>
+<p>(donde se encuentra <code>MiPrograma.java</code>)
+5. Marca el archivo <code>MiPrograma.java</code> y pulsa <strong>Finish</strong>.</p>
+<p>💡 Ahora el archivo debe aparecer dentro del paquete <code>tema2_debug</code> en el panel <strong>Package Explorer</strong>.</p>
+<hr />
+<h3 id="4-depurar-el-programa">4️⃣ Depurar el programa</h3>
+<p>⚠️ <strong>No ejecutes el programa directamente</strong> con “Run As”.
+En esta práctica <strong>solo se permite depurar</strong>.</p>
+<ol>
+<li>Coloca <strong>breakpoints</strong> (doble clic en el margen izquierdo del editor) en las líneas clave del programa.</li>
+<li>Inicia la depuración con el icono <strong>🐞 Debug</strong> o <code>Run → Debug As → Java Application</code>.</li>
+<li>
+<p>Observa detenidamente:</p>
+</li>
+<li>
+<p>¿Qué variables cambian de valor?.</p>
+</li>
+<li>¿En qué condiciones se repite la ejecución?.</li>
+<li>¿Qué hace exactamente el bucle principal?.</li>
+<li>Comprueba el valor de las variables en la vista <strong>Variables</strong>.</li>
+<li>
+<p>Utiliza las opciones:</p>
+</li>
+<li>
+<p><strong>F5 (Step Into)</strong></p>
+</li>
+<li><strong>F6 (Step Over)</strong></li>
+<li><strong>F8 (Resume)</strong>
+     para avanzar paso a paso.</li>
+</ol>
+<p>📄 <strong>Objetivo</strong>: identificar la finalidad del programa sin necesidad de ejecutar el código completo.</p>
+<hr />
+<h3 id="5-analisis-y-descripcion-del-programa">5️⃣ Análisis y descripción del programa</h3>
+<p>Una vez finalizada la depuración, escribe un breve comentario (5-6 líneas) en el propio archivo <code>MiPrograma.java</code> explicando:</p>
+<ul>
+<li>Qué hace el programa.</li>
+<li>Qué sucede si el usuario introduce un número fuera del rango.</li>
+<li>Qué papel cumple el bucle principal.</li>
+<li>Qué variables intervienen en el control del programa.</li>
+</ul>
+<hr />
+<h3 id="6-insertar-comentarios-en-el-codigo">6️⃣ Insertar comentarios en el código</h3>
+<p>Una vez que ya sabes de que va el programa... incluye los siguientes comentarios en el código:</p>
+<pre><code>// Controla si el número introducido es válido 
+
+// Pedir un número válido (entre 1 y 20) 
+
+// Mostrar la tabla de multiplicar del número indicado
+</code></pre>
+<p>Debes <strong>ubicar estos comentarios en las líneas del código correspondientes</strong>, según lo que hayas observado en la depuración.</p>
+<hr />
+<h3 id="7-entrega">7️⃣ Entrega</h3>
+<ul>
+<li>NO TIENE ENTREGA, vamos a corregirlo entre todos en clase.</li>
+</ul>
+<hr />
+              
+            </div>
+          </div><footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+    
+  </span>
+</div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+      <script src="../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

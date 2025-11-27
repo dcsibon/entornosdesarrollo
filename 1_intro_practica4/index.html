@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>Práctica 4 – Prospección de empleo y empresas de software en Sevilla (Java) - Entornos de Desarrollo 1º CFGS DAM-DAW</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Pr\u00e1ctica 4 \u2013 Prospecci\u00f3n de empleo y empresas de software en Sevilla (Java)";
+        var mkdocs_page_input_path = "1_intro_practica4.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> Entornos de Desarrollo 1º CFGS DAM-DAW
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="..">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="" href="../3_intro.md">U1 Introducción</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../2_eclipse/">U2 Eclipse</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../3_git/">U3 Git</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../practicas_modulo/">Prácticas</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">Entornos de Desarrollo 1º CFGS DAM-DAW</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">Práctica 4 – Prospección de empleo y empresas de software en Sevilla (Java)</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="practica-4-prospeccion-de-empleo-y-empresas-de-software-en-sevilla-java">Práctica 4 – Prospección de empleo y empresas de software en Sevilla (Java)</h1>
+<h2 id="objetivo">🎯 Objetivo</h2>
+<p>Analizar el mercado laboral del desarrollo <strong>Java</strong> en Sevilla, identificando empresas de software a medida y revisando ofertas reales publicadas en LinkedIn.
+Al finalizar, deberás responder <strong>únicamente a tres preguntas clave</strong> basadas en los requisitos reales del sector:</p>
+<ol>
+<li><strong>¿Qué titulación solicitan?</strong></li>
+<li><strong>¿Qué tecnologías deberías dominar?</strong></li>
+<li><strong>¿Exigen experiencia?</strong></li>
+</ol>
+<hr />
+<h2 id="1-configuracion-previa-de-la-cuenta-en-linkedin"><strong>1) Configuración previa de la cuenta en LinkedIn</strong></h2>
+<p>Accede a LinkedIn utilizando tu cuenta corporativa <strong>@g.educaand.es</strong> y ajusta la privacidad:</p>
+<h3 id="a-crear-un-perfil-basico">a) Crear un perfil básico</h3>
+<ul>
+<li>Nombre y correo son suficientes para esta práctica.</li>
+</ul>
+<h3 id="b-ajustes-de-privacidad">b) Ajustes de privacidad</h3>
+<ul>
+<li>En <strong>Visibilidad</strong>, configura tu perfil como <strong>privado</strong> para no aparecer ante empresas o reclutadores.</li>
+<li>En <strong>Preferencias de búsqueda de empleo</strong>, desactiva la opción <strong>"Compartir mi actividad con reclutadores"</strong>.</li>
+</ul>
+<p><em>(Este perfil solo se usará con fines docentes.)</em></p>
+<hr />
+<h2 id="2-tareas-a-realizar"><strong>2) Tareas a realizar</strong></h2>
+<h3 id="a-localizar-empresas-de-software-a-medida-en-sevilla">A) Localizar empresas de software a medida en Sevilla</h3>
+<p>Busca en Google o directorios locales empresas de desarrollo de software que trabajen con Java y tengan sede en Sevilla.
+Incluye en tu entrega:</p>
+<ul>
+<li>Nombre de la empresa</li>
+<li>Página web oficial</li>
+</ul>
+<p><em>(Se recomienda buscar “software a medida Sevilla”, “consultoría Java Sevilla”, etc.)</em></p>
+<h3 id="b-revision-de-ofertas-de-desarrolladora-java-linkedin">B) Revisión de ofertas de desarrollador/a Java (LinkedIn)</h3>
+<ol>
+<li>
+<p>Accede a la pestaña <strong>Empleos</strong> en LinkedIn.</p>
+</li>
+<li>
+<p>Realiza la búsqueda con ubicación <strong>Sevilla</strong> utilizando palabras clave como:</p>
+</li>
+<li>
+<p><em>Java Developer</em></p>
+</li>
+<li><em>Desarrollador Java</em></li>
+<li>
+<p><em>Backend Java</em></p>
+</li>
+<li>
+<p>Localiza <strong>varias ofertas recientes</strong>. Observa:</p>
+</li>
+<li>
+<p>Título de la oferta</p>
+</li>
+<li>Empresa</li>
+<li>
+<p>Fecha de publicación</p>
+</li>
+<li>
+<p>A partir de la lectura de esas ofertas, sintetiza la información para responder:</p>
+</li>
+</ol>
+<h4 id="1-que-titulacion-solicitan">✔ <strong>1) ¿Qué titulación solicitan?</strong></h4>
+<p>(Ej.: FP Superior, Grado universitario, Máster, o si no especifican titulación.)</p>
+<h4 id="2-que-tecnologias-aparecen-en-los-requisitos">✔ <strong>2) ¿Qué tecnologías aparecen en los requisitos?</strong></h4>
+<p>(Ej.: Spring Boot, Hibernate/JPA, REST, SQL, Git, Docker, Maven/Gradle, servicios en la nube, testing, microservicios…)</p>
+<h4 id="3-exigen-experiencia">✔ <strong>3) ¿Exigen experiencia?</strong></h4>
+<p>(Ej.: prácticas, 0–1 año, perfil junior, años concretos, portfolio, experiencia demostrable…)</p>
+<hr />
+<h2 id="3-entrega"><strong>3) Entrega</strong></h2>
+<p>Debes entregar un documento (texto, PDF, o capturas con explicación) que incluya:</p>
+<h3 id="a-lista-breve-de-empresas-de-software-a-medida-en-sevilla">a) Lista breve de empresas de software a medida en Sevilla</h3>
+<ul>
+<li>Nombre</li>
+<li>Web oficial</li>
+</ul>
+<h3 id="b-respuesta-a-las-tres-preguntas">b) Respuesta a las tres preguntas</h3>
+<ul>
+<li><strong>Titulación solicitada</strong></li>
+<li><strong>Tecnologías más comunes</strong></li>
+<li><strong>Requisitos de experiencia</strong></li>
+</ul>
+<p><em>(La información debe basarse en varias ofertas reales revisadas.)</em></p>
+<h3 id="c-opcional">c) (Opcional)</h3>
+<p>Incluye enlaces a <strong>2–3 ofertas</strong> utilizadas como referencia.</p>
+<hr />
+              
+            </div>
+          </div><footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+    
+  </span>
+</div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+      <script src="../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

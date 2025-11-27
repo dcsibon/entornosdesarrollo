@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>3. Sincronización con repos remotos - Entornos de Desarrollo 1º CFGS DAM-DAW</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "3. Sincronizaci\u00f3n con repos remotos";
+        var mkdocs_page_input_path = "3_git_ap3_sincronizacion.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> Entornos de Desarrollo 1º CFGS DAM-DAW
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="..">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="" href="../3_intro.md">U1 Introducción</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../2_eclipse/">U2 Eclipse</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../3_git/">U3 Git</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../practicas_modulo/">Prácticas</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">Entornos de Desarrollo 1º CFGS DAM-DAW</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">3. Sincronización con repos remotos</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="3-sincronizacion-con-repos-remotos">3. Sincronización con repos remotos</h1>
+<hr />
+<h2 id="31-concepto-de-repositorio-remoto">3.1 Concepto de repositorio remoto</h2>
+<p>Un <strong>repositorio remoto</strong> es una <strong>copia del proyecto almacenada en un servidor externo</strong>, accesible por Internet, que permite:</p>
+<ul>
+<li>Hacer copias de seguridad del código.</li>
+<li>Trabajar desde distintos dispositivos.</li>
+<li>Colaborar con otros desarrolladores.</li>
+</ul>
+<p>Git permite sincronizar el repositorio local con uno remoto (por ejemplo, en <strong>GitHub</strong>, <strong>GitLab</strong> o <strong>Bitbucket</strong>) mediante comandos que envían o traen información.</p>
+<blockquote>
+<p>💡 Git no sincroniza automáticamente: debes indicar explícitamente cuándo subir (<code>push</code>) o traer (<code>pull</code>) los cambios.</p>
+</blockquote>
+<hr />
+<h2 id="32-repositorio-local-vs-remoto">3.2 Repositorio local vs remoto</h2>
+<pre><code class="language-text">┌────────────────────┐          ┌──────────────────────┐
+│  Repositorio local │          │  Repositorio remoto  │
+│ (Tu ordenador)     │  &lt;----&gt;  │ (GitHub / Servidor)  │
+└────────────────────┘          └──────────────────────┘
+       ↑    ↑                         ↑
+       │    └── git pull ─────────────┘ (descargar cambios)
+       └────── git push ─────────────&gt;  (subir cambios)
+</code></pre>
+<hr />
+<h2 id="33-asociar-un-repositorio-remoto">3.3 Asociar un repositorio remoto</h2>
+<p>Cuando trabajas en local y quieres vincular tu proyecto a un repositorio en GitHub, debes asociarlo mediante un <strong>nombre de remoto</strong>.
+El nombre más común es <code>origin</code>.</p>
+<h3 id="anadir-el-remoto-por-primera-vez">🔹 Añadir el remoto por primera vez</h3>
+<pre><code class="language-bash">git remote add origin git@github.com:usuario/repositorio.git
+</code></pre>
+<p>O si usas HTTPS:</p>
+<pre><code class="language-bash">git remote add origin https://github.com/usuario/repositorio.git
+</code></pre>
+<p>Después puedes comprobarlo con:</p>
+<pre><code class="language-bash">git remote -v
+</code></pre>
+<p>Ejemplo de salida:</p>
+<pre><code>origin  git@github.com:usuario/repositorio.git (fetch)
+origin  git@github.com:usuario/repositorio.git (push)
+</code></pre>
+<hr />
+<h3 id="cambiar-la-url-del-remoto-existente">🔹 Cambiar la URL del remoto existente</h3>
+<p>Si ya tenías el repositorio configurado por HTTPS y quieres pasar a SSH (o viceversa), no debes crear un nuevo remoto, sino <strong>actualizar la URL</strong>:</p>
+<pre><code class="language-bash">git remote set-url origin git@github.com:usuario/repositorio.git
+</code></pre>
+<blockquote>
+<p>💡 <code>git remote add</code> crea el remoto.
+<code>git remote set-url</code> lo actualiza si ya existía.</p>
+</blockquote>
+<hr />
+<h2 id="34-subir-cambios-al-repositorio-remoto-git-push">3.4 Subir cambios al repositorio remoto (<code>git push</code>)</h2>
+<p>El comando <code>git push</code> <strong>envía los commits del repositorio local al remoto</strong>.</p>
+<h3 id="primer-envio">🔹 Primer envío</h3>
+<p>La primera vez que subes tu rama principal (por ejemplo, <code>main</code>), debes incluir la opción <code>-u</code> (abreviatura de <code>--set-upstream</code>) para vincularla:</p>
+<pre><code class="language-bash">git push -u origin main
+</code></pre>
+<p>Esto crea en GitHub la rama <code>main</code> y la asocia con tu rama local.</p>
+<blockquote>
+<p>📌 A partir de este momento, puedes usar simplemente:</p>
+<p><code>bash
+git push</code></p>
+<p>y Git sabrá a qué remoto y a qué rama subir los cambios.</p>
+</blockquote>
+<hr />
+<h3 id="subidas-posteriores">🔹 Subidas posteriores</h3>
+<p>Cada vez que confirmes nuevos commits en tu proyecto, podrás sincronizarlos con GitHub ejecutando:</p>
+<pre><code class="language-bash">git push
+</code></pre>
+<p>Git enviará únicamente los cambios pendientes desde tu última subida.</p>
+<hr />
+<h3 id="ejemplo-completo">🔹 Ejemplo completo</h3>
+<pre><code class="language-bash"># Confirmar cambios en local
+git add .
+git commit -m &quot;Actualizada la clase Usuario&quot;
+
+# Subir al remoto
+git push
+</code></pre>
+<hr />
+<h2 id="35-upstream-vinculacion-entre-ramas-locales-y-remotas"><strong>3.5 Upstream: vinculación entre ramas locales y remotas</strong></h2>
+<p>Para que Git pueda sincronizar correctamente una rama, necesita saber <strong>a qué rama remota debe enviar (push)</strong> y <strong>de dónde debe recibir (pull)</strong> los cambios.</p>
+<p>A esta relación se le llama <strong>upstream</strong> o <strong>rama de seguimiento (tracking branch)</strong>.</p>
+<hr />
+<h3 id="que-es-el-upstream">🔹 ¿Qué es el upstream?</h3>
+<blockquote>
+<p>El <em>upstream</em> es la <strong>rama remota asociada</strong> a una rama local.
+Es el “destino por defecto” de <code>git push</code> y la “fuente por defecto” de <code>git pull</code>.</p>
+</blockquote>
+<p>Ejemplo típico:</p>
+<pre><code>Rama local: main
+Upstream:   origin/main
+</code></pre>
+<p>Esto significa:</p>
+<ul>
+<li><code>git push</code> → sube automáticamente a <code>origin/main</code></li>
+<li><code>git pull</code> → trae automáticamente de <code>origin/main</code></li>
+</ul>
+<p>Sin upstream, Git no sabe dónde sincronizar.</p>
+<hr />
+<h3 id="cuando-se-crea-el-upstream">🔹 ¿Cuándo se crea el upstream?</h3>
+<p>La primera vez que subes una rama al repositorio remoto.</p>
+<p>Por eso el primer push se hace así:</p>
+<pre><code class="language-bash">git push -u origin nombre_rama
+</code></pre>
+<p><code>-u</code> es exactamente igual que <code>--set-upstream</code>.</p>
+<p>Esto configura:</p>
+<pre><code>nombre_rama (local)  ↔  origin/nombre_rama (remoto)
+</code></pre>
+<p>A partir de aquí, todo es mucho más fácil:</p>
+<pre><code class="language-bash">git push
+git pull
+</code></pre>
+<p>Git ya recuerda la vinculación.</p>
+<hr />
+<h3 id="que-pasa-si-intento-hacer-git-push-sin-upstream">🔹 ¿Qué pasa si intento hacer <code>git push</code> sin upstream?</h3>
+<p>Git mostrará:</p>
+<pre><code>fatal: The current branch &lt;rama&gt; has no upstream branch.
+</code></pre>
+<p>Y te sugerirá exactamente el comando correcto:</p>
+<pre><code>git push --set-upstream origin &lt;rama&gt;
+</code></pre>
+<hr />
+<h3 id="comprobar-el-upstream-actual">🔹 Comprobar el upstream actual</h3>
+<pre><code class="language-bash">git status
+</code></pre>
+<p>Si la rama está asociada, verás algo como:</p>
+<pre><code>Your branch is up to date with 'origin/main'.
+</code></pre>
+<p>O:</p>
+<pre><code>Your branch is ahead of 'origin/factorial_recursivo' by 2 commits.
+</code></pre>
+<hr />
+<h3 id="resumen-visual-muy-util-para-alumnos">🔹 Resumen visual (muy útil para alumnos)</h3>
+<pre><code class="language-text">          (Se crea con: git push -u origin rama)
+┌────────────────┐            ┌──────────────────────────┐
+│   rama local   │  &lt;------&gt;  │   rama remota (GitHub)   │
+│   main         │            │   origin/main            │
+└────────────────┘            └──────────────────────────┘
+</code></pre>
+<hr />
+<h3 id="resumen-conceptual">🔹 Resumen conceptual</h3>
+<table>
+<thead>
+<tr>
+<th>Concepto</th>
+<th>Explicación</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Upstream</td>
+<td>Relación entre una rama local y su rama remota</td>
+</tr>
+<tr>
+<td><code>git push -u</code></td>
+<td>Crea la rama remota y establece el upstream</td>
+</tr>
+<tr>
+<td><code>git push</code> / <code>git pull</code></td>
+<td>Funciona automáticamente después del upstream</td>
+</tr>
+<tr>
+<td>Error típico</td>
+<td>“has no upstream branch” → falta la vinculación</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="36-descargar-y-fusionar-cambios-git-pull">3.6 Descargar y fusionar cambios (<code>git pull</code>)</h2>
+<p>El comando <code>git pull</code> hace el proceso inverso a <code>push</code>:
+<strong>descarga los commits del remoto</strong> y los <strong>fusiona</strong> con tu rama local.</p>
+<pre><code class="language-bash">git pull
+</code></pre>
+<p>Si tu rama está vinculada (gracias al <code>-u</code> anterior), no necesitas especificar nada más.</p>
+<p>Internamente, <code>git pull</code> realiza dos pasos:</p>
+<ol>
+<li><code>git fetch</code> → descarga los cambios del remoto, sin aplicarlos.</li>
+<li><code>git merge</code> → fusiona esos cambios en tu rama actual.</li>
+</ol>
+<p>Por tanto:</p>
+<pre><code class="language-bash">git pull = git fetch + git merge
+</code></pre>
+<hr />
+<h3 id="cuando-hay-conflictos">🔹 Cuando hay conflictos</h3>
+<p>Si otro usuario ha modificado el mismo archivo que tú y ambos intentáis subir los cambios, Git te pedirá <strong>resolver los conflictos</strong> antes de hacer <code>push</code>.</p>
+<p>Verás algo como:</p>
+<pre><code>Auto-merging src/Main.java
+CONFLICT (content): Merge conflict in src/Main.java
+</code></pre>
+<p>Para solucionarlo:</p>
+<ol>
+<li>Abre el archivo y busca las marcas de conflicto (<code>&lt;&lt;&lt;&lt;&lt;&lt;&lt;</code>, <code>=======</code>, <code>&gt;&gt;&gt;&gt;&gt;&gt;&gt;</code>).</li>
+<li>Elimina las marcas y deja la versión correcta.</li>
+<li>Guarda el archivo y confirma con:</li>
+</ol>
+<pre><code class="language-bash">git add archivo_conflictivo
+git commit
+</code></pre>
+<p>Después podrás volver a subirlo con:</p>
+<pre><code class="language-bash">git push
+</code></pre>
+<hr />
+<h2 id="37-descargar-sin-fusionar-git-fetch">3.7 Descargar sin fusionar (<code>git fetch</code>)</h2>
+<p><code>git fetch</code> <strong>solo descarga</strong> los cambios del remoto, pero <strong>no los mezcla aún</strong> con tu rama local.
+Esto permite revisar los cambios antes de integrarlos.</p>
+<pre><code class="language-bash">git fetch
+git log origin/main --oneline
+</code></pre>
+<p>Si todo está correcto, puedes decidir fusionarlos manualmente con:</p>
+<pre><code class="language-bash">git merge origin/main
+</code></pre>
+<blockquote>
+<p>🧠 <code>fetch</code> es ideal cuando trabajas en proyectos colaborativos y quieres inspeccionar primero qué ha cambiado antes de mezclarlo.</p>
+</blockquote>
+<hr />
+<h2 id="38-clonar-un-repositorio-existente-git-clone">3.8 Clonar un repositorio existente (<code>git clone</code>)</h2>
+<p>Cuando el proyecto ya está en GitHub y quieres tener una copia local, se utiliza <code>git clone</code>.</p>
+<pre><code class="language-bash">git clone git@github.com:usuario/repositorio.git
+</code></pre>
+<p>Este comando:</p>
+<ol>
+<li>Descarga todo el historial del repositorio.</li>
+<li>Crea una carpeta local con el mismo nombre.</li>
+<li>Configura automáticamente el remoto <code>origin</code>.</li>
+</ol>
+<p>Ejemplo:</p>
+<pre><code class="language-bash">git clone https://github.com/dcsibon/ejemplo.git
+cd ejemplo
+git remote -v
+</code></pre>
+<p>Salida:</p>
+<pre><code>origin  https://github.com/dcsibon/ejemplo.git (fetch)
+origin  https://github.com/dcsibon/ejemplo.git (push)
+</code></pre>
+<hr />
+<h2 id="39-crear-un-repositorio-en-github-y-vincularlo-desde-local">3.9 Crear un repositorio en GitHub y vincularlo desde local</h2>
+<p>Cuando el proyecto se inicia en tu ordenador y quieres subirlo por primera vez:</p>
+<pre><code class="language-bash">git init
+git add .
+git commit -m &quot;Versión inicial&quot;
+</code></pre>
+<p>Luego, crea <strong>un repositorio vacío</strong> en GitHub (sin README, .gitignore, ni licencia) y enlázalo:</p>
+<pre><code class="language-bash">git remote add origin git@github.com:usuario/repositorio.git
+git branch -M main
+git push -u origin main
+</code></pre>
+<p>Después podrás seguir usando simplemente:</p>
+<pre><code class="language-bash">git push
+git pull
+</code></pre>
+<hr />
+<h2 id="310-crear-una-copia-de-otro-proyecto-publico-fork">3.10 Crear una copia de otro proyecto público (<code>fork</code>)</h2>
+<p>Un <strong>fork</strong> (bifurcación) es una <strong>copia de un repositorio remoto</strong> dentro de tu propia cuenta de GitHub.
+Se usa cuando quieres modificar un proyecto sin afectar al original.</p>
+<ol>
+<li>En GitHub, pulsa el botón <strong>Fork</strong> en el repositorio público.</li>
+<li>GitHub creará una copia bajo tu usuario.</li>
+<li>Clónala con <code>git clone</code> y trabaja libremente en tu versión.</li>
+</ol>
+<blockquote>
+<p>💡 Ideal para proyectos open source o trabajos en grupo donde cada alumno trabaja su copia.</p>
+</blockquote>
+<hr />
+<h2 id="311-comandos-esenciales-de-sincronizacion">3.11 Comandos esenciales de sincronización</h2>
+<table>
+<thead>
+<tr>
+<th>Comando</th>
+<th>Descripción</th>
+<th>Cuándo se usa</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>git remote -v</code></td>
+<td>Muestra los repositorios remotos configurados.</td>
+<td>Para verificar la conexión con GitHub.</td>
+</tr>
+<tr>
+<td><code>git remote add origin &lt;url&gt;</code></td>
+<td>Asocia un remoto por primera vez.</td>
+<td>Al conectar el proyecto local con GitHub.</td>
+</tr>
+<tr>
+<td><code>git remote set-url origin &lt;url&gt;</code></td>
+<td>Actualiza la URL del remoto existente.</td>
+<td>Al cambiar de HTTPS a SSH.</td>
+</tr>
+<tr>
+<td><code>git push -u origin main</code></td>
+<td>Sube la rama principal y la deja vinculada.</td>
+<td>Primer envío.</td>
+</tr>
+<tr>
+<td><code>git push</code></td>
+<td>Sube los commits de la rama activa.</td>
+<td>Envíos posteriores.</td>
+</tr>
+<tr>
+<td><code>git pull</code></td>
+<td>Descarga y fusiona los cambios del remoto.</td>
+<td>Para actualizar el proyecto local.</td>
+</tr>
+<tr>
+<td><code>git fetch</code></td>
+<td>Descarga los cambios sin fusionarlos.</td>
+<td>Para revisar antes de integrar.</td>
+</tr>
+<tr>
+<td><code>git clone &lt;url&gt;</code></td>
+<td>Crea una copia local de un repo remoto.</td>
+<td>Para empezar desde un proyecto existente.</td>
+</tr>
+<tr>
+<td><code>git fork</code> (en GitHub)</td>
+<td>Crea una copia personal del repositorio remoto.</td>
+<td>Para modificar sin alterar el original.</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="312-buenas-practicas-de-sincronizacion">3.12 Buenas prácticas de sincronización</h2>
+<ul>
+<li>Antes de hacer <code>push</code>, realiza siempre un <code>git pull</code> para asegurar que trabajas sobre la última versión.</li>
+<li>Evita hacer <code>push</code> directamente sobre ramas que usan otros compañeros: crea ramas secundarias y usa <code>merge</code> o <code>pull request</code>.</li>
+<li>Comprueba el remoto actual con <code>git remote -v</code> antes de subir o descargar cambios.</li>
+<li>Si trabajas desde distintos ordenadores, asegúrate de <strong>subir siempre los cambios antes de cerrar la sesión</strong> y hacer <code>pull</code> al comenzar en el otro equipo.</li>
+<li>No modifiques directamente archivos desde la web de GitHub si el proyecto está activo en local, salvo que entiendas las consecuencias del conflicto que puede generar.</li>
+</ul>
+<hr />
+              
+            </div>
+          </div><footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+    
+  </span>
+</div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+      <script src="../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

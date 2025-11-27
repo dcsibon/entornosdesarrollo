@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>Práctica 3: Ramas y GitHub (Java + Eclipse, Git por terminal) - Entornos de Desarrollo 1º CFGS DAM-DAW</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Pr\u00e1ctica 3: Ramas y GitHub (Java + Eclipse, Git por terminal)";
+        var mkdocs_page_input_path = "3_git_practica3.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> Entornos de Desarrollo 1º CFGS DAM-DAW
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="..">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="" href="../3_intro.md">U1 Introducción</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../2_eclipse/">U2 Eclipse</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../3_git/">U3 Git</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../practicas_modulo/">Prácticas</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">Entornos de Desarrollo 1º CFGS DAM-DAW</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">Práctica 3: Ramas y GitHub (Java + Eclipse, Git por terminal)</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="practica-3-ramas-y-github-java-eclipse-git-por-terminal">Práctica 3: Ramas y GitHub (Java + Eclipse, <strong>Git por terminal</strong>)</h1>
+<blockquote>
+<p><strong>Objetivo:</strong> trabajar con <strong>ramas</strong> de Git, resolver conflictos y enlazar con <strong>GitHub</strong> usando <strong>SSH</strong>. La <strong>programación</strong> se hace en <strong>Eclipse</strong>; <strong>todo Git</strong> se gestiona <strong>desde la terminal</strong> (Git Bash).</p>
+</blockquote>
+<hr />
+<h2 id="0-requisitos-previos">0) Requisitos previos</h2>
+<ul>
+<li>Git instalado y configurado (<code>user.name</code>, <code>user.email</code>).</li>
+<li>Clave SSH operativa con GitHub (ver Práctica 3). Comprobar:</li>
+</ul>
+<p><code>bash
+  ssh -T git@github.com</code>
+* Eclipse instalado.</p>
+<hr />
+<h2 id="conectar-git-local-github-por-https-con-token-pat">🔐 Conectar Git local ↔ GitHub por <strong>HTTPS</strong> con <strong>token (PAT)</strong></h2>
+<blockquote>
+<p>Alternativa a SSH (ya vista en la Práctica 2). Con <strong>HTTPS + PAT</strong> no necesitas claves SSH: Git usará un <strong>token temporal</strong> como contraseña.</p>
+</blockquote>
+<h3 id="a-crear-un-personal-access-token-expirable">a) Crear un <strong>Personal Access Token</strong> (expirable)</h3>
+<ol>
+<li>En GitHub: <strong>avatar → Settings → Developer settings → Personal access tokens</strong>.</li>
+<li>Elige <strong>Fine-grained tokens</strong> <em>(recomendado)</em> o <strong>Tokens (classic)</strong>.</li>
+<li><strong>Expiration</strong>: selecciona una duración corta (p. ej., <strong>7 o 30 días</strong>).</li>
+<li>
+<p><strong>Permisos mínimos</strong>:</p>
+</li>
+<li>
+<p>Fine-grained: selecciona tu repo y activa <strong>Repository permissions → Contents: Read and write</strong>.</p>
+</li>
+<li>Classic: marca <strong>repo</strong>.</li>
+<li>Crea el token y <strong>cópialo</strong> (solo se muestra una vez).</li>
+</ol>
+<blockquote>
+<p>⚠️ El token <strong>sustituye a tu contraseña</strong> de GitHub cuando uses HTTPS.</p>
+</blockquote>
+<h3 id="b-configurar-el-remoto-por-https">b) Configurar el remoto por <strong>HTTPS</strong></h3>
+<ul>
+<li>Si tu remoto aún no existe:</li>
+</ul>
+<p><code>bash
+  git remote add origin https://github.com/tu_usuario/RamasGitJavaDAM.git</code>
+* Si ya lo tenías en SSH y quieres cambiar a HTTPS:</p>
+<p><code>bash
+  git remote set-url origin https://github.com/tu_usuario/RamasGitJavaDAM.git</code></p>
+<h3 id="c-primer-push-usando-el-token">c) Primer <strong>push</strong> usando el token</h3>
+<pre><code class="language-bash">git branch -M main
+git push -u origin main
+</code></pre>
+<p>Cuando pregunte <strong>Username</strong> → tu usuario GitHub.
+Cuando pregunte <strong>Password</strong> → <strong>pega el token</strong> (PAT).</p>
+<blockquote>
+<p>💾 <strong>Guardar credenciales</strong> (opcional):</p>
+<ul>
+<li><strong>Windows</strong>: <code>git config --global credential.helper manager</code></li>
+<li><strong>macOS</strong>: <code>git config --global credential.helper osxkeychain</code></li>
+<li><strong>Linux</strong>: <code>git config --global credential.helper store</code> <em>(guarda en texto plano)</em></li>
+</ul>
+</blockquote>
+<hr />
+<h2 id="1-crear-repositorio-remoto-y-clonar-en-el-workspace">1) Crear repositorio remoto y clonar en el <em>workspace</em></h2>
+<ol>
+<li>Crea en GitHub un repo <strong>vacío</strong> llamado <code>RamasGitJavaDAM</code> (sin README).</li>
+<li>Copia la <strong>URL SSH</strong>:</li>
+</ol>
+<p><code>git@github.com:tu_usuario/RamasGitJavaDAM.git</code></p>
+<ol>
+<li>Abre terminal en tu <em>workspace</em> de Eclipse y clona:</li>
+</ol>
+<p><code>bash
+   cd "C:\\Users\\alumno\\eclipse-workspace"
+   git clone git@github.com:tu_usuario/RamasGitJavaDAM.git
+   cd RamasGitJavaDAM</code></p>
+<h3 id="importante-clonar-repositorios-vacios-en-github">⚠️ Importante: Clonar repositorios vacíos en GitHub</h3>
+<p>Cuando se crea un repositorio en GitHub <strong>sin ningún archivo</strong>
+(sin README, sin <code>.gitignore</code>, sin licencia…), ese repositorio:</p>
+<ul>
+<li>✅ existe en GitHub</li>
+<li>❌ pero NO contiene ningún commit</li>
+</ul>
+<p>Git necesita que exista <strong>al menos un commit inicial</strong> para poder clonar un repositorio.</p>
+<h3 id="que-ocurre-si-se-intenta-clonar-un-repositorio-vacio">¿Qué ocurre si se intenta clonar un repositorio vacío?</h3>
+<p>Al ejecutar:</p>
+<pre><code class="language-bash">git clone git@github.com:tu_usuario/RamasGitJavaDAM.git
+</code></pre>
+<p>Git puede mostrar mensajes como:</p>
+<pre><code>fatal: repository 'git@github.com:tu_usuario/RamasGitJavaDAM.git' does not contain any commits
+</code></pre>
+<p>o</p>
+<pre><code>warning: You appear to have cloned an empty repository.
+</code></pre>
+<p>Esto significa que GitHub todavía no tiene ninguna versión del proyecto y, por tanto, no puede generar una copia local.</p>
+<h3 id="formas-correctas-de-trabajar">Formas correctas de trabajar</h3>
+<p>Existen dos métodos válidos para evitar este problema:</p>
+<h4 id="opcion-1-crear-el-repositorio-en-github-con-readmemd-mas-sencilla">✅ Opción 1: Crear el repositorio en GitHub con README.md (más sencilla)</h4>
+<ol>
+<li>Crear el repositorio en GitHub</li>
+<li>Activar la opción <strong>"Add README.md"</strong></li>
+<li>Clonar normalmente:</li>
+</ol>
+<pre><code class="language-bash">git clone git@github.com:tu_usuario/RamasGitJavaDAM.git
+</code></pre>
+<p>Esta opción funciona porque GitHub ya contiene:</p>
+<ul>
+<li>un primer archivo</li>
+<li>un commit inicial</li>
+<li>la rama <code>main</code></li>
+</ul>
+<h4 id="opcion-2-repositorio-vacio-en-github-inicializacion-en-local-mas-profesional">✅ Opción 2: Repositorio vacío en GitHub + inicialización en local (más profesional)</h4>
+<p>Este método es el más similar al flujo de trabajo real en desarrollo:
+primero se crea el proyecto en local y después se sincroniza con GitHub.</p>
+<ol>
+<li>
+<p>Crear un repositorio vacío en GitHub
+   <em>(sin README, sin <code>.gitignore</code>, sin licencia)</em></p>
+</li>
+<li>
+<p>Crear un <strong>proyecto en Eclipse</strong> dentro del <em>workspace</em>
+   Por ejemplo, un proyecto Java llamado <code>RamasGitJavaDAM</code> cómo se comenta en el siguiente apartado, a partir del punto 4 <a href="#crear_clase">Crear la clase y el código inicial</a></p>
+</li>
+</ol>
+<blockquote>
+<p>Eclipse generará la carpeta del proyecto en tu ordenador</p>
+</blockquote>
+<ol>
+<li>Abrir una terminal dentro de la carpeta del proyecto</li>
+</ol>
+<p>Ejemplo en Windows:</p>
+<p><code>bash
+   cd "C:\\Users\\alumno\\eclipse-workspace\\RamasGitJavaDAM"</code></p>
+<ol>
+<li>Inicializar Git en el proyecto:</li>
+</ol>
+<p><code>bash
+   git init</code></p>
+<ol>
+<li>Confirmar la primera versión:</li>
+</ol>
+<p><code>bash
+   git add .
+   git commit -m "Commit inicial"</code></p>
+<ol>
+<li>Vincular el proyecto local con el repositorio remoto de GitHub:</li>
+</ol>
+<p><code>bash
+   git remote add origin git@github.com:tu_usuario/RamasGitJavaDAM.git</code></p>
+<ol>
+<li>Subir la primera versión:</li>
+</ol>
+<p><code>bash
+   git branch -M main
+   git push -u origin main</code></p>
+<hr />
+<h2 id="2-crear-el-proyecto-java-dentro-de-la-carpeta-clonada-si-optas-por-la-opcion-1-importante-hacer-bien-el-punto-2">2) Crear el proyecto <strong>Java</strong> dentro de la carpeta clonada <em>(si optas por la opción 1 importante hacer bien el punto 2)</em></h2>
+<ol>
+<li>Eclipse → <strong>File → New → Java Project</strong>.</li>
+<li><strong>Desmarca</strong> <em>Use default location</em> y en <strong>Location</strong> elige la carpeta clonada <code>RamasGitJavaDAM</code>.</li>
+<li>Nombre del proyecto: <code>RamasGitJavaDAM</code> → <strong>Finish</strong>.</li>
+<li>
+<p>Crea la clase: <em>File → New → Class</em> <a id="crear_clase"></a></p>
+</li>
+<li>
+<p>Package: <code>edu.alumno.ramas</code></p>
+</li>
+<li>Name: <code>Main</code></li>
+<li>
+<p>Marca <em>public static void main(String[] args)</em>.</p>
+</li>
+<li>
+<p>Código inicial:</p>
+</li>
+</ol>
+<p>```java
+   package edu.alumno.ramas;</p>
+<p>import java.util.Random;
+   import java.util.HashSet;</p>
+<p>public class Main {
+       public static void main(String[] args) {
+           // Lotería Primitiva: 5 números principales (1..49) + 1 complementario
+           HashSet<Integer> bolas = new HashSet&lt;&gt;();
+           Random r = new Random();
+           while (bolas.size() &lt; 5) {
+               bolas.add(r.nextInt(49) + 1);
+           }
+           System.out.println("Números principales: " + bolas);
+           int complementario = r.nextInt(49) + 1;
+           System.out.println("Complementario: " + complementario);
+       }
+   }
+   ```
+6. Ejecuta en Eclipse (<em>Run As → Java Application</em>).</p>
+<hr />
+<h2 id="3-poner-bajo-control-de-versiones-y-primer-commit-solo-terminal">3) Poner bajo control de versiones y primer <em>commit</em> (solo terminal)</h2>
+<p>Desde la carpeta del repo (terminal):</p>
+<pre><code class="language-bash">echo &quot;/bin/&quot; &gt; .gitignore
+
+git add .
+git commit -m &quot;Estructura Eclipse + Main con Lotería (inicial)&quot;
+git branch -M main
+git push -u origin main
+</code></pre>
+<hr />
+<h2 id="4-ramas-crear-cambiar-y-trabajar-en-paralelo">4) Ramas: crear, cambiar y trabajar en paralelo</h2>
+<blockquote>
+<p>Usaremos <code>git switch</code> (más claro que <code>checkout</code>).</p>
+</blockquote>
+<ol>
+<li>Crear una rama de desarrollo y cambiarte a ella:</li>
+</ol>
+<p><code>bash
+   git switch -c desarrollo/ej1</code>
+2. En Eclipse, modifica <code>Main</code> para <strong>mostrar también la suma de las 5 bolas</strong>. Por ejemplo:</p>
+<p><code>java
+   int suma = bolas.stream().mapToInt(Integer::intValue).sum();
+   System.out.println("Suma de principales: " + suma);</code>
+3. Guardar y <em>commit</em> en la rama:</p>
+<p><code>bash
+   git add src/edu/alumno/ramas/Main.java
+   git commit -m "Suma de números principales"</code>
+4. Cambiar a <code>main</code> y comprobar que <strong>ahí no está</strong> la suma:</p>
+<p><code>bash
+   git switch main</code></p>
+<hr />
+<h2 id="5-fusionar-merge-en-main">5) Fusionar (merge) en <code>main</code></h2>
+<ol>
+<li>Estando en <code>main</code>, fusiona la rama de trabajo:</li>
+</ol>
+<p><code>bash
+   git merge desarrollo/ej1</code>
+2. Si no hay conflictos, sube:</p>
+<p><code>bash
+   git push</code></p>
+<hr />
+<h2 id="6-forzar-un-conflicto-y-resolverlo">6) Forzar un <strong>conflicto</strong> y resolverlo</h2>
+<ol>
+<li>Crea <strong>otra rama</strong> y cámbiate:</li>
+</ol>
+<p><code>bash
+   git switch -c feature/mensaje</code>
+2. En Eclipse, cambia la línea de salida principal, por ejemplo:</p>
+<p><code>java
+   System.out.println("¡Suerte en el sorteo, DAM!");</code></p>
+<p><em>Commit</em>:</p>
+<p><code>bash
+   git add src/edu/alumno/ramas/Main.java
+   git commit -m "Mensaje en consola (rama feature/mensaje)"</code>
+3. Vuelve a <code>main</code> y edita <strong>la misma línea</strong> con otro texto distinto:</p>
+<ul>
+<li>Edita en Eclipse la misma <code>println</code> con otro mensaje.</li>
+<li><em>Commit</em> en <code>main</code>:</li>
+</ul>
+<p><code>bash
+   git add src/edu/alumno/ramas/Main.java
+   git commit -m "Mensaje alternativo en main"</code>
+4. Intenta fusionar <code>feature/mensaje</code> en <code>main</code>:</p>
+<p><code>bash
+   git merge feature/mensaje</code></p>
+<p>Verás marcas de conflicto en el fichero:</p>
+<p>```
+   &lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD
+   (versión en main)
+   =======
+   (versión en feature/mensaje)</p>
+<blockquote>
+<blockquote>
+<blockquote>
+<blockquote>
+<blockquote>
+<blockquote>
+<blockquote>
+<p>feature/mensaje
+   ```
+5. Abre el archivo en Eclipse, <strong>resuelve</strong> dejando la versión correcta (o combinada), <strong>elimina las marcas</strong> y guarda.
+6. Finaliza el merge desde terminal:</p>
+</blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
+<p><code>bash
+   git add src/edu/alumno/ramas/Main.java
+   git commit -m "Merge: resuelto conflicto en Main.java"
+   git push</code></p>
+<hr />
+<h2 id="7-stash-aparcar-cambios-sin-commit">7) <code>stash</code>: aparcar cambios sin <em>commit</em></h2>
+<p>Cuando necesites cambiar de rama pero tienes cambios a medias:</p>
+<pre><code class="language-bash">git stash save &quot;WIP: refactor salida&quot;
+# Cambias de rama, haces lo necesario…
+git switch main
+git stash list
+git stash pop   # recupera y aplica el último
+</code></pre>
+<hr />
+<h2 id="8-sincronizar-con-github-y-pull-de-cambios-remotos">8) Sincronizar con GitHub y <em>pull</em> de cambios remotos</h2>
+<ol>
+<li>Sube tu rama de trabajo (opcional):</li>
+</ol>
+<p><code>bash
+   git push -u origin desarrollo/ej1</code>
+2. Haz un <strong>cambio directo en GitHub</strong> (icono ✏️ sobre <code>Main.java</code>) añadiendo una línea, por ejemplo:</p>
+<p><code>java
+   System.out.println("Cambio realizado desde GitHub");</code></p>
+<p>Confirma el <em>commit</em> en la web.
+3. Vuelve a la terminal local (en <code>main</code>) y sincroniza:</p>
+<p><code>bash
+   git pull origin main</code>
+4. Ejecuta en Eclipse para verificar que aparece la nueva línea.</p>
+<hr />
+<h2 id="9-comandos-de-referencia">9) Comandos de referencia</h2>
+<pre><code class="language-bash">git status
+git log --oneline --graph --decorate
+
+git branch                # listar ramas
+git switch -c nombre      # crear y cambiar a rama
+git switch nombre         # cambiar de rama
+
+git add -A
+git commit -m &quot;mensaje&quot;
+
+git merge &lt;rama&gt;
+
+git stash / git stash pop / git stash list
+
+git push -u origin main
+git pull origin main
+</code></pre>
+<hr />
+<h2 id="10-entrega">10) Entrega</h2>
+<p>Sube a Moodle:</p>
+<ul>
+<li>Captura de Eclipse ejecutando <code>Main</code>.</li>
+<li>Captura de terminal con: <code>git log --oneline --graph</code>, un <em>merge</em> resuelto, y un <em>pull</em> desde GitHub.</li>
+<li>Enlace al repositorio GitHub.</li>
+</ul>
+              
+            </div>
+          </div><footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+    
+  </span>
+</div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+      <script src="../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

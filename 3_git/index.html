@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>U3 Git - Entornos de Desarrollo 1º CFGS DAM-DAW</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "U3 Git";
+        var mkdocs_page_input_path = "3_git.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> Entornos de Desarrollo 1º CFGS DAM-DAW
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="..">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="" href="../3_intro.md">U1 Introducción</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../2_eclipse/">U2 Eclipse</a>
+                </li>
+              </ul>
+              <ul class="current">
+                <li class="toctree-l1 current"><a class="reference internal current" href="#">U3 Git</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#introduccion">INTRODUCCIÓN</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#objetivos">OBJETIVOS</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#indice-de-la-unidad">ÍNDICE DE LA UNIDAD</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#practicas">PRÁCTICAS</a>
+    </li>
+    </ul>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../practicas_modulo/">Prácticas</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">Entornos de Desarrollo 1º CFGS DAM-DAW</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">U3 Git</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="u3-control-de-versiones-git-github">U3 - Control de versiones (Git + GitHub)</h1>
+<hr />
+<h2 id="introduccion">INTRODUCCIÓN</h2>
+<p>En el desarrollo profesional de software, es fundamental dominar <strong>sistemas de control de versiones</strong> que permitan gestionar el código fuente de forma segura, colaborativa y eficiente.
+<strong>Git</strong> es la herramienta más extendida para este propósito, y <strong>GitHub</strong> es la plataforma más popular para alojar repositorios en la nube, facilitando la colaboración y sincronización entre desarrolladores.</p>
+<p>En este tema aprenderemos a trabajar con <strong>Git en local</strong>, <strong>conectarlo con GitHub</strong>, <strong>sincronizar cambios</strong>, <strong>gestionar ramas</strong> y <strong>controlar el historial de versiones</strong>.</p>
+<hr />
+<h2 id="objetivos">OBJETIVOS</h2>
+<ul>
+<li>Comprender los fundamentos del <strong>control de versiones distribuido</strong> con Git.</li>
+<li>Crear y gestionar repositorios locales.</li>
+<li>Configurar la conexión con GitHub mediante <strong>HTTPS</strong> o <strong>SSH</strong>.</li>
+<li>Sincronizar cambios entre el repositorio local y remoto (<code>push</code>, <code>pull</code>, <code>fetch</code>, <code>clone</code>, <code>fork</code>).</li>
+<li>Trabajar de forma estructurada con <strong>ramas</strong> y <strong>fusiones (merge)</strong>.</li>
+<li>Consultar, revertir o restaurar versiones anteriores mediante el historial de commits.</li>
+<li>Aplicar buenas prácticas en el trabajo colaborativo y en la gestión del código.</li>
+</ul>
+<hr />
+<h2 id="indice-de-la-unidad">ÍNDICE DE LA UNIDAD</h2>
+<table>
+<thead>
+<tr>
+<th>Nº</th>
+<th>Apartado</th>
+<th>Contenido principal</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td><a href="../3_git_ap1_git_basico/"><strong>Git básico (trabajo en local)</strong></a></td>
+<td>Flujo local, <code>init</code>, <code>add</code>, <code>commit</code>, <code>status</code>, <code>log</code></td>
+</tr>
+<tr>
+<td>2</td>
+<td><a href="../3_git_ap2_conexion_github/"><strong>Conexión con GitHub</strong></a></td>
+<td>Tipos de conexión: HTTPS, SSH, token, credential helper</td>
+</tr>
+<tr>
+<td>3</td>
+<td><a href="../3_git_ap3_sincronizacion/"><strong>Sincronización con repos remotos</strong></a></td>
+<td><code>push</code>, <code>pull</code>, <code>fetch</code>, <code>clone</code>, <code>fork</code>, <code>remote</code></td>
+</tr>
+<tr>
+<td>4</td>
+<td><a href="../3_git_ap4_ramas/"><strong>Gestión de ramas</strong></a></td>
+<td>Creación, fusión, conflictos, eliminación y buenas prácticas</td>
+</tr>
+<tr>
+<td>5</td>
+<td><a href="../3_git_ap5_commits/"><strong>Gestión del historial de commits</strong></a></td>
+<td>Consulta, revert, reset, checkout y navegación entre versiones</td>
+</tr>
+<tr>
+<td>6</td>
+<td><a href="../3_git_ap6_resumen/"><strong>Hojas resumen del tema (chuletas)</strong></a></td>
+<td>Síntesis de comandos y flujos visuales</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="practicas">PRÁCTICAS</h2>
+<ul>
+<li><a href="../3_git_practica1/">Práctica 1 - Uso básico de Git</a></li>
+<li><a href="../3_git_practica2/">Práctica 2 – Generar y usar clave <strong>SSH</strong> con Git y GitHub</a></li>
+<li><a href="../3_git_practica3/">Práctica 3: Ramas y GitHub (Java + Eclipse, <strong>Git por terminal</strong>)</a></li>
+<li><a href="../3_git_practica4/">Práctica 4: Rebase con conflicto en Git</a></li>
+<li><a href="../3_git_practica5/">Práctica 5: Entendiendo <code>git reset</code></a></li>
+<li><a href="../3_git_practica6/">Práctica 6: Entendiendo <code>git revert</code> (deshacer cambios sin borrar historia)</a></li>
+</ul>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../2_eclipse/" class="btn btn-neutral float-left" title="U2 Eclipse"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../practicas_modulo/" class="btn btn-neutral float-right" title="Prácticas">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../2_eclipse/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../practicas_modulo/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+      <script src="../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

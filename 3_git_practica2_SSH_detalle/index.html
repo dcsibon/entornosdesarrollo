@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>3 git practica2 SSH detalle - Entornos de Desarrollo 1º CFGS DAM-DAW</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "3 git practica2 SSH detalle";
+        var mkdocs_page_input_path = "3_git_practica2_SSH_detalle.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> Entornos de Desarrollo 1º CFGS DAM-DAW
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="..">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="" href="../3_intro.md">U1 Introducción</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../2_eclipse/">U2 Eclipse</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../3_git/">U3 Git</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../practicas_modulo/">Prácticas</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">Entornos de Desarrollo 1º CFGS DAM-DAW</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">3 git practica2 SSH detalle</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h2 id="1-que-son-realmente-las-dos-claves">1. Qué son realmente las dos claves</h2>
+<p>Cuando generas tu par de claves SSH:</p>
+<pre><code class="language-bash">ssh-keygen -t ed25519 -C &quot;tu_usuario@g.educaand.es&quot;
+</code></pre>
+<p>se crean dos archivos:</p>
+<table>
+<thead>
+<tr>
+<th>Tipo</th>
+<th>Archivo</th>
+<th>Dónde está</th>
+<th>Se comparte</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>🔑 Clave <strong>privada</strong></td>
+<td><code>~/.ssh/id_ed25519</code></td>
+<td>Solo en tu equipo</td>
+<td>❌ <strong>Nunca</strong></td>
+</tr>
+<tr>
+<td>🪪 Clave <strong>pública</strong></td>
+<td><code>~/.ssh/id_ed25519.pub</code></td>
+<td>Se puede copiar</td>
+<td>✅ Sí, se sube a GitHub</td>
+</tr>
+</tbody>
+</table>
+<p>Ambas forman un <strong>par matemático</strong>:
+lo que una cifra, solo la otra puede descifrar.</p>
+<hr />
+<h2 id="2-que-ocurre-cuando-te-conectas-a-github-por-ssh">2. Qué ocurre cuando te conectas a GitHub por SSH</h2>
+<p>Cuando haces, por ejemplo:</p>
+<pre><code class="language-bash">ssh -T git@github.com
+</code></pre>
+<p>ocurren <strong>varios pasos invisibles pero muy importantes:</strong></p>
+<ol>
+<li>
+<p><strong>Tu cliente SSH (en tu equipo)</strong> contacta con el servidor de GitHub (<code>git@github.com</code>).</p>
+</li>
+<li>
+<p>GitHub revisa su base de datos interna:</p>
+</li>
+<li>
+<p>Busca todas las <strong>claves públicas</strong> asociadas a tu cuenta.</p>
+</li>
+<li>
+<p>El servidor <strong>elige una de esas claves públicas</strong> y crea un <strong>mensaje aleatorio (reto)</strong> que cifra <strong>usando tu clave pública</strong>.</p>
+</li>
+<li>
+<p>Ese mensaje cifrado viaja hasta tu ordenador.</p>
+</li>
+<li>
+<p>Tu ordenador (cliente SSH):</p>
+</li>
+<li>
+<p>Usa tu <strong>clave privada</strong> (que nunca sale de tu equipo)</p>
+</li>
+<li>Desencripta el mensaje.</li>
+<li>
+<p>Envía la <strong>respuesta descifrada</strong> de vuelta a GitHub.</p>
+</li>
+<li>
+<p>GitHub comprueba:</p>
+</li>
+</ol>
+<blockquote>
+<p>“La respuesta es correcta → este usuario posee la clave privada correspondiente a la pública que tengo registrada.”</p>
+</blockquote>
+<p>✅ <strong>Autenticación completada sin necesidad de contraseña.</strong></p>
+<hr />
+<h2 id="3-por-que-esto-es-seguro">3. Por qué esto es seguro</h2>
+<ul>
+<li>Tu <strong>clave privada nunca viaja</strong> por la red.</li>
+<li>La clave pública <strong>no sirve para acceder</strong> al servidor:
+  con ella solo se pueden <strong>verificar firmas</strong>, no generarlas.</li>
+<li>Incluso si alguien copia tu clave pública de GitHub o de tu ordenador, <strong>no puede hacer nada</strong> sin la clave privada.</li>
+</ul>
+<p>💡 <strong>Analogía simple:</strong></p>
+<blockquote>
+<p>Piensa en la clave pública como un <strong>candado abierto</strong> que cualquiera puede tener.
+Pero solo tú tienes la <strong>llave que lo abre</strong> (la clave privada).
+GitHub pone tu candado, tú demuestras que tienes la llave correcta.</p>
+</blockquote>
+<hr />
+<h2 id="4-que-comprueba-exactamente-ssh">4. Qué comprueba exactamente SSH</h2>
+<p>Cuando haces <code>git push</code>, el proceso es este:</p>
+<table>
+<thead>
+<tr>
+<th>Paso</th>
+<th>Qué hace</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1️⃣</td>
+<td>Tu cliente SSH usa la clave privada para firmar un mensaje.</td>
+</tr>
+<tr>
+<td>2️⃣</td>
+<td>GitHub usa la clave pública que tiene guardada para verificar esa firma.</td>
+</tr>
+<tr>
+<td>3️⃣</td>
+<td>Si la verificación es válida, GitHub sabe que <strong>eres tú</strong> (dueño de la clave).</td>
+</tr>
+<tr>
+<td>4️⃣</td>
+<td>Se establece una conexión cifrada segura para enviar los datos (<code>push</code>, <code>pull</code>, etc.).</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="5-si-alguien-roba-o-copia-la-clave-publica">5. Si alguien roba o copia la clave pública</h2>
+<p>No hay peligro.</p>
+<ul>
+<li><strong>La clave pública sola no sirve para autenticarse.</strong></li>
+<li>No se puede “invertir” matemáticamente para obtener la privada (con algoritmos como RSA o Ed25519, sería imposible con la potencia actual de cómputo).</li>
+<li>Puedes subir la misma clave pública en varios servidores; todos reconocerán tu misma identidad.</li>
+</ul>
+<p>El <strong>riesgo real</strong> sería que alguien copie tu <strong>clave privada</strong>, porque entonces <strong>podría hacerse pasar por ti</strong>.
+Por eso debe:</p>
+<ul>
+<li>Estar solo en tu usuario.</li>
+<li>Tener permisos <code>600</code> (solo lectura/escritura para el dueño).</li>
+<li>Y opcionalmente una <strong>contraseña</strong> (passphrase) al crearla.</li>
+</ul>
+<hr />
+<h2 id="6-que-guarda-github-internamente">6. Qué guarda GitHub internamente</h2>
+<p>GitHub no guarda contraseñas ni hashes de ellas cuando usas SSH.
+Guarda únicamente <strong>la parte pública de tu clave</strong>.</p>
+<p>Así, cuando te conectas, <strong>GitHub no “compara” claves directamente</strong>, sino que <strong>verifica una firma criptográfica</strong> generada con tu privada.</p>
+<hr />
+<h2 id="7-ejemplo-visual-simplificado">7. Ejemplo visual simplificado</h2>
+<pre><code>Tu equipo                              GitHub
+-----------                            ---------
+Tienes clave privada                   Guarda tu clave pública
+
+↓ 1. Envías solicitud SSH  →           &quot;¿Tienes la clave que corresponde a esta?&quot;
+                                         ↓
+                                     Cifra un mensaje con tu clave pública
+                                         ↓
+← 2. Recibes mensaje cifrado
+
+3. Desencriptas con tu clave privada
+4. Envías el resultado
+                                         ↓
+                                     Verifica que coincide
+                                         ↓
+                                     ✅ Acceso concedido
+</code></pre>
+<hr />
+<h2 id="resumen">RESUMEN</h2>
+<table>
+<thead>
+<tr>
+<th>Concepto</th>
+<th>Explicación</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Clave pública</td>
+<td>Identifica tu equipo, se sube a GitHub</td>
+</tr>
+<tr>
+<td>Clave privada</td>
+<td>Demuestra tu identidad, se guarda en tu PC</td>
+</tr>
+<tr>
+<td>Qué se compara</td>
+<td>No se comparan claves, se verifica una firma digital</td>
+</tr>
+<tr>
+<td>Si copian la pública</td>
+<td>No pasa nada</td>
+</tr>
+<tr>
+<td>Si copian la privada</td>
+<td>Pueden suplantarte (¡nunca compartirla!)</td>
+</tr>
+</tbody>
+</table>
+              
+            </div>
+          </div><footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+    
+  </span>
+</div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+      <script src="../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

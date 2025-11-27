@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>Práctica 1: Mi primer programa con Eclipse - Entornos de Desarrollo 1º CFGS DAM-DAW</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Pr\u00e1ctica 1: Mi primer programa con Eclipse";
+        var mkdocs_page_input_path = "2_eclipse_practica1.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> Entornos de Desarrollo 1º CFGS DAM-DAW
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="..">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="" href="../3_intro.md">U1 Introducción</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../2_eclipse/">U2 Eclipse</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../3_git/">U3 Git</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../practicas_modulo/">Prácticas</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">Entornos de Desarrollo 1º CFGS DAM-DAW</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">Práctica 1: Mi primer programa con Eclipse</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="practica-1-mi-primer-programa-con-eclipse">Práctica 1: Mi primer programa con Eclipse</h1>
+<h2 id="objetivo">Objetivo</h2>
+<ul>
+<li>Crear y ejecutar un proyecto Java en Eclipse.</li>
+<li>Practicar la escritura básica en Java (clases, <code>main</code>, instrucciones).</li>
+<li>Usar comentarios y mantener el código legible.</li>
+<li>Aplicar refactorización y formateo automático.</li>
+<li>Entregar el proyecto completo en GitHub.</li>
+</ul>
+<hr />
+<h2 id="1-crear-proyecto-paquete-y-clase">1. Crear proyecto, paquete y clase</h2>
+<ol>
+<li>
+<p><code>File → New → Java Project</code>.</p>
+</li>
+<li>
+<p><strong>Project name</strong>: <code>PrimerPrograma</code>.</p>
+</li>
+<li>Desactiva <strong>Create module-info.java file</strong> (no trabajamos con módulos todavía).</li>
+<li>Pulsa <em>Finish</em>.</li>
+<li>En <strong>src</strong>, crea un <strong>paquete</strong> llamado <code>tema2_eclipse</code>.</li>
+<li>
+<p>Dentro del paquete, crea una <strong>clase</strong> llamada <code>MyFirstProgramme</code>.</p>
+</li>
+<li>
+<p>Marca la casilla para añadir el método <code>public static void main(String[] args)</code>.</p>
+</li>
+</ol>
+<hr />
+<h2 id="2-escribir-el-primer-programa">2. Escribir el primer programa</h2>
+<p>En el método <code>main</code>, escribe (usa la plantilla <strong>sysout</strong>: teclea <code>sysout</code> y pulsa <code>Ctrl + Espacio</code>):</p>
+<pre><code class="language-java">System.out.println(&quot;¡Mi primer programa!&quot;);
+</code></pre>
+<p>Ejecuta el programa con el botón verde ▶️ o <code>Run → Run</code>.
+La consola debe mostrar:</p>
+<pre><code>¡Mi primer programa!
+</code></pre>
+<p>Añade más salidas:</p>
+<pre><code class="language-java">System.out.println(&quot;Reglas básicas de Java:&quot;);
+System.out.println(&quot;1) Distingue MAYÚSCULAS y minúsculas&quot;);
+System.out.println(&quot;2) Cada instrucción termina con ;&quot;);
+</code></pre>
+<hr />
+<h2 id="3-usar-comentarios">3. Usar comentarios</h2>
+<ul>
+<li><strong>Comentario de una línea</strong>:</li>
+</ul>
+<pre><code class="language-java">// Este programa imprime mensajes en consola
+</code></pre>
+<ul>
+<li><strong>Comentario de varias líneas</strong>:</li>
+</ul>
+<pre><code class="language-java">/* 
+   Autor: (escribe tu nombre)
+   Fecha: (escribe la fecha)
+*/
+</code></pre>
+<p>💡 Atajo: comentar/descomentar rápidamente → <strong>Ctrl+Shift+C</strong> o <strong>Ctrl+7</strong>.</p>
+<hr />
+<h2 id="4-refactorizacion-rename">4. Refactorización (Rename)</h2>
+<ul>
+<li>Crea una variable:</li>
+</ul>
+<pre><code class="language-java">int totalMensajes = 0;
+totalMensajes++;
+System.out.println(&quot;Mensajes impresos: &quot; + totalMensajes);
+</code></pre>
+<ul>
+<li>
+<p>Selecciona <code>totalMensajes</code> → <strong>Alt+Shift+R</strong> (o botón derecho → Refactor → Rename).
+  Renómbrala a <code>contadorMensajes</code>. Eclipse actualizará todas las referencias.</p>
+</li>
+<li>
+<p>Haz lo mismo con la clase <code>MyFirstProgramme</code> → renómbrala a <code>HelloEclipse</code>.
+  Eclipse renombrará también el archivo <code>.java</code>.</p>
+</li>
+</ul>
+<hr />
+<h2 id="5-formateo-automatico">5. Formateo automático</h2>
+<p>Pega este código mal tabulado:</p>
+<pre><code class="language-java">int x=3;
+    System.out.print(&quot;Este código no está&quot;);
+System.out.print(&quot; muy bien &quot;);
+            System.out.print(&quot;tabulado&quot;);
+x=7;
+System.out.println();
+</code></pre>
+<p>Pulsa <strong>Ctrl+Shift+F</strong> (o <code>Source → Format</code>).
+Eclipse lo corregirá automáticamente con sangrado uniforme:</p>
+<pre><code class="language-java">int x = 3;
+System.out.print(&quot;Este código no está&quot;);
+System.out.print(&quot; muy bien &quot;);
+System.out.print(&quot;tabulado&quot;);
+x = 7;
+System.out.println();
+</code></pre>
+<hr />
+<h2 id="6-codigo-final-ejemplo-orientativo">6. Código final (ejemplo orientativo)</h2>
+<pre><code class="language-java">package tema2_eclipse;
+
+public class HelloEclipse {
+
+    public static void main(String[] args) {
+        // Comentario de una línea: primer programa
+        System.out.println(&quot;¡Mi primer programa!&quot;);
+
+        System.out.println(&quot;Reglas básicas de Java:&quot;);
+        System.out.println(&quot;1) Distingue MAYÚSCULAS y minúsculas&quot;);
+        System.out.println(&quot;2) Cada instrucción termina con ;&quot;);
+
+        /* Comentario de varias líneas:
+           Autor: (alumno)
+           Fecha: (hoy)
+        */
+
+        int x = 3;
+        System.out.print(&quot;Este código no está&quot;);
+        System.out.print(&quot; muy bien &quot;);
+        System.out.print(&quot;tabulado&quot;);
+        x = 7;
+        System.out.println();
+
+        int contadorMensajes = 0;
+        contadorMensajes++;
+        System.out.println(&quot;Mensajes impresos: &quot; + contadorMensajes);
+    }
+}
+</code></pre>
+<hr />
+<h2 id="entrega">🔄 Entrega</h2>
+<ol>
+<li>Crea un <strong>repositorio público en GitHub</strong> llamado:
+   <strong><code>PR-Eclipse-01-PrimerPrograma</code></strong>.</li>
+<li>Sube al repositorio la <strong>carpeta completa del proyecto de Eclipse</strong> (con <code>.project</code>, <code>.classpath</code>, carpeta <code>src</code>, etc.).</li>
+<li>Entrega en Moodle la <strong>URL del repositorio</strong>.</li>
+</ol>
+              
+            </div>
+          </div><footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+    
+  </span>
+</div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+      <script src="../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

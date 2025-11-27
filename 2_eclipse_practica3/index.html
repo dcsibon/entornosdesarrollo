@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>Práctica 3: Configuración del Editor de Eclipse - Entornos de Desarrollo 1º CFGS DAM-DAW</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Pr\u00e1ctica 3: Configuraci\u00f3n del Editor de Eclipse";
+        var mkdocs_page_input_path = "2_eclipse_practica3.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> Entornos de Desarrollo 1º CFGS DAM-DAW
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="..">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="" href="../3_intro.md">U1 Introducción</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../2_eclipse/">U2 Eclipse</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../3_git/">U3 Git</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../practicas_modulo/">Prácticas</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">Entornos de Desarrollo 1º CFGS DAM-DAW</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">Práctica 3: Configuración del Editor de Eclipse</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="practica-3-configuracion-del-editor-de-eclipse">Práctica 3: Configuración del Editor de Eclipse</h1>
+<h2 id="objetivo">🎯 Objetivo</h2>
+<p>Familiarizarse con las principales <strong>preferencias del editor Java</strong> en Eclipse: personalización visual, ayudas de escritura, acciones automáticas, plantillas y estilo del código.</p>
+<p>El alumno deberá <strong>modificar, comprobar y documentar</strong> diferentes opciones del editor, añadiendo <strong>capturas de pantalla</strong> y una breve explicación de su efecto.</p>
+<hr />
+<h2 id="estructura-del-repositorio">📁 Estructura del repositorio</h2>
+<pre><code>PROG-U2-PracticaEclipseEditor/
+│
+├── README.md            → Explicación general de la práctica y resultados.
+├── src/
+│   └── Ejemplo.java     → Pequeño código usado para probar los cambios.
+└── capturas/
+    ├── 01_general.png
+    ├── 02_save_actions.png
+    ├── 03_content_assist.png
+    ├── 04_syntax_coloring.png
+    ├── 05_mark_occurrences.png
+    ├── 06_typing.png
+    └── 07_templates.png
+</code></pre>
+<blockquote>
+<p>💡 <em>Sugerencia:</em> crea un pequeño programa <code>Ejemplo.java</code> para probar los cambios del editor, por ejemplo:</p>
+<p><code>java
+public class Ejemplo {
+    public static void main(String[] args) {
+        int x = 5;
+        if (x &lt; 10) {
+            System.out.println("Valor menor que 10");
+        }
+    }
+}</code></p>
+</blockquote>
+<hr />
+<h2 id="instrucciones">🧾 Instrucciones</h2>
+<h3 id="1-opciones-generales"><strong>1. Opciones generales</strong></h3>
+<ul>
+<li>Activa la opción <strong>Matching Bracket</strong> para que Eclipse resalte la llave o paréntesis correspondiente.  </li>
+<li>Captura un pantallazo de un bloque <code>if</code> mostrando la llave resaltada.  </li>
+<li>Explica brevemente por qué es útil esta función.</li>
+</ul>
+<hr />
+<h3 id="2-save-actions"><strong>2. Save Actions</strong></h3>
+<ul>
+<li>Activa las opciones <strong>Format source code</strong> y <strong>Organize imports</strong>.  </li>
+<li>Desordena a propósito el código y guarda con <code>Ctrl + S</code> para ver cómo Eclipse lo formatea.  </li>
+<li>Realiza una captura de pantalla <strong>antes y después de guardar</strong>.  </li>
+<li>Explica qué hace cada una de las opciones activadas.</li>
+</ul>
+<hr />
+<h3 id="3-content-assist"><strong>3. Content Assist</strong></h3>
+<ul>
+<li>Modifica la opción <strong>“Auto activation delay (ms)”</strong> y configurala a <code>1000</code>. </li>
+<li>Escribe <code>System.</code> y muestra la lista de sugerencias automáticas.</li>
+<li>Realiza una <strong>captura del autocompletado</strong>.  </li>
+<li>Explica:  <blockquote>
+<p>Explica brevemente qué hace este parámetro. <em>(para observar la diferencia, vuelve a cambiarlo a 0)</em>
+¿Qué función tiene “Content Assist” y por qué mejora la productividad?</p>
+</blockquote>
+</li>
+</ul>
+<hr />
+<h3 id="4-syntax-coloring"><strong>4. Syntax Coloring</strong></h3>
+<ul>
+<li>Cambia el color de los <strong>comentarios</strong> <em>(simples y múltiples)</em> y de las <strong>palabras clave</strong> <em>(todas excepto return y return)</em> pero <strong>NO LO APLIQUES</strong>, simplemente realiza una <strong>captura de la pantalla de configuración del "Syntax Coloring"</strong> con los cambios como se mostrarían.  </li>
+<li>Explica por qué es importante tener un buen contraste visual en el código.</li>
+</ul>
+<hr />
+<h3 id="5-mark-occurrences"><strong>5. Mark Occurrences</strong></h3>
+<ul>
+<li>Desactiva temporalmente <strong>“Mark Occurrences”</strong> desde:</li>
+<li>Usa <code>Ctrl + Shift + U</code> sobre una variable para resaltar manualmente sus apariciones.  </li>
+<li>Realiza una <strong>captura</strong> mostrando la vista <strong>Search</strong> con los resultados.  </li>
+<li>Explica la diferencia entre:</li>
+<li><em>Mark Occurrences</em> (resaltado automático)  </li>
+<li><em>Search References</em> (<code>Ctrl + Shift + U</code>, búsqueda manual)</li>
+</ul>
+<hr />
+<h3 id="6-typing"><strong>6. Typing</strong></h3>
+<ul>
+<li>Activa las opciones de <strong>Auto close</strong> (paréntesis, comillas y llaves).  </li>
+<li>Escribe un bloque <code>if</code> y muestra cómo Eclipse completa los símbolos.  </li>
+<li>Realiza una <strong>captura</strong> del resultado.  </li>
+<li>Explica brevemente cómo estas ayudas reducen errores de escritura.</li>
+</ul>
+<hr />
+<h3 id="7-templates"><strong>7. Templates</strong></h3>
+<ul>
+<li>Localiza la plantilla <code>sysout</code> y usa <code>Ctrl + Espacio</code> para insertarla.  </li>
+<li>Realiza una <strong>captura</strong> mostrando la ventana de ayuda donde has encontrado la plantilla.  </li>
+<li>Explica brevemente qué son las plantillas y para qué sirven.  </li>
+<li>Indica la ruta donde se gestionan.</li>
+</ul>
+<hr />
+<h2 id="tarea-final">🧠 <strong>Tarea final</strong></h2>
+<p>Completa el archivo <code>README.md</code> incluyendo:
+- Una breve <strong>descripción de cada apartado modificado</strong>.<br />
+- Todas las <strong>capturas correspondientes</strong> (ubicadas en la carpeta <code>capturas/</code>).<br />
+- Indica, de todas las trabajadas en esta práctica, la opción que crees más útil y piensas que te puede ayudar más en el desarrollo de software con Eclipse y por qué.</p>
+<hr />
+<p>📘 <strong>Resultado esperado:</strong>  </p>
+<p>Un repositorio bien estructurado que muestre, mediante código y capturas, el dominio de las principales herramientas de configuración y personalización del editor de Eclipse.</p>
+<hr />
+<p><strong>ENTREGA:</strong>  </p>
+<p>El <strong>enlace al README.md</strong> de tu repositorio público con la sollución a la práctica.</p>
+              
+            </div>
+          </div><footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+    
+  </span>
+</div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+      <script src="../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

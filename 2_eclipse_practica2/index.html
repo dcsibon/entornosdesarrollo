@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>Práctica 2: Añadir y usar una librería externa en Eclipse - Entornos de Desarrollo 1º CFGS DAM-DAW</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Pr\u00e1ctica 2: A\u00f1adir y usar una librer\u00eda externa en Eclipse";
+        var mkdocs_page_input_path = "2_eclipse_practica2.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> Entornos de Desarrollo 1º CFGS DAM-DAW
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="..">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="" href="../3_intro.md">U1 Introducción</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../2_eclipse/">U2 Eclipse</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../3_git/">U3 Git</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../practicas_modulo/">Prácticas</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">Entornos de Desarrollo 1º CFGS DAM-DAW</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">Práctica 2: Añadir y usar una librería externa en Eclipse</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="practica-2-anadir-y-usar-una-libreria-externa-en-eclipse">Práctica 2: Añadir y usar una librería externa en Eclipse</h1>
+<h2 id="objetivo">🎯 Objetivo</h2>
+<p>Aprender a incorporar una <strong>librería externa (<code>.jar</code>)</strong> al <em>Build Path</em> de un proyecto Java en Eclipse, y utilizar clases contenidas en esa librería desde nuestro código.</p>
+<hr />
+<h2 id="1-crear-el-proyecto"><strong>1. Crear el proyecto</strong></h2>
+<ol>
+<li>Abre Eclipse y crea un nuevo proyecto Java:
+   <strong>File → New → Java Project</strong>
+   Nombre: <code>EjemploLibreria</code></li>
+<li>Verifica que se crea la carpeta <code>src</code> y la librería del sistema:
+   <code>JRE System Library [JavaSE-21]</code></li>
+</ol>
+<hr />
+<h2 id="2-crear-la-estructura-del-proyecto"><strong>2. Crear la estructura del proyecto</strong></h2>
+<ol>
+<li>Dentro del proyecto, crea una carpeta llamada <code>lib</code> (clic derecho sobre el proyecto → <strong>New → Folder → lib</strong>).</li>
+<li>Descarga la librería <strong>Joda-Time</strong> (versión 2.12.7) desde el siguiente enlace:
+   👉 <a href="https://repo1.maven.org/maven2/joda-time/joda-time/2.12.7/joda-time-2.12.7.jar">https://repo1.maven.org/maven2/joda-time/joda-time/2.12.7/joda-time-2.12.7.jar</a></li>
+<li>Copia el archivo descargado dentro de la carpeta <code>lib</code>.</li>
+</ol>
+<hr />
+<h2 id="3-anadir-la-libreria-al-build-path"><strong>3. Añadir la librería al Build Path</strong></h2>
+<ol>
+<li>Clic derecho sobre el proyecto → <strong>Build Path → Configure Build Path…</strong></li>
+<li>En la pestaña <strong>Libraries</strong>, pulsa <strong>Add JARs…</strong></li>
+<li>Localiza el archivo <code>lib/joda-time-2.12.7.jar</code> dentro del proyecto y selecciónalo.</li>
+<li>Pulsa <strong>Apply and Close</strong>.
+   → El <code>.jar</code> aparecerá ahora bajo <strong>Referenced Libraries</strong> en el <em>Package Explorer</em>.</li>
+</ol>
+<hr />
+<h2 id="4-crear-el-paquete-y-la-clase"><strong>4. Crear el paquete y la clase</strong></h2>
+<ol>
+<li>Clic derecho en <code>src</code> → <strong>New → Package</strong>
+   Nombre: <code>es.iessaladillo.dam1.ed.u2</code></li>
+<li>Dentro de ese paquete, crea una clase llamada <code>EjemploLibreria.java</code>.</li>
+</ol>
+<hr />
+<h2 id="5-escribir-el-codigo"><strong>5. Escribir el código</strong></h2>
+<p>Copia el siguiente contenido:</p>
+<pre><code class="language-java">package es.iessaladillo.dam1.ed.u2;
+
+import org.joda.time.LocalDate;   // importamos clase de la librería externa
+
+public class EjemploLibreria {
+    public static void main(String[] args) {
+        LocalDate hoy = new LocalDate();        // Fecha actual
+        LocalDate futuro = hoy.plusDays(10);    // Fecha dentro de 10 días
+
+        //Escribe tú las dos próximas líneas de código:
+        //Muestra el mensaje en consola &quot;Hoy es: XXX&quot;, donde XXX es el valor de la variable hoy.
+        //Muestra el mensaje en consola &quot;Dentro de 10 días será: XXX&quot;, donde XXX es el valor de la variable futuro.
+    }
+}
+</code></pre>
+<hr />
+<h2 id="6-ejecutar-y-comprobar-el-resultado">▶️ <strong>6. Ejecutar y comprobar el resultado</strong></h2>
+<p>Haz clic derecho en el archivo <code>EjemploLibreria.java</code> → <strong>Run As → Java Application</strong></p>
+<p>La salida esperada en la consola será algo similar a:</p>
+<pre><code>Hoy es: 2025-10-07
+Dentro de 10 días será: 2025-10-17
+</code></pre>
+<hr />
+<h2 id="7-reflexion-final">💡 <strong>7. Reflexión final</strong></h2>
+<p>Lee el siguiente apartado, dónde se explica la diferencia entre añadir una librería del mismo proyecto o una externa y contesta a las siguientes preguntas:</p>
+<ul>
+<li>¿Qué pasaría si exporto el proyecto a un .zip y se lo paso a un amigo o me lo llevo al ordenador de casa? ¿Funcionaría? Razona la respuesta.</li>
+<li>¿Qué pasaría si eliminas el archivo <code>.jar</code> de la carpeta <code>lib</code>? <em>(puedes moverla a otro directorio para probarlo)</em> ¿Qué ha pasado y por qué?</li>
+<li>Y si agrego la librería con <code>Add External JARs...</code>. ¿Observas alguna diferencia en la configuración del Build Path? ¿Crees que si lo exporto a .zip y se lo paso a un compañero le funcionaría?</li>
+<li>¿Por qué no es recomendable usar <code>Add External JARs…</code> en proyectos que vas a compartir?</li>
+</ul>
+<hr />
+<h2 id="cuando-usar-add-jars-vs-add-external-jars">Cuándo usar <strong>Add JARs…</strong> vs <strong>Add External JARs…</strong></h2>
+<table>
+<thead>
+<tr>
+<th>Opción</th>
+<th>Cuándo usarla</th>
+<th>Qué hace realmente</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Add JARs…</strong></td>
+<td>Cuando el <code>.jar</code> está <strong>dentro del propio proyecto</strong> (por ejemplo en una carpeta <code>lib/</code> dentro de <code>src/</code> o al mismo nivel)</td>
+<td>Eclipse crea una <strong>referencia relativa</strong>. Si mueves o compartes el proyecto (por ejemplo, en un pendrive o repositorio), el JAR <strong>viaja con él</strong>. ✅ Recomendado para clase o trabajo colaborativo.</td>
+</tr>
+<tr>
+<td><strong>Add External JARs…</strong></td>
+<td>Cuando el <code>.jar</code> está <strong>fuera del proyecto</strong>, por ejemplo en tu escritorio o en <code>Descargas</code></td>
+<td>Eclipse crea una <strong>ruta absoluta</strong> (por ejemplo <code>/Users/diego/Downloads/joda-time.jar</code>). Si compartes el proyecto, el JAR <strong>no se incluirá</strong> y habrá errores en otros equipos. ⚠️ No recomendado salvo que sea una librería compartida globalmente.</td>
+</tr>
+</tbody>
+</table>
+<p>👉 En resumen:</p>
+<ul>
+<li><strong>Para prácticas o proyectos individuales:</strong> usa <strong>Add JARs…</strong> (librería dentro del proyecto).</li>
+<li><strong>Para librerías comunes en varios proyectos (instaladas en el sistema):</strong> usa <strong>Add External JARs…</strong>.</li>
+</ul>
+              
+            </div>
+          </div><footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+    
+  </span>
+</div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+      <script src="../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

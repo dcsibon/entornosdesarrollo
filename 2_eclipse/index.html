@@ -1,0 +1,1464 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>U2 Eclipse - Entornos de Desarrollo 1º CFGS DAM-DAW</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "U2 Eclipse";
+        var mkdocs_page_input_path = "2_eclipse.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> Entornos de Desarrollo 1º CFGS DAM-DAW
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="..">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="" href="../3_intro.md">U1 Introducción</a>
+                </li>
+              </ul>
+              <ul class="current">
+                <li class="toctree-l1 current"><a class="reference internal current" href="#">U2 Eclipse</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#1-introduccion">1. Introducción</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#2-workspace">2. Workspace</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#3-utf-8">3. UTF-8</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#4-editores-vistas-y-perspectivas">4. Editores, vistas y perspectivas</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#perspectivas-principales-en-eclipse">Perspectivas principales en Eclipse</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#5-package-explorer">5. Package Explorer</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#6-camelcase">6. CamelCase</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#7-proyectos-paquetes-y-clases">7. Proyectos, paquetes y clases</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#proyectos">Proyectos</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#paquetes">Paquetes</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#estructura-en-eclipse">Estructura en Eclipse</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#paquete-por-defecto-default-package">Paquete por defecto (default package)</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#recomendacion-practica-para-clase">Recomendación práctica (para clase)</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#clases">Clases</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#operaciones-en-eclipse">Operaciones en Eclipse</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#8-build-path">8. Build Path</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#81-que-es-el-jre-system-library">8.1. ¿Qué es el JRE System Library?</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#82-relacion-jdk-jre-jvm">8.2. Relación JDK – JRE – JVM</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#83-configurar-el-build-path-en-eclipse">8.3. Configurar el Build Path en Eclipse</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#9-importar-en-eclipse">9. Importar en Eclipse</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#importar-clases-sueltas">🔹 Importar clases sueltas</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#importar-paquetes-completos">🔹 Importar paquetes completos</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#importar-proyectos-completos">🔹 Importar proyectos completos</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#10-mi-primer-programa-en-java">10. Mi primer programa en Java</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#explicacion-del-codigo">Explicación del código:</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#11-cambiar-el-nombre-a-los-elementos-de-java">11. Cambiar el nombre a los elementos de Java</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#12-escritura-de-programas-en-java">12. Escritura de programas en Java</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#comentarios-en-java">Comentarios en Java:</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#13-comentarios-en-eclipse">13. Comentarios en Eclipse</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#14-dar-formato-al-codigo">14. Dar formato al código</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#como-dar-formato-al-codigo-en-eclipse">Cómo dar formato al código en Eclipse:</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#15-ejecucion-de-programas-en-java">15. Ejecución de programas en Java</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#16-errores">16. Errores</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#ejemplo-de-advertencia">🧩 Ejemplo de advertencia</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#ejemplo-de-error-de-compilacion">🧨 Ejemplo de error de compilación</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#errores-de-ejecucion-runtime-errors">⚙️ Errores de ejecución (Runtime errors)</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#17-ayudas-al-escribir-codigo">17. Ayudas al escribir código</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#171-esquema-flotante-quick-outline">17.1 Esquema flotante (Quick Outline)</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#172-asistente-de-contenido-content-assist">17.2 Asistente de contenido (Content Assist)</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#173-plantillas-de-codigo-code-templates">17.3 Plantillas de código (Code Templates)</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#18-modificar-las-preferencias-del-editor">18. Modificar las preferencias del editor</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#181-opciones-generales">18.1 Opciones generales</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#182-realizar-acciones-al-guardar-save-actions">18.2 Realizar acciones al guardar (Save Actions)</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#183-asistente-de-contenido-content-assist">18.3 Asistente de contenido (Content Assist)</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#184-coloreado-de-la-sintaxis-syntax-coloring">18.4 Coloreado de la sintaxis (Syntax Coloring)</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#185-marcar-apariciones-mark-occurrences">18.5 Marcar apariciones (Mark Occurrences)</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#uso-manual-si-esta-desactivado">🔹 Uso manual si está desactivado</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#diferencias-entre-ambos-modos">🔹 Diferencias entre ambos modos</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#otros-atajos-relacionados">🔹 Otros atajos relacionados</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#186-apartado-tecleo-typing">18.6 Apartado tecleo (Typing)</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#187-plantillas-templates">18.7 Plantillas (Templates)</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#188-estilo-del-codigo-code-style">18.8 Estilo del código (Code Style)</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#19-depuracion">19. Depuración</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#paso-1-colocar-los-breakpoints-puntos-de-interrupcion">Paso 1. Colocar los breakpoints (puntos de interrupción)</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#paso-2-abrir-la-perspectiva-debug">Paso 2. Abrir la perspectiva Debug</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#vista-debug">🧭 Vista Debug</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#vista-variables">🔍 Vista Variables</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#vista-breakpoints">🎯 Vista Breakpoints</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#vista-expressions">🧮 Vista Expressions</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#paso-3-empezar-a-depurar">Paso 3. Empezar a depurar</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#controles-basicos-del-depurador">Controles básicos del depurador</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#configuracion-avanzada-de-breakpoints">Configuración avanzada de Breakpoints</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#formateador-de-detalles-detail-formatter">Formateador de detalles (Detail Formatter)</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#20-creacion-de-una-libreria-jar">20. Creación de una librería .jar</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#que-contiene-un-archivo-jar">¿Qué contiene un archivo .jar?</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#ventajas">Ventajas</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#como-crear-una-libreria-jar-en-eclipse">Cómo crear una librería .jar en Eclipse</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#como-usar-una-libreria-jar-en-otro-proyecto">Cómo usar una librería .jar en otro proyecto</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#relacion-con-maven-y-gradle">Relación con Maven y Gradle</a>
+    </li>
+        </ul>
+    </li>
+    </ul>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../3_git/">U3 Git</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../practicas_modulo/">Prácticas</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">Entornos de Desarrollo 1º CFGS DAM-DAW</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">U2 Eclipse</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="2-ide-eclipse">2. IDE: Eclipse.</h1>
+<h2 id="1-introduccion"><strong>1. Introducción</strong></h2>
+<p>El código en Java se puede escribir en cualquier editor de texto y, para compilarlo a <strong>bytecodes</strong>, basta con instalar la versión del <strong>JDK</strong> correspondiente. Sin embargo, escribir y compilar programas de esta forma resulta incómodo, ya que obliga a gestionar manualmente la compilación y la ejecución desde la línea de comandos.</p>
+<p>Por ello surgieron los <strong>IDE (Integrated Development Environment)</strong> o entornos de desarrollo integrados, que consisten básicamente en un editor de código, un compilador y un depurador, además de otras herramientas.</p>
+<p><strong>Ventajas principales de un IDE:</strong></p>
+<ul>
+<li><strong>Facilidades para escribir código</strong>: coloreado de palabras clave, autocompletado, sugerencias de corrección, uso de abreviaturas.</li>
+<li><strong>Herramientas de depuración</strong>, para detectar y corregir errores durante la ejecución.</li>
+<li><strong>Facilidad de configuración</strong> del sistema y de integración con librerías externas.</li>
+<li><strong>Organización estructurada</strong> de los proyectos y sus archivos.</li>
+<li><strong>Exportación e importación sencilla</strong> de proyectos.</li>
+</ul>
+<p>Algunos IDEs muy utilizados para programar en Java son <strong>Eclipse</strong>, <strong>NetBeans</strong> e <strong>IntelliJ IDEA</strong>.</p>
+<p>En esta asignatura utilizaremos <strong>Eclipse</strong>, que puede descargarse desde la página oficial:<br />
+👉 <a href="https://www.eclipse.org/downloads/eclipse-packages/">https://www.eclipse.org/downloads/eclipse-packages/</a></p>
+<p>Se recomienda instalar la versión más reciente de <strong>Eclipse IDE for Java Developers</strong>, escogiendo la del sistema operativo correspondiente.</p>
+<p>Una vez instalado, es importante definir en Eclipse la versión del compilador de Java:</p>
+<ul>
+<li><code>Window → Preferences → Java → Compiler</code> → seleccionar la versión de JDK deseada.</li>
+<li><code>Window → Preferences → Java → Installed JREs</code> → marcar la versión como predeterminada.</li>
+</ul>
+<p>Además, el alumno puede personalizar la apariencia del entorno:</p>
+<ul>
+<li><code>Window → Preferences → General → Appearance → Theme</code>, seleccionando un tema oscuro o claro según preferencias.</li>
+</ul>
+<hr />
+<h2 id="2-workspace"><strong>2. Workspace</strong></h2>
+<p>Al iniciarse, Eclipse solicita la selección de un <strong>workspace</strong>, es decir, el directorio que funcionará como área de trabajo donde se guardarán todos los proyectos.</p>
+<ul>
+<li>Se puede aceptar la ruta predeterminada o establecer otra distinta.</li>
+<li>Es posible mantener <strong>varios workspaces</strong> para proyectos de distinta naturaleza.</li>
+</ul>
+<p>Para cambiar de área de trabajo:
+👉 <code>File → Switch Workspace → Other</code>.</p>
+<hr />
+<h2 id="3-utf-8"><strong>3. UTF-8</strong></h2>
+<p><strong>UTF-8</strong> <em>(Unicode Transformation Format-8)</em> es un formato de codificación de caracteres en el que cada carácter se representa mediante una 
+secuencia de entre <strong>1 y 4 bytes</strong>. Los caracteres ASCII básicos (como letras, números y símbolos comunes) se codifican con un único byte (8 bits), 
+mientras que otros caracteres Unicode más complejos (acentos, símbolos especiales, alfabetos no latinos) pueden necesitar 2, 3 o 4 bytes.</p>
+<p>También existen otras variantes como <strong>UTF-16</strong> y <strong>UTF-32</strong>. La ventaja de UTF-8 respecto a estas es que resulta más eficiente cuando se 
+trabaja con textos que contienen principalmente caracteres ASCII y, además, es compatible con versiones anteriores de ASCII.</p>
+<p><strong>Características principales de UTF-8:</strong></p>
+<ul>
+<li>Representa cualquier carácter Unicode.</li>
+<li>Longitud variable (1 a 4 bytes por carácter).</li>
+<li>Compatible con US-ASCII de 7 bits: cualquier texto ASCII se representa sin cambios.</li>
+<li>Evita ambigüedades: la secuencia de bytes de un carácter no puede confundirse con parte de otro carácter.</li>
+</ul>
+<p><strong>Cómo configurar Eclipse en UTF-8:</strong></p>
+<ul>
+<li><code>Window → Preferences → General → Workspace → Text file encoding → UTF-8</code>.</li>
+<li>También puede configurarse por proyecto en <code>Project → Properties → Resource → Text file encoding → UTF-8</code>.</li>
+</ul>
+<p><strong>Ejemplos de codificación UTF-8</strong></p>
+<table>
+<thead>
+<tr>
+<th>Carácter</th>
+<th>Descripción</th>
+<th>Bytes en UTF-8</th>
+<th>Hexadecimal</th>
+<th>Binario (bits)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>A</code></td>
+<td>Letra ASCII básica</td>
+<td>1 byte</td>
+<td><code>41</code></td>
+<td><code>01000001</code></td>
+</tr>
+<tr>
+<td><code>ñ</code></td>
+<td>Letra latina acentuada</td>
+<td>2 bytes</td>
+<td><code>C3 B1</code></td>
+<td><code>11000011 10110001</code></td>
+</tr>
+<tr>
+<td><code>€</code></td>
+<td>Símbolo del euro</td>
+<td>3 bytes</td>
+<td><code>E2 82 AC</code></td>
+<td><code>11100010 10000010 10101100</code></td>
+</tr>
+<tr>
+<td>😀</td>
+<td>Emoji (cara sonriente)</td>
+<td>4 bytes</td>
+<td><code>F0 9F 98 80</code></td>
+<td><code>11110000 10011111 10011000 10000000</code></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="4-editores-vistas-y-perspectivas"><strong>4. Editores, vistas y perspectivas</strong></h2>
+<p>La interfaz de usuario de <strong>Eclipse</strong> se organiza en torno a <strong>editores</strong>, <strong>vistas</strong> y <strong>perspectivas</strong>:</p>
+<ul>
+<li>Un <strong>editor</strong> es la parte de la interfaz que permite crear, modificar y guardar archivos (por ejemplo, el editor de código Java).</li>
+<li>Una <strong>vista</strong> es una ventana auxiliar que muestra información adicional o permite realizar tareas de apoyo (ejemplo: la consola, el explorador de paquetes, las variables en depuración).</li>
+<li>Una <strong>perspectiva</strong> es una disposición o agrupación de editores y vistas diseñada para apoyar una tarea completa del proceso de desarrollo.</li>
+</ul>
+<h3 id="perspectivas-principales-en-eclipse">Perspectivas principales en Eclipse</h3>
+<ul>
+<li><strong>Java</strong>: diseñada para trabajar con proyectos Java (muestra el editor de código, el explorador de paquetes, la consola, etc.).</li>
+<li><strong>Debug</strong>: enfocada en la depuración de programas (muestra vistas como Variables, Breakpoints, Consola, etc.).</li>
+</ul>
+<p>Estas perspectivas se pueden abrir en:
+👉 <code>Window → Perspective → Open Perspective</code>
+o desde los botones de la <strong>barra de perspectivas</strong> en la esquina superior derecha de la interfaz.</p>
+<p>Además, el usuario puede personalizar una perspectiva (añadir/quitar vistas, reorganizar paneles) y guardarla en:
+👉 <code>Window → Perspective → Save Perspective As</code>.</p>
+<p>Las vistas también se pueden abrir directamente en:
+👉 <code>Window → Show View</code>.
+Por ejemplo, la <strong>Consola</strong> se abre en <code>Window → Show View → Console</code>.</p>
+<hr />
+<h2 id="5-package-explorer"><strong>5. Package Explorer</strong></h2>
+<p>En la columna izquierda de la interfaz suele encontrarse la vista <strong>Package Explorer</strong> (Explorador de Paquetes).</p>
+<p>Esta vista muestra la <strong>estructura de proyectos, paquetes y clases Java</strong> que forman parte del área de trabajo (workspace). Permite navegar fácilmente por los archivos de un proyecto, abrir clases en el editor y gestionar recursos.</p>
+<p>Al ser una vista, puede abrirse también en:
+👉 <code>Window → Show View → Package Explorer</code>.</p>
+<hr />
+<h2 id="6-camelcase"><strong>6. CamelCase</strong></h2>
+<p><strong>CamelCase</strong> es un estilo de escritura utilizado en programación para nombrar identificadores compuestos (clases, métodos, variables). Consiste en unir varias palabras y escribir la primera letra de cada palabra en mayúscula (excepto, en ocasiones, la primera).</p>
+<p>El nombre se debe a que las mayúsculas intermedias recuerdan a las “jorobas” de un camello 🐪.</p>
+<p>Existen dos variantes:</p>
+<ul>
+<li><strong>UpperCamelCase (PascalCase):</strong> la primera letra de cada palabra va en mayúscula.
+  👉 Ejemplo: <code>PrimerPrograma</code>, <code>EjemploDeUpperCamelCase</code>.</li>
+<li><strong>lowerCamelCase:</strong> igual que la anterior, pero la primera palabra empieza en minúscula.
+  👉 Ejemplo: <code>primerPrograma</code>, <code>ejemploDeLowerCamelCase</code>.</li>
+</ul>
+<p>La notación CamelCase se usa en muchos lenguajes de programación, incluido <strong>Java</strong>:</p>
+<ul>
+<li><strong>Clases e interfaces</strong> → <code>UpperCamelCase</code> (<code>MiClase</code>, <code>CalculadoraSimple</code>).</li>
+<li><strong>Variables y métodos</strong> → <code>lowerCamelCase</code> (<code>contador</code>, <code>sumarNumeros()</code>).</li>
+</ul>
+<hr />
+<h2 id="7-proyectos-paquetes-y-clases"><strong>7. Proyectos, paquetes y clases</strong></h2>
+<h3 id="proyectos">Proyectos</h3>
+<p>Un <strong>proyecto Java</strong> en Eclipse puede considerarse como una carpeta organizada que contiene todo lo necesario para desarrollar una aplicación.
+Un proyecto incluye:</p>
+<ul>
+<li>Archivos <strong>.java</strong> (código fuente).</li>
+<li>Archivos <strong>.class</strong> (código compilado en bytecode).</li>
+<li>Documentación y otros recursos asociados (imágenes, librerías, etc.).</li>
+</ul>
+<p>Cuando se crea un proyecto Java en Eclipse, este se guarda en el <strong>workspace</strong> y genera por defecto dos subcarpetas:</p>
+<ul>
+<li><strong>src</strong> (source): contiene los archivos <code>.java</code> organizados en paquetes.</li>
+<li><strong>bin</strong> (binary): contiene los archivos <code>.class</code> generados al compilar el código.</li>
+</ul>
+<hr />
+<h3 id="paquetes">Paquetes</h3>
+<p>Los <strong>paquetes</strong> (<em>packages</em>) permiten <strong>organizar las clases</strong> dentro de la carpeta <code>src</code> de un proyecto Java.</p>
+<ul>
+<li>Un paquete se corresponde con una <strong>subcarpeta</strong> en <code>src</code>.</li>
+<li>Dentro de cada clase Java se debe indicar al inicio el paquete al que pertenece con la palabra clave <code>package</code>.</li>
+<li>El nombre de un paquete suele seguir una <strong>estructura jerárquica</strong> que identifica la procedencia del código <em>(por ejemplo, el país, el centro educativo, el módulo y el tema)</em>.</li>
+</ul>
+<p>Ejemplo con clase en un paquete:</p>
+<h4 id="estructura-en-eclipse">Estructura en Eclipse</h4>
+<p>Cuando se crea un paquete, Eclipse genera automáticamente la carpeta correspondiente en el sistema de archivos.
+Por ejemplo, el paquete:</p>
+<pre><code>es.iessaladillo.dam1.ed.u1
+</code></pre>
+<p>corresponde a la ruta:</p>
+<pre><code>src/es/iessaladillo/dam1/ed/u1/
+</code></pre>
+<p><strong>Ejemplo con clase en un paquete:</strong></p>
+<pre><code class="language-java">package es.iessaladillo.dam1.ed.u1; // Especificación del paquete
+
+public class Integers {
+    public static void main(String[] args) {
+        // código...
+    }
+}
+</code></pre>
+<h4 id="paquete-por-defecto-default-package">Paquete por defecto (default package)</h4>
+<p>Si la clase se guarda directamente en <code>src</code> sin indicar ningún paquete, se dice que pertenece al <strong>paquete por defecto</strong> (<em>default package</em>).
+En este caso, el archivo no lleva ninguna declaración <code>package</code> al inicio:</p>
+<pre><code class="language-java">// Clase en el default package
+public class Integers {
+    public static void main(String[] args) {
+        // código...
+    }
+}
+</code></pre>
+<p>👉 Aunque Eclipse permite usar el <em>default package</em>, <strong>no se recomienda en proyectos grandes</strong> porque <strong>dificulta la organización y la importación de clases</strong> desde otros paquetes.</p>
+<h4 id="recomendacion-practica-para-clase">Recomendación práctica (para clase)</h4>
+<p>En el IES Saladillo, los paquetes pueden seguir esta convención:</p>
+<pre><code>es.iessaladillo.dam1.ed.uX
+</code></pre>
+<p>donde:</p>
+<ul>
+<li><code>es</code> → país (España)</li>
+<li><code>iessaladillo</code> → centro educativo</li>
+<li><code>dam1</code> → ciclo y curso</li>
+<li><code>ed</code> → módulo <em>Entornos de Desarrollo</em></li>
+<li><code>uX</code> → número de unidad o tema (por ejemplo, <code>u1</code>, <code>u2</code>, etc.)</li>
+</ul>
+<hr />
+<h3 id="clases">Clases</h3>
+<p>Las <strong>clases</strong> son los archivos <code>.java</code> que contienen el código fuente. Cada clase debe tener un nombre que siga la notación <strong>UpperCamelCase</strong> (primera letra de cada palabra en mayúscula).</p>
+<p>Ejemplo: <code>PrimerPrograma</code>, <code>CalculadoraSimple</code>.</p>
+<hr />
+<h3 id="operaciones-en-eclipse">Operaciones en Eclipse</h3>
+<p><strong>Crear un proyecto Java</strong></p>
+<ol>
+<li>Menú <code>File → New → Java Project</code>.</li>
+<li>En <strong>Project name</strong>, escribir el nombre del proyecto (conviene que empiece en mayúscula).</li>
+<li>Desactivar la opción <em>Create module-info.java file</em> (no se usará en este módulo).</li>
+<li>Pulsar <em>Finish</em>.</li>
+</ol>
+<p>⚠️ Nota: si el proyecto ya existe en el workspace, Eclipse lo abrirá con todos los datos guardados previamente.</p>
+<hr />
+<p><strong>Borrar un proyecto</strong></p>
+<ol>
+<li>Seleccionar el proyecto en el <strong>Package Explorer</strong>.</li>
+<li>Botón derecho → <code>Delete</code>.</li>
+<li>Eclipse preguntará si quieres borrarlo solo del explorador o también físicamente del workspace.</li>
+</ol>
+<hr />
+<p><strong>Crear un paquete</strong></p>
+<ol>
+<li>En <strong>Package Explorer</strong>, situarse sobre el proyecto o sobre su carpeta <code>src</code>.</li>
+<li>Botón derecho → <code>New → Package</code>.</li>
+<li>
+<p>Escribir el nombre (todo en minúsculas, se permiten números y <code>_</code> pero no caracteres especiales).</p>
+</li>
+<li>
+<p>Ejemplo: <code>tema1_1</code>.</p>
+</li>
+<li>Pulsar <em>Finish</em>.</li>
+</ol>
+<hr />
+<p><strong>Crear una clase</strong></p>
+<ol>
+<li>En <strong>Package Explorer</strong>, situarse sobre el paquete donde se quiere crear.</li>
+<li>Botón derecho → <code>New → Class</code>.</li>
+<li>En <strong>Name</strong>, escribir el nombre de la clase (usar UpperCamelCase).</li>
+<li>Si se quiere que sea ejecutable, marcar la casilla <strong>public static void main(String[] args)</strong>.</li>
+<li>Pulsar <em>Finish</em>.</li>
+</ol>
+<hr />
+<h2 id="8-build-path"><strong>8. Build Path</strong></h2>
+<p>El <strong>Build Path</strong> (ruta de compilación) en Eclipse define <strong>qué necesita un proyecto para compilarse y ejecutarse correctamente</strong>.
+Incluye:</p>
+<ul>
+<li>La carpeta de <strong>código fuente</strong> (<code>src</code>, con los archivos <code>.java</code>).</li>
+<li>La carpeta de <strong>clases compiladas</strong> (<code>bin</code>, con los archivos <code>.class</code>).</li>
+<li>Las <strong>librerías necesarias</strong> (por ejemplo, el JRE de Java o archivos JAR externos).</li>
+</ul>
+<h3 id="81-que-es-el-jre-system-library">8.1. ¿Qué es el JRE System Library?</h3>
+<p>Todo proyecto Java necesita tener asociada la librería básica del lenguaje: <strong>JRE System Library</strong>.
+Esta librería contiene las clases fundamentales de Java, como:</p>
+<ul>
+<li><code>String</code></li>
+<li><code>System</code></li>
+<li><code>ArrayList</code></li>
+<li><code>Scanner</code></li>
+<li>…y muchas más de la API estándar.</li>
+</ul>
+<p>👉 Si un proyecto no tiene asignada esta librería, Eclipse marcará errores incluso en instrucciones tan simples como <code>System.out.println()</code> porque no sabrá dónde encontrar esas clases.</p>
+<h3 id="82-relacion-jdk-jre-jvm">8.2. Relación JDK – JRE – JVM</h3>
+<p>Cuando instalamos <strong>Java</strong> en nuestro ordenador, lo que realmente descargamos es el <strong>JDK (Java Development Kit)</strong>.</p>
+<p>El JDK incluye:</p>
+<ul>
+<li><strong>Compilador</strong> (<code>javac</code>), para traducir <code>.java</code> → <code>.class</code>.</li>
+<li><strong>Herramientas de desarrollo</strong> (javadoc, jar, debugger, etc.).</li>
+<li>
+<p><strong>JRE (Java Runtime Environment)</strong>, que a su vez contiene:</p>
+</li>
+<li>
+<p>La <strong>JVM (Java Virtual Machine)</strong>, que ejecuta el bytecode en cualquier sistema.</p>
+</li>
+<li>La <strong>biblioteca estándar de clases de Java</strong> (colecciones, E/S, utilidades, etc.).</li>
+</ul>
+<p>Por tanto, cuando en Eclipse añadimos la <strong>JRE System Library</strong> al Build Path, en realidad le estamos diciendo:
+👉 “Este proyecto usará la librería estándar incluida en el JDK que tienes instalado.”</p>
+<h3 id="83-configurar-el-build-path-en-eclipse">8.3. Configurar el Build Path en Eclipse</h3>
+<ol>
+<li>Seleccionar el proyecto en el <strong>Package Explorer</strong>.</li>
+<li>Botón derecho → <code>Build Path → Configure Build Path</code>.</li>
+<li>
+<p>En la pestaña <strong>Libraries</strong>, comprobar si ya aparece la <strong>JRE System Library</strong>.</p>
+</li>
+<li>
+<p>Si no aparece o quieres cambiar la versión:</p>
+<ul>
+<li>Clic en <strong>Add Library → JRE System Library</strong>.</li>
+<li>Selecciona usar el <strong>Workspace default JRE</strong> (el que configuraste en <code>Window → Preferences → Java → Installed JREs</code>) o bien otro JDK instalado en tu equipo.</li>
+<li>Pulsar <em>Finish</em>.</li>
+</ul>
+</li>
+</ol>
+<p>Además del JRE, en esta misma pestaña se pueden añadir <strong>librerías externas</strong> (Add External JARs) que el proyecto necesite, como frameworks o APIs adicionales.</p>
+<hr />
+<h2 id="9-importar-en-eclipse"><strong>9. Importar en Eclipse</strong></h2>
+<p>En Eclipse, <strong>importar</strong> significa traer al workspace elementos ya existentes (clases, paquetes o proyectos) para poder trabajar con ellos dentro del IDE.</p>
+<h3 id="importar-clases-sueltas">🔹 Importar clases sueltas</h3>
+<p>Si tenemos archivos <code>.java</code> creados previamente y queremos añadirlos a un paquete existente:</p>
+<ol>
+<li>En el <strong>Package Explorer</strong>, situarse encima del paquete donde se van a importar las clases.</li>
+<li>Botón derecho → <code>Import</code>.</li>
+<li><code>General → File System → Next</code>.</li>
+<li>En <strong>From Directory</strong>, pulsar <em>Browse</em> y seleccionar la carpeta donde están las clases.</li>
+<li>Marcar las clases que se quieren importar → <em>Finish</em>.</li>
+</ol>
+<p>👉 Nota:</p>
+<ul>
+<li>Si marcas la opción <strong>Create top-level folder</strong>, Eclipse crea también la carpeta de origen como paquete dentro de <code>src</code>. Esto es útil si quieres que las clases mantengan el mismo paquete original.</li>
+</ul>
+<hr />
+<h3 id="importar-paquetes-completos">🔹 Importar paquetes completos</h3>
+<p>Si quieres traer paquetes ya creados (con sus clases dentro):</p>
+<ol>
+<li>En el <strong>Package Explorer</strong>, situarse encima de <code>src</code>.</li>
+<li>Botón derecho → <code>Import</code>.</li>
+<li><code>General → File System → Next</code>.</li>
+<li>Seleccionar en <strong>From Directory</strong> la carpeta donde están los paquetes.</li>
+<li>Marcar los paquetes deseados → <em>Finish</em>.</li>
+</ol>
+<p>👉 Resultado: Eclipse creará esos paquetes dentro de <code>src</code> y colocará dentro las clases correspondientes.</p>
+<hr />
+<h3 id="importar-proyectos-completos">🔹 Importar proyectos completos</h3>
+<p>Si ya existe un proyecto creado en otro workspace o en otra carpeta:</p>
+<ol>
+<li>Si el proyecto no existe todavía en tu workspace, puedes crearlo primero con el mismo nombre (vacío).</li>
+<li>En el <strong>Package Explorer</strong>, botón derecho → <code>Import</code>.</li>
+<li><code>General → File System → Next</code>.</li>
+<li>En <strong>From Directory</strong>, seleccionar la carpeta raíz del proyecto.</li>
+<li>Selecciona el proyecto entero y pulsa <em>Finish</em>.</li>
+<li>Si Eclipse pregunta “¿Sobrescribir archivos?”, normalmente se elige <strong>No to All</strong> para evitar reemplazar lo que ya exista en el workspace.</li>
+</ol>
+<p>👉 Consejo: en lugar de <code>File System</code>, para proyectos completos es más cómodo usar:</p>
+<ul>
+<li><code>File → Import → Existing Projects into Workspace</code>.
+  Así Eclipse detecta automáticamente el proyecto (con su <code>.project</code> y <code>.classpath</code>) y lo añade tal cual al workspace.</li>
+</ul>
+<hr />
+<h2 id="10-mi-primer-programa-en-java"><strong>10. Mi primer programa en Java</strong></h2>
+<pre><code class="language-java">package tema2_Eclipse;
+
+public class MyFirstProgramme {
+
+    public static void main(String[] args) {
+        System.out.println(&quot;¡Mi primer programa!&quot;);
+    }
+
+}
+</code></pre>
+<p>Este programa muestra por pantalla el texto <strong>¡Mi primer programa!</strong>.</p>
+<h3 id="explicacion-del-codigo">Explicación del código:</h3>
+<ul>
+<li><code>public class MyFirstProgramme</code>: declara la clase pública llamada <code>MyFirstProgramme</code>.
+  ⚠️ El nombre del archivo debe coincidir exactamente con el de la clase (<code>MyFirstProgramme.java</code>).</li>
+<li><code>public static void main(String[] args)</code>: es el <strong>método principal</strong>. Todo programa en Java comienza su ejecución en el <code>main</code>.</li>
+<li><code>System.out.println("¡Mi primer programa!");</code>: instrucción que escribe un texto en pantalla. Como se trata de una cadena, debe ir entre comillas.</li>
+</ul>
+<p>👉 En Eclipse existen <strong>plantillas de código</strong> que facilitan escribir instrucciones repetitivas. La más común es:</p>
+<ul>
+<li>Escribir <code>sysout</code> → pulsar <code>Ctrl + Espacio</code> → Eclipse lo reemplaza por <code>System.out.println();</code>.
+  Además de <code>sysout</code>, existen muchas otras plantillas e incluso se pueden crear nuevas.</li>
+</ul>
+<hr />
+<h2 id="11-cambiar-el-nombre-a-los-elementos-de-java"><strong>11. Cambiar el nombre a los elementos de Java</strong></h2>
+<p>Al renombrar manualmente una clase, método o variable, podemos romper el programa si ese nombre aparece en varios lugares. Para evitarlo, Eclipse ofrece la herramienta de <strong>refactorización</strong>:</p>
+<ul>
+<li>Seleccionar el elemento (clase, variable, método, etc.).</li>
+<li>Botón derecho → <code>Refactor → Rename</code> (o pulsar <strong>Alt+Shift+R</strong>).</li>
+<li>Eclipse cambiará el nombre automáticamente en todos los sitios donde se use.</li>
+</ul>
+<p>👉 Si se trata de una <strong>clase</strong>, también se renombra el archivo <code>.java</code> correspondiente y viceversa.</p>
+<hr />
+<h2 id="12-escritura-de-programas-en-java"><strong>12. Escritura de programas en Java</strong></h2>
+<p>Al escribir programas en Java hay que tener en cuenta:</p>
+<ul>
+<li>Los archivos de código fuente terminan en <code>.java</code>.</li>
+<li>Java distingue entre <strong>mayúsculas y minúsculas</strong> (<code>Variable</code> ≠ <code>variable</code>).</li>
+<li>Cada instrucción debe terminar con <code>;</code>.</li>
+<li>Una instrucción puede ocupar varias líneas, y es válido usar espacios o tabuladores para mejorar la legibilidad.</li>
+</ul>
+<h3 id="comentarios-en-java">Comentarios en Java:</h3>
+<p>Los comentarios son anotaciones ignoradas por el compilador y sirven para explicar el código:</p>
+<ul>
+<li><strong>Una sola línea:</strong></li>
+</ul>
+<p><code>java
+  // Comentario de una línea</code>
+* <strong>Varias líneas:</strong></p>
+<p><code>java
+  /* Comentario
+     de varias líneas */</code></p>
+<p>👉 Los comentarios deben aportar claridad, sobre todo en código complejo. La legibilidad es clave para el mantenimiento de una aplicación.</p>
+<hr />
+<h2 id="13-comentarios-en-eclipse"><strong>13. Comentarios en Eclipse</strong></h2>
+<p>Algunas configuraciones útiles:</p>
+<ul>
+<li>Cuando se crea una clase, Eclipse genera un comentario por defecto. Esto se configura en:
+  <code>Window → Preferences → Java → Code Style → Code Templates → Code → Method Body → Edit</code>.</li>
+<li>Para desactivar la corrección ortográfica en los comentarios (que a veces subraya palabras técnicas):
+  <code>Window → Preferences → General → Editors → Text Editors → Spelling → deshabilitar "Enable Spell Checking"</code>.</li>
+<li>
+<p>Para comentar o descomentar rápidamente un bloque de código:</p>
+</li>
+<li>
+<p>Seleccionarlo y pulsar <strong>Ctrl + Shift + C</strong> o <strong>Ctrl + 7</strong>.</p>
+</li>
+</ul>
+<hr />
+<h2 id="14-dar-formato-al-codigo"><strong>14. Dar formato al código</strong></h2>
+<p>En Java, el código se organiza en <strong>bloques</strong> delimitados por llaves <code>{ ... }</code>. Para mejorar la legibilidad se utiliza la <strong>indentación</strong> (sangrado), moviendo el código hacia la derecha dentro de cada bloque.</p>
+<p>Ejemplo sin formatear:</p>
+<pre><code class="language-java">public static void main(String[] args) {
+        int x=3;
+    System.out.print(&quot;Este código no está&quot;);
+System.out.print(&quot; muy bien &quot;);
+            System.out.print(&quot;tabulado&quot;);
+  x=7;
+}
+</code></pre>
+<p>Ejemplo formateado automáticamente en Eclipse:</p>
+<pre><code class="language-java">public static void main(String[] args) {
+    int x = 3;
+    System.out.print(&quot;Este código no está&quot;);
+    System.out.print(&quot; muy bien &quot;);
+    System.out.print(&quot;tabulado&quot;);
+    x = 7;
+}
+</code></pre>
+<h3 id="como-dar-formato-al-codigo-en-eclipse">Cómo dar formato al código en Eclipse:</h3>
+<ul>
+<li>Pulsar <strong>Ctrl + Shift + F</strong>.</li>
+<li>O bien: <code>Menú Source → Format</code> o <code>Botón derecho → Source → Format</code>.</li>
+</ul>
+<p>Además, Eclipse permite configurar el estilo de formateo:</p>
+<ul>
+<li><code>Window → Preferences → Java → Code Style → Formatter</code>.</li>
+<li>
+<p>Crear un nuevo perfil y editar opciones como:</p>
+</li>
+<li>
+<p>Desactivar <em>Enable block comment formatting</em> (para que no toque los comentarios de varias líneas).</p>
+</li>
+<li>Desactivar <em>Enable line comment formatting</em> (para que no toque los comentarios de una sola línea).</li>
+</ul>
+<hr />
+<h2 id="15-ejecucion-de-programas-en-java"><strong>15. Ejecución de programas en Java</strong></h2>
+<p>Solo se pueden ejecutar los programas que contienen el método principal:</p>
+<pre><code class="language-java">public static void main(String[] args)
+</code></pre>
+<p>Este método es el punto de entrada de toda aplicación Java.</p>
+<p>Una de las ventajas de Eclipse es que permite ejecutar el programa <strong>sin salir del entorno</strong>. Hay varias formas de hacerlo:</p>
+<ul>
+<li>
+<p>En el <strong>Package Explorer</strong>:
+  Seleccionar el archivo <code>.java</code> → Botón derecho → <code>Run As → Java Application</code>.</p>
+</li>
+<li>
+<p>Desde la <strong>barra de herramientas</strong>:
+  Pulsar en el icono ▶️ (triángulo blanco).
+  Si el programa ya se ejecutó antes, bastará con hacer clic directamente en ese botón.
+  Si no, abrir el menú desplegable (triángulo negro) y elegir <code>Run As → Java Application</code>.</p>
+</li>
+</ul>
+<p>El resultado aparecerá en la <strong>vista Consola</strong>, normalmente en la parte inferior del entorno.
+Ahí se muestran los mensajes generados por <code>System.out.println()</code> o por la JVM.</p>
+<p><strong>Personalización de la consola:</strong>
+Para cambiar el tamaño o la fuente:</p>
+<pre><code>Window → Preferences → General → Appearance → Colors and Fonts → Debug → Console Font
+</code></pre>
+<blockquote>
+<p>💡 Consejo: si no ves la consola, puedes abrirla desde
+<code>Window → Show View → Console</code>.</p>
+</blockquote>
+<hr />
+<h2 id="16-errores"><strong>16. Errores</strong></h2>
+<p>Una de las mayores ventajas de Eclipse es su <strong>compilación incremental</strong>, que analiza el código en tiempo real.
+Los errores aparecen a medida que se escribe, igual que un corrector ortográfico.</p>
+<p>Eclipse diferencia entre:</p>
+<table>
+<thead>
+<tr>
+<th>Tipo</th>
+<th>Símbolo</th>
+<th>Color</th>
+<th>Significado</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Error</strong></td>
+<td>❌ (X roja)</td>
+<td>Rojo</td>
+<td>Impide compilar el programa.</td>
+</tr>
+<tr>
+<td><strong>Advertencia (Warning)</strong></td>
+<td>⚠️ (triángulo amarillo)</td>
+<td>Amarillo</td>
+<td>No detiene la compilación, pero señala algo potencialmente problemático.</td>
+</tr>
+</tbody>
+</table>
+<p>Si un proyecto tiene errores:</p>
+<ul>
+<li>En el <strong>Package Explorer</strong>, el proyecto mostrará una <strong>X roja</strong>.</li>
+<li>Si solo tiene advertencias, aparecerá un <strong>triángulo amarillo</strong>.</li>
+<li>En el código fuente, se marcan en el margen izquierdo junto con una <strong>bombilla 💡</strong>, que sugiere correcciones automáticas.</li>
+</ul>
+<hr />
+<h3 id="ejemplo-de-advertencia">🧩 Ejemplo de advertencia</h3>
+<pre><code class="language-java">public static void main(String[] args) {
+    int x = 3; // The value of the local variable x is not used
+    x = 7;  
+}
+</code></pre>
+<p>🔸 Eclipse avisa porque <code>x</code> se declara pero nunca se usa.</p>
+<hr />
+<h3 id="ejemplo-de-error-de-compilacion">🧨 Ejemplo de error de compilación</h3>
+<pre><code class="language-java">public static void main(String[] args) {
+    int x = 3;
+    y = 7; // y cannot be resolved to a variable
+}
+</code></pre>
+<p>🔹 La variable <code>y</code> no está declarada, por lo que el compilador no puede continuar.</p>
+<hr />
+<h3 id="errores-de-ejecucion-runtime-errors">⚙️ Errores de ejecución (Runtime errors)</h3>
+<p>Cuando no hay errores de compilación, el programa puede ejecutarse, pero aún pueden surgir <strong>errores en tiempo de ejecución</strong> que detienen la ejecución del código.</p>
+<p>Ejemplo:</p>
+<pre><code class="language-java">public class EjemploErrorEjecucion {
+    public static void main(String[] args) {        
+        System.out.println(5 / 0);
+    }
+}
+</code></pre>
+<p>Salida en la consola:</p>
+<pre><code>Exception in thread &quot;main&quot; java.lang.ArithmeticException: / by zero
+    at EjemploErrorEjecucion.main(EjemploErrorEjecucion.java:6)
+</code></pre>
+<p><strong>Interpretación:</strong></p>
+<ul>
+<li>Tipo de error: <code>ArithmeticException</code></li>
+<li>Causa: <code>/ by zero</code> (división entre 0)</li>
+<li>Localización: archivo <code>EjemploErrorEjecucion.java</code>, línea 6</li>
+</ul>
+<hr />
+<h2 id="17-ayudas-al-escribir-codigo"><strong>17. Ayudas al escribir código</strong></h2>
+<p>Eclipse incluye múltiples herramientas de asistencia que hacen más eficiente la escritura.</p>
+<hr />
+<h3 id="171-esquema-flotante-quick-outline"><strong>17.1 Esquema flotante (Quick Outline)</strong></h3>
+<p>Permite ver un resumen de todos los métodos, atributos y estructuras de una clase, facilitando la navegación dentro del código.</p>
+<ul>
+<li>Menú: <code>Navigate → Quick Outline</code></li>
+<li>Atajo: <strong>Ctrl + O</strong></li>
+</ul>
+<blockquote>
+<p>Ideal para clases largas: permite saltar rápidamente a cualquier método con doble clic.</p>
+</blockquote>
+<hr />
+<h3 id="172-asistente-de-contenido-content-assist"><strong>17.2 Asistente de contenido (Content Assist)</strong></h3>
+<p>Ayuda a escribir código más rápido y con menos errores.</p>
+<ul>
+<li>Atajo: <strong>Ctrl + Espacio</strong></li>
+<li>
+<p>Funciona mientras se escribe, mostrando sugerencias de:</p>
+</li>
+<li>
+<p>Métodos, variables y clases disponibles.</p>
+</li>
+<li>Plantillas de código (ver siguiente punto).</li>
+</ul>
+<p>Ejemplo:</p>
+<ol>
+<li>Escribir <code>sy</code></li>
+<li>Pulsar <strong>Ctrl + Espacio</strong></li>
+<li>Aparece una lista de sugerencias → elegir <code>System</code></li>
+<li>Escribir <code>.</code> → aparecen los miembros de <code>System</code></li>
+<li>Elegir <code>out</code></li>
+<li>Escribir <code>.</code> → aparecen los métodos → elegir <code>println</code></li>
+</ol>
+<blockquote>
+<p>💡 Consejo: si el Content Assist no aparece, revisar en
+<code>Window → Preferences → Java → Editor → Content Assist</code>.</p>
+</blockquote>
+<hr />
+<h3 id="173-plantillas-de-codigo-code-templates"><strong>17.3 Plantillas de código (Code Templates)</strong></h3>
+<p>Las plantillas sustituyen abreviaturas por fragmentos completos de código.</p>
+<ul>
+<li>Ejemplo clásico:
+  Escribir <code>sysout</code> → <strong>Ctrl + Espacio</strong>
+  Eclipse inserta automáticamente:</li>
+</ul>
+<p><code>java
+  System.out.println();</code></p>
+<ul>
+<li>Existen muchas más (<code>main</code>, <code>for</code>, <code>while</code>, etc.), y se pueden crear nuevas desde:
+  <code>Window → Preferences → Java → Editor → Templates</code></li>
+</ul>
+<hr />
+<h2 id="18-modificar-las-preferencias-del-editor"><strong>18. Modificar las preferencias del editor</strong></h2>
+<p>Eclipse permite modificar casi cualquier aspecto del editor de código Java, desde su comportamiento hasta su apariencia.
+Estas configuraciones se gestionan desde:</p>
+<pre><code>Window → Preferences → Java → Editor
+</code></pre>
+<p>Desde este menú se accede a numerosos apartados, que detallamos a continuación:</p>
+<hr />
+<h3 id="181-opciones-generales"><strong>18.1 Opciones generales</strong></h3>
+<p>En <code>Java → Editor</code> encontramos ajustes básicos del editor.</p>
+<ul>
+<li>
+<p><strong>Report problems as you type</strong>:
+  Activa la comprobación en tiempo real del código (muestra subrayados rojos o amarillos).</p>
+</li>
+<li>
+<p><strong>Bracket highlighting → Matching bracket</strong>:
+  Permite que, al seleccionar una llave <code>{</code>, paréntesis <code>()</code> o corchete <code>[]</code>, Eclipse resalte su pareja correspondiente.
+  Esto ayuda a identificar fácilmente dónde empieza y termina cada bloque de código.</p>
+</li>
+</ul>
+<blockquote>
+<p>💡 <em>Consejo</em>: estas funciones son muy útiles, la primera evita esperar a compilar para detectar errores y la segunda evita que nos perdamos entre llaves o paréntesis mal cerrados.</p>
+</blockquote>
+<hr />
+<h3 id="182-realizar-acciones-al-guardar-save-actions"><strong>18.2 Realizar acciones al guardar (Save Actions)</strong></h3>
+<p>Eclipse puede realizar acciones automáticas cada vez que guardamos un archivo (<code>Ctrl + S</code>).
+Esto se configura en:</p>
+<pre><code>Window → Preferences → Java → Editor → Save Actions
+</code></pre>
+<p>Opciones más interesantes:</p>
+<ul>
+<li><strong>Format source code</strong>: formatea automáticamente el código con sangrías correctas.</li>
+<li>
+<p><strong>Organize imports</strong>: añade o elimina automáticamente las sentencias <code>import</code>.</p>
+</li>
+<li>
+<p>Si se importan varios elementos del mismo paquete, Eclipse puede agruparlos usando <code>*</code>.</p>
+</li>
+<li>El número mínimo de importaciones necesarias para sustituir por <code>*</code> se configura en:
+    <code>Window → Preferences → Java → Code Style → Organize Imports</code>.</li>
+</ul>
+<blockquote>
+<p>🔹 Ejemplo:</p>
+<p><code>java
+import java.util.*;</code></p>
+</blockquote>
+<hr />
+<h3 id="183-asistente-de-contenido-content-assist"><strong>18.3 Asistente de contenido (Content Assist)</strong></h3>
+<p>Configurable en:</p>
+<pre><code>Window → Preferences → Java → Editor → Content Assist
+</code></pre>
+<p>Funciones más importantes:</p>
+<ul>
+<li>
+<p><strong>Hide forbidden references</strong>: oculta en la ayuda elementos obsoletos o prohibidos.</p>
+</li>
+<li>
+<p><strong>Auto activation delay</strong>: tiempo de espera (en milisegundos) para mostrar sugerencias.</p>
+</li>
+<li>
+<p>Recomendado: <code>0</code> para que aparezcan al instante.</p>
+</li>
+<li>
+<p><strong>Auto activation triggers for Java</strong>: define los caracteres que activan el autocompletado.</p>
+</li>
+<li>
+<p>Por defecto, el punto (<code>.</code>).</p>
+</li>
+<li>
+<p>Ejemplo: al escribir <code>System.</code> se despliega la lista de miembros (<code>out</code>, <code>err</code>, <code>in</code>, etc.).</p>
+</li>
+<li>
+<p><strong>Auto activation triggers for Javadoc</strong>: por defecto <code>@</code>.</p>
+</li>
+<li>
+<p>Al escribir <code>@</code> en un comentario Javadoc, aparecen etiquetas sugeridas como <code>@param</code>, <code>@return</code>, <code>@author</code>.</p>
+</li>
+</ul>
+<hr />
+<h3 id="184-coloreado-de-la-sintaxis-syntax-coloring"><strong>18.4 Coloreado de la sintaxis (Syntax Coloring)</strong></h3>
+<p>Permite personalizar el color y estilo de cada elemento del lenguaje: palabras clave, comentarios, literales, etc.
+Ruta:</p>
+<pre><code>Window → Preferences → Java → Editor → Syntax Coloring
+</code></pre>
+<blockquote>
+<p>💡 <em>Recomendación</em>: usar un esquema de colores con buen contraste (especialmente en el tema oscuro) para evitar confusión entre comentarios y código activo.</p>
+</blockquote>
+<hr />
+<h3 id="185-marcar-apariciones-mark-occurrences"><strong>18.5 Marcar apariciones (Mark Occurrences)</strong></h3>
+<p>Funcionalidad muy útil que resalta todas las apariciones de una variable, método o clase cuando el cursor se sitúa sobre su nombre.
+Activa o desactiva esta opción en:</p>
+<pre><code>Window → Preferences → Java → Editor → Mark Occurrences
+</code></pre>
+<p>Por defecto, el color de resaltado es <strong>gris claro</strong>, pero se puede personalizar.
+Facilita enormemente la depuración y comprensión del código.</p>
+<blockquote>
+<p>💡 <em>Recomendación</em>: mantenerlo activado, salvo en equipos con bajo rendimiento.</p>
+</blockquote>
+<h4 id="uso-manual-si-esta-desactivado">🔹 Uso manual si está desactivado</h4>
+<p>Si la opción <strong>“Mark Occurrences”</strong> está desactivada, Eclipse permite <strong>buscar y resaltar manualmente todas las referencias</strong> a una variable, método o clase:</p>
+<ul>
+<li><strong>Atajo:</strong><br />
+<code>Ctrl + Shift + U</code></li>
+<li><strong>Menú contextual:</strong><br />
+<code>Click derecho → References → File / Project / Workspace</code></li>
+</ul>
+<p>Esto realiza una <strong>búsqueda puntual</strong> (no dinámica) y muestra las referencias tanto <strong>resaltadas en el editor</strong> como <strong>listadas en la vista <em>Search</em></strong>, que se abre automáticamente en la parte inferior del entorno.<br />
+Desde esta vista se pueden <strong>navegar fácilmente por todas las apariciones</strong> localizadas dentro del archivo, el proyecto o el workspace completo.</p>
+<h4 id="diferencias-entre-ambos-modos">🔹 Diferencias entre ambos modos</h4>
+<table>
+<thead>
+<tr>
+<th>Modo</th>
+<th>Tipo de búsqueda</th>
+<th>Actualización</th>
+<th>Alcance</th>
+<th>Resultado</th>
+<th>Ideal para...</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Mark Occurrences</strong></td>
+<td>Automática</td>
+<td>Dinámica (al mover el cursor)</td>
+<td>Archivo actual</td>
+<td>Resalta en el editor</td>
+<td>Revisar rápidamente el uso de variables o métodos</td>
+</tr>
+<tr>
+<td><strong>Search References (<code>Ctrl + Shift + U</code>)</strong></td>
+<td>Manual</td>
+<td>Estática (búsqueda puntual)</td>
+<td>Archivo, proyecto o workspace</td>
+<td>Resalta y muestra resultados en la vista <em>Search</em></td>
+<td>Analizar dependencias o apariciones en todo el proyecto</td>
+</tr>
+</tbody>
+</table>
+<h4 id="otros-atajos-relacionados">🔹 Otros atajos relacionados</h4>
+<table>
+<thead>
+<tr>
+<th>Acción</th>
+<th>Atajo</th>
+<th>Descripción</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Buscar referencias en archivo actual</strong></td>
+<td><code>Ctrl + Shift + U</code></td>
+<td>Muestra todas las apariciones del símbolo seleccionado y abre la vista <em>Search</em></td>
+</tr>
+<tr>
+<td><strong>Buscar referencias en el proyecto</strong></td>
+<td><code>Ctrl + Alt + G</code></td>
+<td>Busca la variable o método en todo el proyecto</td>
+</tr>
+<tr>
+<td><strong>Abrir declaración</strong></td>
+<td><code>Ctrl + Click</code></td>
+<td>Salta a la definición de la variable o método</td>
+</tr>
+<tr>
+<td><strong>Mostrar jerarquía de llamadas (Call Hierarchy)</strong></td>
+<td><code>Ctrl + Alt + H</code></td>
+<td>Muestra quién llama a un método y a quién llama ese método</td>
+</tr>
+</tbody>
+</table>
+<p>✅ <strong>Conclusión:</strong>  </p>
+<blockquote>
+<p>“Mark Occurrences” es la forma más rápida de resaltar automáticamente las apariciones de un símbolo en el código.<br />
+Cuando se necesita un análisis más completo, puede complementarse con la búsqueda manual de referencias (<code>Ctrl + Shift + U</code>), que además de resaltar las coincidencias, <strong>abre la vista <em>Search</em></strong> para listar y navegar entre todas las referencias encontradas.</p>
+</blockquote>
+<hr />
+<h3 id="186-apartado-tecleo-typing"><strong>18.6 Apartado tecleo (Typing)</strong></h3>
+<p>Ubicación:</p>
+<pre><code>Window → Preferences → Java → Editor → Typing
+</code></pre>
+<p>Aquí se definen ayudas automáticas mientras escribimos código:</p>
+<ul>
+<li>
+<p><strong>Auto close</strong>:
+  Cierra automáticamente comillas, paréntesis, llaves y corchetes.
+  Evita errores comunes de sintaxis.</p>
+</li>
+<li>
+<p><strong>Auto insert semicolons and braces</strong>:
+  Inserta automáticamente <code>;</code> o <code>{}</code>.</p>
+</li>
+</ul>
+<blockquote>
+<p>💡 <em>Recomendación</em>:  No se recomienda activar el de <code>;</code>, ya que Eclipse no siempre determina su posición correcta.</p>
+</blockquote>
+<ul>
+<li><strong>Indentation on Enter</strong>:
+  Ajusta automáticamente la sangría al pulsar <code>Enter</code>.</li>
+</ul>
+<p>Ejemplo:</p>
+<pre><code class="language-java">if (a &lt; 8) {   // Al pulsar Enter:
+    // Cursor se coloca aquí si la opción está activada
+// Aquí si está desactivada
+}
+</code></pre>
+<p>Además, Eclipse puede <strong>reajustar la indentación y los imports al pegar código</strong>.</p>
+<hr />
+<h3 id="187-plantillas-templates"><strong>18.7 Plantillas (Templates)</strong></h3>
+<p>Las plantillas convierten abreviaturas en fragmentos completos de código.
+Ruta:</p>
+<pre><code>Window → Preferences → Java → Editor → Templates
+</code></pre>
+<p>Ejemplo clásico:</p>
+<ul>
+<li>Escribir <code>sysout</code> → <strong>Ctrl + Espacio</strong>
+  Eclipse inserta automáticamente:</li>
+</ul>
+<p><code>java
+  System.out.println();</code></p>
+<p>Cada plantilla puede incluir <strong>variables</strong> entre <code>${}</code> que se sustituyen según el contexto:</p>
+<table>
+<thead>
+<tr>
+<th>Variable</th>
+<th>Descripción</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>${word_selection}</code></td>
+<td>Texto seleccionado actualmente.</td>
+</tr>
+<tr>
+<td><code>${}</code></td>
+<td>Espacio vacío editable.</td>
+</tr>
+<tr>
+<td><code>${cursor}</code></td>
+<td>Posición final del cursor tras insertar la plantilla.</td>
+</tr>
+</tbody>
+</table>
+<p>📘 <strong>Ejemplo explicado:</strong></p>
+<p>Plantilla por defecto <code>sysout</code> equivale a:</p>
+<pre><code class="language-java">System.out.println(${word_selection}${});${cursor}
+</code></pre>
+<ul>
+<li>Si hay texto seleccionado, lo incluye dentro del <code>println</code>.</li>
+<li>El cursor queda entre paréntesis para escribir más texto.</li>
+<li>Al pulsar <em>Tab</em>, salta a la posición final.</li>
+</ul>
+<p>📁 <strong>Ruta para gestionar las plantillas:</strong></p>
+<pre><code>Window → Preferences → Java → Editor → Templates
+</code></pre>
+<p>Desde esta ventana se pueden <strong>consultar las plantillas existentes</strong>, <strong>editar las ya creadas</strong>, <strong>importar o exportar plantillas</strong> y <strong>añadir nuevas plantillas personalizadas</strong> que se insertan al escribir su abreviatura y pulsar <code>Ctrl + Espacio</code>.</p>
+<hr />
+<h3 id="188-estilo-del-codigo-code-style"><strong>18.8 Estilo del código (Code Style)</strong></h3>
+<p>Ubicación:</p>
+<pre><code>Window → Preferences → Java → Code Style
+</code></pre>
+<p>Opciones destacadas:</p>
+<ul>
+<li>
+<p><strong>Use ‘is’ prefix for boolean getters</strong>:
+  Hace que los métodos que devuelven <code>boolean</code> empiecen con <code>is</code> (por ejemplo, <code>isVisible()</code>).</p>
+</li>
+<li>
+<p><strong>Add @Override annotation</strong>:
+  Añade automáticamente la anotación <code>@Override</code> al sobrescribir métodos.
+  Esto ayuda al compilador a detectar errores si el método no existe en la superclase.</p>
+</li>
+<li>
+<p><strong>Exception variable name</strong>:
+  Define el nombre por defecto de las variables <code>catch</code>, normalmente <code>e</code>.</p>
+</li>
+</ul>
+<blockquote>
+<p>💡 <em>Ejemplo práctico</em>:</p>
+<p><code>java
+try {
+    int x = 5 / 0;
+} catch (ArithmeticException e) {
+    System.out.println("Error: " + e.getMessage());
+}</code></p>
+</blockquote>
+<hr />
+<p>✅ <strong>Resumen del apartado 18</strong></p>
+<table>
+<thead>
+<tr>
+<th>Área</th>
+<th>Qué permite configurar</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>General</strong></td>
+<td>Errores en tiempo real y resaltado de llaves</td>
+</tr>
+<tr>
+<td><strong>Save Actions</strong></td>
+<td>Formato y organización automática del código</td>
+</tr>
+<tr>
+<td><strong>Content Assist</strong></td>
+<td>Sugerencias inteligentes y autocompletado</td>
+</tr>
+<tr>
+<td><strong>Syntax Coloring</strong></td>
+<td>Colores y estilos de sintaxis</td>
+</tr>
+<tr>
+<td><strong>Mark Occurrences</strong></td>
+<td>Resalta todas las apariciones de un elemento</td>
+</tr>
+<tr>
+<td><strong>Typing</strong></td>
+<td>Cierre automático de símbolos y sangría</td>
+</tr>
+<tr>
+<td><strong>Templates</strong></td>
+<td>Creación y gestión de plantillas de código</td>
+</tr>
+<tr>
+<td><strong>Code Style</strong></td>
+<td>Reglas de estilo, anotaciones y nombres por defecto</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="19-depuracion"><strong>19. Depuración</strong></h2>
+<p>La <strong>depuración (debug)</strong> es una herramienta fundamental que permite ejecutar un programa paso a paso, observar el valor de las variables en cada momento y detectar fácilmente los errores lógicos o de ejecución.</p>
+<hr />
+<h3 id="paso-1-colocar-los-breakpoints-puntos-de-interrupcion"><strong>Paso 1. Colocar los breakpoints (puntos de interrupción)</strong></h3>
+<p>Un <strong>breakpoint</strong> indica la línea de código donde el programa se detendrá durante la ejecución.
+En ese punto podrás <strong>analizar el contenido de las variables, ejecutar paso a paso</strong> o incluso <strong>modificar valores</strong>.</p>
+<ul>
+<li>Para colocar un breakpoint: haz <strong>doble clic</strong> en el margen izquierdo del editor (junto al número de línea).
+  Aparecerá un <strong>círculo azul</strong> indicando el punto de parada.</li>
+<li>Para eliminarlo, vuelve a hacer doble clic o usa:
+  <code>Botón derecho → Toggle Breakpoint</code>.</li>
+</ul>
+<blockquote>
+<p>💡 Consejo: usa breakpoints en las zonas donde sospeches un error o quieras comprobar cómo cambia el valor de una variable.</p>
+</blockquote>
+<hr />
+<h3 id="paso-2-abrir-la-perspectiva-debug"><strong>Paso 2. Abrir la perspectiva Debug</strong></h3>
+<p>Para visualizar correctamente las herramientas de depuración, abre la <strong>perspectiva Debug</strong>:</p>
+<pre><code>Window → Perspective → Open Perspective → Debug
+</code></pre>
+<p>También se puede acceder desde los <strong>iconos de perspectivas</strong> en la esquina superior derecha del entorno.</p>
+<p>Esta perspectiva incluye varias <strong>vistas importantes</strong>:</p>
+<hr />
+<h4 id="vista-debug">🧭 <strong>Vista Debug</strong></h4>
+<p>Muestra los programas que están en ejecución o ya han finalizado.
+Puedes eliminar ejecuciones antiguas con:</p>
+<ul>
+<li><code>Remove Launch</code> (borra la seleccionada)</li>
+<li><code>Remove All Terminated Launches</code> (borra todas las terminadas)</li>
+</ul>
+<hr />
+<h4 id="vista-variables">🔍 <strong>Vista Variables</strong></h4>
+<p>Aquí se muestra cada variable, su tipo y su valor actual.
+También puedes:</p>
+<ul>
+<li>Colocar el ratón sobre una variable para ver su valor.</li>
+<li>Editar un valor directamente durante la depuración.</li>
+<li>Activar <strong>Show Logical Structure</strong> para ver el contenido interno de estructuras (listas, mapas, arrays...).</li>
+</ul>
+<hr />
+<h4 id="vista-breakpoints">🎯 <strong>Vista Breakpoints</strong></h4>
+<p>Lista todos los puntos de interrupción del proyecto.
+Desde aquí puedes:</p>
+<ul>
+<li>Activar/desactivar breakpoints sin borrarlos.</li>
+<li>Configurar condiciones o contadores (<em>Hit count</em>).</li>
+<li>Borrar todos los breakpoints con un clic.</li>
+</ul>
+<hr />
+<h4 id="vista-expressions">🧮 <strong>Vista Expressions</strong></h4>
+<p>Permite <strong>añadir expresiones o variables</strong> para evaluarlas durante la depuración.
+Ejemplo: añadir <code>i % 3</code> para ver cómo cambia en cada iteración del bucle.</p>
+<hr />
+<h3 id="paso-3-empezar-a-depurar"><strong>Paso 3. Empezar a depurar</strong></h3>
+<p>Para iniciar la depuración:</p>
+<ul>
+<li>Haz clic en el icono del <strong>bicho verde 🐞 (Debug)</strong> junto al botón de <em>Run</em>.</li>
+<li>Si Eclipse pregunta si quieres cambiar a la perspectiva Debug, acepta y marca
+  “Remember my decision”.</li>
+</ul>
+<p>Si la aplicación no comienza, abre el menú del triángulo negro junto al icono y elige
+<code>Debug As → Java Application</code>.</p>
+<p>El programa se detendrá en el primer breakpoint, y la línea activa aparecerá <strong>resaltada en verde</strong>.</p>
+<hr />
+<h3 id="controles-basicos-del-depurador"><strong>Controles básicos del depurador</strong></h3>
+<table>
+<thead>
+<tr>
+<th>Opción</th>
+<th>Tecla</th>
+<th>Descripción</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>▶️ <strong>Resume</strong></td>
+<td>F8</td>
+<td>Continúa hasta el siguiente breakpoint.</td>
+</tr>
+<tr>
+<td>⏹ <strong>Terminate</strong></td>
+<td>—</td>
+<td>Detiene completamente la ejecución.</td>
+</tr>
+<tr>
+<td>↪️ <strong>Step Over</strong></td>
+<td>F6</td>
+<td>Ejecuta la línea actual sin entrar en métodos.</td>
+</tr>
+<tr>
+<td>↘️ <strong>Step Into</strong></td>
+<td>F5</td>
+<td>Entra dentro del método llamado en esa línea.</td>
+</tr>
+<tr>
+<td>↩️ <strong>Step Return</strong></td>
+<td>F7</td>
+<td>Termina el método actual y vuelve al anterior.</td>
+</tr>
+<tr>
+<td>🚫 <strong>Skip All Breakpoints</strong></td>
+<td>—</td>
+<td>Desactiva temporalmente todos los breakpoints.</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3 id="configuracion-avanzada-de-breakpoints"><strong>Configuración avanzada de Breakpoints</strong></h3>
+<ul>
+<li><strong>Hit Count</strong>: se detiene solo cuando el breakpoint se ha ejecutado <em>n</em> veces.</li>
+<li><strong>Conditional</strong>: se detiene solo si se cumple una condición lógica (<code>x == 0</code>, <code>i % 10 == 0</code>, etc.).</li>
+<li><strong>Suspend when value changes</strong>: pausa la ejecución cuando cambia el valor de una variable.</li>
+</ul>
+<blockquote>
+<p>💡 Ejemplo: detenerse cuando <code>x</code> cambia de valor en un bucle <code>for</code>.</p>
+</blockquote>
+<hr />
+<h3 id="formateador-de-detalles-detail-formatter"><strong>Formateador de detalles (Detail Formatter)</strong></h3>
+<p>Permite personalizar la forma en que Eclipse muestra los valores de los objetos.
+Ruta:</p>
+<pre><code>Window → Preferences → Java → Debug → Detail Formatters
+</code></pre>
+<p>Ejemplo:</p>
+<p>Para la clase <code>Vehicle</code>, puedes mostrar su información formateada así:</p>
+<pre><code class="language-java">&quot;Número de ruedas: &quot; + wheelCount + 
+&quot;\nVelocidad: &quot; + speed +
+&quot;\nColor: &quot; + colour;
+</code></pre>
+<p>Activando esta opción, cuando inspecciones un objeto <code>Vehicle</code>, Eclipse mostrará directamente sus valores de forma legible.</p>
+<hr />
+<p>✅ <strong>Resumen de depuración</strong></p>
+<ul>
+<li>La depuración permite ejecutar el programa paso a paso.</li>
+<li>Se detiene donde hay <em>breakpoints</em>.</li>
+<li>Permite inspeccionar y modificar variables.</li>
+<li>Facilita detectar errores lógicos o de ejecución.</li>
+</ul>
+<hr />
+<h2 id="20-creacion-de-una-libreria-jar"><strong>20. Creación de una librería <code>.jar</code></strong></h2>
+<p>Una <strong>librería JAR</strong> (Java ARchive) es un archivo comprimido que agrupa <strong>clases compiladas (<code>.class</code>)</strong>, <strong>recursos</strong> y <strong>metadatos</strong>.
+Sirve para <strong>reutilizar y distribuir código Java</strong> de manera organizada y portable.</p>
+<hr />
+<h3 id="que-contiene-un-archivo-jar"><strong>¿Qué contiene un archivo <code>.jar</code>?</strong></h3>
+<ul>
+<li>Clases Java compiladas (<code>.class</code>)</li>
+<li>Archivos de configuración (<code>.properties</code>, <code>.xml</code>, etc.)</li>
+<li>Recursos (imágenes, sonidos, textos…)</li>
+<li>Un fichero <code>MANIFEST.MF</code> que describe el contenido del JAR.</li>
+</ul>
+<hr />
+<h3 id="ventajas"><strong>Ventajas</strong></h3>
+<ul>
+<li>✅ Facilita la <strong>reutilización de código</strong> (por ejemplo, utilidades o librerías propias).</li>
+<li>✅ Mejora la <strong>modularidad</strong> y <strong>mantenibilidad</strong>.</li>
+<li>✅ Simplifica la <strong>distribución de proyectos</strong> Java.</li>
+<li>✅ Puede integrarse fácilmente en otros proyectos.</li>
+</ul>
+<hr />
+<h3 id="como-crear-una-libreria-jar-en-eclipse"><strong>Cómo crear una librería <code>.jar</code> en Eclipse</strong></h3>
+<ol>
+<li>Selecciona el proyecto en el <strong>Package Explorer</strong>.</li>
+<li>Botón derecho → <code>Export</code>.</li>
+<li>En el asistente:
+   <code>Java → JAR file</code> → <strong>Next</strong>.</li>
+<li>Marca las clases o paquetes que quieras incluir.</li>
+<li>Indica la <strong>carpeta destino</strong> donde se guardará el <code>.jar</code>.</li>
+<li>Pulsa <strong>Finish</strong>.</li>
+</ol>
+<p>Se generará un archivo <code>.jar</code> con las clases compiladas.</p>
+<hr />
+<h3 id="como-usar-una-libreria-jar-en-otro-proyecto"><strong>Cómo usar una librería <code>.jar</code> en otro proyecto</strong></h3>
+<ol>
+<li>Selecciona el proyecto destino.</li>
+<li>Botón derecho → <code>Build Path → Configure Build Path</code>.</li>
+<li>
+<p>En la pestaña <strong>Libraries</strong>, selecciona el tipo de incorporación:</p>
+</li>
+<li>
+<p><strong>Add JARs</strong> → si la librería está dentro del <em>workspace</em>.</p>
+</li>
+<li>
+<p><strong>Add External JARs</strong> → si está fuera del <em>workspace</em> (por ejemplo, en tu escritorio o carpeta compartida).</p>
+</li>
+<li>
+<p>Pulsa <strong>Apply and Close</strong>.</p>
+</li>
+</ol>
+<p>A partir de ese momento, las clases del <code>.jar</code> estarán disponibles en el proyecto.</p>
+<hr />
+<h3 id="relacion-con-maven-y-gradle"><strong>Relación con Maven y Gradle</strong></h3>
+<p>En proyectos más avanzados, el manejo de librerías JAR se automatiza con <strong>Maven</strong> o <strong>Gradle</strong>, herramientas que:</p>
+<ul>
+<li>Descargan las dependencias automáticamente.</li>
+<li>Evitan conflictos de versiones.</li>
+<li>Generan <code>.jar</code> o <code>.war</code> al compilar.</li>
+</ul>
+<hr />
+<p>✅ <strong>Resumen</strong></p>
+<table>
+<thead>
+<tr>
+<th>Concepto</th>
+<th>Descripción</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>.jar</code></td>
+<td>Archivo que agrupa clases compiladas y recursos.</td>
+</tr>
+<tr>
+<td><strong>Ventajas</strong></td>
+<td>Reutilización, modularidad y distribución del código.</td>
+</tr>
+<tr>
+<td><strong>Crear JAR</strong></td>
+<td>Exportar proyecto desde Eclipse.</td>
+</tr>
+<tr>
+<td><strong>Usar JAR</strong></td>
+<td>Añadirlo al <em>Build Path</em>.</td>
+</tr>
+<tr>
+<td><strong>Gestión avanzada</strong></td>
+<td>Maven y Gradle automatizan dependencias.</td>
+</tr>
+</tbody>
+</table>
+<hr />
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href=".." class="btn btn-neutral float-left" title="Home"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../3_git/" class="btn btn-neutral float-right" title="U3 Git">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href=".." style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../3_git/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+      <script src="../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>1. Git básico (trabajo en local) - Entornos de Desarrollo 1º CFGS DAM-DAW</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "1. Git b\u00e1sico (trabajo en local)";
+        var mkdocs_page_input_path = "3_git_ap1_git_basico.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> Entornos de Desarrollo 1º CFGS DAM-DAW
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="..">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="" href="../3_intro.md">U1 Introducción</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../2_eclipse/">U2 Eclipse</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../3_git/">U3 Git</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../practicas_modulo/">Prácticas</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">Entornos de Desarrollo 1º CFGS DAM-DAW</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">1. Git básico (trabajo en local)</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="1-git-basico-trabajo-en-local">1. Git básico (trabajo en local)</h1>
+<hr />
+<h2 id="11-que-es-git">1.1 ¿Qué es Git?</h2>
+<p><strong>Git</strong> es un sistema de <strong>control de versiones distribuido</strong>, diseñado para registrar los cambios en los archivos de un proyecto a lo largo del tiempo.
+Permite que varios desarrolladores trabajen sobre el mismo código <strong>sin sobrescribir su trabajo</strong>, guardando versiones seguras de cada modificación.</p>
+<p>A diferencia de otros sistemas más antiguos, Git no guarda archivos completos en cada versión, sino <strong>instantáneas (snapshots)</strong> de los cambios, lo que lo hace extremadamente rápido y eficiente.</p>
+<blockquote>
+<p>🧠 En pocas palabras: Git es como una “máquina del tiempo” para el código, que permite guardar, comparar y restaurar versiones de un proyecto.</p>
+</blockquote>
+<hr />
+<h2 id="12-instalacion-y-configuracion-inicial">1.2 Instalación y configuración inicial</h2>
+<p>Antes de usar Git, es necesario verificar que está instalado y configurado correctamente.</p>
+<h3 id="verificar-instalacion">🔹 Verificar instalación</h3>
+<pre><code class="language-bash">git --version
+</code></pre>
+<p>Si no aparece un número de versión, instala Git desde:</p>
+<ul>
+<li><strong>Windows:</strong> <a href="https://git-scm.com/download/win">git-scm.com/download/win</a></li>
+<li><strong>macOS:</strong> <code>brew install git</code></li>
+<li><strong>Linux (Debian/Ubuntu):</strong> <code>sudo apt install git</code></li>
+</ul>
+<hr />
+<h3 id="configuracion-basica-de-usuario">🔹 Configuración básica de usuario</h3>
+<p>Estos datos se asocian a cada <em>commit</em> que realices:</p>
+<pre><code class="language-bash">git config --global user.name &quot;Tu Nombre&quot;
+git config --global user.email &quot;tu_usuario@g.educaand.es&quot;
+</code></pre>
+<p>Puedes comprobar tus ajustes en cualquier momento con:</p>
+<pre><code class="language-bash">git config --list
+</code></pre>
+<hr />
+<h2 id="13-iniciar-un-repositorio-local">1.3 Iniciar un repositorio local</h2>
+<p>Un <strong>repositorio Git</strong> es una carpeta del proyecto que contiene un subdirectorio oculto <code>.git</code>, donde se almacena toda la información del control de versiones (historial, configuración, ramas, etc.).</p>
+<p>Para crear un nuevo repositorio:</p>
+<pre><code class="language-bash">cd ruta/del/proyecto
+git init
+</code></pre>
+<p>Esto inicializa el control de versiones en esa carpeta.
+A partir de este momento, Git comenzará a <strong>vigilar</strong> los cambios en los archivos.</p>
+<hr />
+<h2 id="14-las-tres-areas-de-trabajo-en-git">1.4 Las tres áreas de trabajo en Git</h2>
+<p>Git organiza y gestiona los archivos del proyecto en <strong>tres áreas o zonas principales</strong>.
+Comprender su función es esencial para entender cómo se guardan los cambios y cómo se construyen las versiones.</p>
+<hr />
+<h3 id="1-area-de-trabajo-working-directory">🧑‍💻 1️⃣ Área de trabajo (<em>Working Directory</em>)</h3>
+<p><strong>Qué es:</strong>
+Es la <strong>carpeta del proyecto en tu equipo</strong> donde editas, creas y eliminas archivos libremente.
+Contiene la versión actual del proyecto que estás desarrollando.</p>
+<p><strong>Qué hace Git aquí:</strong>
+Git <strong>detecta los archivos modificados, nuevos o eliminados</strong>, pero <strong>no los guarda automáticamente en ninguna versión</strong>.
+Todo lo que hagas en esta área es “temporal” hasta que decidas preparar o confirmar los cambios.</p>
+<p><strong>Comandos relacionados:</strong></p>
+<pre><code class="language-bash">git status         # Ver qué archivos han cambiado
+git diff           # Ver diferencias entre versiones
+</code></pre>
+<p><strong>Ejemplo de estado:</strong></p>
+<pre><code>modified: main.py
+untracked: utils.py
+</code></pre>
+<p>👉 Los archivos aquí <strong>aún no están listos para ser versionados</strong>.</p>
+<hr />
+<h3 id="2-area-de-preparacion-staging-area-o-index">📦 2️⃣ Área de preparación (<em>Staging Area</em> o <em>Index</em>)</h3>
+<p><strong>Qué es:</strong>
+Es una <strong>zona intermedia</strong> donde se guardan los archivos que deseas incluir en el <strong>próximo commit</strong>.
+Funciona como una “lista de espera” o un “carrito de la compra” de los cambios que quieres confirmar.</p>
+<p><strong>Qué hace Git aquí:</strong>
+Git <strong>almacena una copia exacta de los archivos</strong> tal como estaban cuando hiciste <code>git add</code>.
+Si modificas un archivo después, <strong>debes volver a hacer <code>git add</code></strong> para incluir esos nuevos cambios.</p>
+<p><strong>Comandos relacionados:</strong></p>
+<pre><code class="language-bash">git add archivo.py     # Añade un archivo al área de preparación
+git add .              # Añade todos los cambios
+git restore --staged archivo.py  # Quita un archivo del área de preparación
+</code></pre>
+<p><strong>Ejemplo:</strong></p>
+<pre><code>Changes to be committed:
+  new file:   main.py
+  modified:   menu.py
+</code></pre>
+<p>👉 En esta área se decide <strong>qué formará parte del próximo commit</strong>.</p>
+<hr />
+<h3 id="3-repositorio-local-local-repository">🏛️ 3️⃣ Repositorio local (<em>Local Repository</em>)</h3>
+<p><strong>Qué es:</strong>
+Es la <strong>base de datos interna de Git</strong> donde se almacenan todos los <strong>commits confirmados</strong> (versiones del proyecto).
+Cada commit representa una <strong>fotografía exacta</strong> del proyecto en un momento determinado.</p>
+<p><strong>Qué hace Git aquí:</strong>
+Git guarda la historia completa del proyecto:
+quién hizo cada cambio, cuándo, y en qué archivos.
+Permite <strong>consultar versiones anteriores</strong>, <strong>volver atrás</strong>, o <strong>fusionar cambios</strong> entre ramas.</p>
+<p><strong>Comandos relacionados:</strong></p>
+<pre><code class="language-bash">git commit -m &quot;Mensaje descriptivo&quot;  # Crea un nuevo commit
+git log --oneline                    # Muestra el historial
+git show &lt;id_commit&gt;                 # Detalla un commit concreto
+</code></pre>
+<p><strong>Ejemplo:</strong></p>
+<pre><code>f3d2a1e (HEAD -&gt; main) Añadido módulo de login
+a7c2d55 Creada estructura inicial del proyecto
+</code></pre>
+<p>👉 Aquí ya tienes <strong>versiones seguras y permanentes</strong> de tu proyecto.</p>
+<hr />
+<h3 id="esquema-visual-del-flujo-entre-areas">🔁 Esquema visual del flujo entre áreas</h3>
+<pre><code class="language-text">┌──────────────────────┐
+│   Área de trabajo    │
+│  (Working Directory) │
+│                      │
+│ Editas archivos aquí │
+└──────────┬───────────┘
+           │ git add
+           ▼
+┌──────────────────────┐
+│  Área de preparación │
+│   (Staging Area)     │
+│                      │
+│ Archivos listos para │
+│ el próximo commit    │
+└──────────┬───────────┘
+           │ git commit
+           ▼
+┌──────────────────────┐
+│ Repositorio local    │
+│  (Local Repository)  │
+│                      │
+│ Historial de commits │
+│ con versiones seguras│
+└──────────────────────┘
+</code></pre>
+<hr />
+<h3 id="en-resumen">🧠 En resumen</h3>
+<table>
+<thead>
+<tr>
+<th>Área</th>
+<th>Nombre técnico</th>
+<th>Qué contiene</th>
+<th>Comandos principales</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>🧑‍💻 Área de trabajo</td>
+<td><em>Working Directory</em></td>
+<td>Archivos que editas</td>
+<td><code>git status</code>, <code>git diff</code></td>
+</tr>
+<tr>
+<td>📦 Área de preparación</td>
+<td><em>Staging Area / Index</em></td>
+<td>Cambios listos para confirmar</td>
+<td><code>git add</code>, <code>git restore --staged</code></td>
+</tr>
+<tr>
+<td>🏛️ Repositorio local</td>
+<td><em>Local Repository</em></td>
+<td>Versiones confirmadas (commits)</td>
+<td><code>git commit</code>, <code>git log</code>, <code>git show</code></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3 id="ejemplo-tipico-de-flujo-completo">💡 Ejemplo típico de flujo completo</h3>
+<pre><code class="language-bash"># 1️⃣ Modifico archivos
+# (aún están en el área de trabajo)
+git status
+
+# 2️⃣ Los preparo para el commit
+git add .
+
+# 3️⃣ Confirmo la versión
+git commit -m &quot;Añadido sistema de login&quot;
+
+# 4️⃣ Verifico que el commit se guardó
+git log --oneline
+</code></pre>
+<hr />
+<h2 id="15-ignorar-archivos-innecesarios-gitignore">1.5 Ignorar archivos innecesarios (.gitignore)</h2>
+<p>En muchos proyectos hay archivos que <strong>no deben versionarse</strong>, como binarios, temporales o configuraciones locales.</p>
+<p>Para ello se utiliza un archivo especial llamado <strong><code>.gitignore</code></strong>, donde se listan los patrones que Git debe ignorar.</p>
+<p>Ejemplo:</p>
+<pre><code># Archivos de Eclipse
+.classpath
+.project
+.settings/
+
+# Archivos temporales
+*.log
+*.tmp
+
+# Carpeta de compilación
+/bin/
+</code></pre>
+<blockquote>
+<p>🧠 El <code>.gitignore</code> se guarda también en el repositorio, para que todos los colaboradores usen las mismas reglas.</p>
+</blockquote>
+<hr />
+<h2 id="16-comandos-esenciales-del-trabajo-en-local">1.6 Comandos esenciales del trabajo en local</h2>
+<table>
+<thead>
+<tr>
+<th>Comando</th>
+<th>Descripción</th>
+<th>Cuándo se usa</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>git init</code></td>
+<td>Inicia un nuevo repositorio local.</td>
+<td>Al comenzar un proyecto desde cero.</td>
+</tr>
+<tr>
+<td><code>git status</code></td>
+<td>Muestra el estado actual (archivos modificados, añadidos, pendientes).</td>
+<td>Antes de cada commit.</td>
+</tr>
+<tr>
+<td><code>git add &lt;archivo&gt;</code></td>
+<td>Mueve un archivo al área de preparación.</td>
+<td>Antes de confirmar los cambios.</td>
+</tr>
+<tr>
+<td><code>git commit -m "mensaje"</code></td>
+<td>Crea un nuevo commit con los cambios preparados.</td>
+<td>Para guardar una versión del proyecto.</td>
+</tr>
+<tr>
+<td><code>git log --oneline</code></td>
+<td>Muestra el historial resumido de commits.</td>
+<td>Para revisar la evolución del proyecto.</td>
+</tr>
+<tr>
+<td><code>git diff</code></td>
+<td>Compara los cambios entre versiones o entre áreas.</td>
+<td>Para ver qué ha cambiado exactamente.</td>
+</tr>
+<tr>
+<td><code>git restore --staged &lt;archivo&gt;</code></td>
+<td>Quita un archivo del área de preparación.</td>
+<td>Si lo añadiste por error con <code>git add</code>.</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="17-buenas-practicas">1.7 Buenas prácticas</h2>
+<ul>
+<li>
+<p>Realiza <strong>commits frecuentes</strong> con mensajes claros y descriptivos.
+  Evita mensajes genéricos como “update” o “cambios varios”. Cada commit debe explicar <strong>qué has hecho</strong> y <strong>por qué</strong>.</p>
+</li>
+<li>
+<p>No confirmes código que <strong>no compila o no funciona</strong>, a menos que necesites <strong>guardar tu progreso temporalmente</strong> para continuar más tarde desde otro ordenador.
+  En ese caso, puedes hacer un <strong>commit provisional</strong> con un mensaje claro, como
+  <code>git commit -m "Versión intermedia: pendiente de prueba final"</code>
+  o usar <code>git stash</code> si solo deseas guardar los cambios localmente sin subirlos.</p>
+</li>
+<li>
+<p>Agrupa los commits por <strong>funcionalidad o mejora concreta</strong>, no por archivo.
+  Ejemplo:
+  ✅ “Añadido módulo de autenticación”
+  ❌ “Modificado main.java y utils.java”</p>
+</li>
+<li>
+<p>Mantén limpio tu repositorio con un <strong>archivo <code>.gitignore</code></strong> para excluir binarios, carpetas temporales o configuraciones locales.</p>
+</li>
+<li>
+<p>Comprueba siempre el estado del proyecto antes de confirmar:</p>
+</li>
+</ul>
+<p><code>bash
+  git status</code></p>
+<p>Este comando debe convertirse en tu rutina habitual antes de cada commit.</p>
+<p>¿Quieres que te prepare ahora el <strong>apartado 2: “Conexión con GitHub”</strong>, adaptado al mismo formato (con introducción, pasos, ejemplos y tablas), o prefieres que primero añadamos un pequeño bloque de práctica guiada al final de este apartado 1 (para que practiquen los comandos básicos en local)?</p>
+              
+            </div>
+          </div><footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+    
+  </span>
+</div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+      <script src="../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

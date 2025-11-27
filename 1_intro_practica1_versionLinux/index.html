@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>Práctica 1 – Lenguajes compilados e interpretados en acción (versión Linux) - Entornos de Desarrollo 1º CFGS DAM-DAW</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Pr\u00e1ctica 1 \u2013 Lenguajes compilados e interpretados en acci\u00f3n (versi\u00f3n Linux)";
+        var mkdocs_page_input_path = "1_intro_practica1_versionLinux.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> Entornos de Desarrollo 1º CFGS DAM-DAW
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="..">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="" href="../3_intro.md">U1 Introducción</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../2_eclipse/">U2 Eclipse</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../3_git/">U3 Git</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../practicas_modulo/">Prácticas</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">Entornos de Desarrollo 1º CFGS DAM-DAW</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">Práctica 1 – Lenguajes compilados e interpretados en acción (versión Linux)</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="practica-1-lenguajes-compilados-e-interpretados-en-accion-version-linux">Práctica 1 – Lenguajes compilados e interpretados en acción (versión Linux)</h1>
+<hr />
+<h2 id="preparacion-del-entorno-en-linux">🔹 Preparación del entorno en Linux</h2>
+<p>Antes de comenzar las prácticas, instala lo necesario en tu ordenador:</p>
+<h3 id="1-crear-carpeta-de-trabajo">1. Crear carpeta de trabajo</h3>
+<ol>
+<li>Abre la <strong>Terminal</strong>.</li>
+<li>Ejecuta:</li>
+</ol>
+<p><code>bash
+   mkdir ~/MisProyectos
+   cd ~/MisProyectos</code>
+3. A partir de ahora, guarda aquí todos los programas de la práctica.</p>
+<p>📌 <strong>Nota importante:</strong>
+En Ubuntu, al igual que en macOS, es mejor <strong>no trabajar en las carpetas Descargas, Documentos o Escritorio</strong>, ya que están pensadas para otros usos y pueden dar problemas de permisos o desorganización.
+Crear <code>~/MisProyectos</code> permite mantener el código separado y organizado en un único sitio.</p>
+<h3 id="2-editor-simple-recomendado">2. Editor simple recomendado</h3>
+<p>Tienes dos opciones principales para escribir tu código en <strong>texto plano (UTF-8)</strong>:</p>
+<ul>
+<li><strong>Gedit</strong> (ya viene en muchas instalaciones de Ubuntu, pero puedes asegurarte instalándolo):</li>
+</ul>
+<p><code>bash
+  sudo apt install -y gedit</code></p>
+<ul>
+<li><strong>Kate</strong> (editor más avanzado, recomendado si quieres más funcionalidades como pestañas, búsqueda potente, minimapa de código, etc.):</li>
+</ul>
+<p><code>bash
+  sudo apt update
+  sudo apt install -y kate</code></p>
+<p>📌 <strong>Nota:</strong> para esta práctica usaremos editores de texto simples o un poco vitaminados, como <strong>Gedit o Kate</strong>.</p>
+<h3 id="3-instalar-python">3. Instalar Python</h3>
+<p>Normalmente ya viene instalado. Compruébalo con:</p>
+<pre><code class="language-bash">python3 --version
+pip3 --version
+</code></pre>
+<p>Si no aparece, instálalo con:</p>
+<pre><code class="language-bash">sudo apt update
+sudo apt install -y python3 python3-pip
+</code></pre>
+<h3 id="4-instalar-compilador-c-gcc">4. Instalar compilador C (GCC)</h3>
+<ol>
+<li>Instala las herramientas de compilación:</li>
+</ol>
+<p><code>bash
+   sudo apt install -y build-essential</code>
+2. Comprueba:</p>
+<p><code>bash
+   gcc --version</code></p>
+<hr />
+<p>📌 <strong>Notas técnicas importantes:</strong></p>
+<ul>
+<li>En Ubuntu, igual que en macOS, para ejecutar un programa en la carpeta actual debes escribir <code>./</code> delante:</li>
+</ul>
+<p><code>bash
+  ./area</code>
+* No es necesario usar <code>chcp 65001</code> (eso es solo para Windows). Ubuntu ya usa UTF-8 en la terminal.</p>
+<hr />
+<h2 id="parte-1-python-interpretado">Parte 1. Python (interpretado)</h2>
+<ol>
+<li>Abre <strong>Gedit</strong> o VS Code y copia este código en <code>area.py</code> (<strong>con error intencionado: falta una comilla</strong>):</li>
+</ol>
+<pre><code class="language-python"># Calcular el área de un círculo en Python
+radio = 5
+area = 3.14159 * radio ** 2
+print(&quot;El área del círculo es:, area)
+</code></pre>
+<ol>
+<li>Ejecuta en Terminal:</li>
+</ol>
+<p><code>bash
+   python3 area.py</code></p>
+<p>Observa el <strong>mensaje de error de sintaxis</strong> y anótalo.</p>
+<ol>
+<li>Corrige el error (añade la comilla que falta):</li>
+</ol>
+<pre><code class="language-python">print(&quot;El área del círculo es:&quot;, area)
+</code></pre>
+<ol>
+<li>Vuelve a ejecutar y haz una <strong>captura de pantalla</strong> con el resultado.</li>
+</ol>
+<hr />
+<h2 id="parte-2-c-compilado">Parte 2. C (compilado)</h2>
+<ol>
+<li>Copia este código en <code>area.c</code> (<strong>con error intencionado: falta punto y coma</strong>):</li>
+</ol>
+<pre><code class="language-c">#include &lt;stdio.h&gt;
+
+int main() {
+    int radio = 5        // &lt;-- error intencionado
+    float area = 3.14159 * radio * radio;
+    printf(&quot;El área del círculo es: %f\n&quot;, area);
+    return 0;
+}
+</code></pre>
+<ol>
+<li>En <strong>Terminal</strong>, compila con:</li>
+</ol>
+<p><code>bash
+   gcc area.c -o area</code></p>
+<ol>
+<li>Anota el <strong>mensaje de error</strong>.</li>
+<li>Corrige el error (añade el <code>;</code> que falta), compila de nuevo y ejecuta:</li>
+</ol>
+<p><code>bash
+   ./area</code></p>
+<ol>
+<li>Haz una <strong>captura de la ejecución correcta</strong>.</li>
+</ol>
+<hr />
+<h2 id="parte-3-comparacion-inicial">Parte 3. Comparación inicial</h2>
+<ol>
+<li>¿Cuándo se detectó el error en Python y en C?</li>
+<li>¿Qué diferencia notas entre ejecutar Python y C?</li>
+</ol>
+<hr />
+<h2 id="parte-4-comparacion-de-velocidad-con-bucle">Parte 4. Comparación de velocidad (con bucle)</h2>
+<ol>
+<li>Sustituye el programa en Python por este código:</li>
+</ol>
+<pre><code class="language-python">import time
+
+inicio = time.time()
+
+suma = 0
+for i in range(100000000):   # cien millones
+    suma += i
+
+fin = time.time()
+print(&quot;Suma final:&quot;, suma)
+print(&quot;Tiempo en segundos:&quot;, fin - inicio)
+</code></pre>
+<ol>
+<li>Haz lo mismo en C (<code>bucle.c</code>):</li>
+</ol>
+<pre><code class="language-c">#include &lt;stdio.h&gt;
+#include &lt;time.h&gt;
+
+int main() {
+    clock_t inicio, fin;
+    inicio = clock();
+
+    long long suma = 0;
+    for (long long i = 0; i &lt; 100000000; i++) {
+        suma += i;
+    }
+
+    fin = clock();
+    double tiempo = (double)(fin - inicio) / CLOCKS_PER_SEC;
+
+    printf(&quot;Suma final: %lld\n&quot;, suma);
+    printf(&quot;Tiempo en segundos: %f\n&quot;, tiempo);
+    return 0;
+}
+</code></pre>
+<p>Primero debes compilar el programa en C, como ya hemos visto anteriormente:</p>
+<pre><code class="language-bash">gcc bucle.c -o bucle
+</code></pre>
+<p>Después ejecuta ambos programas:</p>
+<pre><code class="language-bash">python bucle.py
+
+./bucle
+</code></pre>
+<ol>
+<li>Haz una captura de los tiempos medidos en Python y en C.</li>
+<li>Reflexiona: ¿qué lenguaje tardó más? ¿por qué crees que ocurre?</li>
+</ol>
+              
+            </div>
+          </div><footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+    
+  </span>
+</div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+      <script src="../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>Práctica 5: Entendiendo git reset - Entornos de Desarrollo 1º CFGS DAM-DAW</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Pr\u00e1ctica 5: Entendiendo git reset";
+        var mkdocs_page_input_path = "3_git_practica5.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> Entornos de Desarrollo 1º CFGS DAM-DAW
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="..">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="" href="../3_intro.md">U1 Introducción</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../2_eclipse/">U2 Eclipse</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../3_git/">U3 Git</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../practicas_modulo/">Prácticas</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">Entornos de Desarrollo 1º CFGS DAM-DAW</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">Práctica 5: Entendiendo git reset</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="practica-5-entendiendo-git-reset">Práctica 5: Entendiendo <code>git reset</code></h1>
+<h2 id="objetivo">🎯 Objetivo</h2>
+<p>Comprender, con un ejemplo muy simple, qué hacen las tres variantes de <code>git reset</code>:</p>
+<ul>
+<li><code>git reset --soft</code></li>
+<li><code>git reset --mixed</code> (por defecto)</li>
+<li><code>git reset --hard</code></li>
+</ul>
+<p>y observar qué ocurre con:</p>
+<ul>
+<li>el <strong>historial de commits</strong>,</li>
+<li>el <strong>área de preparación (staging)</strong>,</li>
+<li>el <strong>área de trabajo (working directory)</strong>.</li>
+</ul>
+<p>Todo se realiza <strong>en la misma rama (<code>main</code>) y en local</strong>.</p>
+<hr />
+<h2 id="0-preparacion-inicial-crear-el-repositorio">0️⃣ Preparación inicial – Crear el repositorio</h2>
+<ol>
+<li>Crea una carpeta para la práctica y entra en ella:</li>
+</ol>
+<pre><code class="language-bash">mkdir pruebaReset
+cd pruebaReset
+</code></pre>
+<ol>
+<li>Inicializa el repositorio Git:</li>
+</ol>
+<pre><code class="language-bash">git init
+</code></pre>
+<ol>
+<li>Comprueba el estado:</li>
+</ol>
+<pre><code class="language-bash">git status
+</code></pre>
+<hr />
+<h2 id="1-crear-4-versiones-del-fichero-pruebastxt-commits-a-b-c-y-d">1️⃣ Crear 4 versiones del fichero <code>pruebas.txt</code> (commits A, B, C y D)</h2>
+<p>Vamos a simular cuatro versiones consecutivas del fichero.</p>
+<h3 id="commit-a-version-1">🔹 Commit A — “Versión 1”</h3>
+<ol>
+<li>Crea el fichero <code>pruebas.txt</code> con este contenido:</li>
+</ol>
+<pre><code class="language-text">Versión 1
+</code></pre>
+<ol>
+<li>Añade y confirma:</li>
+</ol>
+<pre><code class="language-bash">git add pruebas.txt
+git commit -m &quot;A: Versión 1&quot;
+</code></pre>
+<h3 id="commit-b-version-2">🔹 Commit B — “Versión 2”</h3>
+<p>Edita <code>pruebas.txt</code> para que quede:</p>
+<pre><code class="language-text">Versión 1
+Versión 2
+</code></pre>
+<p>Confirma:</p>
+<pre><code class="language-bash">git add pruebas.txt
+git commit -m &quot;B: Versión 2&quot;
+</code></pre>
+<h3 id="commit-c-version-3">🔹 Commit C — “Versión 3”</h3>
+<p>Edita <code>pruebas.txt</code>:</p>
+<pre><code class="language-text">Versión 1
+Versión 2
+Versión 3
+</code></pre>
+<p>Confirma:</p>
+<pre><code class="language-bash">git add pruebas.txt
+git commit -m &quot;C: Versión 3&quot;
+</code></pre>
+<h3 id="commit-d-version-4">🔹 Commit D — “Versión 4”</h3>
+<p>Edita <code>pruebas.txt</code>:</p>
+<pre><code class="language-text">Versión 1
+Versión 2
+Versión 3
+Versión 4
+</code></pre>
+<p>Confirma:</p>
+<pre><code class="language-bash">git add pruebas.txt
+git commit -m &quot;D: Versión 4&quot;
+</code></pre>
+<h3 id="ver-historial-inicial">🔍 Ver historial inicial</h3>
+<pre><code class="language-bash">git log --oneline --graph --all
+</code></pre>
+<p>Deberías ver algo parecido a:</p>
+<pre><code class="language-text">* ddddddd (HEAD -&gt; main) D: Versión 4
+* cccccc c C: Versión 3
+* bbbbbb b B: Versión 2
+* aaaaaaa A: Versión 1
+</code></pre>
+<hr />
+<h2 id="2-probar-git-reset-soft-hacia-el-commit-b">2️⃣ Probar <code>git reset --soft</code> hacia el commit B</h2>
+<h3 id="21-localizar-el-commit-b">2.1. Localizar el commit B</h3>
+<p>Muestra el historial resumido:</p>
+<pre><code class="language-bash">git log --oneline
+</code></pre>
+<p>Localiza el identificador (SHA corto) del commit <strong>B: Versión 2</strong>
+(lo llamaremos aquí <code>bbbbbbb</code>, sustituye por el tuyo real).</p>
+<h3 id="22-ejecutar-reset-soft-b">2.2. Ejecutar <code>reset --soft B</code></h3>
+<pre><code class="language-bash">git reset --soft bbbbbbb
+</code></pre>
+<h3 id="23-analizar-el-resultado-head-staging-y-working-directory">2.3. Analizar el resultado (HEAD, staging y working directory)</h3>
+<p>Ahora vamos a comprobar qué ha pasado en los tres niveles.</p>
+<h4 id="a-ver-que-contiene-el-ultimo-commit-head">a) Ver qué contiene el último commit (HEAD)</h4>
+<pre><code class="language-bash">git show HEAD:pruebas.txt
+</code></pre>
+<p>Deberías ver solo:</p>
+<pre><code class="language-text">Versión 1
+Versión 2
+</code></pre>
+<p>👉 Esto es lo que Git tiene guardado en el <strong>último commit</strong> (B) después del reset.</p>
+<h4 id="b-ver-que-contiene-el-archivo-en-tu-carpeta-working-directory">b) Ver qué contiene el archivo en tu carpeta (working directory)</h4>
+<pre><code class="language-bash">cat pruebas.txt
+</code></pre>
+<p>Deberías ver:</p>
+<pre><code class="language-text">Versión 1
+Versión 2
+Versión 3
+Versión 4
+</code></pre>
+<p>👉 Aunque el historial ha retrocedido a B, <strong>tu archivo sigue como en la Versión 4</strong>.
+No has perdido el trabajo de C y D.</p>
+<h4 id="c-ver-que-hay-en-el-staging-index">c) Ver qué hay en el staging (index)</h4>
+<ol>
+<li>Estado actual:</li>
+</ol>
+<pre><code class="language-bash">git status
+</code></pre>
+<p>Verás <code>pruebas.txt</code> como <strong>“changes to be committed”</strong> (preparado para commit).</p>
+<ol>
+<li>Ver exactamente qué cambios hay preparados respecto a B:</li>
+</ol>
+<pre><code class="language-bash">git diff --cached
+</code></pre>
+<p>Deberían aparecer las líneas añadidas:</p>
+<pre><code class="language-diff">+Versión 3
++Versión 4
+</code></pre>
+<p>👉 Esto significa:</p>
+<ul>
+<li>HEAD (B) solo conoce hasta “Versión 2”.</li>
+<li>El staging contiene los cambios que añadirían “Versión 3” y “Versión 4”.</li>
+<li>El fichero real ya está en el estado final (como en D).</li>
+</ul>
+<h3 id="24-reconstruir-la-situacion-original-volver-a-d">2.4. Reconstruir la situación original (volver a D)</h3>
+<p>Para dejar el repo como al principio (otra vez con D como último commit), puedes:</p>
+<pre><code class="language-bash">git commit -m &quot;C y D: reconstruidos tras reset --soft&quot;
+</code></pre>
+<p>(En un caso real podrías re-hacer los commits separados, pero para esta práctica basta con uno solo o repetir C y D si quieres volver exáctamente a la situación original.)</p>
+<hr />
+<h2 id="3-probar-git-reset-mixed-hacia-b">3️⃣ Probar <code>git reset --mixed</code> hacia B</h2>
+<blockquote>
+<p><code>--mixed</code> es el modo por defecto de <code>git reset</code>.</p>
+</blockquote>
+<h3 id="31-asegurate-de-que-estas-de-nuevo-en-d">3.1. Asegúrate de que estás de nuevo en D</h3>
+<pre><code class="language-bash">git log --oneline
+cat pruebas.txt
+</code></pre>
+<p>Debes tener otra vez las cuatro versiones y el último commit D.</p>
+<h3 id="32-ejecutar-reset-mixed-b">3.2. Ejecutar <code>reset --mixed B</code></h3>
+<p>De nuevo, identifica el SHA de B (<code>bbbbbbb</code>) y ejecuta:</p>
+<pre><code class="language-bash">git reset --mixed bbbbbbb
+# o simplemente:
+git reset bbbbbbb
+</code></pre>
+<h3 id="33-analizar-el-resultado">3.3. Analizar el resultado</h3>
+<ol>
+<li>Historial:</li>
+</ol>
+<pre><code class="language-bash">git log --oneline
+</code></pre>
+<p>Verás solo A y B.</p>
+<ol>
+<li>Staging y working directory:</li>
+</ol>
+<pre><code class="language-bash">git status
+</code></pre>
+<p>Verás <code>pruebas.txt</code> como <strong>“modified”</strong>, pero ya no en “changes to be committed”.
+Es decir, los cambios de C y D están <strong>en tu carpeta</strong>, pero no en staging.</p>
+<ol>
+<li>Contenido del archivo:</li>
+</ol>
+<pre><code class="language-bash">cat pruebas.txt
+</code></pre>
+<p>Sigue estando:</p>
+<pre><code class="language-text">Versión 1
+Versión 2
+Versión 3
+Versión 4
+</code></pre>
+<p>👉 Diferencia clave con <code>--soft</code>:</p>
+<ul>
+<li>Con <code>--soft</code>, los cambios de C y D estaban <strong>en staging</strong>.</li>
+<li>Con <code>--mixed</code>, los cambios de C y D están solo <strong>en el área de trabajo</strong> (sin preparar).</li>
+</ul>
+<h3 id="34-reconstruir-la-situacion-volver-a-d">3.4. Reconstruir la situación (volver a D)</h3>
+<pre><code class="language-bash">git add pruebas.txt
+git commit -m &quot;C y D: reconstruidos tras reset --mixed&quot;
+</code></pre>
+<p>Otra vez tu historial tendrá A, B y el nuevo commit con las cuatro líneas.</p>
+<h2 id="4-probar-git-reset-hard-hacia-b">4️⃣ Probar <code>git reset --hard</code> hacia B</h2>
+<p>⚠️ Este modo sí eliminará los cambios de C y D del área de trabajo.</p>
+<h3 id="41-asegurate-de-que-vuelves-a-tener-las-cuatro-lineas">4.1. Asegúrate de que vuelves a tener las cuatro líneas</h3>
+<pre><code class="language-bash">cat pruebas.txt
+git log --oneline
+</code></pre>
+<h3 id="42-ejecutar-reset-hard-b">4.2. Ejecutar <code>reset --hard B</code></h3>
+<pre><code class="language-bash">git reset --hard bbbbbbb
+</code></pre>
+<h3 id="43-analizar-el-resultado">4.3. Analizar el resultado</h3>
+<ol>
+<li>Historial:</li>
+</ol>
+<pre><code class="language-bash">git log --oneline
+</code></pre>
+<p>Solo A y B.</p>
+<ol>
+<li>Estado:</li>
+</ol>
+<pre><code class="language-bash">git status
+</code></pre>
+<p>Working directory limpio (no hay cambios pendientes).</p>
+<ol>
+<li>Contenido del archivo:</li>
+</ol>
+<pre><code class="language-bash">cat pruebas.txt
+</code></pre>
+<p>Ahora verás únicamente:</p>
+<pre><code class="language-text">Versión 1
+Versión 2
+</code></pre>
+<p>👉 Aquí sí han desaparecido físicamente del archivo “Versión 3” y “Versión 4”.</p>
+<hr />
+<h2 id="5-resumen-conceptual-para-cerrar-la-practica">5️⃣ Resumen conceptual (para cerrar la práctica)</h2>
+<p>Puedes cerrar la sesión con esta tabla:</p>
+<table>
+<thead>
+<tr>
+<th>Modo</th>
+<th>HEAD (rama)</th>
+<th>Staging (index)</th>
+<th>Working directory</th>
+<th>Efecto práctico</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>git reset --soft B</code></td>
+<td>Vuelve a B</td>
+<td>Mantiene cambios de C y D <strong>preparados</strong></td>
+<td>Mantiene cambios de C y D</td>
+<td>Deshace commits, pero deja todo listo para re-commit</td>
+</tr>
+<tr>
+<td><code>git reset --mixed B</code></td>
+<td>Vuelve a B</td>
+<td>Limpia staging (como en B)</td>
+<td>Mantiene cambios de C y D</td>
+<td>Deshace commits, deja cambios sin añadir</td>
+</tr>
+<tr>
+<td><code>git reset --hard B</code></td>
+<td>Vuelve a B</td>
+<td>Como en B</td>
+<td>Como en B (borra C y D)</td>
+<td>Deshace commits y borra cambios locales</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="entrega-de-la-practica"><strong>ENTREGA DE LA PRÁCTICA</strong></h2>
+<p>Al finalizar la práctica, debes entregar <strong>únicamente un archivo de texto</strong> con los comandos ejecutados durante la misma.</p>
+<h2 id="1-exporta-tu-historial-de-comandos">✅ <strong>1. Exporta tu historial de comandos</strong></h2>
+<p>En tu terminal (Git Bash, Linux o macOS), ejecuta:</p>
+<pre><code class="language-bash">history &gt; AAA_practica5.txt
+</code></pre>
+<p>Donde:</p>
+<ul>
+<li><strong>AAA</strong> son tus <strong>iniciales</strong> en el orden
+  <strong>Primer apellido – Segundo apellido – Nombre</strong>
+  (Ej.: <em>GGR_practica5.txt</em> para <em>García Gómez Roberto</em>).</li>
+</ul>
+<p>Este archivo debe contener <strong>todos los comandos que has utilizado</strong> durante la práctica.</p>
+<blockquote>
+<p>⚠️ <strong>IMPORTANTE:</strong>
+Para asegurarte de que el historial incluye los últimos comandos, <strong>cierra la terminal</strong>, vuelve a abrirla, y entonces ejecuta el comando <code>history &gt; AAA_practica5.txt</code>.</p>
+</blockquote>
+<hr />
+<h2 id="sube-el-archivo-a-moodle">✔️ <strong>Sube el archivo a Moodle</strong></h2>
+<ul>
+<li><code>AAA_practica5.txt</code></li>
+</ul>
+<p>Sin este archivo, la práctica no se considerará entregada.</p>
+              
+            </div>
+          </div><footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+    
+  </span>
+</div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+      <script src="../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

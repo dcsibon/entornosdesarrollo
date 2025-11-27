@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>Guía: Breakpoints en Eclipse - Entornos de Desarrollo 1º CFGS DAM-DAW</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Gu\u00eda: Breakpoints en Eclipse";
+        var mkdocs_page_input_path = "2_eclipse_practica4_guia_breakpoint.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> Entornos de Desarrollo 1º CFGS DAM-DAW
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="..">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="" href="../3_intro.md">U1 Introducción</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../2_eclipse/">U2 Eclipse</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../3_git/">U3 Git</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../practicas_modulo/">Prácticas</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">Entornos de Desarrollo 1º CFGS DAM-DAW</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">Guía: Breakpoints en Eclipse</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="guia-breakpoints-en-eclipse">Guía: Breakpoints en Eclipse</h1>
+<h2 id="1-crear-un-breakpoint-normal">1) Crear un breakpoint “normal”</h2>
+<ol>
+<li>Abre el código fuente <em>(.java)</em>.</li>
+<li>Haz <strong>doble clic</strong> en el margen izquierdo de la línea onde quieras pausar la ejecución de tu programa → aparece un círculo azul (breakpoint de línea).</li>
+<li>Ejecuta en modo <strong>Debug</strong> (icono del bicho). El programa se parará cada vez que pase por esa línea.</li>
+</ol>
+<blockquote>
+<p>Esto ya funciona, pero se detiene <strong>en todas las iteraciones</strong>.</p>
+</blockquote>
+<hr />
+<h2 id="2-convertir-un-breakpoint-en-condicional">2) Convertir un breakpoint en <strong>condicional</strong></h2>
+<ol>
+<li>Clic derecho sobre el círculo azul → <strong>Breakpoint Properties…</strong></li>
+<li>Marca <strong>Enabled</strong> <em>(activo)</em> y <strong>Conditional</strong>.</li>
+<li>
+<p>Elige uno de los dos modos:</p>
+</li>
+<li>
+<p><strong>Suspend when 'true'</strong> y escribe una <code>expresión booleana</code> que debe cumplir para que tu <code>breakpoint</code> se active y tu programa se pare <em>(por ejemplo <code>suma &gt; 5</code>)</em>.</p>
+</li>
+<li><strong>Suspend when value changes</strong> y pon una expresión cuyo <strong>valor</strong> quieras vigilar (p. ej. <code>maxima</code>).</li>
+</ol>
+<p>Pulsa <strong>OK</strong>.</p>
+<hr />
+<h2 id="3-que-significan-las-opciones-que-aparecen-en-la-ventana-breakpoint-properties">3) ¿Qué significan las opciones que aparecen en la ventana <code>Breakpoint Properties</code>?</h2>
+<p align="center">
+  <img width="600" alt="image" src="https://github.com/user-attachments/assets/a29be2a8-ef38-482f-883d-4d847b8de8a1" />
+</p>
+
+<h3 id="seccion-principal">Sección principal</h3>
+<ul>
+<li><strong>Enabled</strong>
+  Activa/desactiva el breakpoint sin borrarlo.</li>
+<li><strong>Trigger Point</strong>
+  Marca este breakpoint como “disparador”. En escenarios complejos puede habilitar otros breakpoints al alcanzarlo. Útil en depuraciones avanzadas; lo normal es <strong>no usarlo</strong>.</li>
+<li><strong>Disable on hit</strong>
+  Se desactiva automáticamente tras activarse una vez. Útil para “parar solo la primera vez”.</li>
+<li>
+<p><strong>Suspend thread / Suspend VM</strong></p>
+</li>
+<li>
+<p><strong>Suspend thread</strong> (recomendado): pausa <strong>solo el hilo actual</strong>.</p>
+</li>
+<li><strong>Suspend VM</strong>: pausa <strong>toda</strong> la máquina virtual Java (todos los hilos). Úsalo solo si lo necesitas.</li>
+</ul>
+<h3 id="hit-count-contador">Hit count (contador)</h3>
+<ul>
+<li><strong>Hit count</strong>
+  Se detiene cuando la línea se ha ejecutado <strong>N</strong> veces.
+  Ej.: Hit count = 5 → se para la <strong>quinta</strong> vez que pase por ahí.</li>
+</ul>
+<h3 id="conditional-condicion">Conditional (condición)</h3>
+<p>Activa la evaluación de una <strong>expresión Java</strong> en el contexto de esa línea.</p>
+<ul>
+<li><strong>Suspend when 'true'</strong>
+  Se detiene <strong>solo si la expresión booleana vale <code>true</code></strong>.
+  Ej.: <code>temperatura &lt; 0 || temperatura &gt; 50</code> → para en temperaturas fuera de rango.</li>
+<li><strong>Suspend when value changes</strong>
+  Se detiene <strong>cuando cambia el valor</strong> de la expresión respecto a la última vez.
+  Ej.: <code>temperaturaMaxima</code> → se parará <strong>solo cuando se actualice la variable temperaturaMaxima</strong>.</li>
+</ul>
+<blockquote>
+<p>Las expresiones se evalúan <strong>con las variables visibles en esa línea</strong> (parámetros, locales, campos accesibles).
+Puedes llamar métodos, pero evita los que tengan <strong>efectos secundarios</strong>.</p>
+</blockquote>
+<h3 id="filtering-scope-si-tu-eclipse-lo-muestra">Filtering / Scope <em>(si tu Eclipse lo muestra)</em></h3>
+<ul>
+<li>Permite limitar el breakpoint a <strong>ciertas clases, paquetes o hilos</strong>.
+  Útil en proyectos grandes para no parar en ejecuciones que no te interesan.</li>
+</ul>
+<hr />
+<h2 id="4-menu-contextual-de-los-breakpoints-en-eclipse-opciones-interesantes-o-mas-utilizadas">4) Menú contextual de los <em>Breakpoints</em> en Eclipse <em>(opciones interesantes o más utilizadas)</em></h2>
+<p align="center">
+  <img width="400" alt="imagen del menú contextual de los breakpoints" src="https://github.com/user-attachments/assets/22b2f1bf-61a2-4f7d-8e36-f220476e13f4" />
+</p>
+
+<p>Cuando haces clic derecho sobre el punto de interrupción (círculo azul del margen izquierdo), Eclipse muestra un menú con diversas opciones que permiten <strong>controlar su comportamiento</strong>.
+Estas son las más importantes:</p>
+<h3 id="toggle-breakpoint">🔹 <strong>Toggle Breakpoint</strong></h3>
+<p><strong>(Ctrl + Shift + B)</strong>
+Activa o desactiva un <em>breakpoint</em> en la línea actual.</p>
+<ul>
+<li>Si no existe, lo crea.</li>
+<li>Si ya existe, lo elimina.</li>
+</ul>
+<p>👉 Es el método más rápido para añadir o quitar puntos de interrupción.</p>
+<h3 id="disable-breakpoint">🔹 <strong>Disable Breakpoint</strong></h3>
+<p><strong>(Shift + Doble clic)</strong>
+Desactiva temporalmente el <em>breakpoint</em> (sin borrarlo).</p>
+<ul>
+<li>El círculo azul se convierte en un <strong>círculo vacío</strong> (gris).</li>
+<li>Puedes volver a activarlo repitiendo la acción.</li>
+</ul>
+<p>💡 <em>Muy útil cuando no quieres detener la ejecución en ese punto, pero tampoco deseas perder la configuración condicional.</em></p>
+<h3 id="toggle-triggerpoint">🔹 <strong>Toggle Triggerpoint</strong></h3>
+<p>Convierte el <em>breakpoint</em> seleccionado en un <strong>punto de disparo (trigger point)</strong>.</p>
+<ul>
+<li>Un <em>trigger point</em> <strong>activa</strong> otros <em>breakpoints deshabilitados</em> cuando se alcanza.</li>
+<li>Se usa en depuraciones complejas, por ejemplo, cuando solo quieres que se activen ciertos <em>breakpoints</em> <strong>después</strong> de pasar por un punto concreto.</li>
+</ul>
+<p><strong>Ejemplo:</strong>
+Activa el <em>breakpoint</em> de un método <code>calcularMedia()</code> <strong>solo después</strong> de haber pasado por <code>leerNotas()</code>.</p>
+<h3 id="toggle-breakpoint-with-hit-count">🔹 <strong>Toggle Breakpoint with Hit Count</strong></h3>
+<p>Permite especificar un <strong>contador de ejecuciones</strong> (<em>hit count</em>).</p>
+<ul>
+<li>El <em>breakpoint</em> se activará únicamente cuando se haya ejecutado <strong>N veces</strong>.</li>
+<li>Es equivalente a abrir las <em>Breakpoint Properties</em> y marcar “Hit count”.</li>
+</ul>
+<p>💡 Ejemplo:
+Si pones <em>Hit count = 5</em>, Eclipse detendrá la ejecución <strong>la quinta vez</strong> que el flujo alcance esa línea.</p>
+<h3 id="toggle-tracepoint">🔹 <strong>Toggle Tracepoint</strong></h3>
+<p>Un <em>tracepoint</em> <strong>no detiene la ejecución</strong>, pero <strong>registra información</strong> (por ejemplo, imprime valores o mensajes en la consola o log).
+Es similar a un <em>System.out.println()</em> temporal, pero gestionado por el depurador. Debes modificarlo en la ventana <code>Breakpoint Properties</code>.</p>
+<h3 id="run-to-line">🔹 <strong>Run to Line</strong></h3>
+<p><strong>(Ctrl + Alt + Clic)</strong>
+Ejecuta el programa <strong>hasta la línea seleccionada</strong>, sin necesidad de crear un <em>breakpoint permanente</em>.
+Es una ejecución <em>temporal</em> que se detiene justo antes de esa línea.
+Para que se habilite el programa debe estar en modo Debug y detenido.</p>
+<p>💡 Perfecto cuando quieres “saltar” rápidamente hasta un punto del código.</p>
+<h3 id="add-bookmark-add-task">🔹 <strong>Add Bookmark… / Add Task…</strong></h3>
+<p>Permiten marcar líneas del código para recordatorios o tareas.</p>
+<ul>
+<li><strong>Bookmark:</strong> marca visual sin impacto funcional (solo para navegar).</li>
+<li><strong>Task:</strong> permite añadir comentarios tipo “TODO” gestionables desde la vista <em>Tasks</em>.</li>
+</ul>
+<h3 id="show-quick-diff-show-line-numbers-folding">🔹 <strong>Show Quick Diff / Show Line Numbers / Folding</strong></h3>
+<p>Opciones del editor para mostrar diferencias, numerar líneas o contraer bloques de código.
+No están relacionadas directamente con la depuración, pero son útiles durante el análisis.</p>
+<h3 id="preferences">🔹 <strong>Preferences…</strong></h3>
+<p>Abre directamente el panel de configuración global de Eclipse, normalmente en:</p>
+<pre><code>Window → Preferences → Java → Debug
+</code></pre>
+<p>Desde ahí puedes ajustar:</p>
+<ul>
+<li>Colores de los <em>breakpoints</em>.</li>
+<li>Comportamiento del depurador.</li>
+<li>Opciones de suspensión de hilos, vistas, etc.</li>
+</ul>
+<h3 id="breakpoint-properties">🔹 <strong>Breakpoint Properties…</strong></h3>
+<p><strong>(Ctrl + Doble clic sobre el círculo azul)</strong>
+Abre la ventana de propiedades detalladas del <em>breakpoint</em>.</p>
+<p>💡 Es la herramienta clave para convertir un <em>breakpoint normal</em> en uno <strong>condicional o avanzado</strong>.</p>
+<hr />
+              
+            </div>
+          </div><footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+    
+  </span>
+</div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+      <script src="../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

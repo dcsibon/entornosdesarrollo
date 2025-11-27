@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>🐞 Práctica 4: Depuración de código en Eclipse - Entornos de Desarrollo 1º CFGS DAM-DAW</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "\ud83d\udc1e Pr\u00e1ctica 4: Depuraci\u00f3n de c\u00f3digo en Eclipse";
+        var mkdocs_page_input_path = "2_eclipse_practica4.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> Entornos de Desarrollo 1º CFGS DAM-DAW
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="..">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="" href="../3_intro.md">U1 Introducción</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../2_eclipse/">U2 Eclipse</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../3_git/">U3 Git</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../practicas_modulo/">Prácticas</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">Entornos de Desarrollo 1º CFGS DAM-DAW</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">🐞 Práctica 4: Depuración de código en Eclipse</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="practica-4-depuracion-de-codigo-en-eclipse">🐞 Práctica 4: Depuración de código en Eclipse</h1>
+<h2 id="objetivo">Objetivo</h2>
+<ul>
+<li>Usar el <strong>depurador</strong> de Eclipse (breakpoints, Resume, Step Over/Into/Return).</li>
+<li>Observar <strong>variables</strong> y <strong>flujo</strong> de ejecución.</li>
+<li><strong>Encontrar y describir</strong> errores (compilación, ejecución o lógica) y corregirlos.</li>
+<li>Entregar evidencias (capturas) + código corregido.</li>
+</ul>
+<hr />
+<h2 id="1-crear-el-proyecto-y-la-clase">1) Crear el proyecto y la clase</h2>
+<ol>
+<li>Crea el proyecto <strong>DepuracionErrores</strong>.</li>
+<li>Crea el paquete: <code>tema2_debug</code>. <em>(vamos a simplificarlo por ahora)</em></li>
+<li>Crea la clase: <code>MediaNotas</code>.</li>
+</ol>
+<p>Pega <strong>exactamente</strong> este código:</p>
+<pre><code class="language-java">package tema2_debug;
+
+import java.util.Scanner;
+
+public class MediaNotas {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        int contador = 0;
+        double suma = 0;
+
+        System.out.print(&quot;Introduce el número de alumnos: &quot;);
+        int numAlumnos = sc.nextInt();
+
+        while (contador &lt;= numAlumnos) {
+            System.out.print(&quot;Introduce la nota del alumno &quot; + contador + &quot;: &quot;);
+            double nota = sc.nextDouble();
+
+            if (nota &lt; 0 || nota &gt; 10)
+                System.out.println(&quot;Error: la nota debe estar entre 0 y 10&quot;);
+
+            suma = suma + nota;
+            contador++;
+        }
+
+        double media = suma / numAlumnos;
+        System.out.println(&quot;La media del grupo es: &quot; + media);
+
+        sc.close();
+    }
+}
+</code></pre>
+<blockquote>
+<p>Nota: <strong>no modifiques</strong> el código antes de depurar. Primero ejecuta e identifica los errores del programa ().</p>
+</blockquote>
+<hr />
+<h2 id="2-guia-rapida-de-depuracion-en-eclipse">2) Guía rápida de depuración en Eclipse</h2>
+<ol>
+<li>
+<p><strong>Coloca breakpoints</strong> (doble clic en el margen izquierdo) al menos en:</p>
+</li>
+<li>
+<p>La lectura de cada nota.</p>
+</li>
+<li>
+<p>El cálculo de la media.</p>
+</li>
+<li>
+<p><strong>Inicia la depuración</strong> con el icono del <strong>bicho verde</strong> (Debug).
+   Acepta cambiar a la perspectiva <em>Debug</em>.</p>
+</li>
+<li>
+<p>Usa los controles:</p>
+</li>
+<li>
+<p><strong>F6 Step Over</strong>: ejecuta la línea actual.</p>
+</li>
+<li><strong>F5 Step Into</strong>: entra en el método llamado.</li>
+<li><strong>F7 Step Return</strong>: vuelve al método llamador.</li>
+<li>
+<p><strong>F8 Resume</strong>: continúa hasta el siguiente breakpoint.</p>
+</li>
+<li>
+<p>Observa en las <strong>vistas</strong>:</p>
+</li>
+<li>
+<p><strong>Variables</strong>: valores de <code>contador</code>, <code>suma</code>, <code>nota</code>, <code>numAlumnos</code>.</p>
+</li>
+<li><strong>Console</strong>: lo que imprime el programa.</li>
+<li><strong>Breakpoints</strong>: lista y configuración (puedes activar <em>Conditional</em> o <em>Hit count</em> si te ayudan).</li>
+<li><strong>Expressions</strong> (opcional): añade <code>suma / (contador == 0 ? 1 : contador)</code> para ver una “media parcial”.</li>
+</ol>
+<hr />
+<h2 id="3-tareas">3) Tareas</h2>
+<ol>
+<li><strong>Ejecuta y depura</strong> el programa introduciendo varios datos (incluye al menos un valor fuera de rango).</li>
+<li>
+<p><strong>Localiza y explica</strong> con tus palabras <strong>todos</strong> los problemas que observes (de flujo, validación, cálculo, etc.).</p>
+</li>
+<li>
+<p>No te decimos cuáles son: <strong>tú debes detectarlos con el depurador</strong>.</p>
+</li>
+<li>
+<p><strong>Corrige</strong> el código para que:</p>
+</li>
+<li>
+<p>Pida exactamente el número de notas indicado.</p>
+</li>
+<li><strong>No acepte</strong> notas fuera de 0..10 (vuelve a pedir hasta que sea válida).</li>
+<li>Calcule la <strong>media correcta</strong>.</li>
+<li>Mantén <code>sc.close();</code> al final del <code>main</code>.</li>
+</ol>
+<blockquote>
+<p>Pista: si te ayuda, puedes reescribir el bucle con <code>for</code> y control de reintentos.</p>
+</blockquote>
+<hr />
+<h2 id="4-entrega-github">4) Entrega <em>(GitHub)</em></h2>
+<p>Crea tu repositorio público: <strong>PR-Eclipse-04-DebugProgErr</strong></p>
+<p>Estructura sugerida:</p>
+<pre><code>PR-Eclipse-03-Debug/
+ ├── src/tema2_debug/MediaNotas.java         (versión corregida)
+ ├── capturas/
+ │    ├── 01_breakpoints.png                 (breakpoints colocados)
+ │    ├── 02_variables_iteracion.png         (valores en Variables durante el bucle)
+ │    ├── 03_console_comportamiento.png      (salida que evidencia un problema)
+ │    ├── 04_expressions_opcional.png        (si usas Expressions a parte de las pedidas en el punto 5)
+ │    ├── 05_media_corregida.png             (resultado correcto tras corregir)
+ │    ├── 06_breakpoint_condicional.png      (breakpoint properties del breakpoint condicional que se pide)
+ │    ├── 04_expressions_obligatorias.png    (expresiones pedidas en el punto 5)
+ │    └── 05_plantilla_pedirnota.png         (definición de la plantilla en `Templates`)
+ └── README.md
+</code></pre>
+<p>Contenido del <strong>README.md</strong>:</p>
+<p>Detalla los siguientes apartados:</p>
+<ol>
+<li>
+<p><strong>Descripción de los errores encontrados</strong> (qué pasaba y por qué).</p>
+</li>
+<li>
+<p><strong>Cómo los detectaste</strong> (qué breakpoint/qué vista/qué valor te lo mostró).</p>
+</li>
+<li>
+<p><strong>Qué cambios hiciste</strong> para corregirlos.</p>
+</li>
+<li>
+<p>Configura un <strong>breakpoint condicional</strong> que se dispare solo cuando la nota sea inválida.</p>
+</li>
+</ol>
+<p><a href="../2_eclipse_practica4_guia_breakpoint/">Guía: Breakpoints en Eclipse</a></p>
+<ol>
+<li>
+<p>Añade las siguientes expresiones en <strong>Expressions</strong> que muestren el valor de la <code>suma</code>, el <code>contador</code> y la <code>media parcial</code> en cada iteración.</p>
+</li>
+<li>
+<p>Escribe una <strong>plantilla</strong> (Template) llamada <code>pedirnota</code> que genere:</p>
+</li>
+</ol>
+<p>```java
+  double nota;
+  do {
+      System.out.print("Introduce la nota del alumno ${index}: ");
+      nota = sc.nextDouble();
+  } while (nota &lt; 0 || nota &gt; 10);</p>
+<p>${cursor}
+  ```
+<a href="../2_eclipse_practica4_guia_template/">Guía: Cómo crear una Plantilla de Código (Template) en Eclipse</a></p>
+              
+            </div>
+          </div><footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+    
+  </span>
+</div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+      <script src="../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

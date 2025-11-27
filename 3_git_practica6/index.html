@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>Práctica 6: Entendiendo git revert (deshacer cambios sin borrar historia) - Entornos de Desarrollo 1º CFGS DAM-DAW</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Pr\u00e1ctica 6: Entendiendo git revert (deshacer cambios sin borrar historia)";
+        var mkdocs_page_input_path = "3_git_practica6.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> Entornos de Desarrollo 1º CFGS DAM-DAW
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="..">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="" href="../3_intro.md">U1 Introducción</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../2_eclipse/">U2 Eclipse</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../3_git/">U3 Git</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../practicas_modulo/">Prácticas</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">Entornos de Desarrollo 1º CFGS DAM-DAW</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">Práctica 6: Entendiendo git revert (deshacer cambios sin borrar historia)</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="practica-6-entendiendo-git-revert-deshacer-cambios-sin-borrar-historia">Práctica 6: Entendiendo <code>git revert</code> (deshacer cambios sin borrar historia)</h1>
+<h2 id="objetivo">🎯 Objetivo</h2>
+<p>Comprender cómo funciona el comando:</p>
+<pre><code class="language-bash">git revert &lt;id_commit&gt;
+</code></pre>
+<p>y ver que:</p>
+<ul>
+<li><strong>no borra</strong> commits antiguos,</li>
+<li>crea un <strong>nuevo commit</strong> que “deshace” otro,</li>
+<li>se puede revertir el <strong>último commit</strong> o uno <strong>más antiguo</strong>,</li>
+<li>puede producir conflictos si el código ha cambiado mucho.</li>
+</ul>
+<p>Todo se realiza <strong>en local</strong>, en una única rama (<code>main</code>).</p>
+<hr />
+<h2 id="0-preparacion-inicial-crear-el-repositorio">0️⃣ Preparación inicial – Crear el repositorio</h2>
+<ol>
+<li>Crea una carpeta para la práctica y entra en ella:</li>
+</ol>
+<pre><code class="language-bash">mkdir pruebaRevert
+cd pruebaRevert
+</code></pre>
+<ol>
+<li>Inicializa el repositorio Git:</li>
+</ol>
+<pre><code class="language-bash">git init
+</code></pre>
+<ol>
+<li>Comprueba el estado:</li>
+</ol>
+<pre><code class="language-bash">git status
+</code></pre>
+<hr />
+<h2 id="1-crear-3-versiones-del-fichero-notastxt-commits-a-b-y-c">1️⃣ Crear 3 versiones del fichero <code>notas.txt</code> (commits A, B y C)</h2>
+<p>Vamos a crear un archivo de texto y hacer <strong>3 commits</strong> que lo vayan modificando.</p>
+<h3 id="commit-a-version-inicial">🔹 Commit A — Versión inicial</h3>
+<p>Crea el fichero <code>notas.txt</code> con este contenido:</p>
+<pre><code class="language-text">Línea 1: Versión inicial
+Línea 2: Texto original
+</code></pre>
+<p>Confirma:</p>
+<pre><code class="language-bash">git add notas.txt
+git commit -m &quot;A: Versión inicial&quot;
+</code></pre>
+<h3 id="commit-b-modificar-la-linea-2">🔹 Commit B — Modificar la línea 2</h3>
+<p>Edita <code>notas.txt</code> para que quede:</p>
+<pre><code class="language-text">Línea 1: Versión inicial
+Línea 2: Texto modificado en B
+</code></pre>
+<p>Confirma:</p>
+<pre><code class="language-bash">git add notas.txt
+git commit -m &quot;B: Cambiada la línea 2&quot;
+</code></pre>
+<h3 id="commit-c-anadir-una-linea-nueva">🔹 Commit C — Añadir una línea nueva</h3>
+<p>Edita <code>notas.txt</code>:</p>
+<pre><code class="language-text">Línea 1: Versión inicial
+Línea 2: Texto modificado en B
+Línea 3: Añadida en el commit C
+</code></pre>
+<p>Confirma:</p>
+<pre><code class="language-bash">git add notas.txt
+git commit -m &quot;C: Añadida la línea 3&quot;
+</code></pre>
+<hr />
+<h3 id="ver-historial-inicial">🔍 Ver historial inicial</h3>
+<pre><code class="language-bash">git log --oneline --graph --all
+</code></pre>
+<p>Deberías ver algo parecido a:</p>
+<pre><code class="language-text">* cccccc C: Añadida la línea 3
+* bbbbbb B: Cambiada la línea 2
+* aaaaaa A: Versión inicial
+</code></pre>
+<p>Y el archivo actual:</p>
+<pre><code class="language-bash">cat notas.txt
+</code></pre>
+<p>Debe mostrar las 3 líneas.</p>
+<hr />
+<h2 id="2-revertir-el-ultimo-commit-revert-de-c">2️⃣ Revertir el último commit (revert de C)</h2>
+<p>Vamos a deshacer el último commit <strong>C</strong>, pero sin borrar su existencia del historial.</p>
+<h3 id="21-ejecutar-git-revert-c">2.1 Ejecutar <code>git revert C</code></h3>
+<ol>
+<li>Localiza el identificador de C (<code>cccccc</code>) con:</li>
+</ol>
+<pre><code class="language-bash">git log --oneline
+</code></pre>
+<ol>
+<li>Ejecuta:</li>
+</ol>
+<pre><code class="language-bash">git revert cccccc
+</code></pre>
+<p>Git abrirá el editor de mensajes de commit (o usará uno por defecto) y creará un nuevo commit que “deshace” C.</p>
+<blockquote>
+<h3 id="nota-importante-sobre-git-revert">💬 Nota importante sobre <code>git revert</code></h3>
+<p>Cuando ejecutes <code>git revert</code>, es normal que se abra una ventana del editor de texto pidiéndote escribir un mensaje de commit.</p>
+<p>✅ No es un error
+✅ Forma parte del funcionamiento de Git</p>
+<p>👉 Si quieres entender <strong>por qué ocurre esto y qué debes hacer exactamente</strong>, consulta:
+🔗 <a href="../3_git_practica6_apertura_editor/">¿Por qué se abre un editor de texto al hacer <code>git revert</code>?</a></p>
+</blockquote>
+<h3 id="22-analizar-el-resultado">2.2 Analizar el resultado</h3>
+<h4 id="a-historial">a) Historial</h4>
+<pre><code class="language-bash">git log --oneline --graph --all
+</code></pre>
+<p>Deberías ver algo como:</p>
+<pre><code class="language-text">* dddddd Revert &quot;C: Añadida la línea 3&quot;
+* cccccc C: Añadida la línea 3
+* bbbbbb B: Cambiada la línea 2
+* aaaaaa A: Versión inicial
+</code></pre>
+<p>👉 Fíjate:
+C <strong>sigue existiendo</strong> en el historial, pero ahora hay un commit nuevo (“Revert C”) que deshace sus cambios.</p>
+<h4 id="b-contenido-del-archivo">b) Contenido del archivo</h4>
+<pre><code class="language-bash">cat notas.txt
+</code></pre>
+<p>Deberías ver ahora:</p>
+<pre><code class="language-text">Línea 1: Versión inicial
+Línea 2: Texto modificado en B
+</code></pre>
+<p>👉 El archivo ha vuelto al estado anterior a C,
+pero <strong>el historial no ha desaparecido</strong>, solo hemos añadido un commit que “revierte” C.</p>
+<hr />
+<h2 id="3-revertir-un-commit-antiguo-revert-de-b">3️⃣ Revertir un commit antiguo (revert de B)</h2>
+<p>Ahora vamos a deshacer un commit que <strong>no es el último</strong>: el commit B.</p>
+<h3 id="31-localizar-el-commit-b">3.1 Localizar el commit B</h3>
+<pre><code class="language-bash">git log --oneline
+</code></pre>
+<p>Identifica el SHA de B (<code>bbbbbb</code>).</p>
+<p>En este momento:</p>
+<ul>
+<li>El archivo está así (después de revertir C):</li>
+</ul>
+<p><code>text
+  Línea 1: Versión inicial
+  Línea 2: Texto modificado en B</code></p>
+<ul>
+<li>Y el historial contiene A, B, C y el revert de C.</li>
+</ul>
+<h3 id="32-ejecutar-git-revert-b">3.2 Ejecutar <code>git revert B</code></h3>
+<pre><code class="language-bash">git revert bbbbbb
+</code></pre>
+<p>Git creará <strong>otro commit nuevo</strong> que deshace los cambios del commit B.</p>
+<h3 id="33-analizar-el-resultado">3.3 Analizar el resultado</h3>
+<h4 id="a-historial_1">a) Historial</h4>
+<pre><code class="language-bash">git log --oneline --graph --all
+</code></pre>
+<p>Verás algo similar a:</p>
+<pre><code class="language-text">* eeeeee Revert &quot;B: Cambiada la línea 2&quot;
+* dddddd Revert &quot;C: Añadida la línea 3&quot;
+* cccccc C: Añadida la línea 3
+* bbbbbb B: Cambiada la línea 2
+* aaaaaa A: Versión inicial
+</code></pre>
+<p>👉 Observa:</p>
+<ul>
+<li>Ni B ni C han desaparecido.</li>
+<li>Simplemente hemos creado commits nuevos que “los deshacen”.</li>
+</ul>
+<h4 id="b-contenido-del-archivo_1">b) Contenido del archivo</h4>
+<pre><code class="language-bash">cat notas.txt
+</code></pre>
+<p>Debería volver a:</p>
+<pre><code class="language-text">Línea 1: Versión inicial
+Línea 2: Texto original
+</code></pre>
+<p>Es decir, prácticamente el estado del commit A, <strong>pero A no se ha repetido</strong>, y B y C siguen estando en la historia.</p>
+<hr />
+<h2 id="4-comparacion-con-reset">4️⃣ Comparación con reset</h2>
+<ol>
+<li>Con <code>reset</code>, movíamos la rama hacia atrás y <strong>podíamos borrar commits de la historia</strong>.</li>
+<li>
+<p>Con <code>revert</code>, <strong>no se borra nada</strong>:</p>
+</li>
+<li>
+<p>La historia se mantiene,</p>
+</li>
+<li>solo se añaden commits que deshacen cambios anteriores.</li>
+</ol>
+<hr />
+<h2 id="5-ver-un-revert-con-conflicto">5️⃣ Ver un revert con conflicto</h2>
+<p>Este bloque sirve para ver que <code>revert</code> también puede generar conflictos.</p>
+<h3 id="51-preparar-la-situacion">5.1 Preparar la situación</h3>
+<p>Partimos de este estado en el archivo <em>(después de los reverts anteriores)</em>:</p>
+<pre><code class="language-text">Línea 1: Versión inicial
+Línea 2: Texto original
+</code></pre>
+<p>Haz ahora un nuevo commit D modificando otra vez la línea 2:</p>
+<ol>
+<li>Edita <code>notas.txt</code>:</li>
+</ol>
+<pre><code class="language-text">Línea 1: Versión inicial
+Línea 2: Texto cambiado en el commit D
+</code></pre>
+<ol>
+<li>Confirma:</li>
+</ol>
+<pre><code class="language-bash">git add notas.txt
+git commit -m &quot;D: Cambio nuevo en la línea 2&quot;
+</code></pre>
+<h3 id="52-intentar-revertir-otra-vez-b">5.2 Intentar revertir otra vez B</h3>
+<p>Ahora intenta esto:</p>
+<pre><code class="language-bash">git revert bbbbbb
+</code></pre>
+<p>(Si B está muy atrás y sus cambios no se encuentran tal cual, es posible que Git <strong>no pueda aplicar el parche inverso sin ayuda</strong>.)</p>
+<p>Si se produce un conflicto, Git lo indicará:</p>
+<pre><code class="language-text">Auto-merging notas.txt
+CONFLICT (content): Merge conflict in notas.txt
+error: could not revert c5499e2... B: Cambiada la línea 2
+hint: After resolving the conflicts, mark them with
+hint: &quot;git add/rm &lt;pathspec&gt;&quot;, then run
+hint: &quot;git revert --continue&quot;.
+hint: You can instead skip this commit with &quot;git revert --skip&quot;.
+hint: To abort and get back to the state before &quot;git revert&quot;,
+hint: run &quot;git revert --abort&quot;.
+hint: Disable this message with &quot;git config advice.mergeConflict false&quot;
+</code></pre>
+<p>El archivo <code>notas.txt</code> contendrá algo como:</p>
+<pre><code class="language-text">Línea 1: Versión inicial
+&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD
+Línea 2: Texto cambiado en el commit D
+=======
+Línea 2: Texto original
+&gt;&gt;&gt;&gt;&gt;&gt;&gt; parent of bbbbbbb (B: Cambiada la línea 2)
+</code></pre>
+<p>Tendrás que:</p>
+<ol>
+<li>Editar el archivo <code>notas.txt</code>y dejar la versión correcta.</li>
+</ol>
+<p>Por ejemplo, mantener el texto original del commit A:</p>
+<pre><code>Línea 1: Versión inicial
+Línea 2: Texto original
+</code></pre>
+<ol>
+<li>Ejecutar:</li>
+</ol>
+<pre><code class="language-bash">git add notas.txt
+git revert --continue
+</code></pre>
+<h3 id="mensaje-clave">🧠 Mensaje clave</h3>
+<blockquote>
+<p><code>revert</code> es seguro a nivel de historia (no borra commits),
+pero también puede producir conflictos si los cambios que intenta deshacer han sido modificados en commits posteriores.</p>
+</blockquote>
+<hr />
+<h2 id="6-resumen-final">6️⃣ Resumen final</h2>
+<ul>
+<li>
+<p><code>git revert &lt;id_commit&gt;</code>:</p>
+</li>
+<li>
+<p><strong>NO borra</strong> el commit indicado.</p>
+</li>
+<li>
+<p>Crea un <strong>nuevo commit</strong> que aplica el “contracambio”.</p>
+</li>
+<li>
+<p>Se puede revertir:</p>
+</li>
+<li>
+<p>el último commit (HEAD),</p>
+</li>
+<li>
+<p>o uno más antiguo del historial.</p>
+</li>
+<li>
+<p>Es seguro usarlo después de hacer <code>push</code> a GitHub.</p>
+</li>
+<li>Puede generar conflictos si el código ha cambiado mucho desde el commit que queremos revertir.</li>
+<li>
+<p>En caso de conflicto:</p>
+</li>
+<li>
+<p>resolver en el archivo,</p>
+</li>
+<li><code>git add</code>,</li>
+<li><code>git revert --continue</code>.</li>
+</ul>
+<hr />
+<h2 id="entrega-de-la-practica"><strong>ENTREGA DE LA PRÁCTICA</strong></h2>
+<p>Al finalizar la práctica, debes entregar <strong>únicamente un archivo de texto</strong> con los comandos ejecutados durante la misma.</p>
+<h3 id="1-exporta-tu-historial-de-comandos">✅ <strong>1. Exporta tu historial de comandos</strong></h3>
+<p>En tu terminal (Git Bash, Linux o macOS), ejecuta:</p>
+<pre><code class="language-bash">history &gt; AAA_practica6.txt
+</code></pre>
+<p>Donde:</p>
+<ul>
+<li><strong>AAA</strong> son tus <strong>iniciales</strong> en el orden
+  <strong>Primer apellido – Segundo apellido – Nombre</strong>
+  (Ej.: <em>GGR_practica5.txt</em> para <em>García Gómez Roberto</em>).</li>
+</ul>
+<p>Este archivo debe contener <strong>todos los comandos que has utilizado</strong> durante la práctica.</p>
+<blockquote>
+<p>⚠️ <strong>IMPORTANTE:</strong>
+Para asegurarte de que el historial incluye los últimos comandos, <strong>cierra la terminal</strong>, vuelve a abrirla, y entonces ejecuta el comando <code>history &gt; AAA_practica6.txt</code>.</p>
+</blockquote>
+<h3 id="2-captura-de-la-historia-de-commits-al-finalizar-la-practica">✅ <strong>2. Captura de la historia de commits al finalizar la práctica</strong></h3>
+<p><img width="931" height="204" alt="image" src="https://github.com/user-attachments/assets/470d81eb-19ed-4928-af6b-0a5bf1c6aa23" /></p>
+<hr />
+<h2 id="sube-los-archivos-a-moodle">✔️ <strong>Sube los archivos a Moodle</strong></h2>
+<ul>
+<li><code>AAA_practica6.txt</code></li>
+<li>captura_final.jpg</li>
+</ul>
+              
+            </div>
+          </div><footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+    
+  </span>
+</div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+      <script src="../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

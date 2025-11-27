@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>Práctica 4: Rebase con conflicto en Git - Entornos de Desarrollo 1º CFGS DAM-DAW</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Pr\u00e1ctica 4: Rebase con conflicto en Git";
+        var mkdocs_page_input_path = "3_git_practica4.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> Entornos de Desarrollo 1º CFGS DAM-DAW
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="..">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="" href="../3_intro.md">U1 Introducción</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../2_eclipse/">U2 Eclipse</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../3_git/">U3 Git</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../practicas_modulo/">Prácticas</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">Entornos de Desarrollo 1º CFGS DAM-DAW</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">Práctica 4: Rebase con conflicto en Git</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="practica-4-rebase-con-conflicto-en-git">Práctica 4: Rebase con conflicto en Git</h1>
+<blockquote>
+<p>Objetivo: entender cómo funciona <code>git rebase</code> cuando la rama principal y una rama secundaria modifican <strong>la misma línea</strong> de un archivo, provocando un conflicto que hay que resolver manualmente.</p>
+</blockquote>
+<hr />
+<h2 id="1-preparacion-inicial">1. Preparación inicial</h2>
+<ol>
+<li>Crea una carpeta para la práctica:</li>
+</ol>
+<pre><code class="language-bash">mkdir git-rebase-conflicto
+cd git-rebase-conflicto
+</code></pre>
+<ol>
+<li>Inicializa un repositorio Git vacío:</li>
+</ol>
+<pre><code class="language-bash">git init
+</code></pre>
+<ol>
+<li>Crea un fichero de texto llamado <code>notas.txt</code> con este contenido inicial:</li>
+</ol>
+<pre><code class="language-text">Línea 1: Proyecto de prueba con rebase.
+Línea 2: Esta es la versión inicial del texto.
+</code></pre>
+<ol>
+<li>Añade y confirma el primer commit:</li>
+</ol>
+<pre><code class="language-bash">git add notas.txt
+git commit -m &quot;A: Versión inicial de notas.txt&quot;
+</code></pre>
+<p>En este momento solo tienes <strong>un commit (A)</strong> en la rama principal (<code>main</code> o <code>master</code>).</p>
+<hr />
+<h2 id="2-crear-una-rama-secundaria-y-modificar-el-texto">2. Crear una rama secundaria y modificar el texto</h2>
+<ol>
+<li>Crea una rama nueva llamada <code>estilo_texto</code> y cámbiate a ella:</li>
+</ol>
+<pre><code class="language-bash">git switch -c estilo_texto
+</code></pre>
+<ol>
+<li>Edita <code>notas.txt</code> y modifica la <strong>línea 2</strong> para dejarla así:</li>
+</ol>
+<pre><code class="language-text">Línea 1: Proyecto de prueba con rebase.
+Línea 2: Texto centrado en el estilo y la presentación.
+</code></pre>
+<ol>
+<li>Guarda y realiza un commit:</li>
+</ol>
+<pre><code class="language-bash">git add notas.txt
+git commit -m &quot;B: Modificada la línea 2 con un nuevo texto de estilo&quot;
+</code></pre>
+<ol>
+<li>Ahora añade una <strong>línea 3</strong> al final del archivo:</li>
+</ol>
+<pre><code class="language-text">Línea 3: Pendiente revisar posibles mejoras visuales.
+</code></pre>
+<ol>
+<li>Guarda y realiza otro commit:</li>
+</ol>
+<pre><code class="language-bash">git add notas.txt
+git commit -m &quot;C: Añadida una línea sobre mejoras visuales&quot;
+</code></pre>
+<p>La situación ahora es:</p>
+<pre><code class="language-text">main:          A
+                 \
+estilo_texto:     B - C
+</code></pre>
+<hr />
+<h2 id="3-avanzar-la-rama-principal-main-modificando-la-misma-linea">3. Avanzar la rama principal (<code>main</code>) modificando la misma línea</h2>
+<p>Ahora vamos a simular que en la rama principal alguien también ha tocado la <strong>línea 2</strong>, pero con otro texto distinto.</p>
+<ol>
+<li>Cambia de vuelta a la rama principal:</li>
+</ol>
+<pre><code class="language-bash">git switch main
+</code></pre>
+<ol>
+<li>Edita <code>notas.txt</code> y modifica la <strong>línea 2</strong>, pero con este texto:</li>
+</ol>
+<pre><code class="language-text">Línea 1: Proyecto de prueba con rebase.
+Línea 2: Esta es la versión principal del proyecto en desarrollo.
+</code></pre>
+<p>(Importante: <strong>la línea 2</strong> queda diferente de la que pusiste en <code>estilo_texto</code>).</p>
+<ol>
+<li>Guarda y realiza un nuevo commit:</li>
+</ol>
+<pre><code class="language-bash">git add notas.txt
+git commit -m &quot;D: Modificada la línea 2 en la rama principal&quot;
+</code></pre>
+<p>Estado del repo:</p>
+<pre><code class="language-text">main:          A - D
+                 \
+estilo_texto:     B - C
+</code></pre>
+<hr />
+<h2 id="4-ver-el-historial-antes-del-rebase">4. Ver el historial antes del rebase</h2>
+<ol>
+<li>
+<p>Ejecuta en la terminal el comando adecuado para mostrar la historia de <strong>todas las ramas</strong> de forma gráfica y resumida.</p>
+</li>
+<li>
+<p>Comprueba que:</p>
+</li>
+<li>
+<p><code>main</code> tiene los commits A y D.</p>
+</li>
+<li>
+<p><code>estilo_texto</code> tiene los commits B y C, partiendo de A.</p>
+</li>
+<li>
+<p>Realiza una captura de pantalla de la terminal mostrando:</p>
+</li>
+<li>
+<p>El comando utilizado.</p>
+</li>
+<li>El historial.</li>
+<li>La ruta del proyecto.</li>
+<li>Tu usuario de sistema.</li>
+</ol>
+<p><em>(Usa un único comando para mostrar el historial.)</em></p>
+<hr />
+<h2 id="5-rebase-de-estilo_texto-sobre-main-aqui-aparece-el-conflicto">5. Rebase de <code>estilo_texto</code> sobre <code>main</code> (aquí aparece el conflicto)</h2>
+<p>Ahora queremos que los cambios de <code>estilo_texto</code> (commits B y C) se <strong>reapliquen encima de la versión actual de <code>main</code> (commit D)</strong>.</p>
+<p>Esto provocará un <strong>conflicto</strong> porque ambas ramas han modificado la <strong>misma línea 2</strong> con textos distintos.</p>
+<ol>
+<li>Cámbiate a la rama <code>estilo_texto</code>:</li>
+</ol>
+<pre><code class="language-bash">git switch estilo_texto
+</code></pre>
+<ol>
+<li>Ejecuta el siguiente comando:</li>
+</ol>
+<pre><code class="language-bash">git rebase main
+</code></pre>
+<blockquote>
+<h3 id="nota-sobre-git-rebase-y-commits-especificos">💬 Nota sobre <code>git rebase</code> y commits específicos</h3>
+<p>Aunque normalmente el comando <code>git rebase</code> se aplica sobre el último commit de <code>main</code>, también es posible indicar <strong>un commit concreto</strong> sobre el que quieres reconstruir tu trabajo.</p>
+<p>✅ Esto permite reorganizar una rama apoyándola en una versión anterior del proyecto.
+✅ No siempre tienes que rebasar contra el <code>HEAD</code> de <code>main</code>.</p>
+<p>👉 Si quieres entender <strong>cómo funciona exactamente esta opción y cuándo usarla</strong>, consulta:
+<strong><a href="../3_git_practica4_opcion_rebase_commit_especifico/">Rebase sobre un commit específico</a></strong></p>
+</blockquote>
+<hr />
+<ol>
+<li>Git intentará aplicar los commits B y C después de D.</li>
+</ol>
+<p>Al aplicar el commit B, detectará que la <strong>línea 2</strong> también se modificó en <code>main</code> y mostrará un mensaje de conflicto similar a:</p>
+<pre><code class="language-text">Auto-merging notas.txt
+CONFLICT (content): Merge conflict in notas.txt
+error: could not apply 9341b26... B: Modificada la línea 2 con un nuevo texto de estilo
+hint: Resolve all conflicts manually, mark them as resolved with
+hint: &quot;git add/rm &lt;conflicted_files&gt;&quot;, then run &quot;git rebase --continue&quot;.
+hint: You can instead skip this commit: run &quot;git rebase --skip&quot;.
+hint: To abort and get back to the state before &quot;git rebase&quot;, run &quot;git rebase --abort&quot;.
+hint: Disable this message with &quot;git config advice.mergeConflict false&quot;
+Could not apply 9341b26... B: Modificada la línea 2 con un nuevo texto de estilo
+</code></pre>
+<ol>
+<li>Comprueba el estado:</li>
+</ol>
+<pre><code class="language-bash">git status
+</code></pre>
+<p>Verás que <code>notas.txt</code> está en conflicto.</p>
+<hr />
+<h2 id="6-resolver-el-conflicto-en-notastxt">6. Resolver el conflicto en <code>notas.txt</code></h2>
+<ol>
+<li>Abre <code>notas.txt</code>. Verás algo parecido a:</li>
+</ol>
+<pre><code class="language-text">Línea 1: Proyecto de prueba con rebase.
+&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD
+Línea 2: Esta es la versión principal del proyecto en desarrollo.
+=======
+Línea 2: Texto centrado en el estilo y la presentación.
+&gt;&gt;&gt;&gt;&gt;&gt;&gt; bbbbbbb (B: Modificada la línea 2 con un nuevo texto de estilo)
+</code></pre>
+<ol>
+<li>Elimina las marcas del conflicto (<code>&lt;&lt;&lt;&lt;&lt;&lt;&lt;</code>, <code>=======</code>, <code>&gt;&gt;&gt;&gt;&gt;&gt;&gt;</code>) y decide <strong>qué versión de la línea 2 se queda</strong>, o combina ambas.</li>
+</ol>
+<p>Por ejemplo, puedes dejar una combinación:</p>
+<pre><code class="language-text">Línea 1: Proyecto de prueba con rebase.
+Línea 2: Texto centrado en el estilo y la presentación.
+</code></pre>
+<ol>
+<li>
+<p>Guarda el archivo.</p>
+</li>
+<li>
+<p>Marca el conflicto como resuelto y continúa el rebase:</p>
+</li>
+</ol>
+<pre><code class="language-bash">git add notas.txt
+git rebase --continue
+</code></pre>
+<p>Si no hay más conflictos, el rebase terminará correctamente.</p>
+<hr />
+<h2 id="7-ver-el-historial-despues-del-rebase">7. Ver el historial después del rebase</h2>
+<ol>
+<li>
+<p>Vuelve a ejecutar el mismo comando que usaste antes para ver la historia de todas las ramas.</p>
+</li>
+<li>
+<p>Ahora deberías ver algo parecido a:</p>
+</li>
+</ol>
+<pre><code class="language-text">main:          A - D
+                    \
+estilo_texto:         B' - C'
+</code></pre>
+<p>(B’ y C’ son los commits reaplicados después de D.)</p>
+<ol>
+<li>Haz otra captura de pantalla mostrando el nuevo historial tras resolver el conflicto.</li>
+</ol>
+<hr />
+<h2 id="8-preguntas-cortas-de-comprension">8. Preguntas cortas de comprensión</h2>
+<p>Responde debajo de cada una:</p>
+<ol>
+<li>¿Desde qué rama ejecutaste el comando <code>git rebase main</code>? ¿Por qué desde esa y no desde <code>main</code>?</li>
+<li>¿Por qué se ha producido el conflicto en <code>notas.txt</code> al hacer el rebase?</li>
+<li>¿Qué habría pasado si hubieras borrado una de las versiones sin fijarte bien en el texto?</li>
+<li>¿En qué se diferencia este caso de un conflicto de <code>merge</code>? (a nivel práctico, en lo que tú has tenido que hacer).</li>
+</ol>
+<hr />
+<h2 id="solucion-orientativa-resumen-de-comandos">🧑‍🏫 Solución orientativa (resumen de comandos)</h2>
+<pre><code class="language-bash"># Preparación
+mkdir git-rebase-conflicto
+cd git-rebase-conflicto
+git init
+
+# Commit A
+# (crear notas.txt con 2 líneas)
+git add notas.txt
+git commit -m &quot;A: Versión inicial de notas.txt&quot;
+
+# Rama estilo_texto: commits B y C
+git switch -c estilo_texto
+# (modificar línea 2)
+git add notas.txt
+git commit -m &quot;B: Modificada la línea 2 con nuevo texto de estilo&quot;
+# (añadir línea 3)
+git add notas.txt
+git commit -m &quot;C: Añadida línea sobre mejoras visuales&quot;
+
+# Volver a main y commit D
+git switch main
+# (modificar línea 2 de otra forma)
+git add notas.txt
+git commit -m &quot;D: Modificada la línea 2 en la rama principal&quot;
+
+# Ver historial
+git log --oneline --graph --all
+
+# Rebase con conflicto
+git switch estilo_texto
+git rebase main
+
+# Resolver conflicto en notas.txt
+# (editar, dejar versión combinada)
+git add notas.txt
+git rebase --continue
+
+# Ver historial final
+git log --oneline --graph --all
+</code></pre>
+<hr />
+              
+            </div>
+          </div><footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+    
+  </span>
+</div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+      <script src="../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

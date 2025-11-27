@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>Guía: Cómo crear una Plantilla de Código (Template) en Eclipse - Entornos de Desarrollo 1º CFGS DAM-DAW</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Gu\u00eda: C\u00f3mo crear una Plantilla de C\u00f3digo (Template) en Eclipse";
+        var mkdocs_page_input_path = "2_eclipse_practica4_guia_template.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> Entornos de Desarrollo 1º CFGS DAM-DAW
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="..">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="" href="../3_intro.md">U1 Introducción</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../2_eclipse/">U2 Eclipse</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../3_git/">U3 Git</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../practicas_modulo/">Prácticas</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">Entornos de Desarrollo 1º CFGS DAM-DAW</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">Guía: Cómo crear una Plantilla de Código (Template) en Eclipse</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="guia-como-crear-una-plantilla-de-codigo-template-en-eclipse">Guía: Cómo crear una Plantilla de Código (Template) en Eclipse</h1>
+<p>Las <strong>plantillas de código</strong> son una funcionalidad muy útil del IDE Eclipse.
+Permiten escribir una palabra clave (como <code>pedirnota</code>) y que Eclipse la sustituya automáticamente por un bloque de código completo, como un bucle, una condición o incluso varios fragmentos de programa.</p>
+<hr />
+<h2 id="pasos-para-crear-una-nueva-plantilla">🪜 <strong>Pasos para crear una nueva plantilla</strong></h2>
+<h3 id="1-abrir-el-menu-de-plantillas">🔹 1. Abrir el menú de plantillas</h3>
+<p>Ve a:</p>
+<pre><code>Window → Preferences → Java → Editor → Templates
+</code></pre>
+<p>Ahí verás una lista de plantillas predefinidas (por ejemplo <code>sysout</code>, <code>for</code>, <code>main</code>, etc.), que Eclipse usa para autocompletar código al pulsar <strong>Ctrl + Espacio</strong>.</p>
+<hr />
+<h3 id="2-crear-una-nueva">🔹 2. Crear una nueva</h3>
+<p>Haz clic en el botón <strong>New...</strong></p>
+<p>Se abrirá una ventana llamada <strong>New Template</strong> con varios campos que debes rellenar.</p>
+<hr />
+<h3 id="3-completar-los-campos-principales">🔹 3. Completar los campos principales</h3>
+<table>
+<thead>
+<tr>
+<th>Campo</th>
+<th>Qué poner</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Name</strong></td>
+<td>Nombre de tu plantilla (por ejemplo <code>pedirnota</code>). Es lo que escribirás en el editor para insertarla.</td>
+</tr>
+<tr>
+<td><strong>Context</strong></td>
+<td>Elige <code>Java statements</code> (para que pueda insertarse dentro de métodos).</td>
+</tr>
+<tr>
+<td><strong>Description</strong></td>
+<td>Una breve descripción de lo que hace (por ejemplo “Plantilla para pedir una nota válida entre 0 y 10”).</td>
+</tr>
+<tr>
+<td><strong>Automatically insert</strong></td>
+<td>✅ Déjalo activado (inserta automáticamente al pulsar Intro).</td>
+</tr>
+<tr>
+<td><strong>Pattern</strong></td>
+<td>Aquí escribes el código que se insertará cuando se use la plantilla.</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3 id="4-escribir-el-patron-pattern">🔹 4. Escribir el patrón (Pattern)</h3>
+<p>Por ejemplo, para crear la plantilla <code>pedirnota</code>:</p>
+<pre><code class="language-java">double nota;
+do {
+    System.out.print(&quot;Introduce la nota del alumno ${index}: &quot;);
+    nota = sc.nextDouble();
+} while (nota &lt; 0 || nota &gt; 10);
+
+${cursor}
+</code></pre>
+<hr />
+<h2 id="explicacion-de-las-variables-dentro-del-patron">🧠 <strong>Explicación de las variables dentro del patrón</strong></h2>
+<p>Dentro de las plantillas se pueden usar <strong>variables de plantilla</strong>.
+Van entre <code>${}</code> y permiten personalizar o automatizar partes del código.</p>
+<table>
+<thead>
+<tr>
+<th>Variable</th>
+<th>Qué hace</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>${cursor}</code></td>
+<td>Indica dónde quedará el cursor al terminar de insertar el código. Es recomendable colocarla <strong>al final</strong> del bloque para poder seguir escribiendo justo debajo.</td>
+</tr>
+<tr>
+<td><code>${index}</code></td>
+<td>Variable editable. Cuando insertas la plantilla, Eclipse te deja escribir directamente el valor (por ejemplo, el número del alumno).</td>
+</tr>
+<tr>
+<td><code>${word_selection}</code></td>
+<td>Se reemplaza por el texto seleccionado antes de insertar la plantilla.</td>
+</tr>
+<tr>
+<td><code>${date}</code></td>
+<td>Inserta la fecha actual.</td>
+</tr>
+<tr>
+<td><code>${time}</code></td>
+<td>Inserta la hora actual.</td>
+</tr>
+<tr>
+<td><code>${user}</code></td>
+<td>Inserta el nombre de usuario configurado en Eclipse.</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="como-crear-variables-personalizadas">🔧 <strong>Cómo crear variables personalizadas</strong></h2>
+<ol>
+<li>En la ventana “New Template”, haz clic en <strong>Insert Variable...</strong></li>
+<li>Aparecerá una lista de variables disponibles.</li>
+<li>Puedes escribir directamente en el código <code>${nombre_variable}</code> si quieres una variable editable nueva (como <code>${index}</code> en el ejemplo).</li>
+<li>Al usar la plantilla, Eclipse te permitirá escribir un valor para cada variable editable y moverte entre ellas con la tecla <strong>Tab</strong>.</li>
+</ol>
+<hr />
+<h2 id="por-que-aparece-i-por-defecto-al-usar-index">💬 <strong>Por qué aparece “i” por defecto al usar <code>${index}</code></strong></h2>
+<p>Eclipse intenta <strong>adivinar un valor inicial</strong> para las variables comunes.
+En este caso:</p>
+<ul>
+<li>Detecta que estás dentro de un método o bucle,</li>
+<li>Y asigna automáticamente el valor <code>"i"</code> (por convención, el típico nombre de índice en bucles).</li>
+</ul>
+<p>👉 No es un error: simplemente puedes <strong>sobrescribirlo</strong> al insertar la plantilla (escribe otro texto y pulsa Tab).</p>
+<p>Si quieres evitar ese valor inicial, puedes renombrar la variable a otra más específica, por ejemplo <code>${numAlumno}</code>.
+Así Eclipse no intentará sugerir “i”.</p>
+<hr />
+<h2 id="ejemplo-final-completo">🧩 <strong>Ejemplo final completo</strong></h2>
+<p><strong>Name:</strong> <code>pedirnota</code>
+<strong>Context:</strong> <code>Java statements</code>
+<strong>Description:</strong> Plantilla para pedir una nota válida entre 0 y 10
+<strong>Pattern:</strong></p>
+<pre><code class="language-java">double nota;
+do {
+    System.out.print(&quot;Introduce la nota del alumno ${numAlumno}: &quot;);
+    nota = sc.nextDouble();
+} while (nota &lt; 0 || nota &gt; 10);
+
+${cursor}
+</code></pre>
+<hr />
+<h2 id="como-usar-tu-plantilla">▶️ <strong>Cómo usar tu plantilla</strong></h2>
+<ol>
+<li>En cualquier método, escribe el nombre de la plantilla:</li>
+</ol>
+<p><code>pedirnota</code>
+2. Pulsa <strong>Ctrl + Espacio</strong>
+   → Aparece tu plantilla en la lista de autocompletado.
+3. Pulsa <strong>Enter</strong>
+   → Se inserta el bloque de código completo.
+4. Rellena los valores de las variables (por ejemplo <code>${numAlumno}</code>) y pulsa <strong>Tab</strong> para moverte entre ellas.</p>
+<hr />
+              
+            </div>
+          </div><footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+    
+  </span>
+</div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+      <script src="../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

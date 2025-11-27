@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>Guía práctica: Conexiones entre Git y GitHub - Entornos de Desarrollo 1º CFGS DAM-DAW</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Gu\u00eda pr\u00e1ctica: Conexiones entre Git y GitHub";
+        var mkdocs_page_input_path = "3_git_ap2_conexion_github.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> Entornos de Desarrollo 1º CFGS DAM-DAW
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="..">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="" href="../3_intro.md">U1 Introducción</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../2_eclipse/">U2 Eclipse</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../3_git/">U3 Git</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../practicas_modulo/">Prácticas</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">Entornos de Desarrollo 1º CFGS DAM-DAW</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">Guía práctica: Conexiones entre Git y GitHub</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="guia-practica-conexiones-entre-git-y-github">Guía práctica: Conexiones entre Git y GitHub</h1>
+<p>Cuando se trabaja con <strong>Git y GitHub</strong>, el código puede almacenarse tanto de forma local, como en la nube.
+Para sincronizar ambos entornos, Git necesita <strong>autenticarse</strong> ante GitHub, igual que cuando se inicia sesión en una web.
+Existen diferentes <strong>métodos de conexión</strong>, cada uno con sus ventajas, requisitos y particularidades.</p>
+<hr />
+<h2 id="1-conexion-https">1. Conexión HTTPS</h2>
+<p>La conexión <strong>HTTPS</strong> es la más universal, porque utiliza el mismo puerto que todas las páginas web (443) y no suele estar bloqueada por cortafuegos ni redes corporativas.</p>
+<h3 id="ejemplo-de-url-https">🔹 Ejemplo de URL HTTPS</h3>
+<pre><code>https://github.com/usuario/repositorio.git
+</code></pre>
+<p>Al usar HTTPS, Git pedirá autenticación para asegurarse de que el usuario tiene permiso para acceder al repositorio.
+Esta autenticación puede realizarse de varias formas.</p>
+<hr />
+<h3 id="a-https-con-usuario-y-contrasena-obsoleto">🔐 A. HTTPS con usuario y contraseña (obsoleto)</h3>
+<p>Hasta 2021, bastaba con escribir:</p>
+<pre><code>Usuario: tu_usuario_de_github
+Contraseña: tu_contraseña_de_github
+</code></pre>
+<p>Sin embargo, <strong>GitHub eliminó este método de autenticación</strong>, ya que las contraseñas no eran seguras para su uso en entornos automatizados o públicos.
+Actualmente <strong>solo funciona si el usuario no tiene activada la verificación en dos pasos (2FA)</strong>, algo poco habitual y nada recomendable.
+Por tanto, este método ha quedado obsoleto.</p>
+<hr />
+<h3 id="b-https-con-token-personal-de-acceso-pat">🔐 B. HTTPS con Token Personal de Acceso (PAT)</h3>
+<p>El <strong>Token Personal de Acceso (Personal Access Token o PAT)</strong> sustituye a la contraseña tradicional.
+Es una clave generada desde GitHub, con permisos y duración configurables.</p>
+<p><strong>Creación del token:</strong></p>
+<ol>
+<li>En GitHub, acceder a
+   <strong>Settings → Developer settings → Personal Access Tokens → Tokens (classic)</strong></li>
+<li>Seleccionar <strong>Generate new token</strong>.</li>
+<li>Activar los permisos necesarios (por ejemplo, <em>repo</em> para acceso a repositorios).</li>
+<li>Copiar el token generado, que tiene un aspecto como el siguiente:</li>
+</ol>
+<p><code>ghp_dJf9zqK12ABC34xyZ56LMnoP78qrstuV9Wx</code></p>
+<p>A partir de entonces, al realizar un <code>git push</code> o <code>git pull</code>, se introduce:</p>
+<pre><code>Username for 'https://github.com': tu_usuario
+Password for 'https://github.com': &lt;token_personal&gt;
+</code></pre>
+<p>El token reemplaza la contraseña.</p>
+<hr />
+<h2 id="2-el-credential-helper">2. El Credential Helper</h2>
+<p>El <strong>credential helper</strong> es una utilidad integrada en Git que <strong>almacena las credenciales</strong> (usuario y token) para no tener que escribirlas cada vez.</p>
+<h3 id="configuracion-mas-habitual">🔹 Configuración más habitual:</h3>
+<pre><code class="language-bash">git config --global credential.helper store
+</code></pre>
+<p>Después de ejecutar este comando, la primera vez que Git solicite el usuario y el token los guardará automáticamente en un archivo de texto plano:</p>
+<ul>
+<li><strong>Windows:</strong>
+  <code>C:\Users\&lt;usuario&gt;\.git-credentials</code></li>
+<li><strong>macOS / Linux:</strong>
+  <code>~/.git-credentials</code></li>
+</ul>
+<p>El contenido del archivo será similar a:</p>
+<pre><code>https://usuario:ghp_dJf9zqK12ABC34xyZ56LMnoP78qrstuV9Wx@github.com
+</code></pre>
+<p>Desde ese momento, Git utilizará automáticamente estas credenciales.
+También existen otras variantes como <code>osxkeychain</code> o <code>wincred</code>, que almacenan las credenciales de forma cifrada en el sistema operativo.</p>
+<hr />
+<h2 id="3-duracion-y-gestion-de-los-tokens">3. Duración y gestión de los tokens</h2>
+<p>Los tokens pueden configurarse para expirar automáticamente o permanecer activos indefinidamente.
+Al generarlos, GitHub permite elegir su duración: 7, 30, 90 días o sin caducidad.
+En entornos educativos o de formación se recomienda establecer una duración limitada y eliminar los tokens al finalizar el curso o trimestre.</p>
+<hr />
+<h2 id="4-conexion-ssh">4. Conexión SSH</h2>
+<p>La conexión <strong>SSH (Secure Shell)</strong> usa un sistema de <strong>claves asimétricas</strong> para autenticar al usuario sin necesidad de escribir usuario o contraseña.
+Cuando se configura correctamente, es el método más cómodo y seguro.</p>
+<h3 id="ejemplo-de-url-ssh">🔹 Ejemplo de URL SSH</h3>
+<pre><code>git@github.com:usuario/repositorio.git
+</code></pre>
+<h3 id="claves-necesarias">🔹 Claves necesarias</h3>
+<ol>
+<li><strong>Clave privada</strong>, almacenada en el equipo local (nunca se comparte).</li>
+<li><strong>Clave pública</strong>, registrada en la cuenta de GitHub (<em>Settings → SSH and GPG keys</em>).</li>
+</ol>
+<p>Cuando se realiza un <code>git push</code>, Git usa la clave privada para identificarse, y GitHub valida la operación con la clave pública registrada.</p>
+<hr />
+<h2 id="5-ssh-y-el-puerto-443">5. SSH y el puerto 443</h2>
+<p>El protocolo SSH utiliza el <strong>puerto 22</strong>, pero algunas redes educativas o corporativas <em>(como Andared)</em> lo bloquean por seguridad.
+Para evitar este problema, GitHub permite usar <strong>SSH sobre el puerto 443</strong>, el mismo que usa HTTPS.</p>
+<h3 id="configuracion-por-sistema-operativo">🔹 Configuración por sistema operativo</h3>
+<ul>
+<li>
+<p><strong>Windows:</strong>
+  Editar o crear el archivo
+  <code>C:\Users\&lt;usuario&gt;\.ssh\config</code></p>
+</li>
+<li>
+<p><strong>macOS / Linux:</strong>
+  Editar o crear el archivo
+  <code>~/.ssh/config</code></p>
+</li>
+<li>
+<p><strong>Contenido del archivo:</strong></p>
+</li>
+</ul>
+<p><code>bash
+  Host github.com
+    Hostname ssh.github.com
+    Port 443
+    User git</code></p>
+<p>Después de guardar los cambios, se puede comprobar la conexión con:</p>
+<pre><code class="language-bash">ssh -T -p 443 git@ssh.github.com
+</code></pre>
+<p>Si aparece el mensaje:</p>
+<pre><code>Hi usuario! You've successfully authenticated...
+</code></pre>
+<p>la configuración es correcta.</p>
+<hr />
+<h2 id="6-creacion-y-sincronizacion-de-repositorios">6. Creación y sincronización de repositorios</h2>
+<p>Git permite <strong>clonar repositorios existentes</strong> o <strong>crear nuevos repositorios locales</strong> para después conectarlos con GitHub.</p>
+<hr />
+<h3 id="a-clonar-un-repositorio-existente">🧱 A. Clonar un repositorio existente</h3>
+<p>Cuando el proyecto ya existe en GitHub, se puede clonar con HTTPS o SSH:</p>
+<pre><code class="language-bash">git clone https://github.com/usuario/repositorio.git
+</code></pre>
+<p>o</p>
+<pre><code class="language-bash">git clone git@github.com:usuario/repositorio.git
+</code></pre>
+<p>El comando <code>git clone</code> crea una carpeta local con el contenido del repositorio y configura un remoto llamado <code>origin</code>, que apunta a GitHub.</p>
+<hr />
+<h3 id="b-crear-un-repositorio-local-y-conectarlo-a-github">🧱 B. Crear un repositorio local y conectarlo a GitHub</h3>
+<p>Cuando el proyecto se inicia desde el equipo local:</p>
+<pre><code class="language-bash">git init
+git add .
+git commit -m &quot;Primer commit&quot;
+</code></pre>
+<p>A continuación, se crea un repositorio <strong>vacío</strong> en GitHub <strong><em>(sin README, ni licencia, ni .gitignore, ...)</em></strong> y se vincula:</p>
+<pre><code class="language-bash">git remote add origin https://github.com/usuario/repositorio.git
+</code></pre>
+<p>Finalmente, se sube el contenido:</p>
+<pre><code class="language-bash">git branch -M main
+git push -u origin main
+</code></pre>
+<p>La opción <code>-u</code> en <strong>git push</strong> significa <code>--set-upstream</code> y se utiliza la primera vez que envías una rama a un repositorio remoto. 
+Esta opción vincula tu rama local con la rama remota, permitiendo que en futuras operaciones <em>(git push o git pull)</em> no tengas que 
+especificar el repositorio y la rama de origen, ya que Git sabrá a dónde enviar los cambios. </p>
+<hr />
+<h2 id="7-por-que-a-veces-la-rama-principal-es-master-en-lugar-de-main">🧩 7. Por qué a veces la rama principal es <code>master</code> en lugar de <code>main</code></h2>
+<p>Antiguamente, Git creaba la rama principal con el nombre <strong><code>master</code></strong>.
+Desde 2020, GitHub y la comunidad adoptaron <strong><code>main</code></strong> como nueva denominación estándar, tanto por motivos de inclusión como por coherencia.</p>
+<p>No obstante, cuando se crea un repositorio <strong>vacío</strong> en GitHub y se sube contenido desde un equipo local con una configuración antigua de Git, la primera rama que se envía conserva su nombre original (<code>master</code>).
+GitHub la acepta y la considera principal.</p>
+<p>Para comprobar qué rama se crea por defecto en un equipo local:</p>
+<pre><code class="language-bash">git config --global init.defaultBranch
+</code></pre>
+<p>Si el valor es <code>master</code> o está vacío, se puede cambiar para que todos los repositorios nuevos usen <code>main</code>:</p>
+<pre><code class="language-bash">git config --global init.defaultBranch main
+</code></pre>
+<p>De esta forma, cualquier <code>git init</code> creará automáticamente la rama <code>main</code>, garantizando compatibilidad con GitHub.</p>
+<hr />
+<h2 id="8-git-cli-y-github-cli">8. Git CLI y GitHub CLI</h2>
+<h3 id="que-significa-cli">🔹 Qué significa CLI</h3>
+<p><strong>CLI</strong> proviene del inglés <em>Command Line Interface</em>, que significa <strong>Interfaz de Línea de Comandos</strong>.
+Es el entorno textual en el que se introducen instrucciones mediante comandos, en contraste con las interfaces gráficas (GUI, <em>Graphical User Interface</em>) que usan menús y botones.</p>
+<p>Ejemplo de uso de la CLI de Git:</p>
+<pre><code class="language-bash">git init
+git add .
+git commit -m &quot;Mensaje de commit&quot;
+git push
+</code></pre>
+<p>Trabajar con Git CLI ofrece más control y transparencia sobre las operaciones que se realizan en el repositorio.</p>
+<hr />
+<h3 id="github-cli-gh">🔹 GitHub CLI (<code>gh</code>)</h3>
+<p>El <strong>GitHub CLI</strong> es una herramienta oficial que amplía las capacidades de Git para interactuar directamente con la plataforma GitHub sin necesidad de navegador.</p>
+<p>Permite, entre otras funciones:</p>
+<ul>
+<li>Crear repositorios:</li>
+</ul>
+<p><code>bash
+  gh repo create nombre --public</code></p>
+<ul>
+<li>Clonar repositorios:</li>
+</ul>
+<p><code>bash
+  gh repo clone usuario/repositorio</code></p>
+<ul>
+<li>Crear <em>pull requests</em> o <em>issues</em>:</li>
+</ul>
+<p><code>bash
+  gh pr create --title "Nueva funcionalidad"
+  gh issue list</code></p>
+<p>El GitHub CLI <strong>no sustituye a Git</strong>, sino que lo complementa.
+Git sigue gestionando el control de versiones, mientras que <code>gh</code> automatiza la interacción con GitHub (creación de repos, autenticación, gestión de PRs, etc.).</p>
+<hr />
+<h2 id="9-eclipse-con-github-sin-tener-instalado-git">9. Eclipse con GitHub sin tener instalado Git</h2>
+<p>Eclipse incorpora un sistema de control de versiones basado en <strong>EGit</strong>, un componente escrito en Java que implementa internamente la funcionalidad de Git.
+Por ello, es posible realizar operaciones como <em>commit</em>, <em>push</em> o <em>pull</em> desde Eclipse <strong>sin tener instalado Git externamente en el sistema operativo</strong>.</p>
+<p><strong>EGit</strong> utiliza los mismos conceptos y estructura de Git <em>(repositorio local, carpeta <code>.git/</code>, ramas, remotos, etc.)</em>, pero ofrece una <strong>interfaz gráfica (GUI)</strong> que simplifica el trabajo.</p>
+<h3 id="diferencias-practicas">🔹 Diferencias prácticas</h3>
+<table>
+<thead>
+<tr>
+<th>Aspecto</th>
+<th>Git CLI (terminal)</th>
+<th>EGit (Eclipse)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Interfaz</td>
+<td>Línea de comandos (CLI)</td>
+<td>Gráfica (GUI)</td>
+</tr>
+<tr>
+<td>Instalación</td>
+<td>Requiere Git en el sistema</td>
+<td>Integrado en Eclipse</td>
+</tr>
+<tr>
+<td>Archivos de control</td>
+<td>Usa <code>.git/</code></td>
+<td>Usa <code>.git/</code> (idéntico)</td>
+</tr>
+<tr>
+<td>Nivel de control</td>
+<td>Total</td>
+<td>Limitado a opciones del IDE</td>
+</tr>
+<tr>
+<td>Curva de aprendizaje</td>
+<td>Mayor</td>
+<td>Más intuitiva</td>
+</tr>
+</tbody>
+</table>
+<p>EGit facilita tareas como compartir un proyecto en GitHub, realizar commits o gestionar ramas, sin necesidad de abrir la consola.
+No obstante, conocer la CLI de Git sigue siendo esencial, ya que proporciona un control completo del flujo de trabajo y ayuda a entender qué operaciones realiza realmente el entorno gráfico.</p>
+<hr />
+<h2 id="10-comandos-esenciales-de-conexion-remota">10. Comandos esenciales de conexión remota</h2>
+<table>
+<thead>
+<tr>
+<th>Comando</th>
+<th>Descripción</th>
+<th>Cuándo se usa</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>git remote -v</code></td>
+<td>Muestra las URLs remotas asociadas al repositorio local.</td>
+<td>Para verificar configuración.</td>
+</tr>
+<tr>
+<td><code>git remote add origin &lt;url&gt;</code></td>
+<td>Asocia un repositorio remoto al proyecto local.</td>
+<td>Al conectar por primera vez con GitHub.</td>
+</tr>
+<tr>
+<td><code>git remote set-url origin &lt;url&gt;</code></td>
+<td>Cambia la URL del remoto <code>origin</code>.</td>
+<td>Al pasar de SSH a HTTPS o viceversa.</td>
+</tr>
+<tr>
+<td><code>git push -u origin main</code></td>
+<td>Sube la rama principal y la deja vinculada.</td>
+<td>Primer envío al remoto.</td>
+</tr>
+<tr>
+<td><code>git pull</code></td>
+<td>Descarga y fusiona cambios del remoto.</td>
+<td>Para mantener actualizado el proyecto.</td>
+</tr>
+<tr>
+<td><code>git push</code></td>
+<td>Sube los commits de la rama activa a su rama remota asociada.</td>
+<td>En envíos posteriores, cuando ya existe el enlace de seguimiento.</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="11-comparativa-de-metodos-de-conexion">11. Comparativa de métodos de conexión</h2>
+<table>
+<thead>
+<tr>
+<th>Método</th>
+<th>Puerto</th>
+<th>Autenticación</th>
+<th>Ventajas</th>
+<th>Limitaciones</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>HTTPS + Token</td>
+<td>443</td>
+<td>Usuario + Token PAT</td>
+<td>Compatible en cualquier red</td>
+<td>Requiere generar y guardar token</td>
+</tr>
+<tr>
+<td>SSH (22)</td>
+<td>22</td>
+<td>Claves pública/privada</td>
+<td>Seguro y sin contraseñas</td>
+<td>Puede estar bloqueado</td>
+</tr>
+<tr>
+<td>SSH (443)</td>
+<td>443</td>
+<td>Claves pública/privada</td>
+<td>Evita bloqueos de red</td>
+<td>Requiere configurar <code>~/.ssh/config</code></td>
+</tr>
+<tr>
+<td>GitHub CLI</td>
+<td>443</td>
+<td>Token o SSH</td>
+<td>Permite crear repos desde terminal</td>
+<td>Necesita la herramienta <code>gh</code></td>
+</tr>
+<tr>
+<td>EGit (Eclipse)</td>
+<td>443 o 22</td>
+<td>Según configuración</td>
+<td>Interfaz gráfica intuitiva</td>
+<td>Menos control avanzado</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="12-conclusion">12. Conclusión</h2>
+<p>En entornos educativos o corporativos, el método más fiable es <strong>HTTPS con token personal</strong>, ya que evita los bloqueos del puerto 22 y no requiere configuración adicional.
+En equipos personales, <strong>SSH</strong> sigue siendo la opción más cómoda y segura.</p>
+<p>Tanto la <strong>CLI (Command Line Interface)</strong> como las interfaces gráficas como <strong>EGit</strong> o <strong>GitHub Desktop</strong> comparten el mismo objetivo: mantener sincronizado el código entre el repositorio local y el remoto.
+La diferencia radica en el nivel de control y transparencia que cada interfaz ofrece.</p>
+<hr />
+              
+            </div>
+          </div><footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+    
+  </span>
+</div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+      <script src="../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

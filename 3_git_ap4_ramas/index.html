@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>4. Gestión de ramas en Git - Entornos de Desarrollo 1º CFGS DAM-DAW</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "4. Gesti\u00f3n de ramas en Git";
+        var mkdocs_page_input_path = "3_git_ap4_ramas.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> Entornos de Desarrollo 1º CFGS DAM-DAW
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="..">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="" href="../3_intro.md">U1 Introducción</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../2_eclipse/">U2 Eclipse</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../3_git/">U3 Git</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../practicas_modulo/">Prácticas</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">Entornos de Desarrollo 1º CFGS DAM-DAW</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">4. Gestión de ramas en Git</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="4-gestion-de-ramas-en-git">4. Gestión de ramas en Git</h1>
+<hr />
+<h2 id="41-concepto-de-rama">4.1 Concepto de rama</h2>
+<p>En Git, una <strong>rama (branch)</strong> es una <strong>línea independiente de desarrollo</strong> dentro del mismo proyecto.
+Permite trabajar en nuevas funciones o pruebas sin afectar al código principal.</p>
+<blockquote>
+<p>🧠 Piensa en las ramas como “versiones paralelas” del proyecto: puedes experimentar, hacer cambios y luego fusionarlos (merge) cuando estén listos.</p>
+</blockquote>
+<p>Por defecto, todo repositorio tiene una primera rama principal:</p>
+<ul>
+<li>antiguamente llamada <strong><code>master</code></strong>,</li>
+<li>hoy en día denominada <strong><code>main</code></strong>.</li>
+</ul>
+<hr />
+<h2 id="42-por-que-usar-ramas">4.2 ¿Por qué usar ramas?</h2>
+<p>Trabajar con ramas aporta ventajas fundamentales:</p>
+<ul>
+<li><strong>Aislar cambios:</strong> cada rama puede representar una funcionalidad, corrección o versión diferente.</li>
+<li><strong>Evitar errores en el código estable:</strong> la rama principal (<code>main</code>) se mantiene limpia y funcional.</li>
+<li><strong>Fomentar la colaboración:</strong> varios desarrolladores pueden trabajar simultáneamente sin pisarse.</li>
+<li><strong>Facilitar revisiones y pruebas:</strong> se pueden crear ramas de prueba o integración temporal.</li>
+</ul>
+<hr />
+<h2 id="43-crear-listar-y-cambiar-de-rama">4.3 Crear, listar y cambiar de rama</h2>
+<p>Git mantiene un puntero especial llamado <code>HEAD</code>, que indica <strong>en qué rama estás trabajando</strong> en ese momento.</p>
+<h3 id="crear-una-nueva-rama">🔹 Crear una nueva rama</h3>
+<pre><code class="language-bash">git branch nueva_rama
+</code></pre>
+<p>Esto <strong>solo crea la rama</strong>, pero <strong>no cambia</strong> tu posición actual.</p>
+<p>Para comprobar todas las ramas disponibles:</p>
+<pre><code class="language-bash">git branch
+</code></pre>
+<p>Salida típica:</p>
+<pre><code>* main
+  nueva_rama
+</code></pre>
+<p>El asterisco (<code>*</code>) marca la rama activa.</p>
+<hr />
+<h2 id="44-cambiar-de-rama">4.4 Cambiar de rama</h2>
+<h3 id="opcion-1-git-switch-recomendada">🔹 Opción 1: <code>git switch</code> (recomendada)</h3>
+<pre><code class="language-bash">git switch nueva_rama
+</code></pre>
+<p>Git moverá el puntero <code>HEAD</code> a esa rama, cambiando el contenido del directorio de trabajo para reflejar los archivos de dicha rama.</p>
+<blockquote>
+<p>💡 <code>switch</code> es el <strong>comando moderno y más intuitivo</strong> para moverse entre ramas.
+Fue introducido en versiones recientes de Git (≈ 2.23) para sustituir el uso de <code>checkout</code> en este contexto.</p>
+</blockquote>
+<hr />
+<h3 id="opcion-2-git-checkout-antiguo-pero-aun-valido">🔹 Opción 2: <code>git checkout</code> (antiguo, pero aún válido)</h3>
+<pre><code class="language-bash">git checkout nueva_rama
+</code></pre>
+<p><code>checkout</code> tiene un comportamiento más complejo: también puede usarse para cambiar de rama o para restaurar versiones de archivos antiguos.
+Por ello, puede resultar confuso para principiantes.</p>
+<blockquote>
+<p>🧠 En resumen:</p>
+<ul>
+<li>Usa <code>git switch</code> para <strong>moverte entre ramas</strong>.</li>
+<li>Usa <code>git restore</code> para <strong>recuperar archivos antiguos</strong>.</li>
+<li>Evita <code>checkout</code> salvo en situaciones concretas o legadas.</li>
+</ul>
+</blockquote>
+<hr />
+<h2 id="45-crear-y-cambiar-de-rama-en-un-solo-paso">4.5 Crear y cambiar de rama en un solo paso</h2>
+<p>Puedes crear y moverte a una nueva rama con un solo comando:</p>
+<pre><code class="language-bash">git switch -c nueva_rama
+</code></pre>
+<p>(<code>-c</code> significa <em>create</em>)</p>
+<hr />
+<h2 id="46-fusionar-ramas-merge">4.6 Fusionar ramas (<code>merge</code>)</h2>
+<p>Cuando termines de trabajar en una rama secundaria y quieras integrar los cambios en la principal (<code>main</code>), utiliza el comando <code>merge</code>.</p>
+<h3 id="ejemplo-paso-a-paso">🔹 Ejemplo paso a paso</h3>
+<pre><code class="language-bash"># 1️⃣ Cambiar a la rama principal
+git switch main
+
+# 2️⃣ Fusionar los cambios de la rama secundaria
+git merge nueva_rama
+</code></pre>
+<p>Git intentará combinar los commits de ambas ramas.</p>
+<p>Si no hay conflictos, el resultado será:</p>
+<pre><code>Updating a1b2c3d..e4f5g6h
+Fast-forward
+ src/App.java | 5 ++++-
+</code></pre>
+<hr />
+<h2 id="47-tipos-de-fusion">4.7 Tipos de fusión</h2>
+<ul>
+<li>
+<p><strong>Fast-forward merge:</strong>
+  Si no se han hecho nuevos commits en <code>main</code>, Git simplemente “avanza” el puntero para incluir los cambios.
+  No crea un nuevo commit de fusión.</p>
+</li>
+<li>
+<p><strong>Merge con commit automático:</strong>
+  Si ambas ramas han cambiado desde la última fusión, Git crea un <strong>nuevo commit de merge</strong> para unir las historias.</p>
+</li>
+</ul>
+<hr />
+<h2 id="48-conflictos-de-fusion">4.8 Conflictos de fusión</h2>
+<p>Si un mismo archivo fue modificado en ambas ramas, Git no sabrá cuál conservar y pedirá intervención manual.</p>
+<p>Ejemplo de conflicto:</p>
+<pre><code class="language-text">&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD
+System.out.println(&quot;Hola mundo&quot;);
+=======
+System.out.println(&quot;Hola mundo!&quot;);
+&gt;&gt;&gt;&gt;&gt;&gt;&gt; nueva_rama
+</code></pre>
+<h3 id="resolucion">🔹 Resolución</h3>
+<ol>
+<li>Edita el archivo para dejar la versión correcta.</li>
+<li>Elimina las marcas (<code>&lt;&lt;&lt;&lt;&lt;&lt;&lt;</code>, <code>=======</code>, <code>&gt;&gt;&gt;&gt;&gt;&gt;&gt;</code>).</li>
+<li>Guarda y confirma:</li>
+</ol>
+<pre><code class="language-bash">git add archivo_conflictivo
+git commit
+</code></pre>
+<hr />
+<h2 id="49-eliminar-una-rama">4.9 Eliminar una rama</h2>
+<p>Una vez fusionados sus cambios, puedes eliminar la rama secundaria local con:</p>
+<pre><code class="language-bash">git branch -d nueva_rama
+</code></pre>
+<p>Si Git avisa de que la rama no está fusionada, y aun así deseas borrarla:</p>
+<pre><code class="language-bash">git branch -D nueva_rama
+</code></pre>
+<hr />
+<h2 id="410-eliminar-una-rama-remota">4.10 Eliminar una rama remota</h2>
+<p>Si la rama fue subida al repositorio remoto (por ejemplo, GitHub), puedes eliminarla allí con:</p>
+<pre><code class="language-bash">git push origin --delete nueva_rama
+</code></pre>
+<blockquote>
+<p>💡 Esta práctica es recomendable tras fusionar ramas en <code>main</code>, para mantener el repositorio remoto limpio.</p>
+</blockquote>
+<hr />
+<h2 id="411-subir-ramas-al-remoto-push">4.11 Subir ramas al remoto (<code>push</code>)</h2>
+<p>Por defecto, cuando haces <code>git push</code>, solo se envía la <strong>rama activa</strong>.</p>
+<p>Si quieres subir una nueva rama al remoto:</p>
+<pre><code class="language-bash">git push -u origin nueva_rama
+</code></pre>
+<p>Esto crea la rama en GitHub y la vincula a tu rama local (como <code>main</code>).</p>
+<blockquote>
+<p>A partir de ese momento podrás usar simplemente:</p>
+<p><code>bash
+git push
+git pull</code></p>
+</blockquote>
+<hr />
+<h2 id="412-sincronizacion-tras-fusionar-ramas">4.12 Sincronización tras fusionar ramas</h2>
+<p>Cuando realizas una fusión (<code>merge</code>) en local, los cambios quedan confirmados <strong>solo en tu repositorio local</strong>.
+Para que GitHub refleje esa fusión:</p>
+<pre><code class="language-bash">git push
+</code></pre>
+<p>De esta forma, la rama <code>main</code> del remoto quedará actualizada.</p>
+<blockquote>
+<p>🧠 Si también quieres eliminar la rama secundaria en GitHub, deberás hacerlo manualmente o con <code>git push origin --delete</code>.</p>
+</blockquote>
+<hr />
+<h2 id="413-visualizar-ramas-y-fusiones">4.13 Visualizar ramas y fusiones</h2>
+<p>Para ver el historial de commits con su estructura de ramas, puedes usar:</p>
+<pre><code class="language-bash">git log --oneline --graph --all
+</code></pre>
+<p>Ejemplo de salida:</p>
+<pre><code class="language-text">* 7c9f3e2 (HEAD -&gt; main) Merge branch 'login'
+|\  
+| * 5a2c7b4 (login) Añadido formulario de autenticación
+* | e4d8a90 Creado menú principal
+|/  
+* 2a9b5f0 Estructura inicial del proyecto
+</code></pre>
+<hr />
+<h2 id="414-rebase-alternativa-avanzada-al-merge">4.14 Rebase: alternativa avanzada al merge</h2>
+<p>El comando <code>rebase</code> <strong>reorganiza la base de una rama</strong> para que sus commits parezcan haberse hecho a partir del último punto de otra rama.</p>
+<pre><code class="language-bash">git switch feature
+git rebase main
+</code></pre>
+<p>Esto <strong>no fusiona</strong> las ramas, sino que “reubica” los commits de <code>feature</code> sobre los de <code>main</code>.</p>
+<blockquote>
+<p>⚠️ Aunque útil, <code>rebase</code> debe usarse con precaución.
+Se recomienda únicamente en ramas <strong>locales y personales</strong>, no en trabajo colaborativo, ya que altera la historia del proyecto.</p>
+</blockquote>
+<hr />
+<h2 id="415-resumen-visual-del-flujo-de-ramas">4.15 Resumen visual del flujo de ramas</h2>
+<pre><code class="language-text">       main
+        │
+        │       (1) Creas una rama secundaria
+        ├───► feature-login
+        │
+        │       (2) Trabajas y haces commits
+        │       (3) Fusionas con main
+        └───► git merge feature-login
+                │
+                ▼
+            main actualizado
+</code></pre>
+<hr />
+<h2 id="416-chuleta-de-comandos-de-ramas">4.16 Chuleta de comandos de ramas</h2>
+<table>
+<thead>
+<tr>
+<th>Comando</th>
+<th>Descripción</th>
+<th>Cuándo se usa</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>git branch</code></td>
+<td>Lista las ramas existentes.</td>
+<td>Para ver todas las ramas del proyecto.</td>
+</tr>
+<tr>
+<td><code>git branch nombre</code></td>
+<td>Crea una nueva rama.</td>
+<td>Para iniciar una nueva funcionalidad.</td>
+</tr>
+<tr>
+<td><code>git switch nombre</code></td>
+<td>Cambia de rama activa.</td>
+<td>Al pasar de <code>main</code> a otra rama.</td>
+</tr>
+<tr>
+<td><code>git switch -c nombre</code></td>
+<td>Crea y cambia a la nueva rama.</td>
+<td>Para ahorrar pasos.</td>
+</tr>
+<tr>
+<td><code>git merge nombre</code></td>
+<td>Fusiona la rama indicada con la actual.</td>
+<td>Al integrar cambios en <code>main</code>.</td>
+</tr>
+<tr>
+<td><code>git branch -d nombre</code></td>
+<td>Elimina la rama local.</td>
+<td>Después de fusionarla.</td>
+</tr>
+<tr>
+<td><code>git push -u origin nombre</code></td>
+<td>Sube una nueva rama al remoto.</td>
+<td>Cuando deseas publicar una rama nueva.</td>
+</tr>
+<tr>
+<td><code>git push origin --delete nombre</code></td>
+<td>Elimina la rama del remoto.</td>
+<td>Para limpiar GitHub tras el merge.</td>
+</tr>
+<tr>
+<td><code>git log --oneline --graph --all</code></td>
+<td>Muestra el historial visual de ramas.</td>
+<td>Para analizar la estructura del proyecto.</td>
+</tr>
+<tr>
+<td><code>git rebase main</code></td>
+<td>Reorganiza una rama sobre otra.</td>
+<td>Uso avanzado; solo en ramas locales.</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="417-buenas-practicas-con-ramas">4.17 Buenas prácticas con ramas</h2>
+<ul>
+<li>Crea una nueva rama para cada <strong>funcionalidad o corrección</strong>.</li>
+<li>Nombra las ramas de forma descriptiva (<code>feature-login</code>, <code>fix-bug-01</code>, <code>docs-readme</code>).</li>
+<li>Fusiona los cambios con <code>main</code> solo cuando el código compile y haya sido probado.</li>
+<li>Tras hacer <code>merge</code>, elimina la rama local y remota si ya no es necesaria.</li>
+<li>Antes de fusionar, realiza un <code>git pull</code> para asegurar que tu <code>main</code> está actualizado.</li>
+<li>Usa <code>switch</code> en lugar de <code>checkout</code> para evitar confusiones.</li>
+</ul>
+<hr />
+<h2 id="418-ejemplo-completo-de-flujo-con-ramas">4.18 Ejemplo completo de flujo con ramas</h2>
+<pre><code class="language-bash"># Crear el repositorio
+git init
+git add .
+git commit -m &quot;Versión inicial&quot;
+
+# Crear una nueva rama
+git switch -c feature-login
+
+# Realizar cambios y confirmarlos
+git add .
+git commit -m &quot;Añadido formulario de login&quot;
+
+# Volver a la rama principal y fusionar
+git switch main
+git merge feature-login
+
+# Eliminar la rama ya fusionada
+git branch -d feature-login
+
+# Subir los cambios a GitHub
+git push
+git push origin --delete feature-login
+</code></pre>
+<hr />
+<p>✅ <strong>Conclusión</strong></p>
+<p>Trabajar con ramas es la mejor forma de organizar el desarrollo de un proyecto.
+Permite probar nuevas ideas sin riesgo, colaborar de manera eficiente y mantener una historia de cambios limpia y comprensible.</p>
+<hr />
+              
+            </div>
+          </div><footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+    
+  </span>
+</div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+      <script src="../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

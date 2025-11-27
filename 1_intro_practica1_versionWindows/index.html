@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>Práctica 1 – Lenguajes compilados e interpretados en acción (versión Windows) - Entornos de Desarrollo 1º CFGS DAM-DAW</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Pr\u00e1ctica 1 \u2013 Lenguajes compilados e interpretados en acci\u00f3n (versi\u00f3n Windows)";
+        var mkdocs_page_input_path = "1_intro_practica1_versionWindows.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> Entornos de Desarrollo 1º CFGS DAM-DAW
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="..">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="" href="../3_intro.md">U1 Introducción</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../2_eclipse/">U2 Eclipse</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../3_git/">U3 Git</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../practicas_modulo/">Prácticas</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">Entornos de Desarrollo 1º CFGS DAM-DAW</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">Práctica 1 – Lenguajes compilados e interpretados en acción (versión Windows)</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="practica-1-lenguajes-compilados-e-interpretados-en-accion-version-windows">Práctica 1 – Lenguajes compilados e interpretados en acción (versión Windows)</h1>
+<hr />
+<h2 id="preparacion-del-entorno-en-windows">🔹 Preparación del entorno en Windows</h2>
+<p>Antes de comenzar las prácticas, instala lo necesario en tu ordenador:</p>
+<h3 id="1-crear-carpeta-de-trabajo">1. Crear carpeta de trabajo</h3>
+<p>Para mantener el código organizado y separado de otros archivos del sistema, crearemos una carpeta en tu usuario de Windows. </p>
+<p>Vamos a hacerlo desde la terminal de Windows y así practicáis un poco el manejo de algunos comandos. Aunque también es posible hacer lo mismo desde el <code>Explorador de archivos</code>.</p>
+<ol>
+<li>Abre el <strong>CMD</strong> (tecla <code>Win + R</code>, escribe <code>cmd</code>, pulsa Intro).</li>
+<li>Ejecuta estos comandos:</li>
+</ol>
+<p><code>cmd
+   cd %USERPROFILE%
+   mkdir MisProyectos
+   cd MisProyectos</code></p>
+<ol>
+<li>A partir de ahora, guarda aquí todos los programas de la práctica.</li>
+</ol>
+<p>📌 <strong>Nota importante:</strong>
+No es recomendable guardar ni ejecutar código en <strong>Descargas, Documentos o Escritorio</strong>, porque pueden acumularse muchos ficheros y desorganizar el trabajo.
+Tener <code>MisProyectos</code> en tu carpeta personal hace que todo el código esté ordenado en un solo sitio.</p>
+<h3 id="2-editor-simple-recomendado">2. Editor simple recomendado</h3>
+<ul>
+<li><strong>Bloc de notas</strong> (incluido en Windows) o</li>
+<li><strong>Notepad++</strong> 👉 <a href="https://notepad-plus-plus.org/downloads/">https://notepad-plus-plus.org/downloads/</a></li>
+</ul>
+<h3 id="2-instalar-python">2. Instalar Python</h3>
+<ol>
+<li>Descarga desde 👉 <a href="https://www.python.org/downloads/">https://www.python.org/downloads/</a></li>
+<li>Instala la versión 3.x marcando la casilla <strong>“Add Python to PATH”</strong>.</li>
+<li>Comprueba en <strong>CMD</strong>:</li>
+</ol>
+<p><code>bash
+   python --version</code></p>
+<h3 id="3-instalar-compilador-c-gcc-con-winlibs">3. Instalar compilador C (GCC con WinLibs)</h3>
+<ol>
+<li>Entra en 👉 <a href="https://winlibs.com/#download-release">https://winlibs.com/#download-release</a></li>
+<li>
+<p>Descarga el archivo:</p>
+</li>
+<li>
+<p><strong>GCC 15.2.0 (with POSIX threads) + MinGW-w64 13.0.0 (UCRT) – Win64 – Zip archive</strong></p>
+</li>
+<li>Descomprime el archivo en <code>C:\mingw64</code>.</li>
+<li>Añade al <strong>PATH</strong> de Windows la ruta:</li>
+</ol>
+<p><code>C:\mingw64\bin</code></p>
+<p>Pasos:</p>
+<ul>
+<li>Pulsa <code>Win + R</code>, escribe <code>sysdm.cpl</code> y pulsa Intro.</li>
+<li>Entra en <strong>Opciones avanzadas</strong> → <strong>Variables de entorno</strong>.</li>
+<li>Edita la variable <code>Path</code> del sistema → <strong>Nuevo</strong> → escribe <code>C:\mingw64\bin</code>.</li>
+<li>Acepta y guarda cambios.</li>
+<li>Abre <strong>CMD</strong> y comprueba:</li>
+</ul>
+<p><code>bash
+   gcc --version</code></p>
+<hr />
+<p>📌 <strong>Notas técnicas importantes:</strong></p>
+<ul>
+<li>Si usas <strong>PowerShell o Windows Terminal</strong>, para ejecutar un programa en la carpeta actual debes escribir:</li>
+</ul>
+<p><code>powershell
+  .\area.exe</code></p>
+<p>En <strong>CMD clásico</strong>, basta con:</p>
+<p><code>bash
+  area.exe</code></p>
+<ul>
+<li>Si los acentos no se ven bien en la salida (ejemplo: “├¡rea” en vez de “área”), ejecuta antes:</li>
+</ul>
+<p><code>bash
+  chcp 65001</code></p>
+<p>Esto cambia la consola a <strong>UTF-8</strong>, que muestra correctamente caracteres acentuados y ñ.</p>
+<hr />
+<h3 id="parte-1-python-interpretado">Parte 1. Python (interpretado)</h3>
+<ol>
+<li>Abre <strong>Notepad++</strong> o Bloc de Notas y copia este código en <code>area.py</code> (<strong>con error intencionado: falta una comilla</strong>):</li>
+</ol>
+<pre><code class="language-python"># Calcular el área de un círculo en Python
+radio = 5
+area = 3.14159 * radio ** 2
+print(&quot;El área del círculo es:, area)
+</code></pre>
+<ol>
+<li>Ejecuta en CMD:</li>
+</ol>
+<p><code>bash
+   python area.py</code></p>
+<p>Observa el <strong>mensaje de error de sintaxis</strong> y anótalo.</p>
+<ol>
+<li>Corrige el error (añade la comilla que falta):</li>
+</ol>
+<pre><code class="language-python">print(&quot;El área del círculo es:&quot;, area)
+</code></pre>
+<ol>
+<li>Vuelve a ejecutar y haz una <strong>captura de pantalla</strong> con el resultado.</li>
+</ol>
+<hr />
+<h3 id="parte-2-c-compilado">Parte 2. C (compilado)</h3>
+<ol>
+<li>Copia este código en <code>area.c</code> (<strong>con error intencionado: falta punto y coma</strong>):</li>
+</ol>
+<pre><code class="language-c">#include &lt;stdio.h&gt;
+
+int main() {
+    int radio = 5        // &lt;-- error intencionado
+    float area = 3.14159 * radio * radio;
+    printf(&quot;El área del círculo es: %f\n&quot;, area);
+    return 0;
+}
+</code></pre>
+<ol>
+<li>En <strong>CMD</strong>, compila con:</li>
+</ol>
+<p><code>bash
+   gcc area.c -o area.exe</code>
+3. Anota el <strong>mensaje de error</strong>.
+4. Corrige el error (añade el <code>;</code> que falta), compila de nuevo y ejecuta:</p>
+<p><code>bash
+   chcp 65001
+   area.exe</code>
+5. Haz una <strong>captura de la ejecución correcta</strong>.</p>
+<hr />
+<h3 id="parte-3-comparacion-inicial">Parte 3. Comparación inicial</h3>
+<ol>
+<li>¿Cuándo se detectó el error en Python y en C?</li>
+<li>¿Qué diferencia notas entre ejecutar Python y C?</li>
+</ol>
+<hr />
+<h3 id="parte-4-comparacion-de-velocidad-con-bucle">Parte 4. Comparación de velocidad (con bucle)</h3>
+<ol>
+<li>Sustituye el programa en Python por este código:</li>
+</ol>
+<pre><code class="language-python">import time
+
+inicio = time.time()
+
+suma = 0
+for i in range(100000000):   # cien millones
+    suma += i
+
+fin = time.time()
+print(&quot;Suma final:&quot;, suma)
+print(&quot;Tiempo en segundos:&quot;, fin - inicio)
+</code></pre>
+<ol>
+<li>Haz lo mismo en C (<code>bucle.c</code>):</li>
+</ol>
+<pre><code class="language-c">#include &lt;stdio.h&gt;
+#include &lt;time.h&gt;
+
+int main() {
+    clock_t inicio, fin;
+    inicio = clock();
+
+    long long suma = 0;
+    for (long long i = 0; i &lt; 100000000; i++) {
+        suma += i;
+    }
+
+    fin = clock();
+    double tiempo = (double)(fin - inicio) / CLOCKS_PER_SEC;
+
+    printf(&quot;Suma final: %lld\n&quot;, suma);
+    printf(&quot;Tiempo en segundos: %f\n&quot;, tiempo);
+    return 0;
+}
+</code></pre>
+<p>Primero debes compilar el programa en C, como ya hemos visto anteriormente:</p>
+<pre><code class="language-bash">gcc bucle.c -o bucle.exe
+</code></pre>
+<p>Después ejecuta ambos programas:</p>
+<pre><code class="language-bash">python bucle.py
+
+bucle.exe
+</code></pre>
+<ol>
+<li>Haz una captura de los tiempos medidos en Python y en C.</li>
+<li>Reflexiona: ¿qué lenguaje tardó más? ¿por qué crees que ocurre?</li>
+</ol>
+              
+            </div>
+          </div><footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+    
+  </span>
+</div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+      <script src="../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>
