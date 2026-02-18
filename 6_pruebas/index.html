@@ -9,6 +9,10 @@
       
       
       
+        <link rel="prev" href="../5_javaDoc/">
+      
+      
+        <link rel="next" href="../practicas_modulo/">
       
       
         
@@ -19,7 +23,7 @@
     
     
       
-        <title>Práctica 1 – Lenguajes compilados e interpretados en acción - Entornos de Desarrollo 1º CFGS DAM-DAW</title>
+        <title>U6 Pruebas del software - Entornos de Desarrollo 1º CFGS DAM-DAW</title>
       
     
     
@@ -60,7 +64,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#practica-1-lenguajes-compilados-e-interpretados-en-accion" class="md-skip">
+        <a href="#6-pruebas-de-software" class="md-skip">
           Saltar a contenido
         </a>
       
@@ -96,7 +100,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Práctica 1 – Lenguajes compilados e interpretados en acción
+              U6 Pruebas del software
             
           </span>
         </div>
@@ -351,10 +355,37 @@
       
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../6_pruebas/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    U6 Pruebas del software
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -370,6 +401,37 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tabla de contenidos
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-introduccion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Introducción.
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -428,10 +490,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#versiones-segun-el-sistema-operativo" class="md-nav__link">
+  <a href="#1-introduccion" class="md-nav__link">
     <span class="md-ellipsis">
       
-        🔹 Versiones según el sistema operativo
+        1. Introducción.
       
     </span>
   </a>
@@ -455,27 +517,45 @@
 
 
 
-<h1 id="practica-1-lenguajes-compilados-e-interpretados-en-accion">Práctica 1 – Lenguajes compilados e interpretados en acción</h1>
-<p>📌 <strong>Objetivo:</strong> comprobar la diferencia entre ejecutar un programa interpretado (Python) y uno compilado (C), editando primero con un editor simple.</p>
-<hr />
-<h2 id="versiones-segun-el-sistema-operativo">🔹 Versiones según el sistema operativo</h2>
-<ul>
-<li><a href="../1_intro_practica1_versionWindows/">Versión Windows</a>  </li>
-<li><a href="../1_intro_practica1_versionMac/">Versión macOS</a>  </li>
-<li><a href="../1_intro_practica1_versionLinux/">Versión Linux</a>  </li>
-</ul>
-<p>👉 Selecciona la guía correspondiente a tu sistema operativo y sigue los pasos para realizar la práctica.</p>
-<hr />
-<p>📌 <strong>Entrega</strong>:</p>
+<h1 id="6-pruebas-de-software">6. Pruebas de Software</h1>
+<h2 id="1-introduccion">1. Introducción.</h2>
+<p>El desarrollo de software profesional no consiste únicamente en escribir código que <strong>“funcione”</strong>, sino en construir sistemas fiables, mantenibles y preparados para evolucionar. En este contexto, <code>las pruebas de software</code> se convierten en una actividad esencial dentro del ciclo de vida del desarrollo.</p>
+<p>Probar un programa no significa simplemente ejecutarlo para ver si <strong>“da error”</strong>, sino diseñar de forma sistemática un <strong>conjunto de casos de prueba</strong> que permitan detectar defectos, validar requisitos y garantizar que el sistema se comporta como se espera ante distintas situaciones.</p>
+<p>En el ámbito profesional actual, las pruebas han pasado de ser una fase final del desarrollo a integrarse de forma continua en el proceso de construcción del software. Metodologías modernas como el <strong>desarrollo ágil</strong> y prácticas como <strong>TDD</strong> <em>(Test-Driven Development)</em> refuerzan la idea de que probar no es una tarea opcional, sino parte del propio diseño del programa.</p>
+<p>Desde el punto de vista de la <code>Ingeniería del Software</code>, las pruebas forman parte del <strong>proceso de aseguramiento de la calidad</strong>. No solo permiten detectar errores antes de que el producto llegue al usuario final, sino que:</p>
 <ul>
 <li>
-<p>Entrega un documento con:</p>
+<p>Mejoran la confianza en el sistema.</p>
 </li>
 <li>
-<p>Capturas de pantalla de las ejecuciones, con y sin errores.</p>
+<p>Facilitan el mantenimiento y la evolución del código.</p>
 </li>
-<li>Respuestas a las reflexiones.</li>
+<li>
+<p>Reducen el coste de corrección de errores.</p>
+</li>
+<li>
+<p>Sirven como documentación viva del comportamiento esperado del programa.</p>
+</li>
 </ul>
+<p>En esta unidad estudiaremos:</p>
+<ul>
+<li>
+<p>Qué significa verificar y validar software.</p>
+</li>
+<li>
+<p>Cómo se diseñan casos de prueba.</p>
+</li>
+<li>
+<p>Qué tipos de pruebas existen.</p>
+</li>
+<li>
+<p>Qué técnicas se emplean para probar correctamente.</p>
+</li>
+<li>
+<p>Cómo automatizar pruebas en Java utilizando JUnit 5.</p>
+</li>
+</ul>
+<p>El objetivo no es únicamente aprender a usar una herramienta, sino comprender cómo se piensa cuando se prueba software, adoptando una mentalidad profesional orientada a la calidad.</p>
 
 
 

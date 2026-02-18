@@ -9,6 +9,10 @@
       
       
       
+        <link rel="prev" href="../4_diagramas_clases/">
+      
+      
+        <link rel="next" href="../6_pruebas/">
       
       
         
@@ -19,7 +23,7 @@
     
     
       
-        <title>5. Documentación con JavaDoc. - Entornos de Desarrollo 1º CFGS DAM-DAW</title>
+        <title>U5 Documentación con JavaDoc - Entornos de Desarrollo 1º CFGS DAM-DAW</title>
       
     
     
@@ -96,7 +100,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              5. Documentación con JavaDoc.
+              U5 Documentación con JavaDoc
             
           </span>
         </div>
@@ -281,6 +285,495 @@
     
   
     U3 Git
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../4_diagramas_clases/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    U4 Diagramas de Clases (UML)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    U5 Documentación con JavaDoc
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    U5 Documentación con JavaDoc
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tabla de contenidos
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-introduccion-para-que-sirve-documentar" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Introducción: para qué sirve documentar
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-documentar-vs-comentar" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Documentar vs comentar
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-que-documentar-y-que-no" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Qué documentar (y qué no)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Qué documentar (y qué no)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#documenta-siempre" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Documenta SIEMPRE
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#normalmente-no-documentes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Normalmente NO documentes
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-como-se-escribe-javadoc" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Cómo se escribe JavaDoc
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. Cómo se escribe JavaDoc">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41-la-primera-frase-summary-es-critica" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.1 La primera frase (summary) es crítica
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-documentacion-de-clases" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Documentación de clases
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. Documentación de clases">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#etiquetas-tipicas-en-clase" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Etiquetas típicas en clase
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-documentacion-de-atributos-campos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Documentación de atributos (campos)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-documentacion-de-metodos-el-contrato" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. Documentación de métodos (el “contrato”)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="7. Documentación de métodos (el “contrato”)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#71-que-debe-incluir-un-metodo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.1 Qué debe incluir un método
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#72-ejemplo-completo-y-profesional" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.2 Ejemplo completo y profesional
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-etiquetas-esenciales-las-mas-usadas" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. Etiquetas esenciales (las más usadas)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="8. Etiquetas esenciales (las más usadas)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#81-param" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.1 @param
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#82-return" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.2 @return
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#83-throws" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.3 @throws
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-enlaces-see-vs-link" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9. Enlaces: @see vs {@link}
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10-etiquetas-y-recursos-avanzados-utiles" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10. Etiquetas y recursos avanzados útiles
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="10. Etiquetas y recursos avanzados útiles">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#101-code-muy-recomendable" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10.1 {@code ...} (muy recomendable)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#102-inheritdoc" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10.2 {@inheritDoc}
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#103-deprecated-y-como-hacerlo-bien" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10.3 @deprecated (y cómo hacerlo bien)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#11-documentacion-de-interfaces" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11. Documentación de interfaces
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#12-formato-y-legibilidad-reglas-simples" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        12. Formato y legibilidad (reglas simples)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#13-generacion-de-documentacion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        13. Generación de documentación
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="13. Generación de documentación">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#131-con-la-herramienta-javadoc" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        13.1 Con la herramienta javadoc
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#132-desde-el-ide" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        13.2 Desde el IDE
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#14-checklist-de-ayuda-para-la-buena-documentacion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        14. Checklist de ayuda para la buena documentación
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#15-ejemplo-final-completo-clase-metodos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        15. Ejemplo final completo (clase + métodos)
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../6_pruebas/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    U6 Pruebas del software
   
 
     
